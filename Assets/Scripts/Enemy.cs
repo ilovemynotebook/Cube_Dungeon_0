@@ -4,22 +4,22 @@ using UnityEngine;
 
 public class Enemy : Character
 {
-    RaycastHit hitInfo;
     float direction = 1;
     Vector3 floorCheck;
-    int layerMask = 1 << 8;
     bool isFrontHaveGround;
+    
+    public float dmg;
 
     // Start is called before the first frame update
-    void Start()
+    override protected void Start()
     {
-        rb = GetComponent<Rigidbody>();
+        base.Start();
     }
 
     // Update is called once per frame
-    void Update()
+    override protected void Update()
     {
-        Stopper();
+        base.Update();
         Patrol();
     }
 
@@ -33,7 +33,6 @@ public class Enemy : Character
         
         if (hitInfo.collider != null)
         {
-            
             Walk(direction);
         }
         else
@@ -43,4 +42,13 @@ public class Enemy : Character
 
     }
 
+    private void OnTriggerEnter(Collider other)
+    {
+        if(other.gameObject.tag == "Player")
+        {
+            Player player = other.GetComponent<Player>();
+            player.GetHit(dmg);
+            player.KnockBack((other.transform.position - transform.position).normalized * 15);
+        }
+    }
 }

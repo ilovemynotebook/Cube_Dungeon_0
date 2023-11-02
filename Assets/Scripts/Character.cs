@@ -7,6 +7,9 @@ public class Character : MonoBehaviour
     public float speed;
     public float hp;
     public float mhp;
+    public float jumpForce;
+
+
     protected Animator anim;
     protected AudioSource HitSound;
     protected AudioSource KillSound;
@@ -14,58 +17,107 @@ public class Character : MonoBehaviour
     protected bool isWalkable;
     protected bool isWalking;
     protected Rigidbody rb;
+    protected RaycastHit hitInfo;
+    protected int layerMask = 1 << 8;
+    protected Vector3 characterVelocity;
+    protected Vector3 characterRotation;
+    protected bool isGrounded;
+    protected CapsuleCollider col;
+    protected float currentWalkSpeed;
 
-    private Vector3 playerVelocity;
+    private Coroutine DeathCoroutine;
+    
 
     // Start is called before the first frame update
-    void Start()
+    virtual protected void Start()
     {
         rb = GetComponent<Rigidbody>();
+        col = GetComponent<CapsuleCollider>();
+        anim = GetComponent<Animator>();
     }
 
     // Update is called once per frame
-    void Update()
+    virtual protected void Update()
     {
         Stopper();
+        groundCheck();
     }
 
     public void Walk(float Direction)
     {
+        if (DeathCoroutine != null) return;
         Direction = Mathf.Clamp(Mathf.Round(Direction), -1,1);
         if (Direction == 0)
         {
             isWalking = false;
             return;
         }
+
         isWalking = true;
-        playerVelocity.x = speed * Direction;
-        playerVelocity.y = rb.velocity.y;
-        rb.velocity = playerVelocity;
+        WalkSpeedAdjust(Direction);
+
+        characterRotation = Vector3.zero;
+        characterRotation.y = 180 * (Direction - 1)/2;
+        transform.rotation = Quaternion.Euler(characterRotation);
+
+    }
+
+    protected void WalkSpeedAdjust(float Direction)
+    {
+        currentWalkSpeed = rb.velocity.x;
+        if(Mathf.Abs(currentWalkSpeed - (speed * Direction)) > 0.1f)
+        {
+            currentWalkSpeed = Mathf.Lerp(currentWalkSpeed, speed * Direction, 5 * Time.deltaTime);
+        }
+        else currentWalkSpeed = speed * Direction;
+
+        characterVelocity.x = currentWalkSpeed;
+        characterVelocity.y = rb.velocity.y;
+        rb.velocity = characterVelocity;
     }
 
     protected void Stopper()
     {
-        if (isWalking == false && Mathf.Abs(rb.velocity.x) > 1)
+        if (isWalking == false && Mathf.Abs(rb.velocity.x) > 0)
         {
-            playerVelocity.y = rb.velocity.y;
-            playerVelocity.x = Mathf.Lerp(0, rb.velocity.x, 0.5f);
-            rb.velocity = playerVelocity;
+            if(rb.velocity.x < 0.01f)
+            {
+                characterVelocity.y = rb.velocity.y;
+                characterVelocity.x = 0;
+                rb.velocity = characterVelocity;
+                return;
+            }
+            characterVelocity.y = rb.velocity.y;
+            characterVelocity.x = Mathf.Lerp(0, rb.velocity.x, 5 * Time.deltaTime);
+            rb.velocity = characterVelocity;
         }
     }
 
     public void GetHit(float dmg)
     {
+        if (DeathCoroutine != null) return;
         hp -=dmg;
         HitSound?.Play();
+
+        anim.Play("Hit",0,0f);
+
         if(hp <= 0)
         {
-            Kill();
+            DeathCoroutine = StartCoroutine(Kill());
         }
     }
+
+    public void KnockBack(Vector3 Power)
+    {
+        Debug.Log(Power);
+        rb.AddForce(Power, ForceMode.Impulse);
+    }
+
     IEnumerator Kill() 
     {
         DropItem();
-        anim.Play("Dead");
+        anim.Play("Death");
+        isWalking = false;
         do
         {
             yield return new WaitForEndOfFrame();
@@ -76,5 +128,27 @@ public class Character : MonoBehaviour
     public void DropItem()
     {
 
+    }
+
+    public void Jump()
+    {
+        characterVelocity.x = rb.velocity.x;
+        characterVelocity.z = 0;
+        characterVelocity.y = jumpForce;
+        rb.velocity = characterVelocity;
+        Debug.Log(rb.velocity);
+    }
+
+
+    protected void groundCheck()
+    {
+        Physics.Raycast(transform.position, Vector3.down, out hitInfo, col.bounds.extents.y + 0.01f, layerMask);
+        Debug.DrawRay(transform.position, Vector3.down * (col.bounds.extents.y + 0.01f), Color.green);
+
+        if (hitInfo.collider != null)
+        {
+            isGrounded = true;
+        }
+        else isGrounded = false;
     }
 }
