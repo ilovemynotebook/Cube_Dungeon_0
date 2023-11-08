@@ -1938,7 +1938,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1031781672}
-  m_LocalRotation: {x: 0.3060453, y: 0.000000023165901, z: -0.0000000074471513, w: 0.952017}
+  m_LocalRotation: {x: 0.3060453, y: -0.000000023165901, z: 0.0000000074471513, w: 0.952017}
   m_LocalPosition: {x: 0, y: 2.5, z: -3}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -2497,7 +2497,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1407181288}
-  m_LocalRotation: {x: 0.34042525, y: -0.00000002288009, z: 0.0000000082837355, w: 0.9402717}
+  m_LocalRotation: {x: 0.34042525, y: 0.000000022880096, z: -0.000000008283737, w: 0.9402717}
   m_LocalPosition: {x: 0, y: 2.5, z: -3}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -2723,29 +2723,27 @@ MonoBehaviour:
   hp: 10
   mhp: 10
   jumpForce: 10
-  buffedSpeed: 0
-  buffedDmg: 0
+  buffedSpeed: 20
+  buffedDmg: 10
   sta: 0
   msta: 0
   currentWeapon:
     weaponName: 
-    dmg: 10
+    dmg: 0
     pic: {fileID: 0}
-    canChargeAttack: 1
+    canChargeAttack: 0
   currentShield: {fileID: 0}
   jumpCount: 0
-  mJumpCount: 2
-  needChargingWait: 1
-  isUpgraded_weapon: 1
+  mJumpCount: 5
+  needChargingWait: 2
+  isUpgraded_weapon: 0
   isUpgraded_shield: 0
   isUpgraded_Item_0: 0
   isUpgraded_Item_1: 0
   isUpgraded_Item_2: 0
   isUpgraded_Item_3: 0
   attackHitBox: {fileID: 0}
-  buffs:
-  - {fileID: 2134435265}
-  - {fileID: 1106564456}
+  buffs: []
 --- !u!65 &1647972227
 BoxCollider:
   m_ObjectHideFlags: 0

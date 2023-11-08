@@ -10,6 +10,12 @@ public class GameManager : MonoBehaviour
 
     public EqupimentDataBase EDB;
 
+    public StageManager[] stageManagers;
+
+    public int Stage;
+
+    public int CubePlane;
+
 
     // Start is called before the first frame update
     void Awake()
