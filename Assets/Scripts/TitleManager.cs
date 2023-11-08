@@ -9,9 +9,11 @@ public class TitleManager : MonoBehaviour
 {
     public Camera MainCamera;
     public GameObject Cube;
+    public GameObject SettingScreen;
     public CanvasGroup TitleScreen;
     public CanvasGroup Buttons;
     public Button TitleScreenButton;
+    public Button SettingButton;
     public float TitleFadeTime;
     public bool TitleFadeIsIn;
     void Awake()
@@ -19,13 +21,20 @@ public class TitleManager : MonoBehaviour
         TitleScreen.gameObject.SetActive(false);
         
     }
+    private void OnEnable()
+    {
+        SettingButton.onClick.AddListener(() => OnButtonGameObject(true, SettingScreen));
+
+    }
 
     private void Start()
     {
-        CubeAnimateMove();
+        
+        Invoke("TitleFadeIn", 2);
     }
     private void Update()
     {
+        CubeAnimateMove();
         if (TitleFadeIsIn&&Input.anyKey)
         {
             TitleFadeOut();
@@ -73,8 +82,8 @@ public class TitleManager : MonoBehaviour
 
     private void CubeAnimateMove()
     {
-        Debug.Log("큐브애니메이트무브");
-        Invoke("TitleFadeIn", 2);
+        Cube.transform.DORotate(new Vector3(0,0,1),1);
+       
     }
 
     void CubeZoom(bool IsInout,float Scale,float Time)
@@ -88,6 +97,10 @@ public class TitleManager : MonoBehaviour
             Cube.transform.DOScale(-Scale, Time);
         }
     }
-  
+    
+    void OnButtonGameObject(bool ison,GameObject gameObject)
+    {
+        gameObject.SetActive(ison);
+    }
 
 }
