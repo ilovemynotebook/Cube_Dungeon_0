@@ -8,6 +8,8 @@ public class Character : MonoBehaviour
     public float hp;
     public float mhp;
     public float jumpForce;
+    public float buffedSpeed;
+    public float buffedDmg;
 
 
     protected Animator anim;
@@ -65,11 +67,11 @@ public class Character : MonoBehaviour
     protected void WalkSpeedAdjust(float Direction)
     {
         currentWalkSpeed = rb.velocity.x;
-        if(Mathf.Abs(currentWalkSpeed - (speed * Direction)) > 0.1f)
+        if(Mathf.Abs(currentWalkSpeed - ((speed + buffedSpeed) * Direction)) > 0.1f)
         {
-            currentWalkSpeed = Mathf.Lerp(currentWalkSpeed, speed * Direction, 5 * Time.deltaTime);
+            currentWalkSpeed = Mathf.Lerp(currentWalkSpeed, (speed + buffedSpeed) * Direction, 5 * Time.deltaTime);
         }
-        else currentWalkSpeed = speed * Direction;
+        else currentWalkSpeed = (speed + buffedSpeed) * Direction;
 
         characterVelocity.x = currentWalkSpeed;
         characterVelocity.y = rb.velocity.y;

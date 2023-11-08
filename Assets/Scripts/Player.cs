@@ -5,6 +5,9 @@ using UnityEngine;
 
 public class Player : Character
 {
+
+
+
     public float sta;
     public float msta;
 
@@ -30,12 +33,23 @@ public class Player : Character
     private BoxCollider attackHitBox;
     private Coroutine attackCoroutine;
 
+    public Buffs[] buffs;
 
     private float charging = 0;
 
+
+
+
     override protected void Start()
     {
+        buffs = new Buffs[2];
+        SkillInit();
         base.Start();
+    }
+
+    void SkillInit()
+    {
+        buffs = GameObject.Find("skillSets").GetComponentsInChildren<Buffs>();
     }
 
     override protected void Update()
@@ -44,6 +58,9 @@ public class Player : Character
         TryMove();
         TryAttack();
         TryJump();
+        TrySkill();
+
+        
     }
 
     void TryMove()
@@ -119,7 +136,7 @@ public class Player : Character
         if(other.tag == "Enemy" && !alreadyHit.Contains(other.gameObject))
         {
             Enemy en = other.GetComponent<Enemy>(); 
-            en.GetHit(currentWeapon.Dmg);
+            en.GetHit(currentWeapon.Dmg + buffedDmg);
             en.KnockBack((other.transform.position - transform.position).normalized * 15);
 
             alreadyHit.Add(other.gameObject);
@@ -127,4 +144,15 @@ public class Player : Character
         }
     }
 
+    private void TrySkill()
+    {
+        if(Input.GetKeyDown(KeyCode.Alpha1))
+        {
+            buffs[0].Activate();
+        }
+        if (Input.GetKeyDown(KeyCode.Alpha2))
+        {
+            buffs[1].Activate();
+        }
+    }
 }
