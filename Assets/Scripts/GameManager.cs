@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+
 public class GameManager : MonoBehaviour
 {
     public static GameManager Instance;
@@ -10,13 +11,13 @@ public class GameManager : MonoBehaviour
 
     public EqupimentDataBase EDB;
 
-    public StageManager[] stageManagers;
+    public PlaneSceneManager[] PlaneSceneManager;//면에대한 정보를가지고 있는 배열
 
-    public int Stage;
+    public StageDatabase StageDatabase; //스테이지에대한 데이타베이스
 
-    public int CubePlane;
-
-
+    public int thisStage; //현재 스테이지
+    public EStageStyle thisStageStyle;//현재 스테이지의 컨셉
+    public EStageType thisStageType;//현재 스테이지의 역할
     // Start is called before the first frame update
     void Awake()
     {
@@ -33,8 +34,23 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    private void Start()
+    {
+        
+    }
+
     void Update()
     {
         
     }
+
+
+    void StageReset()
+    {
+        thisStage = 1;
+        //thisStageStyle = StageDatabase.stages[thisStage-1].;
+        
+    }
+
+ 
 }
