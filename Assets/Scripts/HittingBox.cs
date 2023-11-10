@@ -25,9 +25,13 @@ public class HittingBox : MonoBehaviour
                 if (player.sta >= dmg) // ¸·¾ÒÀ»¶§
                 {
                     player.ShieldSucceed();
-                    Character Ene = GetComponentInParent<Character>().GetComponent<Character>();
+
+                    Character Ene = null;
+                    transform.parent?.parent?.TryGetComponent<Character>(out Ene);
+                    if(Ene == null) Ene = transform.parent?.parent?.parent?.GetComponent<Character>();
+
                     direction.x = direction.x * -1;
-                    Ene.KnockBack(dmg * direction * 4);
+                    if (Ene != null) Ene.KnockBack(dmg * direction * 4);
                 }
                 else //½¯µå ºÎ¼ÅÁü
                 {
@@ -38,13 +42,14 @@ public class HittingBox : MonoBehaviour
             else // ¸ÂÀ»¶§
             {
                 player.GetHit(dmg);
-                player.KnockBack(dmg * direction * 8);
+                player.KnockBack(dmg * direction * 4);
             }
 
             if (isOnce == true)
             {
                 if(Root == null)
                 Root = transform.parent.gameObject;
+                Debug.Log(Root);
                 Destroy(Root);
             }
         }
