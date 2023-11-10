@@ -27,7 +27,9 @@ public class Character : MonoBehaviour
     protected CapsuleCollider col;
     protected float currentWalkSpeed;
 
-    private Coroutine DeathCoroutine;
+    protected Coroutine DeathCoroutine = null;
+
+    public bool isCharacterLookRight;
     
 
     // Start is called before the first frame update
@@ -60,6 +62,10 @@ public class Character : MonoBehaviour
 
         characterRotation = Vector3.zero;
         characterRotation.y = 180 * (Direction - 1)/2;
+        
+        if (-90 < characterRotation.y) isCharacterLookRight = false;
+        else isCharacterLookRight = true;
+
         transform.rotation = Quaternion.Euler(characterRotation);
 
     }
@@ -93,14 +99,20 @@ public class Character : MonoBehaviour
             characterVelocity.x = Mathf.Lerp(0, rb.velocity.x, 5 * Time.deltaTime);
             rb.velocity = characterVelocity;
         }
+
+        if(rb.velocity.y > 10)
+        {
+            characterVelocity.x = rb.velocity.x;
+            characterVelocity.y = 10;
+            rb.velocity = characterVelocity;
+        }
     }
 
-    public void GetHit(float dmg)
+    public virtual void GetHit(float dmg)
     {
         if (DeathCoroutine != null) return;
         hp -=dmg;
         HitSound?.Play();
-
         anim.Play("Hit",0,0f);
 
         if(hp <= 0)
@@ -111,11 +123,11 @@ public class Character : MonoBehaviour
 
     public void KnockBack(Vector3 Power)
     {
-        Debug.Log(Power);
+        //Debug.Log(Power);
         rb.AddForce(Power, ForceMode.Impulse);
     }
 
-    IEnumerator Kill() 
+    protected IEnumerator Kill() 
     {
         DropItem();
         anim.Play("Death");

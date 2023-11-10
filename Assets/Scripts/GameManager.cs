@@ -14,7 +14,6 @@ public class GameManager : MonoBehaviour
     // Start is called before the first frame update
     void Awake()
     {
-        Player = GameObject.Find("Player").gameObject;
 
         if(GameManager.Instance == null)
         {

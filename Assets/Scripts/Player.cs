@@ -5,8 +5,8 @@ using UnityEngine;
 
 public class Player : Character
 {
-
-
+    public bool canMove = true;
+    public bool canAttack = true;
 
     public float sta;
     public float msta;
@@ -18,13 +18,6 @@ public class Player : Character
     public int mJumpCount;
 
     public float needChargingWait = 2;
-
-    public bool isUpgraded_weapon = false;
-    public bool isUpgraded_shield = false;
-    public bool isUpgraded_Item_0 = false;
-    public bool isUpgraded_Item_1 = false;
-    public bool isUpgraded_Item_2 = false;
-    public bool isUpgraded_Item_3 = false;
 
     private float direction = 0;
     private List<GameObject> alreadyHit = new List<GameObject>();
@@ -38,6 +31,26 @@ public class Player : Character
     private float charging = 0;
 
 
+    public bool isHoldingShield = false;
+
+
+
+    public Coroutine stunCoroutine;
+
+
+    [Header("items and equipments")]
+    public bool isUpgraded_weapon = false;
+    public bool isUpgraded_shield = false;
+    public bool isUpgraded_Item_0 = false;
+    public bool isUpgraded_Item_1 = false;
+    public bool isUpgraded_Item_2 = false;
+    public bool isUpgraded_Item_3 = false;
+    public int hpPotion = 5;
+    public int staPotion = 5;
+    public int dmgPotion = 5;
+    public bool key = false;
+
+
 
 
     override protected void Start()
@@ -45,6 +58,7 @@ public class Player : Character
         buffs = new Buffs[2];
         SkillInit();
         base.Start();
+        GameManager.Instance.Player = this.gameObject;
     }
 
     void SkillInit()
@@ -59,19 +73,31 @@ public class Player : Character
         TryAttack();
         TryJump();
         TrySkill();
+        TryShield();
+        TimeHeal();
+    }
 
-        
+    void TimeHeal()
+    {
+        if(sta < msta)
+        {
+            sta += 20 * Time.deltaTime;
+        }
+        if(hp > mhp) hp = mhp;
     }
 
     void TryMove()
     {
-        direction = Input.GetAxisRaw("Horizontal");
-        Walk(direction);
+        if (canMove)
+        {
+            direction = Input.GetAxisRaw("Horizontal");
+            Walk(direction);
+        }
     }
 
     void TryJump()
     {
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (Input.GetKeyDown(KeyCode.Space) && canMove)
         {
             if (isGrounded || jumpCount > 0)
             {
@@ -87,6 +113,8 @@ public class Player : Character
     /// about Weapon and Shields
     void TryAttack()
     {
+        if (!canAttack) return;
+
         if (Input.GetKey(KeyCode.Mouse0) && currentWeapon.CanChargeAttack)
         {
             charging += Time.deltaTime;
@@ -154,5 +182,44 @@ public class Player : Character
         {
             buffs[1].Activate();
         }
+    }
+
+    private void TryShield()
+    {
+        if(Input.GetKeyDown(KeyCode.E))
+        {
+            anim.Play("shield");
+            anim.SetBool("holdingShield",true);
+            isHoldingShield = true;
+        }
+        else if (Input.GetKeyUp(KeyCode.E))
+        {
+            anim.SetBool("holdingShield", false);
+            isHoldingShield = false;
+        }
+    }
+
+    public void ShieldSucceed()
+    {
+        Debug.Log(1);
+        anim.Play("ShieldSucceed",1,0f);
+        sta -= 10;
+
+    }
+
+    public void ShieldBroke()
+    {
+        stunCoroutine = StartCoroutine(ShieldBrokeAnimation());
+    }
+
+    protected IEnumerator ShieldBrokeAnimation()
+    {
+        canAttack = false;
+        canMove = false;
+        anim.Play("ShieldBroke",0,0);
+        do { yield return new WaitForEndOfFrame(); }
+        while (anim.GetCurrentAnimatorStateInfo(0).normalizedTime < 1.0f);
+        canMove = true;
+        canAttack = true;
     }
 }

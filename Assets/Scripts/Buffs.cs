@@ -31,11 +31,33 @@ public class Buffs : MonoBehaviour
 
     void Start()
     {
-        player = GameManager.Instance.Player.GetComponent<Player>();
+
     }
 
     // Update is called once per frame
     void Update()
+    {
+        GetKey();
+        FindPlayer();
+        CoolDown();
+    }
+
+    void GetKey()
+    {
+        if (Input.GetKeyDown(KeyCode.Alpha1))
+        {
+            Activate();
+        }
+    }
+    void FindPlayer()
+    {
+        if (player == null)
+        {
+            player = GameManager.Instance.Player?.GetComponent<Player>();
+        }
+    }
+
+    void CoolDown()
     {
         if (waitSec > 0)
         {
@@ -45,13 +67,7 @@ public class Buffs : MonoBehaviour
         {
             waitSec = 0;
         }
-
-        if (Input.GetKeyDown(KeyCode.Alpha1))
-        {
-            Activate();
-        }
     }
-
 
     public void Activate()
     {
