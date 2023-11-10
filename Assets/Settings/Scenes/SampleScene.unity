@@ -193,7 +193,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 52094694}
-  m_LocalRotation: {x: 0.32326588, y: 0.000000016282542, z: -0.0000000055622356, w: 0.9463082}
+  m_LocalRotation: {x: 0.32326588, y: -0.000000016282542, z: 0.0000000055622356, w: 0.9463082}
   m_LocalPosition: {x: 0, y: 2.5, z: -3}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -1349,6 +1349,7 @@ MonoBehaviour:
   jumpForce: 0
   buffedSpeed: 0
   buffedDmg: 0
+  isCharacterLookRight: 0
   dmg: 0
 --- !u!54 &607579387
 Rigidbody:
@@ -1938,7 +1939,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1031781672}
-  m_LocalRotation: {x: 0.3060453, y: -0.000000023165901, z: 0.0000000074471513, w: 0.952017}
+  m_LocalRotation: {x: 0.3060453, y: 0.000000023165901, z: -0.0000000074471513, w: 0.952017}
   m_LocalPosition: {x: 0, y: 2.5, z: -3}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -1978,6 +1979,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Player: {fileID: 1647972220}
   EDB: {fileID: 11400000, guid: 7c6c6728beff4914da7ba1ad16eec140, type: 2}
+  planeSceneManager: []
+  StageDatabase: {fileID: 11400000, guid: 8f60f890c1b812d458ccd4d3de67dd18, type: 2}
+  thisStage: 0
+  thisPlane: 0
+  thisStageStyle: 0
+  thisStageType: 0
 --- !u!4 &1092720919
 Transform:
   m_ObjectHideFlags: 0
@@ -2497,7 +2504,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1407181288}
-  m_LocalRotation: {x: 0.34042525, y: 0.000000022880096, z: -0.000000008283737, w: 0.9402717}
+  m_LocalRotation: {x: 0.34042525, y: -0.00000002288009, z: 0.0000000082837355, w: 0.9402717}
   m_LocalPosition: {x: 0, y: 2.5, z: -3}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -2725,6 +2732,9 @@ MonoBehaviour:
   jumpForce: 10
   buffedSpeed: 20
   buffedDmg: 10
+  isCharacterLookRight: 0
+  canMove: 1
+  canAttack: 1
   sta: 0
   msta: 0
   currentWeapon:
@@ -2736,14 +2746,19 @@ MonoBehaviour:
   jumpCount: 0
   mJumpCount: 5
   needChargingWait: 2
+  attackHitBox: {fileID: 0}
+  buffs: []
+  isHoldingShield: 0
   isUpgraded_weapon: 0
   isUpgraded_shield: 0
   isUpgraded_Item_0: 0
   isUpgraded_Item_1: 0
   isUpgraded_Item_2: 0
   isUpgraded_Item_3: 0
-  attackHitBox: {fileID: 0}
-  buffs: []
+  hpPotion: 5
+  staPotion: 5
+  dmgPotion: 5
+  key: 0
 --- !u!65 &1647972227
 BoxCollider:
   m_ObjectHideFlags: 0

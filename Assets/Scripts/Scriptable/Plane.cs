@@ -14,5 +14,7 @@ public class Plane
     public EStageType PlaneType;//면의 컨셉
     [SerializeField]
     public EStageStyle PlaneStyle;//면의 역할
+    [SerializeField]
+    public GameObject Prefab;
 }
 
