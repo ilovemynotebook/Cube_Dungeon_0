@@ -42,13 +42,14 @@ public class Enemy : Character
 
     }
 
-    private void OnTriggerEnter(Collider other)
+    
+    /*private void OnCollisionEnter(Collision other)
     {
         if(other.gameObject.tag == "Player")
         {
-            Player player = other.GetComponent<Player>();
+            Player player = other.gameObject.GetComponent<Player>();
             player.GetHit(dmg);
             player.KnockBack((other.transform.position - transform.position).normalized * 15);
         }
-    }
+    }*/
 }

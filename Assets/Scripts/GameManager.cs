@@ -40,7 +40,7 @@ public class GameManager : MonoBehaviour
             Destroy(gameObject);
         }
         Stageset(1,1);
-        Player = GameObject.Find("Player").gameObject;
+       
     }
 
     void Update()

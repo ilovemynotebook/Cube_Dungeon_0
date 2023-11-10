@@ -28,12 +28,27 @@ public class SkillData :MonoBehaviour
 
     void Start()
     {
-        player = GameManager.Instance.Player.GetComponent<Player>();
+        
     }
 
     void Update()
     {
-        if(waitSec > 0)
+
+        FindPlayer();
+        CoolDown();
+    }
+
+    void FindPlayer()
+    {
+        if(player == null)
+        {
+            player = GameManager.Instance.Player?.GetComponent<Player>();
+        }
+    }
+
+    void CoolDown()
+    {
+        if (waitSec > 0)
         {
             waitSec -= Time.deltaTime;
         }
@@ -42,6 +57,11 @@ public class SkillData :MonoBehaviour
             waitSec = 0;
         }
     }
+
+
+
+
+
 
 
     /// <summary>
