@@ -13,9 +13,5 @@ public class Stage
     [SerializeField]
     public Plane[] CubePlanes;
 
-
-    
- 
-
 }
 

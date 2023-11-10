@@ -31,7 +31,12 @@ public class Buffs : MonoBehaviour
 
     void Start()
     {
-        player = GameManager.Instance.Player.GetComponent<Player>();
+        
+        player = GameManager.Instance.Player?.GetComponent<Player>();
+        if (player == null )
+        {
+            player = GameObject.Find("Player").GetComponent<Player>();
+        }
     }
 
     // Update is called once per frame

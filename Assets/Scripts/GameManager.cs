@@ -1,5 +1,7 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 
@@ -11,18 +13,23 @@ public class GameManager : MonoBehaviour
 
     public EqupimentDataBase EDB;
 
-    public PlaneSceneManager[] PlaneSceneManager;//면에대한 정보를가지고 있는 배열
+    public List<PlaneSceneManager> planeSceneManager;//면에대한 정보를가지고 있는 배열
 
     public StageDatabase StageDatabase; //스테이지에대한 데이타베이스
 
     public int thisStage; //현재 스테이지
+    public int thisPlane; // 현재  면
     public EStageStyle thisStageStyle;//현재 스테이지의 컨셉
     public EStageType thisStageType;//현재 스테이지의 역할
-    // Start is called before the first frame update
     void Awake()
     {
-        Player = GameObject.Find("Player").gameObject;
+        
 
+        
+    }
+
+    private void Start()
+    {
         if(GameManager.Instance == null)
         {
             GameManager.Instance = this;
@@ -32,11 +39,8 @@ public class GameManager : MonoBehaviour
         {
             Destroy(gameObject);
         }
-    }
-
-    private void Start()
-    {
-        
+        Stageset(1,1);
+        Player = GameObject.Find("Player").gameObject;
     }
 
     void Update()
@@ -45,11 +49,25 @@ public class GameManager : MonoBehaviour
     }
 
 
-    void StageReset()
+    void Stageset(int Stage,int Plane)
     {
-        thisStage = 1;
-        //thisStageStyle = StageDatabase.stages[thisStage-1].;
+        thisStage = Stage;
+        thisPlane = Plane;
+        thisStageStyle = StageDatabase.stages[thisStage - 1].CubePlanes[thisPlane - 1].PlaneStyle;
+        thisStageType = StageDatabase.stages[thisStage - 1].CubePlanes[thisPlane - 1].PlaneType;
         
+    }
+    public void PlaneUp()
+    {
+        if (StageDatabase.stages[thisStage-1].CubePlanes.Length < thisPlane)
+        {   //Stage가 바뀔경우
+
+        }
+        else
+        {
+            planeSceneManager.Add(GameObject.Find("PlaneSceneManager").GetComponent<PlaneSceneManager>());
+            Stageset(thisStage, thisPlane);
+        }
     }
 
  
