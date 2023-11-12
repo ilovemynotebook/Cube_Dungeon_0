@@ -20,6 +20,7 @@ public class Portal : MonoBehaviour
             }
             else
             {
+
                 SceneManager.PlaneDown();
             }
            

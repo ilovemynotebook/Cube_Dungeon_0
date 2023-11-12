@@ -9,21 +9,26 @@ public class PlaneSceneManager : MonoBehaviour
 {
 
     List<Box> boxes = new List<Box>();
-    public SceneData sceneData;
+    //public SceneData sceneData;
     public TMP_Text StageText;
     public TMP_Text StageTypeText;
     public TMP_Text StageStyleText;
     public TMP_Text MonsterCountText;
     public GameObject MapPrefab;
     int Monstercount;
-    int ThisStage;
-    int ThisPlane;
+    [SerializeField]int ThisStage;
+    [SerializeField] int ThisPlane;
     EStageType ThisStageType;
     EStageStyle ThisStageStyle;
 
+
+
+   
+
     private void Awake()
     {
-        sceneData=GetComponent<SceneData>();
+        
+        //sceneData =GetComponent<SceneData>();
         //DontDestroyOnLoad(gameObject);
 
     }
@@ -34,8 +39,18 @@ public class PlaneSceneManager : MonoBehaviour
     }
     private void Start()
     {
-
+       
         PlaneSetting();
+        if (GameManager.Instance.MaxPlane >ThisPlane)
+        {
+            MapPrefab = GameManager.Instance.mapdatas[ThisStage - 1];
+            MapPrefab.SetActive(true);
+        }
+        else
+        {
+            MapPrefab = Instantiate(GameManager.Instance.StageDatabase.stages[ThisStage - 1].CubePlanes[ThisPlane - 1].Prefab);
+        }
+       
     }
 
     private void Update()
@@ -50,7 +65,7 @@ public class PlaneSceneManager : MonoBehaviour
 
     }
 
-    void PlaneSetting()
+    public void PlaneSetting()
     {
       
         
@@ -59,8 +74,7 @@ public class PlaneSceneManager : MonoBehaviour
      ThisStageType = GameManager.Instance.StageDatabase.stages[ThisStage - 1].CubePlanes[ThisPlane-1].PlaneType;
      ThisStageStyle = GameManager.Instance.StageDatabase.stages[ThisStage - 1].CubePlanes[ThisPlane - 1].PlaneStyle;
 
-     Debug.Log(GameManager.Instance);
-     MapPrefab=Instantiate(GameManager.Instance.StageDatabase.stages[ThisStage - 1].CubePlanes[ThisPlane - 1].Prefab);
+     
         
             
     }
@@ -71,12 +85,41 @@ public class PlaneSceneManager : MonoBehaviour
 
         if (Monstercount == 0) {
 
-           
-            
-            //sceneData.boxes = boxes;
-            GameManager.Instance.PlaneUP();
 
+            //GameManager.Instance.PlaneUP();
+            if (GameManager.Instance.StageDatabase.stages[ThisStage - 1].CubePlanes.Length <= ThisPlane)
+            {   //Stage가 바뀔경우
+                GameManager.Instance.thisStage++;
+                GameManager.Instance.thisPlane = 1;
+                GameManager.Instance.MaxPlane = 1;
+                PlaneSetting();
+            }
+            else
+            {
+                GameManager.Instance.thisPlane++;
+                PlaneSetting();
+                if (GameManager.Instance.MaxPlane > GameManager.Instance.thisPlane)
+                {
+
+                }
+                else
+                {
+
+                    if (MapPrefab != null)
+                    {
+                        GameManager.Instance.MaxPlane++;
+                        MapPrefab.SetActive(false);
+                        DontDestroyOnLoad(MapPrefab);
+                        GameManager.Instance.mapdatas[GameManager.Instance.thisPlane - 2] = MapPrefab;
+                    }
+                    
+
+                }
+
+            }
+           
             SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+
 
         }
 
@@ -84,9 +127,15 @@ public class PlaneSceneManager : MonoBehaviour
     }
     public void PlaneDown()
     {
-
+        Debug.Log(ThisPlane);
         //이전 면 이동
-        
+        if (GameManager.Instance.MaxPlane > 1 && ThisPlane > 1)
+        {
+            GameManager.Instance.thisPlane--;
+            PlaneSetting();
+            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        }
+
 
     }
 
@@ -94,5 +143,7 @@ public class PlaneSceneManager : MonoBehaviour
     {
 
     }
+
+    
 
 }
