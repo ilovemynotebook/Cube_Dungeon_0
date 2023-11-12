@@ -6,9 +6,9 @@ public class Portal : MonoBehaviour
 {
     public PlaneSceneManager SceneManager;
     public bool isup;
-    private void Start()
+    private void OnEnable()
     {
-     
+        SceneManager=FindAnyObjectByType<PlaneSceneManager>();
     }
     private void OnTriggerEnter(Collider other)
     {

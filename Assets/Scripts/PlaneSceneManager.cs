@@ -14,7 +14,7 @@ public class PlaneSceneManager : MonoBehaviour
     public TMP_Text StageTypeText;
     public TMP_Text StageStyleText;
     public TMP_Text MonsterCountText;
-
+    public GameObject MapPrefab;
     int Monstercount;
     int ThisStage;
     int ThisPlane;
@@ -24,22 +24,24 @@ public class PlaneSceneManager : MonoBehaviour
     private void Awake()
     {
         sceneData=GetComponent<SceneData>();
-        DontDestroyOnLoad(gameObject);
+        //DontDestroyOnLoad(gameObject);
 
+    }
+    private void OnEnable()
+    {
+       
+        
     }
     private void Start()
     {
-        PlaneSetting();
 
+        PlaneSetting();
     }
 
     private void Update()
     {
 
-        ThisStage = GameManager.Instance.thisStage;
-        ThisPlane= GameManager.Instance.thisPlane;
-        ThisStageType = GameManager.Instance.thisStageType;
-        ThisStageStyle = GameManager.Instance.thisStageStyle;
+      
         Monstercount = GameObject.FindGameObjectsWithTag("Enemy").Length;
         MonsterCountText.text = "Monster : " + Monstercount;
         StageText.text = "Stage : " + ThisStage+" Plane : "+ThisPlane;
@@ -50,7 +52,15 @@ public class PlaneSceneManager : MonoBehaviour
 
     void PlaneSetting()
     {
-        Instantiate(GameManager.Instance.StageDatabase.stages[ThisStage - 1].CubePlanes[ThisPlane - 1].Prefab);
+      
+        
+     ThisStage = GameManager.Instance.thisStage;
+     ThisPlane = GameManager.Instance.thisPlane;
+     ThisStageType = GameManager.Instance.StageDatabase.stages[ThisStage - 1].CubePlanes[ThisPlane-1].PlaneType;
+     ThisStageStyle = GameManager.Instance.StageDatabase.stages[ThisStage - 1].CubePlanes[ThisPlane - 1].PlaneStyle;
+
+     Debug.Log(GameManager.Instance);
+     MapPrefab=Instantiate(GameManager.Instance.StageDatabase.stages[ThisStage - 1].CubePlanes[ThisPlane - 1].Prefab);
         
             
     }
@@ -60,8 +70,12 @@ public class PlaneSceneManager : MonoBehaviour
         //다음 면 이동
 
         if (Monstercount == 0) {
-            sceneData.boxes = boxes;
-            GameManager.Instance.PlaneUp();
+
+           
+            
+            //sceneData.boxes = boxes;
+            GameManager.Instance.PlaneUP();
+
             SceneManager.LoadScene(SceneManager.GetActiveScene().name);
 
         }
@@ -80,5 +94,5 @@ public class PlaneSceneManager : MonoBehaviour
     {
 
     }
- 
+
 }
