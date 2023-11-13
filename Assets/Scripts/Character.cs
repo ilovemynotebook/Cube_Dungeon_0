@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using UnityEngine;
 
@@ -10,8 +11,8 @@ public class Character : MonoBehaviour
     public float jumpForce;
     public float buffedSpeed;
     public float buffedDmg;
-
-
+    
+    
     protected Animator anim;
     protected AudioSource HitSound;
     protected AudioSource KillSound;
@@ -31,7 +32,7 @@ public class Character : MonoBehaviour
 
     public bool isCharacterLookRight;
     
-
+    public event Action OnEnemyDied;
     // Start is called before the first frame update
     virtual protected void Start()
     {
