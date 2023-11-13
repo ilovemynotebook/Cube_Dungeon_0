@@ -16,5 +16,22 @@ public class Plane
     public EStageStyle PlaneStyle;//면의 역할
     [SerializeField]
     public GameObject Prefab;
+    [SerializeField]
+    public Vector3 PlayerStartPoint;
+    [SerializeField]
+    public bool arrvied=false;
+    [SerializeField]
+    public Enemy[] enemies;
+    [SerializeField]
+    public Vector3[] enemiesSpawnPlace;
+    [SerializeField]
+    public bool[] enemiesDied;
+    [SerializeField]
+    public Box[] boxes;
+    [SerializeField]
+    public Vector3[] BoxSpawnPlace;
+    [SerializeField]
+    public bool[] boxesOpened;
+ 
 }
 
