@@ -28,9 +28,8 @@ public class Plane
     [SerializeField]
     public Vector3[] BoxSpawnPlace;
     [SerializeField]
-
     public bool[] boxesOpened;
-
+     
     public Plane Clone()
     {
         Plane plane = new Plane();
@@ -39,6 +38,7 @@ public class Plane
         plane.Prefab = Prefab;
         plane.PlayerStartPoint = PlayerStartPoint;
         plane.enemies=enemies;
+        plane.enemiesSpawnPlace = enemiesSpawnPlace;
         plane.boxes=boxes;
         plane.BoxSpawnPlace = BoxSpawnPlace;
         
