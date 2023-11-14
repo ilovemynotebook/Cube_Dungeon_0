@@ -10,6 +10,11 @@ public class Portal : MonoBehaviour
     {
         SceneManager=FindAnyObjectByType<PlaneSceneManager>();
     }
+
+    private void Update()
+    {
+     
+    }
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.CompareTag("Player"))

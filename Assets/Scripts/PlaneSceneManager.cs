@@ -2,15 +2,17 @@ using DG.Tweening;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using UnityEngine.UIElements;
 
 public class PlaneSceneManager : MonoBehaviour
 {
     public static PlaneSceneManager Instance;
-    public Image panel;
-    //List<Box> boxes = new List<Box>();
+    public UnityEngine.UI.Image panel;
+    [SerializeField] List<Box> boxes = new List<Box>();
     [SerializeField] Plane[] planes;
     //public SceneData sceneData;
     public TMP_Text StageText;
@@ -18,15 +20,16 @@ public class PlaneSceneManager : MonoBehaviour
     public TMP_Text StageStyleText;
     public TMP_Text MonsterCountText;
     public GameObject MapPrefab;
-    int Monstercount;
 
+    public int Monstercount;
     public int thisStage; //현재 스테이지
     public int thisPlane; // 현재  면
     public int MaxPlane;
+
     EStageType ThisStageType;
     EStageStyle ThisStageStyle;
-    [SerializeField]Enemy[] SummonedEnemy;
-    [SerializeField] Box[] SummonedBoxes;
+   // [SerializeField]Enemy[] SummonedEnemy;
+   // [SerializeField] Box[] SummonedBoxes;
     public StageDatabase StageDatabase; //스테이지에대한 데이타베이스
     //public GameObject[] mapdatas;
 
@@ -86,8 +89,8 @@ public class PlaneSceneManager : MonoBehaviour
     public void PlaneUp()
     {
         //다음 면 이동
-
         if (Monstercount == 0) {
+            StageSave(thisPlane - 1);
             Destroy(MapPrefab);
             Clear();
             if (planes.Length<= thisPlane)
@@ -95,7 +98,7 @@ public class PlaneSceneManager : MonoBehaviour
                 thisStage++;
                 thisPlane = 1;
                 MaxPlane = 1;
- 
+                StageSet(thisStage);
             }
             else
             {
@@ -105,52 +108,50 @@ public class PlaneSceneManager : MonoBehaviour
                     MaxPlane++;
                 }
                 thisPlane++;
-
             }
-
             CreateMap();
-
-
         }
-
-
     }
     public void PlaneDown()
     {
-        
-        //이전 면 이동
-        if (MaxPlane > 1 && thisPlane > 1)
+     
+        if(Monstercount==0)
         {
-            Destroy(MapPrefab);
-            Clear();
-            thisPlane--;
-            //PlaneSetting();
-            CreateMap();
+            //이전 면 이동
+            if (MaxPlane > 1 && thisPlane > 1)
+            {
+                StageSave(thisPlane - 1);
+                Destroy(MapPrefab);
+                Clear();
+                thisPlane--;
+                CreateMap();
+                
+            }
+
         }
+      
 
 
     }
 
     void MonsterSpawn(Plane Plane)
     {
-        SummonedEnemy=new Enemy[Plane.enemies.Length];
+       // SummonedEnemy=new Enemy[Plane.enemies.Length];
         for(int i = 0; i < Plane.enemies.Length; i++)
         {
-            if (!Plane.enemiesDied[i])
-            {
-               SummonedEnemy[i]= Instantiate(Plane.enemies[i], Plane.enemiesSpawnPlace[i], Quaternion.identity);
-            }
-            
+        
+               Instantiate(Plane.enemies[i], Plane.enemiesSpawnPlace[i], Quaternion.identity);
         }
         
     }
 
     void BoxSpawn(Plane Plane)
     {
-        SummonedBoxes=new Box[Plane.boxes.Length];
+      
         for(int i = 0; i < Plane.boxes.Length; i++)
         {
-            SummonedBoxes[i]= Instantiate(Plane.boxes[i], Plane.BoxSpawnPlace[i],Quaternion.identity);
+            boxes.Add (Instantiate(Plane.boxes[i], Plane.BoxSpawnPlace[i],Quaternion.identity));
+            boxes[i].isOpen = planes[thisPlane-1].boxesOpened[i];
         }
     }
 
@@ -159,7 +160,6 @@ public class PlaneSceneManager : MonoBehaviour
 
         Fade();
         MapPrefab = Instantiate(planes[thisPlane - 1].Prefab);            
-        planes[thisPlane-1].arrvied= true;
         Player = FindAnyObjectByType<Player>();
         Player.transform.position = planes[thisPlane - 1].PlayerStartPoint;
         MonsterSpawn(planes[thisPlane - 1]);
@@ -169,30 +169,28 @@ public class PlaneSceneManager : MonoBehaviour
     {
         for(int i = 0; i < StageDatabase.stages[stage-1].CubePlanes.Length;i++)
         {
-            planes[i] = StageDatabase.stages[stage-1].CubePlanes[i];
+            planes[i] = StageDatabase.stages[stage - 1].CubePlanes[i].Clone();
            
         }
     }
     
-    void StageSave(int Plane, bool[] enemies, bool[] boxes)
+    void StageSave(int Plane)
     {
-        planes[Plane].enemiesDied = enemies;
-        planes[Plane].boxesOpened = boxes;
+        for(int i = 0; i < boxes.Count; i++)
+        {
+            planes[Plane].boxesOpened[i] = boxes[i].isOpen;
+        }
+       
     }
     
     void Clear()
     {
-        for(int i = 0; i < SummonedEnemy.Length; i++)
+        for(int i=0; i<boxes.Count; i++)
         {
-            Destroy(SummonedEnemy[i].gameObject);
+            Destroy(boxes[i].gameObject);
+            
         }
-
-        for(int i = 0; i < SummonedBoxes.Length; i++)
-        {
-            Destroy(SummonedBoxes[i].gameObject);
-        }
-        SummonedEnemy= null;
-        SummonedBoxes= null;
+        boxes.Clear();
     }
     public void Fade()
     {

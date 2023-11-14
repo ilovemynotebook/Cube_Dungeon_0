@@ -12,14 +12,6 @@ public class GameManager : MonoBehaviour
     public GameObject Player;
 
     public EqupimentDataBase EDB;
-
-
-
-
-
-   
-
-  
     void Awake()
     {
         
@@ -47,6 +39,4 @@ public class GameManager : MonoBehaviour
         
     }
 
-   
- 
 }

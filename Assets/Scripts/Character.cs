@@ -32,7 +32,6 @@ public class Character : MonoBehaviour
 
     public bool isCharacterLookRight;
     
-    public event Action OnEnemyDied;
     // Start is called before the first frame update
     virtual protected void Start()
     {
