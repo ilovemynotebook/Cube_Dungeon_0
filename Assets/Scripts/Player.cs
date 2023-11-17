@@ -58,7 +58,7 @@ public class Player : Character
         buffs = new Buffs[2];
         SkillInit();
         base.Start();
-        GameManager.Instance.Player = this.gameObject;
+        GameManager.Instance._Player = this.gameObject;
     }
 
     void SkillInit()
@@ -75,6 +75,11 @@ public class Player : Character
         TrySkill();
         TryShield();
         TimeHeal();
+
+        if (Input.GetKeyDown(KeyCode.C))
+        {
+            hpPotion--;
+        }
     }
 
     void TimeHeal()

@@ -10,12 +10,14 @@ public class Box : MonoBehaviour
     private void Awake()
     {
         box = GetComponent<MeshRenderer>();
+        
     }
     private void Update()
     {
         if (isOpen)
         {
             box.material.color  = Color.red;
+            PlaneSceneManager.Instance.StageSave(PlaneSceneManager.Instance.thisPlane-1);
             
         }
         else if (!isOpen)

@@ -136,7 +136,8 @@ public class Character : MonoBehaviour
         {
             yield return new WaitForEndOfFrame();
         } while (anim.GetCurrentAnimatorStateInfo(0).normalizedTime < 1.0f);
-        Destroy(gameObject);
+        //Destroy(gameObject);
+        gameObject.SetActive(false);
     }
 
     public void DropItem()

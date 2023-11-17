@@ -13,21 +13,23 @@ public class PlaneSceneManager : MonoBehaviour
     public static PlaneSceneManager Instance;
     public UnityEngine.UI.Image panel;
     [SerializeField] List<Box> boxes = new List<Box>();
-    [SerializeField] Plane[] planes;
+    [SerializeField] List<Enemy> enemies = new List<Enemy>();
+    [SerializeField] public Plane[] planes;
     //public SceneData sceneData;
     public TMP_Text StageText;
     public TMP_Text StageTypeText;
     public TMP_Text StageStyleText;
     public TMP_Text MonsterCountText;
+    public TMP_Text PlayerText;
     public GameObject MapPrefab;
 
     public int Monstercount;
     public int thisStage; //현재 스테이지
     public int thisPlane; // 현재  면
-    public int MaxPlane;
 
-    EStageType ThisStageType;
-    EStageStyle ThisStageStyle;
+
+   // EStageType ThisStageType;
+    //EStageStyle ThisStageStyle;
    // [SerializeField]Enemy[] SummonedEnemy;
    // [SerializeField] Box[] SummonedBoxes;
     public StageDatabase StageDatabase; //스테이지에대한 데이타베이스
@@ -46,9 +48,10 @@ public class PlaneSceneManager : MonoBehaviour
         {
             Destroy(gameObject);
         }
-        thisStage = 1; MaxPlane = 1; thisPlane = 1;
+        thisStage = 1; thisPlane = 1;
         planes = new Plane[9];
-        StageSet(thisStage);
+
+      
        // mapdatas = new GameObject[9];
        //sceneData =GetComponent<SceneData>();
        //DontDestroyOnLoad(gameObject);
@@ -61,9 +64,10 @@ public class PlaneSceneManager : MonoBehaviour
     }
     private void Start()
     {
-
+       // GameManager.Instance.DataLoad();
+        StageSet(thisStage);
         CreateMap();
-       panel.gameObject.SetActive(false);
+        panel.gameObject.SetActive(false);
 
     }
 
@@ -71,14 +75,13 @@ public class PlaneSceneManager : MonoBehaviour
 
     private void Update()
     {
-
-        ThisStageType = planes[thisPlane-1].PlaneType;
-        ThisStageStyle = planes[thisPlane - 1].PlaneStyle;
         Monstercount = GameObject.FindGameObjectsWithTag("Enemy").Length;
-        MonsterCountText.text = "Monster : " + Monstercount;
-        StageText.text = "Stage : " + thisStage +" Plane : "+thisPlane;
-        StageTypeText.text = "Concept : " + ThisStageType;
-        StageStyleText.text = "Style : " + ThisStageStyle;
+        //ThisStageType = planes[thisPlane-1].PlaneType;
+        //ThisStageStyle = planes[thisPlane - 1].PlaneStyle;
+        //MonsterCountText.text = "Monster : " + Monstercount;
+        //StageText.text = "Stage : " + thisStage +" Plane : "+thisPlane;
+        //StageTypeText.text = "Concept : " + ThisStageType;
+        //StageStyleText.text = "Style : " + ThisStageStyle;
 
      
         
@@ -91,22 +94,17 @@ public class PlaneSceneManager : MonoBehaviour
         //다음 면 이동
         if (Monstercount == 0) {
             StageSave(thisPlane - 1);
-            Destroy(MapPrefab);
             Clear();
             if (planes.Length<= thisPlane)
             {   //Stage가 바뀔경우
                 thisStage++;
                 thisPlane = 1;
-                MaxPlane = 1;
+
                 StageSet(thisStage);
             }
             else
             {
-                if (MaxPlane == thisPlane)
-                {
-
-                    MaxPlane++;
-                }
+           
                 thisPlane++;
             }
             CreateMap();
@@ -118,10 +116,9 @@ public class PlaneSceneManager : MonoBehaviour
         if(Monstercount==0)
         {
             //이전 면 이동
-            if (MaxPlane > 1 && thisPlane > 1)
+            if ( thisPlane > 1)
             {
                 StageSave(thisPlane - 1);
-                Destroy(MapPrefab);
                 Clear();
                 thisPlane--;
                 CreateMap();
@@ -140,7 +137,7 @@ public class PlaneSceneManager : MonoBehaviour
         for(int i = 0; i < Plane.enemies.Length; i++)
         {
         
-               Instantiate(Plane.enemies[i], Plane.enemiesSpawnPlace[i], Quaternion.identity);
+              enemies.Add( Instantiate(Plane.enemies[i], Plane.enemiesSpawnPlace[i], Quaternion.identity));
         }
         
     }
@@ -150,22 +147,23 @@ public class PlaneSceneManager : MonoBehaviour
       
         for(int i = 0; i < Plane.boxes.Length; i++)
         {
-            boxes.Add (Instantiate(Plane.boxes[i], Plane.BoxSpawnPlace[i],Quaternion.identity));
-            boxes[i].isOpen = planes[thisPlane-1].boxesOpened[i];
+            boxes.Add(Instantiate(Plane.boxes[i], Plane.BoxSpawnPlace[i],Quaternion.identity));
+            boxes[i].isOpen = Plane.boxesOpened[i];
         }
     }
 
-    void CreateMap()
+    public void CreateMap()
     {
-
+        //StageSet(thisStage);
         Fade();
+        Clear();
         MapPrefab = Instantiate(planes[thisPlane - 1].Prefab);            
         Player = FindAnyObjectByType<Player>();
         Player.transform.position = planes[thisPlane - 1].PlayerStartPoint;
         MonsterSpawn(planes[thisPlane - 1]);
         BoxSpawn(planes[thisPlane - 1]);
     }
-    void StageSet(int stage)
+    public void StageSet(int stage)
     {
         for(int i = 0; i < StageDatabase.stages[stage-1].CubePlanes.Length;i++)
         {
@@ -174,7 +172,7 @@ public class PlaneSceneManager : MonoBehaviour
         }
     }
     
-    void StageSave(int Plane)
+    public void StageSave(int Plane)
     {
         for(int i = 0; i < boxes.Count; i++)
         {
@@ -185,12 +183,34 @@ public class PlaneSceneManager : MonoBehaviour
     
     void Clear()
     {
-        for(int i=0; i<boxes.Count; i++)
+       
+        
+        if(MapPrefab != null)
         {
-            Destroy(boxes[i].gameObject);
-            
+            Destroy(MapPrefab);
         }
-        boxes.Clear();
+        
+        if(boxes.Count> 0)
+        {
+            for (int i = 0; i < boxes.Count; i++)
+            {
+                Destroy(boxes[i].gameObject);
+
+            }
+            boxes.Clear();
+        }
+       
+
+        if(enemies.Count > 0)
+        {
+            for (int j = 0; j < enemies.Count; j++)
+            {
+                if (enemies[j] != null)
+                Destroy(enemies[j].gameObject);
+            }
+            enemies.Clear();
+        }
+       
     }
     public void Fade()
     {
@@ -220,6 +240,11 @@ public class PlaneSceneManager : MonoBehaviour
         }
         panel.gameObject.SetActive(false);
         yield return null;
+    }
+
+    public void Texting(string str)
+    {
+        PlayerText.text = str;
     }
 
 }

@@ -24,7 +24,7 @@ MonoBehaviour:
       boxes: []
       BoxSpawnPlace: []
       boxesOpened: 
-    - PlaneType: 0
+    - PlaneType: 3
       PlaneStyle: 0
       Prefab: {fileID: 9145890908147242706, guid: 846b4d4dbcacc5c489a6861846cb96e6,
         type: 3}
@@ -46,8 +46,8 @@ MonoBehaviour:
       boxes: []
       BoxSpawnPlace: []
       boxesOpened: 
-    - PlaneType: 0
-      PlaneStyle: 0
+    - PlaneType: 1
+      PlaneStyle: 2
       Prefab: {fileID: 9145890908147242706, guid: 846b4d4dbcacc5c489a6861846cb96e6,
         type: 3}
       PlayerStartPoint: {x: 0, y: 7, z: 0}
