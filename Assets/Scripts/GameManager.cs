@@ -9,7 +9,8 @@ using System.IO;
 public class GameManager : MonoBehaviour
 {
     public static GameManager Instance;
-
+    public int ThisStage;
+    public int ThisPlane;
     public GameObject _Player;
     string FilePath;
     public EqupimentDataBase EDB;
@@ -26,7 +27,7 @@ public class GameManager : MonoBehaviour
         {
             Destroy(gameObject);
         }
-        
+        ThisStage = 1; ThisPlane = 1;
     }
 
     private void Start()
