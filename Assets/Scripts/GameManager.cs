@@ -116,18 +116,38 @@ public class GameManager : MonoBehaviour
         {
             PlaneSceneManager.Instance.planes[1].boxesOpened[i] = playerdata.Plane2boxesOpened[i];
         }
-        
-        PlaneSceneManager.Instance.planes[2].boxesOpened = playerdata.Plane3boxesOpened;
-        PlaneSceneManager.Instance.planes[3].boxesOpened = playerdata.Plane4boxesOpened;
-        PlaneSceneManager.Instance.planes[4].boxesOpened = playerdata.Plane5boxesOpened;
-        PlaneSceneManager.Instance.planes[5].boxesOpened = playerdata.Plane6boxesOpened;
-        PlaneSceneManager.Instance.planes[6].boxesOpened = playerdata.Plane7boxesOpened;
-        PlaneSceneManager.Instance.planes[7].boxesOpened = playerdata.Plane8boxesOpened;
-        PlaneSceneManager.Instance.planes[8].boxesOpened = playerdata.Plane9boxesOpened;
+        for (int i = 0; i < playerdata.Plane3boxesOpened.Length; i++)
+        {
+            PlaneSceneManager.Instance.planes[2].boxesOpened[i] = playerdata.Plane3boxesOpened[i];
+        }
+        for (int i = 0; i < playerdata.Plane4boxesOpened.Length; i++)
+        {
+            PlaneSceneManager.Instance.planes[3].boxesOpened[i] = playerdata.Plane4boxesOpened[i];
+        }
+        for (int i = 0; i < playerdata.Plane5boxesOpened.Length; i++)
+        {
+            PlaneSceneManager.Instance.planes[4].boxesOpened[i] = playerdata.Plane5boxesOpened[i];
+        }
+        for (int i = 0; i < playerdata.Plane6boxesOpened.Length; i++)
+        {
+            PlaneSceneManager.Instance.planes[5].boxesOpened[i] = playerdata.Plane6boxesOpened[i];
+        }
+        for (int i = 0; i < playerdata.Plane7boxesOpened.Length; i++)
+        {
+            PlaneSceneManager.Instance.planes[6].boxesOpened[i] = playerdata.Plane7boxesOpened[i];
+        }
+        for (int i = 0; i < playerdata.Plane8boxesOpened.Length; i++)
+        {
+            PlaneSceneManager.Instance.planes[7].boxesOpened[i] = playerdata.Plane8boxesOpened[i];
+        }
+        for (int i = 0; i < playerdata.Plane9boxesOpened.Length; i++)
+        {
+            PlaneSceneManager.Instance.planes[8].boxesOpened[i] = playerdata.Plane9boxesOpened[i];
+        }
+   
 
         PlaneSceneManager.Instance.CreateMap();
 
-        PlaneSceneManager.Instance.Texting(playerdata.ToString());
         Debug.Log(jsondata);
     }
 

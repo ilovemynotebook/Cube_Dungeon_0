@@ -25,7 +25,7 @@ public class PlaneSceneManager : MonoBehaviour
 
     public int Monstercount;
     public int thisStage; //현재 스테이지
-    public int thisPlane; // 현재  면
+    public int thisPlane; // 현재 면
 
 
    // EStageType ThisStageType;
@@ -242,9 +242,5 @@ public class PlaneSceneManager : MonoBehaviour
         yield return null;
     }
 
-    public void Texting(string str)
-    {
-        PlayerText.text = str;
-    }
 
 }
