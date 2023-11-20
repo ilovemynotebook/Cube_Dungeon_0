@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.UIElements;
 
 public class Player : Character
 {
@@ -50,7 +51,7 @@ public class Player : Character
     public int dmgPotion = 5;
     public bool key = false;
 
-
+    RaycastHit ladderRayHit;
 
 
     override protected void Start()
@@ -75,6 +76,37 @@ public class Player : Character
         TrySkill();
         TryShield();
         TimeHeal();
+        CheckLadder();
+        DoClimbing(Input.GetAxisRaw("Vertical"));
+
+        if (isClimbing) jumpCount = mJumpCount;
+    }
+
+    void CheckLadder()
+    {
+        Physics.Raycast(transform.position - transform.right* 1.2f, transform.right, out ladderRayHit, 2.4f, 1<<10);
+        if (ladderRayHit.collider == null)
+        {
+            Physics.Raycast(transform.position + (1 * transform.right) * 1.2f, -1 * transform.right, out ladderRayHit, 2.4f, 1 << 10);
+            //Debug.Log(ladderRayHit.collider?.gameObject);
+        }
+        Debug.DrawRay(transform.position + (1 * transform.right) * 1.2f, -transform.right* 2.4f, Color.red);
+        
+        if (ladderRayHit.collider?.tag == "Ladder")
+        {
+            
+            if (Input.GetKey(KeyCode.W)) {
+                ladder = ladderRayHit.collider.gameObject;
+                Debug.Log(Mathf.Abs(transform.position.x - ladder.transform.position.x));
+                if(Mathf.Abs(transform.position.x - ladder.transform.position.x) < 1)
+                    isClimbing = true;
+            }
+        }
+        else
+        {
+            ladder = null;
+            isClimbing = false;
+        }
     }
 
     void TimeHeal()
@@ -105,6 +137,7 @@ public class Player : Character
 
                 Jump();
                 jumpCount--;
+                
             }
         }
     }
@@ -170,7 +203,10 @@ public class Player : Character
             alreadyHit.Add(other.gameObject);
             Debug.Log(other.name);
         }
+
+
     }
+
 
     private void TrySkill()
     {
@@ -222,4 +258,6 @@ public class Player : Character
         canMove = true;
         canAttack = true;
     }
+
+
 }
