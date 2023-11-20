@@ -6,6 +6,7 @@ using static UnityEngine.Rendering.DebugUI;
 
 public class StageManager : MonoBehaviour
 {
+
     public int MonsterCount;
     public int thisStage;
     public int thisPlane;
@@ -19,18 +20,21 @@ public class StageManager : MonoBehaviour
     public Player player;
     public void Awake()
     {
+        
         thisStage = GameManager.Instance.ThisStage;
         thisPlane = GameManager.Instance.ThisPlane;
-        for (int i = 0; i < GameStageDB.stages.CubePlanes.Length; i++)
-        {
-            planes[i] = GameStageDB.stages.CubePlanes[i].Clone();
-        }
+        planes = new Plane[9];
     }
 
 
     void Start()
     {
+        for (int i = 0; i < GameStageDB.stages.CubePlanes.Length; i++)
+        {
+            planes[i] = GameStageDB.stages.CubePlanes[i].Clone();
+        }
         panel.gameObject.SetActive(false);
+        CreateMap();
     }
 
     void Update()
@@ -103,7 +107,7 @@ public class StageManager : MonoBehaviour
     }
 
 
-    void PlaneUp()
+    public void PlaneUp()
     {
         //다음 면 이동
         if (MonsterCount == 0)
@@ -112,9 +116,9 @@ public class StageManager : MonoBehaviour
             Clear();
             if (planes.Length <= thisPlane)
             {   //Stage가 바뀔경우
-                thisStage++;
+                GameManager.Instance.ThisStage++;
                 thisPlane = 1;
-                SceneManager.LoadScene("Stage" + thisStage);
+                SceneManager.LoadScene("Stage" + GameManager.Instance.ThisStage);
 
             }
             else
@@ -124,6 +128,21 @@ public class StageManager : MonoBehaviour
                 CreateMap();
             }
             
+        }
+    }
+    public void PlaneDown()
+    {
+
+        if (MonsterCount == 0)
+        {
+            //이전 면 이동
+            if (thisPlane > 1)
+            {
+                StageSave(thisPlane - 1);
+                Clear();
+                thisPlane--;
+                CreateMap();
+            }
         }
     }
 

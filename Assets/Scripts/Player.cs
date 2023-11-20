@@ -59,6 +59,7 @@ public class Player : Character
         SkillInit();
         base.Start();
         GameManager.Instance._Player = this.gameObject;
+        
     }
 
     void SkillInit()

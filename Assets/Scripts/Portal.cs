@@ -4,11 +4,11 @@ using UnityEngine;
 
 public class Portal : MonoBehaviour
 {
-    public PlaneSceneManager SceneManager;
+    public StageManager SceneManager;
     public bool isup;
     private void OnEnable()
     {
-        SceneManager=FindAnyObjectByType<PlaneSceneManager>();
+        SceneManager=FindAnyObjectByType<StageManager>();
     }
 
     private void Update()
