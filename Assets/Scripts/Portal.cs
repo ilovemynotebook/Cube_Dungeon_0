@@ -21,12 +21,12 @@ public class Portal : MonoBehaviour
         {
             if (isup)
             {
-                SceneManager.PlaneUp();
+                PlaneSceneManager.Instance.PlaneUp();
             }
             else
             {
 
-                SceneManager.PlaneDown();
+                PlaneSceneManager.Instance.PlaneDown();
             }
            
         }

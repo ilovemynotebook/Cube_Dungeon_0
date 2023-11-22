@@ -5,12 +5,12 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using System.IO;
+using UnityEngine.UI;
+using System.Diagnostics.Contracts;
 
 public class GameManager : MonoBehaviour
 {
     public static GameManager Instance;
-    public int ThisStage;
-    public int ThisPlane;
     public GameObject _Player;
     string FilePath;
     public EqupimentDataBase EDB;
@@ -27,21 +27,19 @@ public class GameManager : MonoBehaviour
         {
             Destroy(gameObject);
         }
-        ThisStage = 1; ThisPlane = 1;
     }
 
     private void Start()
     {
-
-      
     }
 
     void Update()
     {
-        
+        if (Input.GetKeyDown(KeyCode.O)) { DataSave(); }
+        if (Input.GetKeyDown(KeyCode.P)) { DataLoad(); }
     }
     
-    public void Datasave()
+    public void DataSave()
     {
         Player player = Instance._Player.GetComponent<Player>();
         PlayerData playerdata = new PlayerData();
@@ -107,7 +105,8 @@ public class GameManager : MonoBehaviour
         player.key= playerdata.key;
         PlaneSceneManager.Instance.thisStage = playerdata.thisStage;
         PlaneSceneManager.Instance.thisPlane = playerdata.thisPlane;
-
+        SceneManager.LoadScene("Stage" + PlaneSceneManager.Instance.thisStage);
+        PlaneSceneManager.Instance.StageSet();
         for (int i = 0; i < playerdata.Plane1boxesOpened.Length; i++)
         {
             PlaneSceneManager.Instance.planes[0].boxesOpened[i] = playerdata.Plane1boxesOpened[i];
@@ -144,16 +143,13 @@ public class GameManager : MonoBehaviour
         {
             PlaneSceneManager.Instance.planes[8].boxesOpened[i] = playerdata.Plane9boxesOpened[i];
         }
-   
-
         PlaneSceneManager.Instance.CreateMap();
-
         Debug.Log(jsondata);
     }
 
     void ResetPlayer()
     {
-        Datasave();
+        DataSave();
         DataLoad();
 
     }

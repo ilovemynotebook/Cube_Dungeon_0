@@ -23,6 +23,9 @@ public class Plane
     public Enemy[] enemies;
     [SerializeField]
     public Vector3[] enemiesSpawnPlace;
+
+    public BoxData[] boxData;
+
     [SerializeField]
     public Box[] boxes;
     [SerializeField]

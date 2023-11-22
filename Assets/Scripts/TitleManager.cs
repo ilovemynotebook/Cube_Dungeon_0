@@ -58,7 +58,7 @@ public class TitleManager : MonoBehaviour
     }
     void ButtonsFadeIn()
     {
-        CubeZoom(true,2f,1.5f);
+        CubeZoom(true,100f,1.5f);
         FadeInOut(Buttons,true,TitleFadeTime);
     }
     

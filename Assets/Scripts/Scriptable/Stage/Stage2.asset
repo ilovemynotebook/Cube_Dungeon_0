@@ -16,8 +16,23 @@ MonoBehaviour:
     CubePlanes:
     - PlaneType: 0
       PlaneStyle: 0
-      Prefab: {fileID: 0}
-      PlayerStartPoint: {x: 0, y: 0, z: 0}
+      Prefab: {fileID: 9145890908147242706, guid: 846b4d4dbcacc5c489a6861846cb96e6,
+        type: 3}
+      PlayerStartPoint: {x: 0, y: 7, z: 0}
+      enemies:
+      - {fileID: 5187336440594830075, guid: f6b05a2c35c924648ae21503d5d56eb5, type: 3}
+      enemiesSpawnPlace:
+      - {x: -6, y: 5, z: 0}
+      boxes:
+      - {fileID: 7323366475307602835, guid: 5de223a9dc784914583b1126805c5af7, type: 3}
+      BoxSpawnPlace:
+      - {x: 10, y: 5, z: 0}
+      boxesOpened: 00
+    - PlaneType: 0
+      PlaneStyle: 0
+      Prefab: {fileID: 4287543710475442010, guid: 04a22129678348d4db2f66fe9b04687f,
+        type: 3}
+      PlayerStartPoint: {x: 0, y: 7, z: 0}
       enemies: []
       enemiesSpawnPlace: []
       boxes: []
@@ -25,8 +40,9 @@ MonoBehaviour:
       boxesOpened: 
     - PlaneType: 0
       PlaneStyle: 0
-      Prefab: {fileID: 0}
-      PlayerStartPoint: {x: 0, y: 0, z: 0}
+      Prefab: {fileID: 9145890908147242706, guid: 846b4d4dbcacc5c489a6861846cb96e6,
+        type: 3}
+      PlayerStartPoint: {x: 0, y: 8, z: 0}
       enemies: []
       enemiesSpawnPlace: []
       boxes: []
@@ -34,8 +50,9 @@ MonoBehaviour:
       boxesOpened: 
     - PlaneType: 0
       PlaneStyle: 0
-      Prefab: {fileID: 0}
-      PlayerStartPoint: {x: 0, y: 0, z: 0}
+      Prefab: {fileID: 4287543710475442010, guid: 378639d9a04f66e44b10f13859601950,
+        type: 3}
+      PlayerStartPoint: {x: 0, y: 8, z: 0}
       enemies: []
       enemiesSpawnPlace: []
       boxes: []
@@ -43,8 +60,9 @@ MonoBehaviour:
       boxesOpened: 
     - PlaneType: 0
       PlaneStyle: 0
-      Prefab: {fileID: 0}
-      PlayerStartPoint: {x: 0, y: 0, z: 0}
+      Prefab: {fileID: 4287543710475442010, guid: f36f0d095bc73764d80828f9b7c5ffca,
+        type: 3}
+      PlayerStartPoint: {x: 0, y: 8, z: 0}
       enemies: []
       enemiesSpawnPlace: []
       boxes: []
@@ -52,8 +70,9 @@ MonoBehaviour:
       boxesOpened: 
     - PlaneType: 0
       PlaneStyle: 0
-      Prefab: {fileID: 0}
-      PlayerStartPoint: {x: 0, y: 0, z: 0}
+      Prefab: {fileID: 4287543710475442010, guid: 378639d9a04f66e44b10f13859601950,
+        type: 3}
+      PlayerStartPoint: {x: 0, y: 9, z: 0}
       enemies: []
       enemiesSpawnPlace: []
       boxes: []
@@ -61,8 +80,9 @@ MonoBehaviour:
       boxesOpened: 
     - PlaneType: 0
       PlaneStyle: 0
-      Prefab: {fileID: 0}
-      PlayerStartPoint: {x: 0, y: 0, z: 0}
+      Prefab: {fileID: 4287543710475442010, guid: 04a22129678348d4db2f66fe9b04687f,
+        type: 3}
+      PlayerStartPoint: {x: 0, y: 9, z: 0}
       enemies: []
       enemiesSpawnPlace: []
       boxes: []
@@ -70,8 +90,9 @@ MonoBehaviour:
       boxesOpened: 
     - PlaneType: 0
       PlaneStyle: 0
-      Prefab: {fileID: 0}
-      PlayerStartPoint: {x: 0, y: 0, z: 0}
+      Prefab: {fileID: 4287543710475442010, guid: 378639d9a04f66e44b10f13859601950,
+        type: 3}
+      PlayerStartPoint: {x: 0, y: 9, z: 0}
       enemies: []
       enemiesSpawnPlace: []
       boxes: []
@@ -79,17 +100,9 @@ MonoBehaviour:
       boxesOpened: 
     - PlaneType: 0
       PlaneStyle: 0
-      Prefab: {fileID: 0}
-      PlayerStartPoint: {x: 0, y: 0, z: 0}
-      enemies: []
-      enemiesSpawnPlace: []
-      boxes: []
-      BoxSpawnPlace: []
-      boxesOpened: 
-    - PlaneType: 0
-      PlaneStyle: 0
-      Prefab: {fileID: 0}
-      PlayerStartPoint: {x: 0, y: 0, z: 0}
+      Prefab: {fileID: 4287543710475442010, guid: 04a22129678348d4db2f66fe9b04687f,
+        type: 3}
+      PlayerStartPoint: {x: 0, y: 9, z: 0}
       enemies: []
       enemiesSpawnPlace: []
       boxes: []
