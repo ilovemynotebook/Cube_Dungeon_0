@@ -7,9 +7,9 @@ using UnityEngine;
 [Serializable]
 public class BoxData
 {
-    public bool isOpen;
-    public Vector3 spawnPos;
     public Box box;
+    public Vector3 spawnPos;
+    public bool isOpen;
 }
 
 
@@ -30,7 +30,7 @@ public class Box : MonoBehaviour
         if (isOpen)
         {
             box.material.color  = Color.red;
-            PlaneSceneManager.Instance.StageSave(PlaneSceneManager.Instance.thisPlane-1);
+            PlaneSceneManager.Instance.StageSave(PlaneSceneManager.Instance.thisPlane);
             
         }
         else if (!isOpen)

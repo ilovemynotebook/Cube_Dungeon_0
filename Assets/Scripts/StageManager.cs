@@ -14,7 +14,7 @@ public class StageManager : MonoBehaviour
     private void Start()
     {
      
-        PlaneSceneManager.Instance.StageSet();
+        PlaneSceneManager.Instance.StageSet(this);
         PlaneSceneManager.Instance.CreateMap();
     }
 }

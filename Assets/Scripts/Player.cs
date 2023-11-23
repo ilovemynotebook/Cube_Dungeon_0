@@ -3,6 +3,48 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 
+
+public class PlayerData
+{
+    public float hp { get; private set; }
+    public float mhp { get; private set; }
+    public float sta { get; private set; }
+    public float msta { get; private set; }
+    public bool isUpgraded_weapon { get; private set; }
+    public bool isUpgraded_shield { get; private set; }
+    public bool isUpgraded_Item_0 { get; private set; }
+    public bool isUpgraded_Item_1 { get; private set; }
+    public bool isUpgraded_Item_2 { get; private set; }
+    public bool isUpgraded_Item_3 { get; private set; }
+    public int hpPotion { get; private set; }
+    public int staPotion { get; private set; }
+    public int dmgPotion { get; private set; }
+    public bool key { get; private set; }
+
+    public PlayerData(float hp, float mhp, float sta, float msta,int hpPotion,int staPotion,int dmgPotion)
+    {
+        this.hp = hp;
+        this.mhp = mhp;
+        this.sta = sta;
+        this.msta = msta;
+        this.hpPotion = hpPotion;
+        this.staPotion = staPotion;
+        this.dmgPotion = dmgPotion;
+    }
+
+    public void SetPlayerData(float hp, float mhp, float sta, float msta, int hpPotion, int staPotion, int dmgPotion)
+    {
+        this.hp = hp;
+        this.mhp = mhp;
+        this.sta = sta;
+        this.msta = msta;
+        this.hpPotion=hpPotion;
+        this.staPotion=staPotion;
+        this.dmgPotion=dmgPotion;
+    }
+}
+
+
 public class Player : Character
 {
     public bool canMove = true;
@@ -227,5 +269,9 @@ public class Player : Character
         while (anim.GetCurrentAnimatorStateInfo(0).normalizedTime < 1.0f);
         canMove = true;
         canAttack = true;
+    }
+    public void GetData(PlayerData playerData)
+    {
+        hp = playerData.hp;
     }
 }

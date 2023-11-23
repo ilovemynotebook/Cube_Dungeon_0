@@ -34,7 +34,7 @@ public class PlaneSceneManager : MonoBehaviour
 
     private void Awake()
     {
-        if (PlaneSceneManager.Instance == null)
+        if (Instance == null)
         {
             Instance = this;
             DontDestroyOnLoad(gameObject);
@@ -60,7 +60,7 @@ public class PlaneSceneManager : MonoBehaviour
     {
         //다음 면 이동
         if (Monstercount == 0) {
-            StageSave(thisPlane - 1);
+            StageSave(thisPlane);
             Clear();
             if (planes.Length<= thisPlane)
             {   //Stage가 바뀔경우
@@ -83,7 +83,7 @@ public class PlaneSceneManager : MonoBehaviour
             //이전 면 이동
             if ( thisPlane > 1)
             {
-                StageSave(thisPlane - 1);
+                StageSave(thisPlane);
                 Clear();
                 thisPlane--;
                 CreateMap();
@@ -94,19 +94,28 @@ public class PlaneSceneManager : MonoBehaviour
     void MonsterSpawn(Plane Plane)
     {
        // SummonedEnemy=new Enemy[Plane.enemies.Length];
-        for(int i = 0; i < Plane.enemies.Length; i++)
+        //for(int i = 0; i < Plane.enemies.Length; i++)
+        //{
+        //      enemies.Add( Instantiate(Plane.enemies[i], Plane.enemiesSpawnPlace[i], Quaternion.identity));
+        //}
+        for (int i = 0; i < Plane.enemyData.Count; i++)
         {
-              enemies.Add( Instantiate(Plane.enemies[i], Plane.enemiesSpawnPlace[i], Quaternion.identity));
+            enemies.Add(Instantiate(Plane.enemyData[i].enemy, Plane.enemyData[i].spawnPos, Quaternion.identity));
         }
     }
 
     void BoxSpawn(Plane Plane)
     {
       
-        for(int i = 0; i < Plane.boxes.Length; i++)
+        //for(int i = 0; i < Plane.boxes.Length; i++)
+        //{
+        //    boxes.Add(Instantiate(Plane.boxes[i], Plane.BoxSpawnPlace[i],Quaternion.identity));
+        //    boxes[i].isOpen = Plane.boxesOpened[i];
+        //}
+        for(int i = 0; i < Plane.boxData.Count; i++)
         {
-            boxes.Add(Instantiate(Plane.boxes[i], Plane.BoxSpawnPlace[i],Quaternion.identity));
-            boxes[i].isOpen = Plane.boxesOpened[i];
+            boxes.Add(Instantiate(Plane.boxData[i].box, Plane.boxData[i].spawnPos,Quaternion.identity));
+            boxes[i].isOpen = Plane.boxData[i].isOpen;
         }
     }
 
@@ -115,17 +124,15 @@ public class PlaneSceneManager : MonoBehaviour
         //StageSet(thisStage);
         Fade();
         Clear();
-        MapPrefab = Instantiate(planes[thisPlane - 1].Prefab);            
+        MapPrefab = Instantiate(planes[thisPlane - 1].prefab);            
         Player = FindAnyObjectByType<Player>();
-        Player.transform.position = planes[thisPlane - 1].PlayerStartPoint;
+        Player.transform.position = planes[thisPlane - 1].playerStartPoint;
         MonsterSpawn(planes[thisPlane - 1]);
         BoxSpawn(planes[thisPlane - 1]);
 
     }
-    public void StageSet()
+    public void StageSet(StageManager manager)
     {
-        
-        GameStage = FindObjectOfType<StageManager>();
         if(panel != null)
         {
             panel.gameObject.SetActive(false);
@@ -138,19 +145,18 @@ public class PlaneSceneManager : MonoBehaviour
         }
     }
     
-    public void StageSave(int Plane)
+    public void StageSave(int PlaneNumber)
     {
         for(int i = 0; i < boxes.Count; i++)
         {
-            planes[Plane].boxesOpened[i] = boxes[i].isOpen;
+            //planes[Plane].boxesOpened[i] = boxes[i].isOpen;
+            planes[PlaneNumber - 1].boxData[i].isOpen = boxes[i].isOpen;
         }
        
     }
     
     void Clear()
     {
-       
-        
         if(MapPrefab != null)
         {
             Destroy(MapPrefab);
@@ -165,8 +171,6 @@ public class PlaneSceneManager : MonoBehaviour
             }
             boxes.Clear();
         }
-       
-
         if(enemies.Count > 0)
         {
             for (int j = 0; j < enemies.Count; j++)
@@ -176,7 +180,6 @@ public class PlaneSceneManager : MonoBehaviour
             }
             enemies.Clear();
         }
-       
     }
     public void Fade()
     {
