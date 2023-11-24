@@ -8,4 +8,10 @@ public class SaveData
     public int thisStage;
     public int thisPlane;
     public Plane[] planes;
+
+    public SaveData()
+    {
+        playerData = new PlayerData();
+        planes = new Plane[9];
+    }
 }

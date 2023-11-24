@@ -29,7 +29,8 @@ public class Plane
         plane.prefab = prefab;
         plane.playerStartPoint = playerStartPoint;
         plane.enemyData = enemyData.ToList();
-        plane.boxData= boxData.ToList();
+
+        
 
         return plane;
     }

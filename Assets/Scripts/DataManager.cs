@@ -9,27 +9,39 @@ using System.Linq;
 public class DataManager : MonoBehaviour
 {
     string FilePath;
-    Player player;
+    [SerializeField]Player player;
     PlaneSceneManager planeSceneManager;
     // Start is called before the first frame update
     void Start()
     {
         FilePath = Application.persistentDataPath + "/Playerdata";
-        player = GameManager.Instance._Player.GetComponent<Player>();
         planeSceneManager=GameManager.Instance._PlaneSceneManager;
+       
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        if (Input.GetKeyDown(KeyCode.V))
+        {
+            DataSave();
+        }
+        else if (Input.GetKeyDown(KeyCode.B))
+        {
+            DataLoad();
+        }
+        if (player == null)
+        {
+            player = GameManager.Instance._Player.GetComponent<Player>();
+        }
+
     }
 
 
     public void DataSave()
     {
         SaveData savedata = new SaveData();
-        savedata = PlayerDataGet(player);
+        savedata = DataGet(player);
         string jsondata = JsonUtility.ToJson(savedata);
         //byte[] bytes = System.Text.Encoding.UTF8.GetBytes(jsondata);
         //string code = System.Convert.ToBase64String(bytes);
@@ -39,17 +51,17 @@ public class DataManager : MonoBehaviour
 
     public void DataLoad()
     {
-        SaveData saveData = new SaveData();
-        if (!File.Exists(FilePath)) { ResetPlayer(); return; }
+        //if (!File.Exists(FilePath)) { ResetPlayer(); return; }
         //string code = File.ReadAllText(FilePath);
         //byte[] bytes = Convert.FromBase64String(code);
         //string jsondata = System.Text.Encoding.UTF8.GetString(bytes);
+        player = GameManager.Instance._Player.GetComponent<Player>();
         string jsondata = File.ReadAllText(FilePath);
+        SaveData saveData = new SaveData();
         saveData = JsonUtility.FromJson<SaveData>(jsondata);
         PlayerDataLoad(saveData, player);
+        PlaneDataLoad(saveData, planeSceneManager);
         SceneManager.LoadScene("Stage" + planeSceneManager.thisStage);
-        planeSceneManager.CreateMap();
-        Debug.Log(jsondata);
     }
 
     void ResetPlayer()
@@ -58,9 +70,10 @@ public class DataManager : MonoBehaviour
         DataLoad();
     }
 
-    SaveData PlayerDataGet(Player player)
+    SaveData DataGet(Player player)
     {
         SaveData savedata = new SaveData();
+        savedata.playerData = new PlayerData();
         savedata.playerData.SetPlayerData(player.hp, player.mhp, player.sta, player.msta, player.hpPotion, player.staPotion, player.dmgPotion);
         savedata.thisStage = planeSceneManager.thisStage;
         savedata.thisPlane = planeSceneManager.thisPlane;
@@ -70,9 +83,12 @@ public class DataManager : MonoBehaviour
     void PlayerDataLoad(SaveData saveData,Player player)
     {
         player.GetData(saveData.playerData);
-        planeSceneManager.thisStage = saveData.thisStage;
-        planeSceneManager.thisPlane = saveData.thisPlane;
-
+    }
+    void PlaneDataLoad(SaveData saveData,PlaneSceneManager planemanager)
+    {
+        planemanager.planes = saveData.planes.ToArray();
+        planemanager.thisStage = saveData.thisStage;
+        planemanager.thisPlane = saveData.thisPlane;
     }
 
 }

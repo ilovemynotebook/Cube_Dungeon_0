@@ -1453,6 +1453,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1428720fa91b29249892c6237bcbbc51, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  player: {fileID: 0}
 --- !u!1 &1559352353
 GameObject:
   m_ObjectHideFlags: 0
@@ -1485,12 +1486,73 @@ MonoBehaviour:
   panel: {fileID: 1343841701}
   boxes: []
   enemies: []
-  planes: []
+  planes:
+  - planeType: 0
+    planeStyle: 0
+    prefab: {fileID: 0}
+    playerStartPoint: {x: 0, y: 0, z: 0}
+    enemyData: []
+    boxData: []
+  stage:
+    CubePlanes:
+    - planeType: 0
+      planeStyle: 0
+      prefab: {fileID: 0}
+      playerStartPoint: {x: 0, y: 0, z: 0}
+      enemyData: []
+      boxData: []
+    - planeType: 0
+      planeStyle: 0
+      prefab: {fileID: 0}
+      playerStartPoint: {x: 0, y: 0, z: 0}
+      enemyData: []
+      boxData: []
+    - planeType: 0
+      planeStyle: 0
+      prefab: {fileID: 0}
+      playerStartPoint: {x: 0, y: 0, z: 0}
+      enemyData: []
+      boxData: []
+    - planeType: 0
+      planeStyle: 0
+      prefab: {fileID: 0}
+      playerStartPoint: {x: 0, y: 0, z: 0}
+      enemyData: []
+      boxData: []
+    - planeType: 0
+      planeStyle: 0
+      prefab: {fileID: 0}
+      playerStartPoint: {x: 0, y: 0, z: 0}
+      enemyData: []
+      boxData: []
+    - planeType: 0
+      planeStyle: 0
+      prefab: {fileID: 0}
+      playerStartPoint: {x: 0, y: 0, z: 0}
+      enemyData: []
+      boxData: []
+    - planeType: 0
+      planeStyle: 0
+      prefab: {fileID: 0}
+      playerStartPoint: {x: 0, y: 0, z: 0}
+      enemyData: []
+      boxData: []
+    - planeType: 0
+      planeStyle: 0
+      prefab: {fileID: 0}
+      playerStartPoint: {x: 0, y: 0, z: 0}
+      enemyData: []
+      boxData: []
+    - planeType: 0
+      planeStyle: 0
+      prefab: {fileID: 0}
+      playerStartPoint: {x: 0, y: 0, z: 0}
+      enemyData: []
+      boxData: []
   MapPrefab: {fileID: 0}
   Monstercount: 0
   thisStage: 0
   thisPlane: 0
-  GameStage: {fileID: 0}
   Player: {fileID: 0}
 --- !u!4 &1559352355
 Transform:
@@ -2026,7 +2088,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2012372113}
-  m_LocalRotation: {x: 0.30604526, y: 0.000000023165903, z: -0.000000007447152, w: 0.952017}
+  m_LocalRotation: {x: 0.30604526, y: -0.000000023165908, z: 0.000000007447153, w: 0.952017}
   m_LocalPosition: {x: 0, y: 2.5, z: -3}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0

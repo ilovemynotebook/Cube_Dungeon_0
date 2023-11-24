@@ -30,7 +30,7 @@ public class Box : MonoBehaviour
         if (isOpen)
         {
             box.material.color  = Color.red;
-            PlaneSceneManager.Instance.StageSave(PlaneSceneManager.Instance.thisPlane);
+           // PlaneSceneManager.Instance.StageSave(PlaneSceneManager.Instance.thisPlane);
             
         }
         else if (!isOpen)

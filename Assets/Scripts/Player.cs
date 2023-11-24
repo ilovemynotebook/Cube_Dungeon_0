@@ -21,7 +21,7 @@ public class PlayerData
     public int dmgPotion { get; private set; }
     public bool key { get; private set; }
 
-    public PlayerData(float hp, float mhp, float sta, float msta,int hpPotion,int staPotion,int dmgPotion)
+/*    public PlayerData(float hp, float mhp, float sta, float msta,int hpPotion,int staPotion,int dmgPotion)
     {
         this.hp = hp;
         this.mhp = mhp;
@@ -30,7 +30,7 @@ public class PlayerData
         this.hpPotion = hpPotion;
         this.staPotion = staPotion;
         this.dmgPotion = dmgPotion;
-    }
+    }*/
 
     public void SetPlayerData(float hp, float mhp, float sta, float msta, int hpPotion, int staPotion, int dmgPotion)
     {
