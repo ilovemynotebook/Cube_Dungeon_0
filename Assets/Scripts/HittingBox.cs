@@ -22,9 +22,11 @@ public class HittingBox : MonoBehaviour
             
             if (player.isHoldingShield && ((player.isCharacterLookRight && direction.x > 0) || (!player.isCharacterLookRight && direction.x <= 0)))
             {
-                if (player.sta >= dmg) // 막았을때
+                float playerShieldCost = player.shieldStaminaCost;
+                if (player.isUpgraded_shield) playerShieldCost /= player.shieldProtect;
+                if (player.sta >= playerShieldCost) // 막았을때
                 {
-                    player.ShieldSucceed();
+                    player.ShieldSucceed(playerShieldCost);
 
                     Character Ene = null;
                     transform.parent?.parent?.TryGetComponent<Character>(out Ene);

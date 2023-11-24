@@ -1,16 +1,21 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.UI;
+using static TMPro.SpriteAssetUtilities.TexturePacker_JsonArray;
+
 
 public class Buffs : MonoBehaviour
 {
     public float EffectValue;
 
-    public float Duration;
+    
 
     public float cooldown;
+    [HideInInspector]
     public float waitSec;
 
     public int possessionCount;
@@ -18,6 +23,7 @@ public class Buffs : MonoBehaviour
 
     private Player player;
 
+    public bool isCostNeeded = true;
 
     /*    public delegate void EfffectStart();
         public event EfffectStart onStart;
@@ -29,25 +35,52 @@ public class Buffs : MonoBehaviour
     public UnityEvent startEffects;
     public UnityEvent endEffects;
 
+    TextMeshProUGUI countText;
+    Image cooldownImage;
+    GameObject lockImage;
+
+    public bool isUsable = false;
+    public bool isUnlocked = true;
+
+    [Header("for buff items only")]
+    public float Duration;
+    public GameObject Icon;
+
+
+
     void Start()
     {
+        cooldownImage = transform.Find("cooldown").GetComponent<Image>();
+        countText = transform.Find("count").GetComponent<TextMeshProUGUI>();
+        if (!isCostNeeded) Destroy(countText.gameObject);
+        lockImage = transform.Find("lock").gameObject;
 
+        UpdateCount();
+        UsableCheck();
     }
 
     // Update is called once per frame
     void Update()
     {
-        GetKey();
         FindPlayer();
         CoolDown();
     }
 
-    void GetKey()
+    public void UsableCheck()
     {
-        if (Input.GetKeyDown(KeyCode.Alpha1))
+        if(isUnlocked && (!isCostNeeded || possessionCount > 0))
         {
-            Activate();
+            isUsable = true;
         }
+        else isUsable = false;
+
+        lockImage?.SetActive(!isUsable);
+    }
+    public void UpdateCount()
+    {
+        if(countText != null)
+        countText.text = possessionCount.ToString();
+        UsableCheck();
     }
     void FindPlayer()
     {
@@ -67,13 +100,21 @@ public class Buffs : MonoBehaviour
         {
             waitSec = 0;
         }
+        cooldownImage.fillAmount = waitSec / cooldown;
+
     }
 
     public void Activate()
     {
-        if (coroutine == null && possessionCount > 0 && waitSec <= 0)
+        if (isCostNeeded && possessionCount< 1)
+        {
+            return;
+        }
+        else if (coroutine == null && waitSec <= 0)
         {
             possessionCount--;
+            UpdateCount();
+            CanvasManager.Instance.ItemUpdateAfterUse();
             coroutine = StartCoroutine(buffCoroutine(Duration));
             waitSec = cooldown;
             coroutine = null;
@@ -83,18 +124,32 @@ public class Buffs : MonoBehaviour
     IEnumerator buffCoroutine(float duration)
     {
         startEffects.Invoke();
+        Icon?.SetActive(true);
         yield return new WaitForSeconds(duration);
-        endEffects.Invoke();
+        endEffects?.Invoke();
+        Icon?.SetActive(false);
     }
 
 
-    //=================
+
+    //=================effects
+
+    public void HPHeal()
+    {
+        player.hp += EffectValue;
+
+        CanvasManager.Instance.hpBar.UpdateValue(player.hp, player.mhp);
+    }
+
+    public void STHeal()
+    {
+        player.sta += EffectValue;
+        CanvasManager.Instance.staminaBar.UpdateValue(player.sta, player.msta);
+    }
 
     public void dmgBuffStart()
     {
-        
         player.buffedDmg += EffectValue;
-
     }
     public void dmgBuffEnd()
     {
@@ -103,9 +158,7 @@ public class Buffs : MonoBehaviour
 
     public void speedBuffStart()
     {
-
         player.buffedSpeed += EffectValue;
-
     }
     public void speedBuffEnd()
     {

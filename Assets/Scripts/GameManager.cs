@@ -11,6 +11,11 @@ public class GameManager : MonoBehaviour
     public EqupimentDataBase EDB;
 
 
+
+
+
+
+
     // Start is called before the first frame update
     void Awake()
     {

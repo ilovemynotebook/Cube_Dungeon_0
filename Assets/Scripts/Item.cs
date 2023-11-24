@@ -27,21 +27,37 @@ public class Item : MonoBehaviour
 
     void ItemGet(Player player)
     {
-        player.isUpgraded_weapon = isUpgraded_weapon ? true : false;
-        player.isUpgraded_shield = isUpgraded_shield ? true : false;
-        player.isUpgraded_Item_0 = isUpgraded_Item_0 ? true : false;
-        player.isUpgraded_Item_1 = isUpgraded_Item_1 ? true : false;
-        player.isUpgraded_Item_2 = isUpgraded_Item_2 ? true : false;
-        player.isUpgraded_Item_3 = isUpgraded_Item_3 ? true : false;
-        player.key = key ? true : false;
+        player.isUpgraded_weapon = isUpgraded_weapon ? true : player.isUpgraded_weapon;
+        player.isUpgraded_shield = isUpgraded_shield ? true : player.isUpgraded_shield;
+        player.isUpgraded_Item_0 = isUpgraded_Item_0 ? true : player.isUpgraded_Item_0;
+        player.isUpgraded_Item_1 = isUpgraded_Item_1 ? true : player.isUpgraded_Item_1;
+        player.isUpgraded_Item_2 = isUpgraded_Item_2 ? true : player.isUpgraded_Item_2;
+        player.isUpgraded_Item_3 = isUpgraded_Item_3 ? true : player.isUpgraded_Item_3;
+        player.key = key ? true : player.key;
         player.hpPotion += hpPotion;
         player.staPotion += staPotion;
         player.dmgPotion += dmgPotion;
+
+        CanvasManager.Instance.isUpgraded_weapon = player.isUpgraded_weapon;
+        CanvasManager.Instance.isUpgraded_shield = player.isUpgraded_shield;
+        CanvasManager.Instance.isUpgraded_Item_0 = player.isUpgraded_Item_0 ;
+        CanvasManager.Instance.isUpgraded_Item_1 = player.isUpgraded_Item_1;
+        CanvasManager.Instance.isUpgraded_Item_2 = player.isUpgraded_Item_2;
+        CanvasManager.Instance.isUpgraded_Item_3 = player.isUpgraded_Item_3;
+        CanvasManager.Instance.key = player.key;
+        CanvasManager.Instance.hpPotion = player.hpPotion;
+        CanvasManager.Instance.staPotion = player.staPotion;
+        CanvasManager.Instance.dmgPotion = player.dmgPotion;
+
+
+        player.ItemStats();
+        CanvasManager.Instance.UpdateHud();
 
         Destroy(gameObject);
     }
 
 
+    
     public void setItem(int hpPCramp, int staPCramp, int dmgPCramp, bool weapon = false,
         bool shield = false, bool item0 = false, bool item1 = false,
         bool item2 = false, bool item3 = false)

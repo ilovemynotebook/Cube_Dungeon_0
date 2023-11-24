@@ -6,7 +6,9 @@ public class Character : MonoBehaviour
 {
     public float speed;
     public float hp;
+    [HideInInspector]
     public float mhp;
+    public float mhpOrigin;
     public float jumpForce;
     public float buffedSpeed;
     public float buffedDmg;
@@ -40,6 +42,7 @@ public class Character : MonoBehaviour
     // Start is called before the first frame update
     virtual protected void Start()
     {
+        mhp = mhpOrigin;
         rb = GetComponent<Rigidbody>();
         col = GetComponent<CapsuleCollider>();
         anim = GetComponent<Animator>();
@@ -114,12 +117,12 @@ public class Character : MonoBehaviour
         }
     }
 
-    public virtual void GetHit(float dmg)
+    virtual public void GetHit(float dmg)
     {
         if (DeathCoroutine != null) return;
         isClimbing = false;
         hp -=dmg;
-        HitSound?.Play();
+        //HitSound?.Play();
         anim.Play("Hit",0,0f);
 
         if(hp <= 0)
