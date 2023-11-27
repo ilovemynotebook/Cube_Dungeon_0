@@ -47,7 +47,7 @@ public class Boss : MonoBehaviour
     [SerializeField] private SkillPattern[] _skillPatterns;
 
 
-    private List<SkillPattern> _usableSkillList = new List<SkillPattern>();
+    [SerializeField] private List<SkillPattern> _usableSkillList = new List<SkillPattern>();
 
     private BossAI _ai;
 
@@ -68,7 +68,7 @@ public class Boss : MonoBehaviour
 
     public int Hp => _hp;
 
-    protected virtual void Awake()
+    protected void Awake()
     {
         _animator = GetComponent<Animator>();
         _bossStateMachines = _animator.GetBehaviours<BossStateMachineBehaviour>();
@@ -83,13 +83,13 @@ public class Boss : MonoBehaviour
     }
 
 
-    protected virtual void Start()
+    protected void Start()
     {
         InvokeRepeating("AIUpdate", _patternUpdateTime, _patternUpdateTime);
     }
 
 
-    protected virtual void Update()
+    protected void Update()
     {
         _animator.SetInteger("State", (int)State);
         SkillCoolTimeUpdate();
@@ -110,7 +110,6 @@ public class Boss : MonoBehaviour
             if (pattern.CurrentCoolTime > 0)
                 pattern.CurrentCoolTime = 0;
 
-            Debug.Log(pattern.CurrentCoolTime);
         }
     }
 
@@ -123,19 +122,25 @@ public class Boss : MonoBehaviour
         foreach (SkillPattern pattern in _skillPatterns)
         {
             if (pattern.CurrentCoolTime > 0)
+            {
+                Debug.Log("ÄðÅ¸ÀÓ ¾ÆÁ÷");
                 continue;
+            }
+                
 
             if (pattern.AttackDistance < TargetDistance)
+            {
+                Debug.Log("°Å¸®°¡ ¸Ø");
                 continue;
-
+            }
+                
             _usableSkillList.Add(pattern);
         }
-
-        int randInt = Random.Range(0, _usableSkillList.Count);
 
         if (_usableSkillList.Count == 0)
             return default;
 
+        int randInt = Random.Range(0, _usableSkillList.Count);
         return _usableSkillList[randInt];
     }
 }

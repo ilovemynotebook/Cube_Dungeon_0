@@ -13,7 +13,7 @@ public class BossAI
 
     private Boss _boss;
 
-    private SkillPattern _currentSkillPattern;
+    private SkillPattern _currentSkillPattern = new SkillPattern();
 
     public BossAI(Boss boss)
     {
@@ -63,8 +63,7 @@ public class BossAI
     private INode.ENodeState CheckAttackDistance()
     {
         _currentSkillPattern = _boss.GetUsableSkill();
-
-        if (_currentSkillPattern != default || _currentSkillPattern != null)
+        if (_currentSkillPattern != default && _currentSkillPattern != null)
             return INode.ENodeState.Success;
 
         return INode.ENodeState.Failure;
@@ -74,7 +73,6 @@ public class BossAI
     //공격 행동 노드
     private INode.ENodeState StartAttack()
     {
-        Debug.Log("공격");
         _boss.State = BossState.Attack;
         _currentSkillPattern.CurrentCoolTime = _currentSkillPattern.CoolTime;
         return INode.ENodeState.Success;

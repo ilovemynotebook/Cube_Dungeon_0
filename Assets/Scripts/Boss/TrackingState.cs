@@ -16,8 +16,9 @@ public class TrackingState : BossStateMachineBehaviour
     private void Move()
     {
         Vector3 dir = (_boss.Target.transform.position - _boss.gameObject.transform.position).normalized;
-        float dirX = dir.x > 0 ? 1 : dir.x < 0 ? -1 : 0;  
+        float dirZ = dir.z > 0 ? 1 : dir.z < 0 ? -1 : 0;
 
-        _boss.transform.position += new Vector3(dirX * _speed * Time.deltaTime, 0, 0);
+        Debug.Log(dirZ);
+        _boss.transform.position += new Vector3(0, 0, dirZ * _speed * Time.deltaTime);
     }
 }
