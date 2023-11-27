@@ -1,48 +1,8 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
-
-
-public class PlayerData
-{
-    public float hp { get; private set; }
-    public float mhp { get; private set; }
-    public float sta { get; private set; }
-    public float msta { get; private set; }
-    public bool isUpgraded_weapon { get; private set; }
-    public bool isUpgraded_shield { get; private set; }
-    public bool isUpgraded_Item_0 { get; private set; }
-    public bool isUpgraded_Item_1 { get; private set; }
-    public bool isUpgraded_Item_2 { get; private set; }
-    public bool isUpgraded_Item_3 { get; private set; }
-    public int hpPotion { get; private set; }
-    public int staPotion { get; private set; }
-    public int dmgPotion { get; private set; }
-    public bool key { get; private set; }
-
-/*    public PlayerData(float hp, float mhp, float sta, float msta,int hpPotion,int staPotion,int dmgPotion)
-    {
-        this.hp = hp;
-        this.mhp = mhp;
-        this.sta = sta;
-        this.msta = msta;
-        this.hpPotion = hpPotion;
-        this.staPotion = staPotion;
-        this.dmgPotion = dmgPotion;
-    }*/
-
-    public void SetPlayerData(float hp, float mhp, float sta, float msta, int hpPotion, int staPotion, int dmgPotion)
-    {
-        this.hp = hp;
-        this.mhp = mhp;
-        this.sta = sta;
-        this.msta = msta;
-        this.hpPotion=hpPotion;
-        this.staPotion=staPotion;
-        this.dmgPotion=dmgPotion;
-    }
-}
 
 
 public class Player : Character
@@ -273,5 +233,18 @@ public class Player : Character
     public void GetData(PlayerData playerData)
     {
         hp = playerData.hp;
+        mhp = playerData.mhp;
+        sta = playerData.sta;
+        msta = playerData.msta;
+        isUpgraded_Item_0 = playerData.isUpgraded_Item_0;
+        isUpgraded_Item_1= playerData.isUpgraded_Item_1;
+        isUpgraded_Item_2   = playerData.isUpgraded_Item_2;
+        isUpgraded_Item_3 = playerData.isUpgraded_Item_3;
+        isUpgraded_shield=playerData.isUpgraded_shield;
+        isUpgraded_weapon=playerData.isUpgraded_weapon;
+        hpPotion = playerData.hpPotion;
+        staPotion = playerData.staPotion;
+        dmgPotion = playerData.dmgPotion;
+        key= playerData.key;
     }
 }

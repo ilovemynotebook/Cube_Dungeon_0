@@ -29,13 +29,14 @@ MonoBehaviour:
       planeStyle: 0
       prefab: {fileID: 9145890908147242706, guid: 846b4d4dbcacc5c489a6861846cb96e6,
         type: 3}
-      playerStartPoint: {x: 0, y: 0, z: 0}
+      playerStartPoint: {x: 0, y: 7, z: 0}
       enemyData: []
       boxData: []
     - planeType: 0
       planeStyle: 0
-      prefab: {fileID: 0}
-      playerStartPoint: {x: 0, y: 0, z: 0}
+      prefab: {fileID: 9145890908147242706, guid: 846b4d4dbcacc5c489a6861846cb96e6,
+        type: 3}
+      playerStartPoint: {x: 0, y: 8, z: 0}
       enemyData: []
       boxData: []
     - planeType: 0

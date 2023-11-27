@@ -38,6 +38,7 @@ public class PlaneSceneManager : MonoBehaviour
         if (Instance == null)
         {
             Instance = this;
+            DontDestroyOnLoad(this);
            
         }
         else
@@ -50,12 +51,16 @@ public class PlaneSceneManager : MonoBehaviour
     }
     private void Start()
     {
-        Player= GameManager.Instance._Player;
+
+        Player = GameManager.Instance._Player;
+
         // GameManager.Instance.DataLoad();
     }
     private void Update()
     {
         Monstercount = GameObject.FindGameObjectsWithTag("Enemy").Length;
+        
+            
     }
     public void PlaneUp()
     {
@@ -121,6 +126,7 @@ public class PlaneSceneManager : MonoBehaviour
 
     public void CreateMap()
     {
+        Player = GameManager.Instance._Player;
         //StageSet(thisStage);
         Fade();
         Clear();
@@ -154,7 +160,7 @@ public class PlaneSceneManager : MonoBehaviour
        
     }
     
-    void Clear()
+   public void Clear()
     {
         if(MapPrefab != null)
         {

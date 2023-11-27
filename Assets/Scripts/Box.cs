@@ -10,6 +10,16 @@ public class BoxData
     public Box box;
     public Vector3 spawnPos;
     public bool isOpen;
+
+    public BoxData Cloneing()
+    {
+        BoxData boxData = new BoxData();
+        boxData.box = box;
+        boxData.spawnPos = spawnPos;
+        boxData.isOpen = isOpen;
+        return boxData;
+
+    }
 }
 
 
@@ -30,7 +40,7 @@ public class Box : MonoBehaviour
         if (isOpen)
         {
             box.material.color  = Color.red;
-           // PlaneSceneManager.Instance.StageSave(PlaneSceneManager.Instance.thisPlane);
+            PlaneSceneManager.Instance.StageSave(PlaneSceneManager.Instance.thisPlane);
             
         }
         else if (!isOpen)

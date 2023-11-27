@@ -14,6 +14,8 @@ public class TitleManager : MonoBehaviour
     public CanvasGroup Buttons;
     public Button TitleScreenButton;
     public Button SettingButton;
+    public Button StartButton;
+    public Button LoadButton;
     public float TitleFadeTime;
     public bool TitleFadeIsIn;
     void Awake()
@@ -24,7 +26,8 @@ public class TitleManager : MonoBehaviour
     private void OnEnable()
     {
         SettingButton.onClick.AddListener(() => OnButtonGameObject(true, SettingScreen));
-
+        StartButton.onClick.AddListener(() => OnButtonStartGame());
+        LoadButton.onClick.AddListener(() => OnButtonLoadGame());
     }
 
     private void Start()
@@ -101,6 +104,21 @@ public class TitleManager : MonoBehaviour
     void OnButtonGameObject(bool ison,GameObject gameObject)
     {
         gameObject.SetActive(ison);
+    }
+
+    void OnButtonStartGame()
+    {
+        GameManager.Instance._DataManager.saveData=new SaveData();
+        GameManager.Instance._DataManager.playerData=new PlayerData();
+        
+       // GameManager.Instance.LoadScene("LoadingScene");
+    }
+    void OnButtonLoadGame()
+    {
+        GameManager.Instance._DataManager.saveData = new SaveData();
+        GameManager.Instance._DataManager.playerData = new PlayerData();
+        GameManager.Instance._DataManager.DataLoad();
+       // GameManager.Instance.LoadScene("LoadingScene");
     }
 
 }

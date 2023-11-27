@@ -4,12 +4,14 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 using System.Diagnostics.Contracts;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
     public static GameManager Instance;
     public GameObject _Player;
     public PlaneSceneManager _PlaneSceneManager;
+    public DataManager _DataManager;
     public EqupimentDataBase EDB;
     void Awake()
     {
@@ -34,5 +36,9 @@ public class GameManager : MonoBehaviour
     {
    
     }
-    
+
+    public void LoadScene(string sceneName)
+    {
+        SceneManager.LoadScene(sceneName, LoadSceneMode.Single);
+    }
 }

@@ -5,17 +5,23 @@ using System.IO;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 using System.Linq;
+using System;
 
 public class DataManager : MonoBehaviour
 {
-    string FilePath;
+    string filePathStage;
+    string filePathPlayer;
     [SerializeField]Player player;
     PlaneSceneManager planeSceneManager;
+    public SaveData saveData;
+    public PlayerData playerData;
+
     // Start is called before the first frame update
     void Start()
     {
-        FilePath = Application.persistentDataPath + "/Playerdata";
-        planeSceneManager=GameManager.Instance._PlaneSceneManager;
+        filePathStage = Application.persistentDataPath + "/Stagedata";
+        filePathPlayer= Application.persistentDataPath + "/Playerdata";
+        planeSceneManager =GameManager.Instance._PlaneSceneManager;    
        
     }
 
@@ -26,42 +32,41 @@ public class DataManager : MonoBehaviour
         {
             DataSave();
         }
-        else if (Input.GetKeyDown(KeyCode.B))
-        {
-            DataLoad();
-        }
-        if (player == null)
-        {
-            player = GameManager.Instance._Player.GetComponent<Player>();
-        }
 
     }
 
 
     public void DataSave()
     {
-        SaveData savedata = new SaveData();
-        savedata = DataGet(player);
-        string jsondata = JsonUtility.ToJson(savedata);
+        player = GameManager.Instance._Player.GetComponent<Player>();
+  
+        StageDataGet(saveData);
+        PlayerDataGet(player, playerData);
+        string Stagejsondata = JsonUtility.ToJson(saveData);
+        string Playerjsondata = JsonUtility.ToJson(playerData);
+        //string jsondataPlayer= JsonUtility.ToJson(savedata.playerData);
         //byte[] bytes = System.Text.Encoding.UTF8.GetBytes(jsondata);
         //string code = System.Convert.ToBase64String(bytes);
-        File.WriteAllText(FilePath, jsondata);
-        Debug.Log(jsondata);
+        File.WriteAllText(filePathStage, Stagejsondata);
+        File.WriteAllText(filePathPlayer, Playerjsondata);
+        Debug.Log(Stagejsondata);
+        Debug.Log(Playerjsondata);
+        //Debug.Log(jsondataPlayer);
     }
 
+   
     public void DataLoad()
     {
         //if (!File.Exists(FilePath)) { ResetPlayer(); return; }
         //string code = File.ReadAllText(FilePath);
         //byte[] bytes = Convert.FromBase64String(code);
         //string jsondata = System.Text.Encoding.UTF8.GetString(bytes);
-        player = GameManager.Instance._Player.GetComponent<Player>();
-        string jsondata = File.ReadAllText(FilePath);
-        SaveData saveData = new SaveData();
-        saveData = JsonUtility.FromJson<SaveData>(jsondata);
-        PlayerDataLoad(saveData, player);
-        PlaneDataLoad(saveData, planeSceneManager);
-        SceneManager.LoadScene("Stage" + planeSceneManager.thisStage);
+        //player = GameManager.Instance._Player.GetComponent<Player>();
+        string Stagejsondata = File.ReadAllText(filePathStage);
+        string Playerjsondata = File.ReadAllText(filePathPlayer);
+        saveData = JsonUtility.FromJson<SaveData>(Stagejsondata);
+        playerData = JsonUtility.FromJson<PlayerData>(Playerjsondata);
+
     }
 
     void ResetPlayer()
@@ -69,22 +74,32 @@ public class DataManager : MonoBehaviour
         DataSave();
         DataLoad();
     }
+    private void PlayerDataGet(Player player, PlayerData playerData)
+    {
+        playerData.SetPlayerData(player.hp, player.mhp, player.sta, player.msta, player.hpPotion, player.staPotion, player.dmgPotion);
+        playerData.isUpgraded_Item_0 = player.isUpgraded_Item_0;
+        playerData.isUpgraded_Item_1 = player.isUpgraded_Item_1;
+        playerData.isUpgraded_Item_2 = player.isUpgraded_Item_2;
+        playerData.isUpgraded_Item_3 = player.isUpgraded_Item_3;
+        playerData.isUpgraded_weapon=player.isUpgraded_weapon;
+        playerData.isUpgraded_shield=player.isUpgraded_shield;
+        playerData.key =player.key;
+    }
 
-    SaveData DataGet(Player player)
+
+    void StageDataGet(SaveData saveData)
     {
-        SaveData savedata = new SaveData();
-        savedata.playerData = new PlayerData();
-        savedata.playerData.SetPlayerData(player.hp, player.mhp, player.sta, player.msta, player.hpPotion, player.staPotion, player.dmgPotion);
-        savedata.thisStage = planeSceneManager.thisStage;
-        savedata.thisPlane = planeSceneManager.thisPlane;
-        savedata.planes = planeSceneManager.planes.ToArray();
-        return savedata;
+
+       // savedata.playerData.SetPlayerData(player.hp, player.mhp, player.sta, player.msta, player.hpPotion, player.staPotion, player.dmgPotion);
+        saveData.thisStage = planeSceneManager.thisStage;
+        saveData.thisPlane = planeSceneManager.thisPlane;
+        saveData.planes = planeSceneManager.planes.ToArray();
     }
-    void PlayerDataLoad(SaveData saveData,Player player)
+    void PlayerDataLoad(PlayerData playerData,Player player)
     {
-        player.GetData(saveData.playerData);
+        player.GetData(playerData);
     }
-    void PlaneDataLoad(SaveData saveData,PlaneSceneManager planemanager)
+    void StageDataLoad(SaveData saveData,PlaneSceneManager planemanager)
     {
         planemanager.planes = saveData.planes.ToArray();
         planemanager.thisStage = saveData.thisStage;

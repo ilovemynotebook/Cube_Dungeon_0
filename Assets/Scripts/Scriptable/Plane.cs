@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public enum EStageType { µµΩ√≥∑, πŸ¥Ÿ∏Í∏¡»ƒ, øÏ¡÷, º“¿Œ±π, πŸ¥Ÿ∏Í∏¡¿¸, µµΩ√π„ }
@@ -30,8 +31,14 @@ public class Plane
         plane.playerStartPoint = playerStartPoint;
         plane.enemyData = enemyData.ToList();
 
-        
-
+        List<BoxData> boxList = new List<BoxData>();
+        foreach(var data in boxData)
+        {
+            BoxData box = new BoxData();
+            box = data.Cloneing();
+            boxList.Add(box);
+        }
+        plane.boxData = boxList;
         return plane;
     }
 
