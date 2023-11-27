@@ -13,7 +13,7 @@ public class BossAI
 
     private Boss _boss;
 
-    private float _targetDistance { get { return Vector3.Distance(_boss.Target.transform.position, _boss.gameObject.transform.position); } }
+    private SkillPattern _currentSkillPattern;
 
     public BossAI(Boss boss)
     {
@@ -58,23 +58,25 @@ public class BossAI
         return new SequenceNode(nodes);
     }
 
+
     //공격 체크 노드
     private INode.ENodeState CheckAttackDistance()
     {
-        Debug.Log("공격 범위 체크");
-        if(_boss.CurrentAttackDistance > _targetDistance)
-        {
+        _currentSkillPattern = _boss.GetUsableSkill();
+
+        if (_currentSkillPattern != default || _currentSkillPattern != null)
             return INode.ENodeState.Success;
-        }
 
         return INode.ENodeState.Failure;
     }
+
 
     //공격 행동 노드
     private INode.ENodeState StartAttack()
     {
         Debug.Log("공격");
         _boss.State = BossState.Attack;
+        _currentSkillPattern.CurrentCoolTime = _currentSkillPattern.CoolTime;
         return INode.ENodeState.Success;
     }
 
@@ -94,7 +96,7 @@ public class BossAI
     private INode.ENodeState Tracking()
     {
         Debug.Log("추적중");
-        if (_targetDistance > _boss.CurrentAttackDistance)
+        if (true)
         {
             _boss.State = BossState.Tracking;
             return INode.ENodeState.Success;
