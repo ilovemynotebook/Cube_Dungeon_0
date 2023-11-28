@@ -87,7 +87,7 @@ public class DataManager : MonoBehaviour
         File.WriteAllText(filePathStage, Stagejsondata);
         File.WriteAllText(filePathPlayer, Playerjsondata);
     }
-    private void PlayerDataGet(Player player, PlayerData playerData)
+    public void PlayerDataGet(Player player, PlayerData playerData)
     {
         playerData.SetPlayerData(player.hp, player.mhp, player.sta, player.msta, player.hpPotion, player.staPotion, player.dmgPotion);
         playerData.isUpgraded_Item_0 = player.isUpgraded_Item_0;
@@ -107,6 +107,7 @@ public class DataManager : MonoBehaviour
 
         }
     }
+
 
     void StageDataGet(SaveData saveData)
     {

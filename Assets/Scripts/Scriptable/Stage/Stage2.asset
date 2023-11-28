@@ -19,8 +19,15 @@ MonoBehaviour:
       prefab: {fileID: 4287543710475442010, guid: f36f0d095bc73764d80828f9b7c5ffca,
         type: 3}
       playerStartPoint: {x: 0, y: 8, z: 0}
-      enemyData: []
-      boxData: []
+      enemyData:
+      - enemy: {fileID: 5187336440594830075, guid: f6b05a2c35c924648ae21503d5d56eb5,
+          type: 3}
+        spawnPos: {x: 0, y: 8, z: 0}
+      boxData:
+      - box: {fileID: 7323366475307602835, guid: 5de223a9dc784914583b1126805c5af7,
+          type: 3}
+        spawnPos: {x: -10, y: 8, z: 0}
+        isOpen: 0
     - planeType: 0
       planeStyle: 0
       prefab: {fileID: 4287543710475442010, guid: f36f0d095bc73764d80828f9b7c5ffca,

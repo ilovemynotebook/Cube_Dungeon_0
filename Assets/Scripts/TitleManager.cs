@@ -43,7 +43,7 @@ public class TitleManager : MonoBehaviour
     }
     private void Update()
     {
-        CubeAnimateMove();
+        
         if (TitleFadeIsIn&&Input.anyKey)
         {
             TitleFadeOut();
@@ -87,12 +87,6 @@ public class TitleManager : MonoBehaviour
             Debug.Log("∆‰¿ÃµÂ æ∆øÙ");
             canvasGroup.DOFade(0, FadeTime);
         }
-    }
-
-    private void CubeAnimateMove()
-    {
-        Cube.transform.DORotate(new Vector3(0,0,1),1);
-       
     }
 
     void CubeZoom(bool IsInout,float Scale,float Time)
