@@ -49,23 +49,23 @@ MonoBehaviour:
   _shockwaveDatas:
   - _shockwavePrefab: {fileID: 6552773639792350650, guid: 1c8786ade41a99b46a23d819ddbab55c,
       type: 3}
-    _spawnPos: {x: 0, y: 1, z: 3}
+    _spawnPos: {x: 3, y: 1, z: 0}
     _spawnTime: 0
   - _shockwavePrefab: {fileID: 6552773639792350650, guid: 1c8786ade41a99b46a23d819ddbab55c,
       type: 3}
-    _spawnPos: {x: 0, y: 1, z: 7}
+    _spawnPos: {x: 7, y: 1, z: 0}
     _spawnTime: 0.3
   - _shockwavePrefab: {fileID: 6552773639792350650, guid: 1c8786ade41a99b46a23d819ddbab55c,
       type: 3}
-    _spawnPos: {x: 0, y: 1, z: 11}
+    _spawnPos: {x: 11, y: 1, z: 0}
     _spawnTime: 0.6
   - _shockwavePrefab: {fileID: 6552773639792350650, guid: 1c8786ade41a99b46a23d819ddbab55c,
       type: 3}
-    _spawnPos: {x: 0, y: 1, z: -3}
+    _spawnPos: {x: -3, y: 1, z: 0}
     _spawnTime: 0
   - _shockwavePrefab: {fileID: 6552773639792350650, guid: 1c8786ade41a99b46a23d819ddbab55c,
       type: 3}
-    _spawnPos: {x: 0, y: 1, z: -7}
+    _spawnPos: {x: -7, y: 1, z: 0}
     _spawnTime: 0.3
 --- !u!1 &96996133487820015
 GameObject:
@@ -1142,8 +1142,8 @@ MonoBehaviour:
     AttackTrigger: {fileID: 249953275714580256}
     CurrentCoolTime: 0
     SkillState: 0
-  _patternUpdateTime: 1
-  _waitTime: 5
+  _patternUpdateTime: 0.3
+  _waitTime: 3
   State: 0
   Target: {fileID: 0}
 --- !u!1 &4509179289960050292
