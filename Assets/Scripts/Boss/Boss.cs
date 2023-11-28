@@ -26,6 +26,9 @@ public class SkillPattern
     [Tooltip("쿨타임")]
     public float CoolTime;
 
+    [Tooltip("피격 범위 관리 클래스")]
+    public BossAttackBehaviour AttackTrigger;
+
     [HideInInspector] public float CurrentCoolTime;
 
     [HideInInspector] public BossState SkillState;
@@ -60,6 +63,7 @@ public class Boss : MonoBehaviour
 
     [Tooltip("공격 패턴 데이터")]
     [SerializeField] private SkillPattern[] _skillPatterns;
+    public SkillPattern[] SkillPatterns => _skillPatterns;
 
     [Tooltip("AI 패턴 갱신 시간")]
     [SerializeField] private float _patternUpdateTime;

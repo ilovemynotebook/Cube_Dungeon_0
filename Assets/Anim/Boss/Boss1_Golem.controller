@@ -30,6 +30,24 @@ AnimatorState:
   m_MirrorParameter: 
   m_CycleOffsetParameter: 
   m_TimeParameter: 
+--- !u!114 &-6784415402139358916
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1909d4dfb24c03c428d91f5f9cc83314, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _bossSkillData:
+    _activateFrame: 10
+    _disabledFrame: 30
+    _skillPatternsIndex: 1
+    _isActivated: 0
+    _isDisabled: 0
 --- !u!1101 &-6656397891699128424
 AnimatorStateTransition:
   m_ObjectHideFlags: 1
@@ -104,6 +122,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1909d4dfb24c03c428d91f5f9cc83314, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _bossSkillData:
+    _activateFrame: 12
+    _disabledFrame: 16
+    _skillPatternsIndex: 0
+    _isActivated: 0
+    _isDisabled: 0
 --- !u!1102 &-4248105980036568375
 AnimatorState:
   serializedVersion: 6
@@ -679,11 +703,12 @@ AnimatorState:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: Attack02
-  m_Speed: 1
+  m_Speed: 0.5
   m_CycleOffset: 0
   m_Transitions:
   - {fileID: -3762429871268598236}
-  m_StateMachineBehaviours: []
+  m_StateMachineBehaviours:
+  - {fileID: -6784415402139358916}
   m_Position: {x: 50, y: 50, z: 0}
   m_IKOnFeet: 0
   m_WriteDefaultValues: 1
