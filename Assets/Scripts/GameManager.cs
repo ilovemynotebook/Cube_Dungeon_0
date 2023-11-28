@@ -13,6 +13,7 @@ public class GameManager : MonoBehaviour
     public PlaneSceneManager _PlaneSceneManager;
     public DataManager _DataManager;
     public EqupimentDataBase EDB;
+
     void Awake()
     {
 
@@ -37,8 +38,4 @@ public class GameManager : MonoBehaviour
    
     }
 
-    public void LoadScene(string sceneName)
-    {
-        SceneManager.LoadScene(sceneName, LoadSceneMode.Single);
-    }
 }

@@ -6,23 +6,34 @@ using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 using System.Linq;
 using System;
+using System.Numerics;
 
 public class DataManager : MonoBehaviour
 {
+    public GameStageDB[] StageDB;
     string filePathStage;
     string filePathPlayer;
     [SerializeField]Player player;
     PlaneSceneManager planeSceneManager;
     public SaveData saveData;
     public PlayerData playerData;
-
+    public bool FileNotExist;
+    
+    private void Awake()
+    {
+       
+    }
     // Start is called before the first frame update
     void Start()
     {
         filePathStage = Application.persistentDataPath + "/Stagedata";
         filePathPlayer= Application.persistentDataPath + "/Playerdata";
-        planeSceneManager =GameManager.Instance._PlaneSceneManager;    
-       
+
+        if (!File.Exists(filePathStage) && !File.Exists(filePathStage)) { FileNotExist = true; }
+        else
+        {
+            FileNotExist = false;
+        }
     }
 
     // Update is called once per frame
@@ -57,7 +68,7 @@ public class DataManager : MonoBehaviour
    
     public void DataLoad()
     {
-        //if (!File.Exists(FilePath)) { ResetPlayer(); return; }
+        if (!File.Exists(filePathStage)&&!File.Exists(filePathStage)) { FileNotExist = true; return; }
         //string code = File.ReadAllText(FilePath);
         //byte[] bytes = Convert.FromBase64String(code);
         //string jsondata = System.Text.Encoding.UTF8.GetString(bytes);
@@ -69,10 +80,12 @@ public class DataManager : MonoBehaviour
 
     }
 
-    void ResetPlayer()
+   public void DataCreate()
     {
-        DataSave();
-        DataLoad();
+        string Stagejsondata = JsonUtility.ToJson(saveData);
+        string Playerjsondata = JsonUtility.ToJson(playerData);
+        File.WriteAllText(filePathStage, Stagejsondata);
+        File.WriteAllText(filePathPlayer, Playerjsondata);
     }
     private void PlayerDataGet(Player player, PlayerData playerData)
     {
@@ -86,20 +99,28 @@ public class DataManager : MonoBehaviour
         playerData.key =player.key;
     }
 
+    public void StageDataChange(int Stage)
+    {
+        for (int i = 0; i < StageDB[Stage-1].stages.CubePlanes.Length; i++)
+        {
+            saveData.planes[i]= StageDB[Stage-1].stages.CubePlanes[i].Cloneing();
+
+        }
+    }
 
     void StageDataGet(SaveData saveData)
     {
-
-       // savedata.playerData.SetPlayerData(player.hp, player.mhp, player.sta, player.msta, player.hpPotion, player.staPotion, player.dmgPotion);
+        planeSceneManager = GameManager.Instance._PlaneSceneManager;
+        // savedata.playerData.SetPlayerData(player.hp, player.mhp, player.sta, player.msta, player.hpPotion, player.staPotion, player.dmgPotion);
         saveData.thisStage = planeSceneManager.thisStage;
         saveData.thisPlane = planeSceneManager.thisPlane;
         saveData.planes = planeSceneManager.planes.ToArray();
     }
-    void PlayerDataLoad(PlayerData playerData,Player player)
+    public void PlayerDataLoad(PlayerData playerData,Player player)
     {
         player.GetData(playerData);
     }
-    void StageDataLoad(SaveData saveData,PlaneSceneManager planemanager)
+    public void StageDataLoad(SaveData saveData,PlaneSceneManager planemanager)
     {
         planemanager.planes = saveData.planes.ToArray();
         planemanager.thisStage = saveData.thisStage;

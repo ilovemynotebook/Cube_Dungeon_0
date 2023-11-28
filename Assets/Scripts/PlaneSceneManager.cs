@@ -1,3 +1,4 @@
+using Cinemachine;
 using DG.Tweening;
 using System.Collections;
 using System.Collections.Generic;
@@ -18,12 +19,12 @@ public class PlaneSceneManager : MonoBehaviour
     [SerializeField] Stage stage;
     //public SceneData sceneData;
     public GameObject MapPrefab;
-
+    public GameObject PlayerPf;
+    public GameObject Player;
     public int Monstercount;
     public int thisStage; //현재 스테이지
     public int thisPlane; // 현재 면
-
-
+    public CinemachineVirtualCamera VirtualCamera;
     //EStageType ThisStageType;
     //EStageStyle ThisStageStyle;
     //[SerializeField]Enemy[] SummonedEnemy;
@@ -31,7 +32,7 @@ public class PlaneSceneManager : MonoBehaviour
     //public StageDatabase StageDatabase; //스테이지에대한 데이타베이스
     //public GameObject[] mapdatas;
     //public StageManager GameStage;
-    public GameObject Player;
+
 
     private void Awake()
     {
@@ -46,21 +47,26 @@ public class PlaneSceneManager : MonoBehaviour
             Destroy(gameObject);
         }
         thisStage = 1; thisPlane = 1;
-        planes = new Plane[9];
+        planes = new Plane[4];
         
     }
     private void Start()
     {
-
-        Player = GameManager.Instance._Player;
-
-        // GameManager.Instance.DataLoad();
+        GameManager.Instance._PlaneSceneManager= this;
+        GameManager.Instance._DataManager.StageDataLoad(GameManager.Instance._DataManager.saveData, this);
     }
     private void Update()
     {
         Monstercount = GameObject.FindGameObjectsWithTag("Enemy").Length;
-        
-            
+    }
+
+    public void SpawnPlayer()
+    {
+        Player = Instantiate(PlayerPf, Vector3.zero, PlayerPf.transform.rotation);
+        //Player = GameManager.Instance._DataManager.PlayerDataLoad(GameManager.Instance._DataManager.playerData);
+        //VirtualCamera = Instantiate(VirtualCamera);
+        VirtualCamera.Follow = Player.transform;
+        VirtualCamera.LookAt = Player.transform;
     }
     public void PlaneUp()
     {
@@ -70,14 +76,17 @@ public class PlaneSceneManager : MonoBehaviour
             {   //Stage가 바뀔경우
                 thisStage++;
                 thisPlane = 1;
-                SceneManager.LoadScene("Stage" + thisStage);
+                GameManager.Instance._DataManager.saveData.thisStage=thisStage;
+                GameManager.Instance._DataManager.StageDataChange(thisStage);
+                SceneManager.LoadScene("Stage"+thisStage);
             }
             else
             {
                 thisPlane++;
+                Clear();
+                CreateMap();
                 //다음 면 이동
             }
-            CreateMap();
         }
     }
     public void PlaneDown()
@@ -126,26 +135,30 @@ public class PlaneSceneManager : MonoBehaviour
 
     public void CreateMap()
     {
-        Player = GameManager.Instance._Player;
+       
         //StageSet(thisStage);
         Fade();
-        Clear();
-        MapPrefab = Instantiate(planes[thisPlane - 1].prefab);            
-        Player.transform.position = planes[thisPlane - 1].playerStartPoint;
+        //Clear();
+        MapPrefab = Instantiate(planes[thisPlane - 1].prefab);
+        if (Player == null)
+        {
+            SpawnPlayer();
+        }
         MonsterSpawn(planes[thisPlane - 1]);
         BoxSpawn(planes[thisPlane - 1]);
+        Player.transform.position = planes[thisPlane - 1].playerStartPoint;
 
     }
-    public void StageSet(StageManager manager)
+    public void StageSet(Plane[] plane)
     {
         if(panel != null)
         {
             panel.gameObject.SetActive(false);
         }
         
-        for (int i = 0; i < manager.gameStageDB.stages.CubePlanes.Length;i++)
+        for (int i = 0; i < plane.Length;i++)
         {
-            planes[i] = manager.gameStageDB.stages.CubePlanes[i].Clone();
+            planes[i] = plane[i].Cloneing();
            
         }
     }

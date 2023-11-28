@@ -14,84 +14,27 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   stages:
     CubePlanes:
-    - PlaneType: 0
-      PlaneStyle: 0
-      Prefab: {fileID: 0}
-      PlayerStartPoint: {x: 0, y: 0, z: 0}
-      enemies: []
-      enemiesSpawnPlace: []
-      boxes: []
-      BoxSpawnPlace: []
-      boxesOpened: 
-    - PlaneType: 0
-      PlaneStyle: 0
-      Prefab: {fileID: 0}
-      PlayerStartPoint: {x: 0, y: 0, z: 0}
-      enemies: []
-      enemiesSpawnPlace: []
-      boxes: []
-      BoxSpawnPlace: []
-      boxesOpened: 
-    - PlaneType: 0
-      PlaneStyle: 0
-      Prefab: {fileID: 0}
-      PlayerStartPoint: {x: 0, y: 0, z: 0}
-      enemies: []
-      enemiesSpawnPlace: []
-      boxes: []
-      BoxSpawnPlace: []
-      boxesOpened: 
-    - PlaneType: 0
-      PlaneStyle: 0
-      Prefab: {fileID: 0}
-      PlayerStartPoint: {x: 0, y: 0, z: 0}
-      enemies: []
-      enemiesSpawnPlace: []
-      boxes: []
-      BoxSpawnPlace: []
-      boxesOpened: 
-    - PlaneType: 0
-      PlaneStyle: 0
-      Prefab: {fileID: 0}
-      PlayerStartPoint: {x: 0, y: 0, z: 0}
-      enemies: []
-      enemiesSpawnPlace: []
-      boxes: []
-      BoxSpawnPlace: []
-      boxesOpened: 
-    - PlaneType: 0
-      PlaneStyle: 0
-      Prefab: {fileID: 0}
-      PlayerStartPoint: {x: 0, y: 0, z: 0}
-      enemies: []
-      enemiesSpawnPlace: []
-      boxes: []
-      BoxSpawnPlace: []
-      boxesOpened: 
-    - PlaneType: 0
-      PlaneStyle: 0
-      Prefab: {fileID: 0}
-      PlayerStartPoint: {x: 0, y: 0, z: 0}
-      enemies: []
-      enemiesSpawnPlace: []
-      boxes: []
-      BoxSpawnPlace: []
-      boxesOpened: 
-    - PlaneType: 0
-      PlaneStyle: 0
-      Prefab: {fileID: 0}
-      PlayerStartPoint: {x: 0, y: 0, z: 0}
-      enemies: []
-      enemiesSpawnPlace: []
-      boxes: []
-      BoxSpawnPlace: []
-      boxesOpened: 
-    - PlaneType: 0
-      PlaneStyle: 0
-      Prefab: {fileID: 0}
-      PlayerStartPoint: {x: 0, y: 0, z: 0}
-      enemies: []
-      enemiesSpawnPlace: []
-      boxes: []
-      BoxSpawnPlace: []
-      boxesOpened: 
+    - planeType: 0
+      planeStyle: 0
+      prefab: {fileID: 0}
+      playerStartPoint: {x: 0, y: 0, z: 0}
+      enemyData: []
+      boxData: []
+    - planeType: 0
+      planeStyle: 0
+      prefab: {fileID: 0}
+      playerStartPoint: {x: 0, y: 0, z: 0}
+      enemyData: []
+      boxData: []
+    - planeType: 0
+      planeStyle: 0
+      prefab: {fileID: 0}
+      playerStartPoint: {x: 0, y: 0, z: 0}
+      enemyData: []
+      boxData: []
+    - planeType: 0
+      planeStyle: 0
+      prefab: {fileID: 0}
+      playerStartPoint: {x: 0, y: 0, z: 0}
+      enemyData: []
+      boxData: []

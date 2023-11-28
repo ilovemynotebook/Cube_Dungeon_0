@@ -30,7 +30,10 @@ MonoBehaviour:
       prefab: {fileID: 9145890908147242706, guid: 846b4d4dbcacc5c489a6861846cb96e6,
         type: 3}
       playerStartPoint: {x: 0, y: 7, z: 0}
-      enemyData: []
+      enemyData:
+      - enemy: {fileID: 5187336440594830075, guid: f6b05a2c35c924648ae21503d5d56eb5,
+          type: 3}
+        spawnPos: {x: 0, y: 8, z: 0}
       boxData: []
     - planeType: 0
       planeStyle: 0
@@ -41,37 +44,8 @@ MonoBehaviour:
       boxData: []
     - planeType: 0
       planeStyle: 0
-      prefab: {fileID: 0}
-      playerStartPoint: {x: 0, y: 0, z: 0}
-      enemyData: []
-      boxData: []
-    - planeType: 0
-      planeStyle: 0
-      prefab: {fileID: 0}
-      playerStartPoint: {x: 0, y: 0, z: 0}
-      enemyData: []
-      boxData: []
-    - planeType: 0
-      planeStyle: 0
-      prefab: {fileID: 0}
-      playerStartPoint: {x: 0, y: 0, z: 0}
-      enemyData: []
-      boxData: []
-    - planeType: 0
-      planeStyle: 0
-      prefab: {fileID: 0}
-      playerStartPoint: {x: 0, y: 0, z: 0}
-      enemyData: []
-      boxData: []
-    - planeType: 0
-      planeStyle: 0
-      prefab: {fileID: 0}
-      playerStartPoint: {x: 0, y: 0, z: 0}
-      enemyData: []
-      boxData: []
-    - planeType: 0
-      planeStyle: 0
-      prefab: {fileID: 0}
-      playerStartPoint: {x: 0, y: 0, z: 0}
+      prefab: {fileID: 4287543710475442010, guid: 04a22129678348d4db2f66fe9b04687f,
+        type: 3}
+      playerStartPoint: {x: 0, y: 8, z: 0}
       enemyData: []
       boxData: []

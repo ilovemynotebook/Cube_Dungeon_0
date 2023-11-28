@@ -7,14 +7,14 @@ using UnityEngine.UI;
 
 public class StageManager : MonoBehaviour
 {
-
+    DataManager dataManager;
     public GameStageDB gameStageDB;
 
 
     private void Start()
     {
-     
-        PlaneSceneManager.Instance.StageSet(this);
+        dataManager = GameManager.Instance._DataManager;
+        PlaneSceneManager.Instance.StageSet(dataManager.saveData.planes);
         PlaneSceneManager.Instance.CreateMap();
     }
 }

@@ -1531,6 +1531,7 @@ MonoBehaviour:
   LoadButton: {fileID: 1693255660}
   TitleFadeTime: 2
   TitleFadeIsIn: 0
+  DataManager: {fileID: 0}
 --- !u!1 &859579161
 GameObject:
   m_ObjectHideFlags: 0
@@ -2160,6 +2161,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1428720fa91b29249892c6237bcbbc51, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  StageDB:
+  - {fileID: 11400000, guid: ad2907fed9a084e43b4281b85998c8bf, type: 2}
+  - {fileID: 11400000, guid: 97313477d80ce2d40a0c7f6622e2b138, type: 2}
+  - {fileID: 11400000, guid: 2fcb14c6f7bf5e34985dc924a49fe9bb, type: 2}
+  - {fileID: 11400000, guid: 0530b5e3afc2eae4ebefd16f6b2d3cf0, type: 2}
+  - {fileID: 11400000, guid: 52c1dc4a7f0268144856c01dd224b39f, type: 2}
+  - {fileID: 11400000, guid: 76ef8d62f6ef7a74c957706391b378b4, type: 2}
   player: {fileID: 0}
   saveData:
     thisStage: 0
@@ -2234,6 +2242,7 @@ MonoBehaviour:
     staPotion: 0
     dmgPotion: 0
     key: 0
+  FileNotExist: 0
 --- !u!1 &1603866905
 GameObject:
   m_ObjectHideFlags: 0

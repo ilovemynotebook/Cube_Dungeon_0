@@ -12,6 +12,7 @@ public class SaveData
     public SaveData()
     {
         //playerData = new PlayerData();
-        planes = new Plane[9];
+        thisStage = 1; thisPlane = 1;
+        planes = new Plane[4];
     }
 }

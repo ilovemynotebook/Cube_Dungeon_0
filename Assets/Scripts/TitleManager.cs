@@ -1,9 +1,7 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
 using DG.Tweening;
-using System.ComponentModel;
+using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class TitleManager : MonoBehaviour
 {
@@ -18,6 +16,7 @@ public class TitleManager : MonoBehaviour
     public Button LoadButton;
     public float TitleFadeTime;
     public bool TitleFadeIsIn;
+    [SerializeField]DataManager DataManager;
     void Awake()
     {
         TitleScreen.gameObject.SetActive(false);
@@ -29,10 +28,17 @@ public class TitleManager : MonoBehaviour
         StartButton.onClick.AddListener(() => OnButtonStartGame());
         LoadButton.onClick.AddListener(() => OnButtonLoadGame());
     }
+    private void OnDisable()
+    {
+        SettingButton.onClick.RemoveListener(()=>OnButtonGameObject(false, SettingScreen));
+        StartButton.onClick.RemoveListener(()=>OnButtonStartGame());
+        LoadButton.onClick.RemoveListener(() => OnButtonLoadGame());
+    }
 
     private void Start()
     {
-        
+        DataManager=FindObjectOfType<DataManager>();
+        if (DataManager.FileNotExist == true) { LoadButton.interactable = false;  }
         Invoke("TitleFadeIn", 2);
     }
     private void Update()
@@ -110,15 +116,15 @@ public class TitleManager : MonoBehaviour
     {
         GameManager.Instance._DataManager.saveData=new SaveData();
         GameManager.Instance._DataManager.playerData=new PlayerData();
-        
-       // GameManager.Instance.LoadScene("LoadingScene");
+        GameManager.Instance._DataManager.StageDataChange(GameManager.Instance._DataManager.saveData.thisStage);
+        SceneManager.LoadScene("LoadingScene");
     }
     void OnButtonLoadGame()
     {
         GameManager.Instance._DataManager.saveData = new SaveData();
         GameManager.Instance._DataManager.playerData = new PlayerData();
         GameManager.Instance._DataManager.DataLoad();
-       // GameManager.Instance.LoadScene("LoadingScene");
+        SceneManager.LoadScene("LoadingScene");
     }
 
 }

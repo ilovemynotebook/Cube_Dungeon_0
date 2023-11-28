@@ -34,23 +34,23 @@ public class PlayerData
 
 
     //}
-    //public PlayerData()
-    //{
-    //    this.hp = 5;
-    //    this.mhp = 5;
-    //    this.sta = 0;
-    //    this.msta= 0;
-    //    this.hpPotion = 0;
-    //    this.staPotion = 0;
-    //    this.dmgPotion = 0;
-    //    this.isUpgraded_Item_0 = false;
-    //    this.isUpgraded_Item_1 = false;
-    //    this.isUpgraded_Item_2 = false; 
-    //    this.isUpgraded_Item_3 = false;
-    //    this.isUpgraded_weapon = false;
-    //    this.isUpgraded_shield = false;
-    //    this.key = false;
-    //}
+    public PlayerData()
+    {
+        this.hp = 5;
+        this.mhp = 5;
+        this.sta = 0;
+        this.msta = 0;
+        this.hpPotion = 0;
+        this.staPotion = 0;
+        this.dmgPotion = 0;
+        this.isUpgraded_Item_0 = false;
+        this.isUpgraded_Item_1 = false;
+        this.isUpgraded_Item_2 = false;
+        this.isUpgraded_Item_3 = false;
+        this.isUpgraded_weapon = false;
+        this.isUpgraded_shield = false;
+        this.key = false;
+    }
 
     public void SetPlayerData(float hp, float mhp, float sta, float msta, int hpPotion, int staPotion, int dmgPotion)
     {

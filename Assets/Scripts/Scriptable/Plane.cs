@@ -22,7 +22,7 @@ public class Plane
     
 
      
-    public Plane Clone()
+    public Plane Cloneing()
     {
         Plane plane = new Plane();
         plane.planeType = planeType;
