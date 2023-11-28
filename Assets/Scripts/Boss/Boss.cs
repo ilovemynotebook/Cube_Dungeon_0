@@ -9,7 +9,9 @@ public enum BossState
 {
     Idle,
     Tracking,
-    Attack,
+    Skill1,
+    Skill2,
+    Skill3,
 }
 
 [Serializable]
@@ -25,29 +27,50 @@ public class SkillPattern
     public float CoolTime;
 
     [HideInInspector] public float CurrentCoolTime;
+
+    [HideInInspector] public BossState SkillState;
 }
 
 
 [RequireComponent(typeof(Rigidbody), typeof(Animator))]
 public class Boss : MonoBehaviour
 {
+    [Space(10)]
+    [Header("능력치")]
+
     [Tooltip("이름")]
     [SerializeField] private string _name;
+    public string Name => _name;
 
     [Tooltip("체력")]
     [SerializeField] private int _maxHp;
 
     [Tooltip("이동 속도")]
     [SerializeField] private float _speed;
+    public float Speed => _speed;
 
-    [Tooltip("AI 패턴 갱신 시간")]
-    [SerializeField] private float _patternUpdateTime;
+    [Tooltip("공격력")]
+    [SerializeField] private float _power;
+    public float Power => _power;
+
+//===============================================================================================
+
+    [Space(10)]
+    [Header("AI")]
 
     [Tooltip("공격 패턴 데이터")]
     [SerializeField] private SkillPattern[] _skillPatterns;
 
+    [Tooltip("AI 패턴 갱신 시간")]
+    [SerializeField] private float _patternUpdateTime;
 
-    [SerializeField] private List<SkillPattern> _usableSkillList = new List<SkillPattern>();
+    [Tooltip("공격 후 대기 시간")]
+    [SerializeField] private float _waitTime;
+    private float _waitTimer;
+
+
+
+    private List<SkillPattern> _usableSkillList = new List<SkillPattern>();
 
     private BossAI _ai;
 
@@ -70,16 +93,7 @@ public class Boss : MonoBehaviour
 
     protected void Awake()
     {
-        _animator = GetComponent<Animator>();
-        _bossStateMachines = _animator.GetBehaviours<BossStateMachineBehaviour>();
-        _rigidBody = GetComponent<Rigidbody>();
-
-        foreach(BossStateMachineBehaviour bossStateMachine in _bossStateMachines)
-        {
-            bossStateMachine.Init(this);
-        }
-
-        _ai = new BossAI(this);
+        Init();
     }
 
 
@@ -93,6 +107,29 @@ public class Boss : MonoBehaviour
     {
         _animator.SetInteger("State", (int)State);
         SkillCoolTimeUpdate();
+        UpdateWaitTimer();
+    }
+
+
+    private void Init()
+    {
+        _animator = GetComponent<Animator>();
+        _bossStateMachines = _animator.GetBehaviours<BossStateMachineBehaviour>();
+        _rigidBody = GetComponent<Rigidbody>();
+        _ai = new BossAI(this);
+
+        foreach (BossStateMachineBehaviour bossStateMachine in _bossStateMachines)
+        {
+            bossStateMachine.Init(this);
+        }
+
+        for (int i = 0; i < _skillPatterns.Length; i++)
+        {
+            if (i == 3)
+                break;
+
+            _skillPatterns[i].SkillState = BossState.Skill1 + i;
+        }
     }
 
 
@@ -107,9 +144,8 @@ public class Boss : MonoBehaviour
     {
         foreach(SkillPattern pattern in _skillPatterns)
         {
-            if (pattern.CurrentCoolTime > 0)
-                pattern.CurrentCoolTime = 0;
-
+            if (0 < pattern.CurrentCoolTime)
+                pattern.CurrentCoolTime -= Time.deltaTime;
         }
     }
 
@@ -121,7 +157,7 @@ public class Boss : MonoBehaviour
 
         foreach (SkillPattern pattern in _skillPatterns)
         {
-            if (pattern.CurrentCoolTime > 0)
+            if (0 < pattern.CurrentCoolTime)
             {
                 Debug.Log("쿨타임 아직");
                 continue;
@@ -142,5 +178,26 @@ public class Boss : MonoBehaviour
 
         int randInt = Random.Range(0, _usableSkillList.Count);
         return _usableSkillList[randInt];
+    }
+
+
+    private void UpdateWaitTimer()
+    {
+        if(0 < _waitTimer)
+            _waitTimer -= Time.deltaTime;
+    }
+
+    public bool WaitingTimeCheck()
+    {
+        if (!(0 < _waitTimer))
+            return true;
+
+
+        return false;
+    }
+
+    public void SetWaingTimer()
+    {
+        _waitTimer = _waitTime;
     }
 }
