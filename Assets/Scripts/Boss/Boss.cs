@@ -12,6 +12,8 @@ public enum BossState
     Skill1,
     Skill2,
     Skill3,
+    Skill4,
+    Die,
 }
 
 [Serializable]
@@ -51,6 +53,10 @@ public class Boss : MonoBehaviour
     [Tooltip("이동 속도")]
     [SerializeField] private float _speed;
     public float Speed => _speed;
+
+    [Tooltip("애니메이션 스피드")]
+    [SerializeField] private float _animeSpeed;
+    public float AnimeSpeed => _animeSpeed;
 
     [Tooltip("공격력")]
     [SerializeField] private float _power;
@@ -110,6 +116,7 @@ public class Boss : MonoBehaviour
     protected void Update()
     {
         _animator.SetInteger("State", (int)State);
+        _animator.SetFloat("AnimeSpeed", AnimeSpeed);
         SkillCoolTimeUpdate();
         UpdateWaitTimer();
     }

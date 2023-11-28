@@ -93,9 +93,13 @@ public class BossAI
     private INode.ENodeState StartAttack()
     {
         Debug.Log("공격");
-        _boss.State = _currentSkillPattern.SkillState;
-        _currentSkillPattern.CurrentCoolTime = _currentSkillPattern.CoolTime;
-        _boss.SetWaingTimer();
+        if (!(_boss.State >= BossState.Skill1 && _boss.State <= BossState.Skill4))
+        {
+            _boss.State = _currentSkillPattern.SkillState;
+            _currentSkillPattern.CurrentCoolTime = _currentSkillPattern.CoolTime;
+            _boss.SetWaingTimer();
+        }
+
         return INode.ENodeState.Running;
     }
 
@@ -130,8 +134,14 @@ public class BossAI
     private INode.ENodeState Waiting()
     {
         Debug.Log("대기중 입니다.");
-        _boss.State = BossState.Idle;
-        return INode.ENodeState.Running;
+        if(_boss.State >= BossState.Skill1 && _boss.State <= BossState.Skill4)
+        {
+            _boss.State = BossState.Idle;
+            return INode.ENodeState.Running;
+        }
+        Debug.Log("공격중 입니다.");
+        return INode.ENodeState.Failure;
+
     }
 
 }
