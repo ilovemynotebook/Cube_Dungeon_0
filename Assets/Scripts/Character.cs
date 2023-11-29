@@ -7,7 +7,9 @@ public class Character : MonoBehaviour
 {
     public float speed;
     public float hp;
+    [HideInInspector]
     public float mhp;
+    public float mhpOrigin;
     public float jumpForce;
     public float buffedSpeed;
     public float buffedDmg;
@@ -24,17 +26,23 @@ public class Character : MonoBehaviour
     protected int layerMask = 1 << 8;
     protected Vector3 characterVelocity;
     protected Vector3 characterRotation;
+    protected Vector3 climbingPosition;
     protected bool isGrounded;
     protected CapsuleCollider col;
     protected float currentWalkSpeed;
+    
 
     protected Coroutine DeathCoroutine = null;
 
     public bool isCharacterLookRight;
+    public bool isClimbing;
+
+    protected GameObject ladder;
     
     // Start is called before the first frame update
     virtual protected void Start()
     {
+        mhp = mhpOrigin;
         rb = GetComponent<Rigidbody>();
         col = GetComponent<CapsuleCollider>();
         anim = GetComponent<Animator>();
@@ -45,6 +53,7 @@ public class Character : MonoBehaviour
     {
         Stopper();
         groundCheck();
+
     }
 
     public void Walk(float Direction)
@@ -108,11 +117,12 @@ public class Character : MonoBehaviour
         }
     }
 
-    public virtual void GetHit(float dmg)
+    virtual public void GetHit(float dmg)
     {
         if (DeathCoroutine != null) return;
+        isClimbing = false;
         hp -=dmg;
-        HitSound?.Play();
+        //HitSound?.Play();
         anim.Play("Hit",0,0f);
 
         if(hp <= 0)
@@ -147,11 +157,12 @@ public class Character : MonoBehaviour
 
     public void Jump()
     {
+        isClimbing = false;
         characterVelocity.x = rb.velocity.x;
         characterVelocity.z = 0;
         characterVelocity.y = jumpForce;
         rb.velocity = characterVelocity;
-        Debug.Log(rb.velocity);
+        //Debug.Log(rb.velocity);
     }
 
 
@@ -163,7 +174,26 @@ public class Character : MonoBehaviour
         if (hitInfo.collider != null)
         {
             isGrounded = true;
+            isClimbing = false;
         }
         else isGrounded = false;
+    }
+
+
+    protected void DoClimbing(float direction)
+    {
+        if (ladder == null)
+        {
+            isClimbing = false;
+        }
+        else if (isClimbing == true)
+        {
+            climbingPosition = transform.position;
+            climbingPosition.x = ladder.transform.position.x;
+            climbingPosition.y = transform.position.y + direction * Time.deltaTime * speed;
+            transform.position = climbingPosition;
+            rb.velocity = Vector3.zero;
+        }
+
     }
 }

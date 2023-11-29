@@ -130,8 +130,7 @@ public class Player : Character
         if (ladderRayHit.collider?.tag == "Ladder")
         {
 
-            if (Input.GetKey(KeyCode.W))
-            {
+            if (Input.GetKey(KeyCode.W)) {
                 ladder = ladderRayHit.collider.gameObject;
                 Debug.Log(Mathf.Abs(transform.position.x - ladder.transform.position.x));
                 if (Mathf.Abs(transform.position.x - ladder.transform.position.x) < 1)
@@ -199,7 +198,7 @@ public class Player : Character
                 sta -= attackStaminaCost;
                 CanvasManager.Instance.staminaBar.UpdateValue(sta, msta);
             }
-            else if (sta >= chargeAttackStaminaMinimumNeed)
+            else if(sta >= chargeAttackStaminaMinimumNeed)
             {
                 attackCoroutine = StartCoroutine(ChargeAttack());
                 sta -= chargeAttackStaminaCost;
@@ -236,10 +235,10 @@ public class Player : Character
 
     private void OnTriggerEnter(Collider other)
     {
-
-        if (other.tag == "Enemy" && !alreadyHit.Contains(other.gameObject))
+        
+        if(other.tag == "Enemy" && !alreadyHit.Contains(other.gameObject))
         {
-            Enemy en = other.GetComponent<Enemy>();
+            Enemy en = other.GetComponent<Enemy>(); 
             en.GetHit(currentWeapon.Dmg + buffedDmg);
             en.KnockBack((other.transform.position - transform.position).normalized * 15);
 
@@ -253,7 +252,7 @@ public class Player : Character
 
     private void TrySkill()
     {
-        if (Input.GetKeyDown(KeyCode.Alpha1))
+        if(Input.GetKeyDown(KeyCode.Alpha1))
         {
             Debug.Log(buffs[0]);
             buffs[0].Activate();
@@ -274,10 +273,10 @@ public class Player : Character
 
     private void TryShield()
     {
-        if (Input.GetKeyDown(KeyCode.E))
+        if(Input.GetKeyDown(KeyCode.E))
         {
             anim.Play("shield");
-            anim.SetBool("holdingShield", true);
+            anim.SetBool("holdingShield",true);
             isHoldingShield = true;
         }
         else if (Input.GetKeyUp(KeyCode.E))
@@ -289,8 +288,8 @@ public class Player : Character
 
     public void ShieldSucceed(float cost)
     {
-        anim.Play("ShieldSucceed", 1, 0f);
-
+        anim.Play("ShieldSucceed",1,0f);
+        
         sta -= cost;
         CanvasManager.Instance.staminaBar.UpdateValue(sta, msta);
 
@@ -305,7 +304,7 @@ public class Player : Character
     {
         canAttack = false;
         canMove = false;
-        anim.Play("ShieldBroke", 0, 0);
+        anim.Play("ShieldBroke",0,0);
         do { yield return new WaitForEndOfFrame(); }
         while (anim.GetCurrentAnimatorStateInfo(0).normalizedTime < 1.0f);
         canMove = true;

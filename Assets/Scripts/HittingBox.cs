@@ -22,12 +22,18 @@ public class HittingBox : MonoBehaviour
             
             if (player.isHoldingShield && ((player.isCharacterLookRight && direction.x > 0) || (!player.isCharacterLookRight && direction.x <= 0)))
             {
-                if (player.sta >= dmg) // 막았을때
+                float playerShieldCost = player.shieldStaminaCost;
+                if (player.isUpgraded_shield) playerShieldCost /= player.shieldProtect;
+                if (player.sta >= playerShieldCost) // 막았을때
                 {
-                    player.ShieldSucceed();
-                    Character Ene = GetComponentInParent<Character>().GetComponent<Character>();
+                    player.ShieldSucceed(playerShieldCost);
+
+                    Character Ene = null;
+                    transform.parent?.parent?.TryGetComponent<Character>(out Ene);
+                    if(Ene == null) Ene = transform.parent?.parent?.parent?.GetComponent<Character>();
+
                     direction.x = direction.x * -1;
-                    Ene.KnockBack(dmg * direction * 4);
+                    if (Ene != null) Ene.KnockBack(dmg * direction * 4);
                 }
                 else //쉴드 부셔짐
                 {
@@ -38,13 +44,14 @@ public class HittingBox : MonoBehaviour
             else // 맞을때
             {
                 player.GetHit(dmg);
-                player.KnockBack(dmg * direction * 8);
+                player.KnockBack(dmg * direction * 4);
             }
 
             if (isOnce == true)
             {
                 if(Root == null)
                 Root = transform.parent.gameObject;
+                Debug.Log(Root);
                 Destroy(Root);
             }
         }

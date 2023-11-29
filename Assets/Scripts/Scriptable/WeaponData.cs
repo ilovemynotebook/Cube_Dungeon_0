@@ -20,8 +20,5 @@ public class WeaponData
     private Sprite pic;
     public Sprite Pic { get { return pic; } }
 
-    [SerializeField]
-    private bool canChargeAttack = false;
-    public bool CanChargeAttack { get {  return canChargeAttack; } }
 
 }
