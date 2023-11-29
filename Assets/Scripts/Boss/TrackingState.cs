@@ -36,8 +36,8 @@ public class TrackingState : BossStateMachineBehaviour
         else if (_dirX == -1)
             _boss.transform.rotation = Quaternion.Euler(0, -90, 0);
 
-        //_boss.transform.position += new Vector3(_dirX * _speed * Time.deltaTime, 0, 0);
-        _boss.Rigidbody.MovePosition(_boss.transform.position  + new Vector3(_dirX * _speed * Time.deltaTime, 0, 0));
+        _boss.transform.position += new Vector3(_dirX * _speed * Time.deltaTime, 0, 0);
+        //_boss.Rigidbody.MovePosition(_boss.transform.position  + new Vector3(_dirX * _speed * Time.deltaTime, 0, 0));
     }
 
     private void SetDir()

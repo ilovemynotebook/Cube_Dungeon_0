@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 
-public class BossAI
+public class Boss1AI
 {
     private BehaviorTree _tree;
 
@@ -13,7 +13,7 @@ public class BossAI
 
 
 
-    public BossAI(Boss boss)
+    public Boss1AI(Boss boss)
     {
         _boss = boss;
         _tree = new BehaviorTree(SettingBT());
@@ -147,9 +147,10 @@ public class BossAI
 
     private INode.ENodeState Waiting()
     {
-        Debug.Log("대기중 입니다.");
+        
         if(_boss.State >= BossState.Skill1 && _boss.State <= BossState.Skill4)
         {
+            Debug.Log("대기중 입니다.");
             _boss.State = BossState.Idle;
             return INode.ENodeState.Running;
         }
