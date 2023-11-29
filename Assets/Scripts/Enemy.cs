@@ -1,6 +1,14 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+
+[Serializable]
+public class EnemyData
+{
+    public Enemy enemy;
+    public Vector3 spawnPos;
+}
 
 public class Enemy : Character
 {
@@ -43,6 +51,8 @@ public class Enemy : Character
     }
 
     
+ 
+
     /*private void OnCollisionEnter(Collision other)
     {
         if(other.gameObject.tag == "Player")

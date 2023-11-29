@@ -59,12 +59,26 @@ public class Player : Character
     public float shieldStaminaCost = 20;
     public float shieldProtect = 2; // shiledStaminaCost/shieldProtect = cost
 
+    public static Player _player;
+    private void Awake()
+    {
+        GameManager.Instance.Player = this.gameObject;
+    }
     override protected void Start()
     {
+        if(_player == null)
+        {
+            _player = this;
+        }
+        else
+        {
+            Destroy(_player);
+        }
         buffs = new Buffs[2];
         SkillInit();
         base.Start();
-        GameManager.Instance.Player = this.gameObject;
+
+        DontDestroyOnLoad(this.gameObject);
 
     }
 
@@ -315,5 +329,22 @@ public class Player : Character
     {
         base.GetHit(dmg);
         CanvasManager.Instance.hpBar.UpdateValue(hp, mhp);
+    }
+    public void GetData(PlayerData playerData)
+    {
+        hp = playerData.hp;
+        mhp = playerData.mhp;
+        sta = playerData.sta;
+        msta = playerData.msta;
+        isUpgraded_Item_0 = playerData.isUpgraded_Item_0;
+        isUpgraded_Item_1 = playerData.isUpgraded_Item_1;
+        isUpgraded_Item_2 = playerData.isUpgraded_Item_2;
+        isUpgraded_Item_3 = playerData.isUpgraded_Item_3;
+        isUpgraded_shield = playerData.isUpgraded_shield;
+        isUpgraded_weapon = playerData.isUpgraded_weapon;
+        hpPotion = playerData.hpPotion;
+        staPotion = playerData.staPotion;
+        dmgPotion = playerData.dmgPotion;
+        key = playerData.key;
     }
 }

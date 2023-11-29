@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using UnityEngine;
 
@@ -12,8 +13,8 @@ public class Character : MonoBehaviour
     public float jumpForce;
     public float buffedSpeed;
     public float buffedDmg;
-
-
+    
+    
     protected Animator anim;
     protected AudioSource HitSound;
     protected AudioSource KillSound;
@@ -38,7 +39,6 @@ public class Character : MonoBehaviour
 
     protected GameObject ladder;
     
-
     // Start is called before the first frame update
     virtual protected void Start()
     {
@@ -146,7 +146,8 @@ public class Character : MonoBehaviour
         {
             yield return new WaitForEndOfFrame();
         } while (anim.GetCurrentAnimatorStateInfo(0).normalizedTime < 1.0f);
-        Destroy(gameObject);
+        //Destroy(gameObject);
+        gameObject.SetActive(false);
     }
 
     public void DropItem()

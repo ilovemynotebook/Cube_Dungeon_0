@@ -10,7 +10,9 @@ public class GameManager : MonoBehaviour
 
     public EqupimentDataBase EDB;
 
+    public PlaneSceneManager _PlaneSceneManager;
 
+    public DataManager _DataManager;
 
 
 
@@ -34,5 +36,11 @@ public class GameManager : MonoBehaviour
     void Update()
     {
         
+    }
+
+    void FindPlayer()
+    {
+        Player = transform.Find("Player").gameObject;
+        Debug.Log(Player);
     }
 }
