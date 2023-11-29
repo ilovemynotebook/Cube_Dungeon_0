@@ -14,20 +14,24 @@ public enum BossState
     Skill3,
     Skill4,
     Skill5,
-    Die,
+    CustomSkill,
+    Die = 10,
 }
 
 [Serializable]
 public class SkillPattern
 {
     [Tooltip("스킬 이름")]
-    public string Name;
+    [SerializeField] private string _name;
+    public string Name => _name;
 
     [Tooltip("공격 사거리")]
-    public float AttackDistance;
+    [SerializeField] private float _distance;
+    public float Distance => _distance;
 
     [Tooltip("쿨타임")]
-    public float CoolTime;
+    [SerializeField] private float _coolTime;
+    public float CoolTime => _coolTime;
 
     [Tooltip("피격 범위 관리 클래스")]
     public BossAttackBehaviour AttackTrigger;
@@ -45,22 +49,22 @@ public class BossController : MonoBehaviour
     [Header("능력치")]
 
     [Tooltip("이름")]
-    [SerializeField] private string _name;
+    [SerializeField] protected string _name;
     public string Name => _name;
 
     [Tooltip("체력")]
-    [SerializeField] private int _maxHp;
+    [SerializeField] protected int _maxHp;
 
     [Tooltip("이동 속도")]
-    [SerializeField] private float _speed;
+    [SerializeField] protected float _speed;
     public float Speed => _speed;
 
     [Tooltip("애니메이션 스피드")]
-    [SerializeField] private float _animeSpeed;
+    [SerializeField] protected float _animeSpeed;
     public float AnimeSpeed => _animeSpeed;
 
     [Tooltip("공격력")]
-    [SerializeField] private float _power;
+    [SerializeField] protected float _power;
     public float Power => _power;
 
 //===============================================================================================
@@ -69,15 +73,15 @@ public class BossController : MonoBehaviour
     [Header("AI")]
 
     [Tooltip("공격 패턴 데이터")]
-    [SerializeField] private SkillPattern[] _skillPatterns;
+    [SerializeField] protected SkillPattern[] _skillPatterns;
     public SkillPattern[] SkillPatterns => _skillPatterns;
 
     [Tooltip("AI 패턴 갱신 시간")]
-    [SerializeField] private float _patternUpdateTime;
+    [SerializeField] protected float _patternUpdateTime;
 
     [Tooltip("공격 후 대기 시간")]
-    [SerializeField] private float _waitTime;
-    private float _waitTimer;
+    [SerializeField] protected float _waitTime;
+    protected float _waitTimer;
 
 
 
@@ -182,7 +186,7 @@ public class BossController : MonoBehaviour
 
 
     /// <summary> 현재 사용 가능한 스킬을 배치하는 함수 </summary>
-    public SkillPattern GetUsableSkill()
+    public virtual SkillPattern GetUsableSkill()
     {
         _usableSkillList.Clear();
 
@@ -195,7 +199,7 @@ public class BossController : MonoBehaviour
             }
                 
 
-            if (pattern.AttackDistance < TargetDistance)
+            if (pattern.Distance < TargetDistance)
             {
                 Debug.Log("거리가 멈");
                 continue;
