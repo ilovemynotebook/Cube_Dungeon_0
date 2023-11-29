@@ -33,7 +33,7 @@ MonoBehaviour:
       enemyData:
       - enemy: {fileID: 5187336440594830075, guid: f6b05a2c35c924648ae21503d5d56eb5,
           type: 3}
-        spawnPos: {x: 0, y: 8, z: 0}
+        spawnPos: {x: -6, y: 8, z: 0}
       boxData: []
     - planeType: 0
       planeStyle: 0
