@@ -3,36 +3,14 @@ using System.Collections.Generic;
 using UnityEngine;
 
 
-public class Boss1AI
+public class Boss1AI : BossAI
 {
-    private BehaviorTree _tree;
-
-    private Boss _boss;
-
-    private SkillPattern _currentSkillPattern = new SkillPattern();
-
-
-
-    public Boss1AI(Boss boss)
+    public Boss1AI(BossController boss) : base(boss)
     {
-        _boss = boss;
-        _tree = new BehaviorTree(SettingBT());
     }
-
-
-    public void Update()
-    {
-        StartBT();
-    }
-
-    private void StartBT()
-    {
-        _tree.Operate();
-    }
-
 
     //BehaviorTree에 들어갈 INode들을 설정하여 반환하는 함수
-    private INode SettingBT()
+    protected override INode SettingBT()
     {
         List<INode> nodes = new List<INode>
         {
@@ -134,7 +112,10 @@ public class Boss1AI
     //추적 행동
     private INode.ENodeState Tracking()
     {
-        if (Vector3.Distance(_boss.gameObject.transform.position, _boss.Target.transform.position) > 2)
+        Vector3 bossPos = Vector3.right * _boss.gameObject.transform.position.x;
+        Vector3 targetPos = Vector3.right * _boss.Target.transform.position.x;
+        Debug.Log(Vector3.Distance(bossPos, targetPos));
+        if (Vector3.Distance(bossPos, targetPos) > 3)
         {
             Debug.Log("쫒아간다.");
             _boss.State = BossState.Tracking;

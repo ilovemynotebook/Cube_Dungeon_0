@@ -39,7 +39,7 @@ public class SkillPattern
 
 
 [RequireComponent(typeof(Rigidbody), typeof(Animator))]
-public class Boss : MonoBehaviour
+public class BossController : MonoBehaviour
 {
     [Space(10)]
     [Header("´É·ÂÄ¡")]
@@ -81,15 +81,15 @@ public class Boss : MonoBehaviour
 
 
 
-    private List<SkillPattern> _usableSkillList = new List<SkillPattern>();
+    protected List<SkillPattern> _usableSkillList = new List<SkillPattern>();
 
-    private Boss1AI _ai;
+    protected BossAI _ai;
 
-    private BossStateMachineBehaviour[] _bossStateMachines;
+    protected BossStateMachineBehaviour[] _bossStateMachines;
 
-    private Animator _animator;
+    protected Animator _animator;
 
-    private float _hp;
+    protected float _hp;
 
     [HideInInspector] public Rigidbody Rigidbody;
 

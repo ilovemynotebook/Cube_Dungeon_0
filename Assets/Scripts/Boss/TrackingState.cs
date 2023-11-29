@@ -48,7 +48,6 @@ public class TrackingState : BossStateMachineBehaviour
             Vector3 dir = (_boss.Target.transform.position - _boss.gameObject.transform.position).normalized;
             _dirX = dir.x > 0 ? 1 : dir.x < 0 ? -1 : 0;
             _timer = 0;
-            Debug.Log(_dirX);
         }
 
     }

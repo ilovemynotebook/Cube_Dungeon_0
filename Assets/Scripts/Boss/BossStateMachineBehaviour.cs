@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class BossStateMachineBehaviour : StateMachineBehaviour
 {
-    protected Boss _boss;
-    public void Init(Boss boss)
+    protected BossController _boss;
+    public void Init(BossController boss)
     {
         _boss = boss;
     }

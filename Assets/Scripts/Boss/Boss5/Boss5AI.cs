@@ -3,36 +3,20 @@ using System.Collections.Generic;
 using UnityEngine;
 
 
-public class Boss5AI
+public class Boss5AI : BossAI
 {
-    private BehaviorTree _tree;
+    private Boss5Controller _boss5;
 
-    private Boss _boss;
-
-    private SkillPattern _currentSkillPattern = new SkillPattern();
-
-
-
-    public Boss5AI(Boss boss)
+    public Boss5AI(Boss5Controller boss) : base(boss)
     {
-        _boss = boss;
-        _tree = new BehaviorTree(SettingBT());
+        _boss5 = boss;
     }
 
 
-    public void Update()
-    {
-        StartBT();
-    }
-
-    private void StartBT()
-    {
-        _tree.Operate();
-    }
 
 
     //BehaviorTree에 들어갈 INode들을 설정하여 반환하는 함수
-    private INode SettingBT()
+    protected override INode SettingBT()
     {
         List<INode> nodes = new List<INode>
         {

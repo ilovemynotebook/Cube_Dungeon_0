@@ -2,17 +2,17 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public abstract class Boss
+public abstract class BossAI
 {
-    private BehaviorTree _tree;
+    protected BehaviorTree _tree;
 
-    private Boss _boss;
+    protected BossController _boss;
 
-    private SkillPattern _currentSkillPattern = new SkillPattern();
+    protected SkillPattern _currentSkillPattern = new SkillPattern();
 
 
 
-    public Boss(Boss boss)
+    public BossAI(BossController boss)
     {
         _boss = boss;
         _tree = new BehaviorTree(SettingBT());
