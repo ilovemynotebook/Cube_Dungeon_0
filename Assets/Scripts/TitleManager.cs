@@ -16,7 +16,7 @@ public class TitleManager : MonoBehaviour
     public Button LoadButton;
     public float TitleFadeTime;
     public bool TitleFadeIsIn;
-    [SerializeField]DataManager DataManager;
+    [SerializeField]DataManager dataManager;
     void Awake()
     {
         TitleScreen.gameObject.SetActive(false);
@@ -37,8 +37,8 @@ public class TitleManager : MonoBehaviour
 
     private void Start()
     {
-        DataManager=FindObjectOfType<DataManager>();
-        if (DataManager.FileNotExist == true) { LoadButton.interactable = false;  }
+        dataManager=FindObjectOfType<DataManager>();
+        if (dataManager.FileNotExist == true) { LoadButton.interactable = false;  }
         Invoke("TitleFadeIn", 2);
     }
     private void Update()
@@ -108,16 +108,14 @@ public class TitleManager : MonoBehaviour
 
     void OnButtonStartGame()
     {
-        GameManager.Instance._DataManager.saveData=new SaveData();
-        GameManager.Instance._DataManager.playerData=new PlayerData();
-        GameManager.Instance._DataManager.StageDataChange(GameManager.Instance._DataManager.saveData.thisStage);
+        dataManager.NewCloneData();
+        dataManager.StageDataChange(dataManager.saveData.thisStage);
         SceneManager.LoadScene("LoadingScene");
     }
     void OnButtonLoadGame()
     {
-        GameManager.Instance._DataManager.saveData = new SaveData();
-        GameManager.Instance._DataManager.playerData = new PlayerData();
-        GameManager.Instance._DataManager.DataLoad();
+        dataManager.NewCloneData();
+        dataManager.DataLoad();
         SceneManager.LoadScene("LoadingScene");
     }
 

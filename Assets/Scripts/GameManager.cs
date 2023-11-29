@@ -31,6 +31,7 @@ public class GameManager : MonoBehaviour
         {
             Destroy(gameObject);
         }
+        _DataManager=FindObjectOfType<DataManager>();
     }
 
     void Update()

@@ -34,6 +34,7 @@ public class DataManager : MonoBehaviour
         {
             FileNotExist = false;
         }
+        DontDestroyOnLoad(gameObject);
     }
 
     // Update is called once per frame
@@ -44,13 +45,15 @@ public class DataManager : MonoBehaviour
             DataSave();
         }
 
+        if (GameManager.Instance)
+            GameManager.Instance._DataManager = this;
+
     }
 
 
     public void DataSave()
     {
         player = GameManager.Instance.Player.GetComponent<Player>();
-  
         StageDataGet(saveData);
         PlayerDataGet(player, playerData);
         string Stagejsondata = JsonUtility.ToJson(saveData);
@@ -126,6 +129,12 @@ public class DataManager : MonoBehaviour
         planemanager.planes = saveData.planes.ToArray();
         planemanager.thisStage = saveData.thisStage;
         planemanager.thisPlane = saveData.thisPlane;
+    }
+
+    public void NewCloneData()
+    {
+        saveData=new SaveData();
+        playerData=new PlayerData();
     }
 
 }
