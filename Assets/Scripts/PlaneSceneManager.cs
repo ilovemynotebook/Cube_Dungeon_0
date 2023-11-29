@@ -55,6 +55,7 @@ public class PlaneSceneManager : MonoBehaviour
     {
         GameManager.Instance._PlaneSceneManager= this;
         GameManager.Instance._DataManager.StageDataLoad(GameManager.Instance._DataManager.saveData, this);
+        Player = GameManager.Instance.Player;
     }
     private void Update()
     {

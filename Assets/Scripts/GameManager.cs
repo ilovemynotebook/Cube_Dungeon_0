@@ -10,7 +10,9 @@ public class GameManager : MonoBehaviour
 
     public EqupimentDataBase EDB;
 
+    public PlaneSceneManager _PlaneSceneManager;
 
+    public DataManager _DataManager;
 
 
 
