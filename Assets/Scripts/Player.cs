@@ -316,4 +316,21 @@ public class Player : Character
         base.GetHit(dmg);
         CanvasManager.Instance.hpBar.UpdateValue(hp, mhp);
     }
+    public void GetData(PlayerData playerData)
+    {
+        hp = playerData.hp;
+        mhp = playerData.mhp;
+        sta = playerData.sta;
+        msta = playerData.msta;
+        isUpgraded_Item_0 = playerData.isUpgraded_Item_0;
+        isUpgraded_Item_1 = playerData.isUpgraded_Item_1;
+        isUpgraded_Item_2 = playerData.isUpgraded_Item_2;
+        isUpgraded_Item_3 = playerData.isUpgraded_Item_3;
+        isUpgraded_shield = playerData.isUpgraded_shield;
+        isUpgraded_weapon = playerData.isUpgraded_weapon;
+        hpPotion = playerData.hpPotion;
+        staPotion = playerData.staPotion;
+        dmgPotion = playerData.dmgPotion;
+        key = playerData.key;
+    }
 }
