@@ -34,7 +34,8 @@ public class BossSkillStateMachine : BossStateMachineBehaviour
     public override void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
         base.OnStateEnter(animator, stateInfo, layerIndex);
-
+        float animeLength = stateInfo.length;
+        _boss.AddWaingTimer(animeLength);
         _clip = animator.GetCurrentAnimatorClipInfo(layerIndex)[0].clip;
     }
 

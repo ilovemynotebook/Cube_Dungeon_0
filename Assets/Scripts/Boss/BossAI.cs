@@ -36,6 +36,7 @@ public class BossAI
     {
         List<INode> nodes = new List<INode>
         {
+            new ActionNode(IsDie),
             SecondNode(),
             new ActionNode(Waiting)
         };
@@ -54,6 +55,18 @@ public class BossAI
         };
 
         return new SelectorNode(nodes);
+    }
+
+
+    private INode.ENodeState IsDie()
+    {
+        Debug.Log("죽었니 살았니");
+        if(_boss.Hp <= 0)
+            return INode.ENodeState.Success;
+
+        Debug.Log("살았다");
+        return INode.ENodeState.Failure;
+
     }
 
 
@@ -92,9 +105,10 @@ public class BossAI
     //공격 행동 노드
     private INode.ENodeState StartAttack()
     {
-        Debug.Log("공격");
+
         if (!(_boss.State >= BossState.Skill1 && _boss.State <= BossState.Skill4))
         {
+            Debug.Log("공격");
             _boss.State = _currentSkillPattern.SkillState;
             _currentSkillPattern.CurrentCoolTime = _currentSkillPattern.CoolTime;
             _boss.SetWaingTimer();

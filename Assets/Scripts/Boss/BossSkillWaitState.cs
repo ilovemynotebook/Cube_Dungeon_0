@@ -8,6 +8,8 @@ public class BossSkillWaitState : BossStateMachineBehaviour
     public override void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
         base.OnStateEnter(animator, stateInfo, layerIndex);
+        float animeLength = stateInfo.length;
+        _boss.AddWaingTimer(animeLength);
         _canUpdateRunning = true;
     }
 

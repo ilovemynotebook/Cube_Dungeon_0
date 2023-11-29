@@ -88,18 +88,21 @@ public class Boss : MonoBehaviour
 
     private Animator _animator;
 
-    private Rigidbody _rigidBody;
+    private float _hp;
 
-    private int _hp;
+    public Rigidbody Rigidbody;
 
     public BossState State;
 
     public GameObject Target;
 
+    public event Action OnGetHitHandler;
+    public event Action OnDeathEventHandler;
+
 
     public float TargetDistance { get { return Vector3.Distance(Target.transform.position, gameObject.transform.position); } }
 
-    public int Hp => _hp;
+    public float Hp => _hp;
 
     protected void Awake()
     {
@@ -109,6 +112,7 @@ public class Boss : MonoBehaviour
 
     protected void Start()
     {
+        SetWaingTimer();
         InvokeRepeating("AIUpdate", _patternUpdateTime, _patternUpdateTime);
     }
 
@@ -126,7 +130,7 @@ public class Boss : MonoBehaviour
     {
         _animator = GetComponent<Animator>();
         _bossStateMachines = _animator.GetBehaviours<BossStateMachineBehaviour>();
-        _rigidBody = GetComponent<Rigidbody>();
+        Rigidbody = GetComponent<Rigidbody>();
         _ai = new BossAI(this);
 
         foreach (BossStateMachineBehaviour bossStateMachine in _bossStateMachines)
@@ -141,6 +145,19 @@ public class Boss : MonoBehaviour
 
             _skillPatterns[i].SkillState = BossState.Skill1 + i;
         }
+    }
+
+    public void GetHit(float dmg)
+    {
+        _hp -= dmg;
+        _hp = Mathf.Clamp(_hp, 0, _maxHp);
+
+        if (_hp <= 0)
+            OnGetHitHandler?.Invoke();
+        else
+            OnGetHitHandler?.Invoke();
+
+        //anim.Play("Hit", 0, 0f);
     }
 
 
@@ -210,5 +227,10 @@ public class Boss : MonoBehaviour
     public void SetWaingTimer()
     {
         _waitTimer = _waitTime;
+    }
+
+    public void AddWaingTimer(float value)
+    {
+        _waitTimer += value;
     }
 }
