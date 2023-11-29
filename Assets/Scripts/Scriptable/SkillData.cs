@@ -42,7 +42,7 @@ public class SkillData :MonoBehaviour
     {
         if(player == null)
         {
-            player = GameManager.Instance._Player?.GetComponent<Player>();
+            player = GameManager.Instance.Player?.GetComponent<Player>();
         }
     }
 

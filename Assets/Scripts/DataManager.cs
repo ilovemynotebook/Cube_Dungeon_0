@@ -49,7 +49,7 @@ public class DataManager : MonoBehaviour
 
     public void DataSave()
     {
-        player = GameManager.Instance._Player.GetComponent<Player>();
+        player = GameManager.Instance.Player.GetComponent<Player>();
   
         StageDataGet(saveData);
         PlayerDataGet(player, playerData);
