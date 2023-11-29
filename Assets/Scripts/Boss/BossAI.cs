@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 
-public class Boss1AI
+public class BossAI
 {
     private BehaviorTree _tree;
 
@@ -13,7 +13,7 @@ public class Boss1AI
 
 
 
-    public Boss1AI(Boss boss)
+    public BossAI(Boss boss)
     {
         _boss = boss;
         _tree = new BehaviorTree(SettingBT());
@@ -36,7 +36,6 @@ public class Boss1AI
     {
         List<INode> nodes = new List<INode>
         {
-            new ActionNode(IsDie),
             SecondNode(),
             new ActionNode(Waiting)
         };
@@ -55,18 +54,6 @@ public class Boss1AI
         };
 
         return new SelectorNode(nodes);
-    }
-
-
-    private INode.ENodeState IsDie()
-    {
-        Debug.Log("죽었니 살았니");
-        if(_boss.Hp <= 0)
-            return INode.ENodeState.Success;
-
-        Debug.Log("살았다");
-        return INode.ENodeState.Failure;
-
     }
 
 
@@ -105,15 +92,10 @@ public class Boss1AI
     //공격 행동 노드
     private INode.ENodeState StartAttack()
     {
-
-        if (!(_boss.State >= BossState.Skill1 && _boss.State <= BossState.Skill4))
-        {
-            Debug.Log("공격");
-            _boss.State = _currentSkillPattern.SkillState;
-            _currentSkillPattern.CurrentCoolTime = _currentSkillPattern.CoolTime;
-            _boss.SetWaingTimer();
-        }
-
+        Debug.Log("공격");
+        _boss.State = _currentSkillPattern.SkillState;
+        _currentSkillPattern.CurrentCoolTime = _currentSkillPattern.CoolTime;
+        _boss.SetWaingTimer();
         return INode.ENodeState.Running;
     }
 
@@ -147,16 +129,9 @@ public class Boss1AI
 
     private INode.ENodeState Waiting()
     {
-        
-        if(_boss.State >= BossState.Skill1 && _boss.State <= BossState.Skill4)
-        {
-            Debug.Log("대기중 입니다.");
-            _boss.State = BossState.Idle;
-            return INode.ENodeState.Running;
-        }
-        Debug.Log("공격중 입니다.");
-        return INode.ENodeState.Failure;
-
+        Debug.Log("대기중 입니다.");
+        _boss.State = BossState.Idle;
+        return INode.ENodeState.Running;
     }
 
 }
