@@ -5,7 +5,7 @@ using UnityEngine;
 public abstract class BossAttackBehaviour : MonoBehaviour
 {
 
-    [SerializeField] protected Boss _boss;
+    [SerializeField] protected BossController _boss;
 
 
     [Tooltip("공격력 배수")]

@@ -12,6 +12,9 @@ public enum BossState
     Skill1,
     Skill2,
     Skill3,
+    Skill4,
+    Skill5,
+    Die,
 }
 
 [Serializable]
@@ -36,7 +39,7 @@ public class SkillPattern
 
 
 [RequireComponent(typeof(Rigidbody), typeof(Animator))]
-public class Boss : MonoBehaviour
+public class BossController : MonoBehaviour
 {
     [Space(10)]
     [Header("능력치")]
@@ -51,6 +54,10 @@ public class Boss : MonoBehaviour
     [Tooltip("이동 속도")]
     [SerializeField] private float _speed;
     public float Speed => _speed;
+
+    [Tooltip("애니메이션 스피드")]
+    [SerializeField] private float _animeSpeed;
+    public float AnimeSpeed => _animeSpeed;
 
     [Tooltip("공격력")]
     [SerializeField] private float _power;
@@ -74,53 +81,58 @@ public class Boss : MonoBehaviour
 
 
 
-    private List<SkillPattern> _usableSkillList = new List<SkillPattern>();
+    protected List<SkillPattern> _usableSkillList = new List<SkillPattern>();
 
-    private BossAI _ai;
+    protected BossAI _ai;
 
-    private BossStateMachineBehaviour[] _bossStateMachines;
+    protected BossStateMachineBehaviour[] _bossStateMachines;
 
-    private Animator _animator;
+    protected Animator _animator;
 
-    private Rigidbody _rigidBody;
+    protected float _hp;
 
-    private int _hp;
+    [HideInInspector] public Rigidbody Rigidbody;
 
     public BossState State;
 
     public GameObject Target;
 
+    public event Action OnGetHitHandler;
+    public event Action OnDeathEventHandler;
+
 
     public float TargetDistance { get { return Vector3.Distance(Target.transform.position, gameObject.transform.position); } }
 
-    public int Hp => _hp;
+    public float Hp => _hp;
 
-    protected void Awake()
+    protected virtual void Awake()
     {
         Init();
     }
 
 
-    protected void Start()
+    protected virtual void Start()
     {
+        SetWaingTimer();
         InvokeRepeating("AIUpdate", _patternUpdateTime, _patternUpdateTime);
     }
 
 
-    protected void Update()
+    protected virtual void Update()
     {
         _animator.SetInteger("State", (int)State);
+        _animator.SetFloat("AnimeSpeed", AnimeSpeed);
         SkillCoolTimeUpdate();
         UpdateWaitTimer();
     }
 
 
-    private void Init()
+    protected virtual void Init()
     {
         _animator = GetComponent<Animator>();
         _bossStateMachines = _animator.GetBehaviours<BossStateMachineBehaviour>();
-        _rigidBody = GetComponent<Rigidbody>();
-        _ai = new BossAI(this);
+        Rigidbody = GetComponent<Rigidbody>();
+        _ai = new Boss1AI(this);
 
         foreach (BossStateMachineBehaviour bossStateMachine in _bossStateMachines)
         {
@@ -129,11 +141,26 @@ public class Boss : MonoBehaviour
 
         for (int i = 0; i < _skillPatterns.Length; i++)
         {
-            if (i == 3)
+            if (i == 5)
                 break;
 
             _skillPatterns[i].SkillState = BossState.Skill1 + i;
         }
+
+        _hp = _maxHp;
+    }
+
+    public void GetHit(float dmg)
+    {
+        _hp -= dmg;
+        _hp = Mathf.Clamp(_hp, 0, _maxHp);
+
+        if (_hp <= 0)
+            OnGetHitHandler?.Invoke();
+        else
+            OnGetHitHandler?.Invoke();
+
+        //anim.Play("Hit", 0, 0f);
     }
 
 
@@ -203,5 +230,10 @@ public class Boss : MonoBehaviour
     public void SetWaingTimer()
     {
         _waitTimer = _waitTime;
+    }
+
+    public void AddWaingTimer(float value)
+    {
+        _waitTimer += value;
     }
 }
