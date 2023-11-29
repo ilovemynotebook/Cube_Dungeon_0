@@ -25,6 +25,7 @@ public class PlaneSceneManager : MonoBehaviour
     public int thisStage; //현재 스테이지
     public int thisPlane; // 현재 면
     public CinemachineVirtualCamera VirtualCamera;
+    
     //EStageType ThisStageType;
     //EStageStyle ThisStageStyle;
     //[SerializeField]Enemy[] SummonedEnemy;
@@ -67,6 +68,7 @@ public class PlaneSceneManager : MonoBehaviour
         //VirtualCamera = Instantiate(VirtualCamera);
         VirtualCamera.Follow = Player.transform;
         VirtualCamera.LookAt = Player.transform;
+      
     }
     public void PlaneUp()
     {
@@ -142,10 +144,10 @@ public class PlaneSceneManager : MonoBehaviour
         Fade();
         //Clear();
         MapPrefab = Instantiate(planes[thisPlane - 1].prefab);
-        if (Player == null)
-        {
-            SpawnPlayer();
-        }
+        //if (Player == null)
+        //{
+        //    SpawnPlayer();
+        //}
         MonsterSpawn(planes[thisPlane - 1]);
         BoxSpawn(planes[thisPlane - 1]);
         Player.transform.position = planes[thisPlane - 1].playerStartPoint;

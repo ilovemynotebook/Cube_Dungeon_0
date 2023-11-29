@@ -16,7 +16,7 @@ public class StageManager : MonoBehaviour
         dataManager = GameManager.Instance._DataManager;
         PlaneSceneManager.Instance.StageSet(dataManager.saveData.planes);
         PlaneSceneManager.Instance.CreateMap();
-        Player player = FindObjectOfType<Player>();
-        dataManager.PlayerDataLoad(dataManager.playerData,player);
+        //Player player = FindObjectOfType<Player>();
+        //dataManager.PlayerDataLoad(dataManager.playerData,player);
     }
 }

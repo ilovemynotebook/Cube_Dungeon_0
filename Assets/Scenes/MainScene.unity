@@ -810,10 +810,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d85d678b5e8690d4c9c53f0a846885a0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _Player: {fileID: 0}
+  Player: {fileID: 0}
+  EDB: {fileID: 11400000, guid: 7c6c6728beff4914da7ba1ad16eec140, type: 2}
   _PlaneSceneManager: {fileID: 0}
   _DataManager: {fileID: 1529998381}
-  EDB: {fileID: 11400000, guid: 7c6c6728beff4914da7ba1ad16eec140, type: 2}
 --- !u!4 &297193218
 Transform:
   m_ObjectHideFlags: 0
