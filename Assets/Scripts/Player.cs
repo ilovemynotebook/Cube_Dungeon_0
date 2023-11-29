@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UIElements;
-using static UnityEditor.Experimental.GraphView.GraphView;
 
 public class Player : Character
 {
@@ -319,4 +318,3 @@ public class Player : Character
         CanvasManager.Instance.hpBar.UpdateValue(hp, mhp);
     }
 }
-
