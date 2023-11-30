@@ -1,17 +1,18 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using System.Linq;
+using UnityEditor;
 using UnityEngine;
 
+
 [Serializable]
-public class ShockwaveData
+public class ProjectileData
 {
     [Tooltip("소환 오브젝트 프리팹")]
-    [SerializeField] private Shockwave _shockwavePrefab;
-    public Shockwave ShockwavePrefab => _shockwavePrefab;
+    [SerializeField] private Projectile _projectilePrefab;
+    public Projectile ProjectilePrefab => _projectilePrefab;
 
-    [Tooltip("충격파 소환 위치(보스 기준)")]
+    [Tooltip("투사체 소환 위치(보스 기준)")]
     [SerializeField] private Vector3 _spawnPos;
     public Vector3 SpawnPos => _spawnPos;
 
@@ -20,21 +21,18 @@ public class ShockwaveData
     public float SpawnTime => _spawnTime;
 }
 
-public class Boss1Skill2 : BossAttackBehaviour
+
+public class BossProjectileSkill: BossAttackBehaviour 
 {
-
-    [SerializeField] private ShockwaveData[] _shockwaveDatas;
-
+    [SerializeField] private ProjectileData[] _projectileDatas; 
 
     public override void SkillStart()
     {
-        foreach(ShockwaveData data in _shockwaveDatas)
+        foreach (ProjectileData data in _projectileDatas)
         {
             StartCoroutine(Spawn(data));
         }
-        
     }
-
 
     public override void SkillEnd()
     {
@@ -42,29 +40,31 @@ public class Boss1Skill2 : BossAttackBehaviour
     }
 
 
-    private IEnumerator Spawn(ShockwaveData data)
+    private IEnumerator Spawn(ProjectileData data)
     {
         float timer = 0;
         float endTime = data.SpawnTime + 0.1f;
 
-        while(timer < endTime)
+        while (timer < endTime)
         {
             timer += Time.deltaTime;
             yield return null;
         }
 
-        SpawnShockwave(data);
+        SpawnProjectile(data);
     }
 
-    private void SpawnShockwave(ShockwaveData data)
+    private void SpawnProjectile(ProjectileData data)
     {
         Vector3 dir = (_boss.Target.transform.position - _boss.gameObject.transform.position).normalized;
         int dirX = dir.x > 0 ? 1 : dir.x < 0 ? -1 : 0;
 
         Vector3 dataSpawnPos = new Vector3(data.SpawnPos.x * dirX, data.SpawnPos.y, data.SpawnPos.z);
         Vector3 spawnPos = transform.position + dataSpawnPos;
-        Shockwave shockwave = Instantiate(data.ShockwavePrefab, spawnPos, Quaternion.identity);
-        shockwave.SetPower(_boss.Power * _powerMul);
-       
+
+
+        Projectile projectile = Instantiate(data.ProjectilePrefab, spawnPos, Quaternion.identity);
+        projectile.SetPower(_boss, _boss.Power * _powerMul, dirX);
+
     }
 }

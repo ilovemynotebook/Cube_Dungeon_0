@@ -14,7 +14,7 @@ public class Shockwave : MonoBehaviour
 
     private void Start()
     {
-        Destroy(gameObject, 2);
+        Destroy(gameObject, 0.5f);
     }
 
 
