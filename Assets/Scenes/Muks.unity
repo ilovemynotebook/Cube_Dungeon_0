@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18028352, g: 0.22571376, b: 0.3069224, a: 1}
+  m_IndirectSpecularColor: {r: 0, g: 0, b: 0, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -241,6 +241,18 @@ MonoBehaviour:
   m_LightCookieSize: {x: 1, y: 1}
   m_LightCookieOffset: {x: 0, y: 0}
   m_SoftShadowQuality: 0
+--- !u!114 &81440414 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2767063101530528927, guid: 808c651379d59844da320e414c1afe85,
+    type: 3}
+  m_PrefabInstance: {fileID: 8249934186194145962}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d86309da3520fcf4e9ee279789e08fe6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &382045860 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 3404591163487662841, guid: 808c651379d59844da320e414c1afe85,
@@ -1037,8 +1049,28 @@ PrefabInstance:
       objectReference: {fileID: 1418966891}
     - target: {fileID: 3404591163487662841, guid: 808c651379d59844da320e414c1afe85,
         type: 3}
+      propertyPath: _maxHp
+      value: 1000
+      objectReference: {fileID: 0}
+    - target: {fileID: 3404591163487662841, guid: 808c651379d59844da320e414c1afe85,
+        type: 3}
+      propertyPath: _waitTime
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3404591163487662841, guid: 808c651379d59844da320e414c1afe85,
+        type: 3}
+      propertyPath: _animeSpeed
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3404591163487662841, guid: 808c651379d59844da320e414c1afe85,
+        type: 3}
       propertyPath: _targetAccessTime
       value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 3404591163487662841, guid: 808c651379d59844da320e414c1afe85,
+        type: 3}
+      propertyPath: _patternUpdateTime
+      value: 0.1
       objectReference: {fileID: 0}
     - target: {fileID: 3404591163487662841, guid: 808c651379d59844da320e414c1afe85,
         type: 3}
@@ -1053,7 +1085,7 @@ PrefabInstance:
     - target: {fileID: 3404591163487662841, guid: 808c651379d59844da320e414c1afe85,
         type: 3}
       propertyPath: _skillPatterns.Array.size
-      value: 4
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 3404591163487662841, guid: 808c651379d59844da320e414c1afe85,
         type: 3}
@@ -1082,6 +1114,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3404591163487662841, guid: 808c651379d59844da320e414c1afe85,
         type: 3}
+      propertyPath: _skillPatterns.Array.data[4]._name
+      value: "\uD22C\uC0AC\uCCB4 \uC5F0\uC18D \uBC1C\uC0AC"
+      objectReference: {fileID: 0}
+    - target: {fileID: 3404591163487662841, guid: 808c651379d59844da320e414c1afe85,
+        type: 3}
       propertyPath: _skillPatterns.Array.data[0]._coolTime
       value: 1
       objectReference: {fileID: 0}
@@ -1093,27 +1130,27 @@ PrefabInstance:
     - target: {fileID: 3404591163487662841, guid: 808c651379d59844da320e414c1afe85,
         type: 3}
       propertyPath: _skillPatterns.Array.data[1]._coolTime
-      value: 10
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 3404591163487662841, guid: 808c651379d59844da320e414c1afe85,
         type: 3}
       propertyPath: _skillPatterns.Array.data[1]._distance
-      value: 20
-      objectReference: {fileID: 0}
-    - target: {fileID: 3404591163487662841, guid: 808c651379d59844da320e414c1afe85,
-        type: 3}
-      propertyPath: _skillPatterns.Array.data[2]._coolTime
-      value: 20
-      objectReference: {fileID: 0}
-    - target: {fileID: 3404591163487662841, guid: 808c651379d59844da320e414c1afe85,
-        type: 3}
-      propertyPath: _skillPatterns.Array.data[2]._distance
       value: 30
       objectReference: {fileID: 0}
     - target: {fileID: 3404591163487662841, guid: 808c651379d59844da320e414c1afe85,
         type: 3}
+      propertyPath: _skillPatterns.Array.data[2]._coolTime
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 3404591163487662841, guid: 808c651379d59844da320e414c1afe85,
+        type: 3}
+      propertyPath: _skillPatterns.Array.data[2]._distance
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 3404591163487662841, guid: 808c651379d59844da320e414c1afe85,
+        type: 3}
       propertyPath: _skillPatterns.Array.data[3]._coolTime
-      value: 1
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 3404591163487662841, guid: 808c651379d59844da320e414c1afe85,
         type: 3}
@@ -1122,9 +1159,29 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3404591163487662841, guid: 808c651379d59844da320e414c1afe85,
         type: 3}
+      propertyPath: _skillPatterns.Array.data[4]._coolTime
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3404591163487662841, guid: 808c651379d59844da320e414c1afe85,
+        type: 3}
+      propertyPath: _skillPatterns.Array.data[4]._distance
+      value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 3404591163487662841, guid: 808c651379d59844da320e414c1afe85,
+        type: 3}
+      propertyPath: _skillPatterns.Array.data[2].AttackTrigger
+      value: 
+      objectReference: {fileID: 81440414}
+    - target: {fileID: 3404591163487662841, guid: 808c651379d59844da320e414c1afe85,
+        type: 3}
       propertyPath: _skillPatterns.Array.data[3].AttackTrigger
       value: 
       objectReference: {fileID: 530996016}
+    - target: {fileID: 3404591163487662841, guid: 808c651379d59844da320e414c1afe85,
+        type: 3}
+      propertyPath: _skillPatterns.Array.data[4].AttackTrigger
+      value: 
+      objectReference: {fileID: 81440414}
     - target: {fileID: 5639124139058038057, guid: 808c651379d59844da320e414c1afe85,
         type: 3}
       propertyPath: m_Name
