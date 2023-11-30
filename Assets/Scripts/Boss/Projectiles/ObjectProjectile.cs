@@ -4,18 +4,24 @@ using UnityEngine;
 
 public class ObjectProjectile : Projectile
 {
-
+    private int dirX;
 
     protected override void Start()
     {
         base.Start();
-        transform.position = _boss.Target.transform.position;
+        Vector3 dir = (transform.position - _boss.gameObject.transform.position).normalized;
+        dirX = dir.x > 0 ? 1 : dir.x < 0 ? -1 : 0;
 
+        transform.position = _boss.Target.transform.position;
+        transform.position += new Vector3(10 * dirX, 20, 0);
+
+        transform.LookAt(_boss.Target.transform);
+        transform.Rotate(new Vector3(90 * dirX, 0, 0));
     }
 
     private void FixedUpdate()
     {
-        Vector3 movePos = new Vector3(_speed * _dir * Time.deltaTime, 0, 0);
+        Vector3 movePos = dirX * transform.up * Time.deltaTime * _speed;
         _rigidBody.MovePosition(transform.position + movePos);
     }
 
@@ -24,7 +30,6 @@ public class ObjectProjectile : Projectile
         if (other.TryGetComponent(out Character character))
         {
             character.GetHit(_power);
-            Destroy(gameObject);
         }
 
         else if(other.tag == "Ground")

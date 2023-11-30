@@ -59,7 +59,7 @@ public class BossWaitProjectileSkill : BossAttackBehaviour
 
     public IEnumerator RotateParent()
     {
-        while (true)
+        while (_parent != null)
         {
             _parent.transform.Rotate(new Vector3(360, 0, 0) * (Time.deltaTime / _waitTime));
             yield return null;
