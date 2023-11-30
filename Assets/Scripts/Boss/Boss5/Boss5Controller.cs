@@ -16,9 +16,15 @@ public class Boss5Controller : BossController
     [Tooltip("플레이어가 얼마나 접근하면 텔레포트를 할까?")]
     [SerializeField] private float _targetAccessDistance;
 
+    [Tooltip("텔레포트할 위치")]
+    [SerializeField] private Transform[] _teleportPos;
+    public Transform[] TeleportPos => _teleportPos;
+
     private float _targetAccessTimer;
     private float _teleportTimer;
     private bool _canTeleport;
+
+    public int _posIndex;
 
     protected override void Update()
     {
@@ -86,7 +92,6 @@ public class Boss5Controller : BossController
 
         if (_canTeleport)
         {
-
             _teleportTimer = 0;
             _canTeleport = false;
             return _teleportClass;
