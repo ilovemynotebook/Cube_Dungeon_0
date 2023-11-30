@@ -2,8 +2,16 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class NomalProjectile : Projectile
+public class ObjectProjectile : Projectile
 {
+
+
+    protected override void Start()
+    {
+        base.Start();
+        transform.position = _boss.Target.transform.position;
+
+    }
 
     private void FixedUpdate()
     {
