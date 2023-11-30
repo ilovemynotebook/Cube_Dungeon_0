@@ -60,10 +60,7 @@ public class Player : Character
     public float shieldProtect = 2; // shiledStaminaCost/shieldProtect = cost
 
     public static Player _player;
-    private void Awake()
-    {
-        GameManager.Instance.Player = this.gameObject;
-    }
+  
     override protected void Start()
     {
         if(_player == null)
@@ -77,7 +74,7 @@ public class Player : Character
         buffs = new Buffs[2];
         SkillInit();
         base.Start();
-
+        GameManager.Instance.Player = this.gameObject;
         DontDestroyOnLoad(this.gameObject);
 
     }
