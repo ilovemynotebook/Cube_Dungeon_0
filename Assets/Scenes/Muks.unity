@@ -241,18 +241,6 @@ MonoBehaviour:
   m_LightCookieSize: {x: 1, y: 1}
   m_LightCookieOffset: {x: 0, y: 0}
   m_SoftShadowQuality: 0
---- !u!114 &52008478 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 2767063101530528927, guid: 808c651379d59844da320e414c1afe85,
-    type: 3}
-  m_PrefabInstance: {fileID: 8249934186194145962}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d86309da3520fcf4e9ee279789e08fe6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &382045860 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 3404591163487662841, guid: 808c651379d59844da320e414c1afe85,
@@ -349,7 +337,7 @@ MonoBehaviour:
   _boss: {fileID: 382045860}
   _powerMul: 2
   _projectileDatas:
-  - _projectilePrefab: {fileID: -1405334022261893738, guid: 0031c5d2909d7584bbe5cd06f3eff41c,
+  - _projectilePrefab: {fileID: 4496176101546860032, guid: ee105333dba170a4b96af3419f01729b,
       type: 3}
     _spawnPos: {x: 5, y: 1.7, z: 0}
     _spawnTime: 0
@@ -808,7 +796,7 @@ GameObject:
   - component: {fileID: 1878801327}
   m_Layer: 0
   m_Name: Plane
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1090,7 +1078,7 @@ PrefabInstance:
     - target: {fileID: 3404591163487662841, guid: 808c651379d59844da320e414c1afe85,
         type: 3}
       propertyPath: _skillPatterns.Array.data[3]._name
-      value: "\uD22C\uC0AC\uCCB4 \uC5F0\uC18D \uBC1C\uC0AC"
+      value: "\uC5F4\uCC28 \uC18C\uD658"
       objectReference: {fileID: 0}
     - target: {fileID: 3404591163487662841, guid: 808c651379d59844da320e414c1afe85,
         type: 3}
@@ -1125,18 +1113,18 @@ PrefabInstance:
     - target: {fileID: 3404591163487662841, guid: 808c651379d59844da320e414c1afe85,
         type: 3}
       propertyPath: _skillPatterns.Array.data[3]._coolTime
-      value: 20
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3404591163487662841, guid: 808c651379d59844da320e414c1afe85,
         type: 3}
       propertyPath: _skillPatterns.Array.data[3]._distance
-      value: 30
+      value: 9999
       objectReference: {fileID: 0}
     - target: {fileID: 3404591163487662841, guid: 808c651379d59844da320e414c1afe85,
         type: 3}
       propertyPath: _skillPatterns.Array.data[3].AttackTrigger
       value: 
-      objectReference: {fileID: 52008478}
+      objectReference: {fileID: 530996016}
     - target: {fileID: 5639124139058038057, guid: 808c651379d59844da320e414c1afe85,
         type: 3}
       propertyPath: m_Name
