@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 
-public abstract class BossAIs
+public abstract class BossAI
 {
     protected BehaviorTree _tree;
 
@@ -13,7 +13,7 @@ public abstract class BossAIs
 
 
 
-    public BossAIs(BossController boss)
+    public BossAI(BossController boss)
     {
         _boss = boss;
         _tree = new BehaviorTree(SettingBT());
