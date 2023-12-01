@@ -18,5 +18,11 @@ public class NomalProjectile : Projectile
             character.GetHit(_power);
             Destroy(gameObject);
         }
+
+        else if(other.tag == "Ground")
+        {
+            Destroy(gameObject);
+        }
+
     }
 }

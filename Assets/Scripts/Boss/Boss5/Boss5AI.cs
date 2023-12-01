@@ -45,7 +45,7 @@ public class Boss5AI : BossAI
     private INode.ENodeState IsDie()
     {
         Debug.Log("죽었니 살았니");
-        if(_boss.Hp <= 0)
+        if(_boss5.Hp <= 0)
             return INode.ENodeState.Success;
 
         Debug.Log("살았다");
@@ -78,7 +78,7 @@ public class Boss5AI : BossAI
     //공격 체크 노드
     private INode.ENodeState CheckAttackDistance()
     {
-        _currentSkillPattern = _boss.GetUsableSkill();
+        _currentSkillPattern = _boss5.GetUsableSkill();
         if (_currentSkillPattern != default && _currentSkillPattern != null)
             return INode.ENodeState.Success;
 
@@ -90,12 +90,12 @@ public class Boss5AI : BossAI
     private INode.ENodeState StartAttack()
     {
 
-        if (!(_boss.State >= BossState.Skill1 && _boss.State <= BossState.Skill4))
+        if (!(_boss5.State >= BossState.Skill1 && _boss5.State <= BossState.CustomSkill))
         {
             Debug.Log("공격");
-            _boss.State = _currentSkillPattern.SkillState;
+            _boss5.State = _currentSkillPattern.SkillState;
             _currentSkillPattern.CurrentCoolTime = _currentSkillPattern.CoolTime;
-            _boss.SetWaingTimer();
+            _boss5.SetWaingTimer();
         }
 
         return INode.ENodeState.Running;
@@ -118,10 +118,10 @@ public class Boss5AI : BossAI
     //추적 행동
     private INode.ENodeState Tracking()
     {
-        if (Vector3.Distance(_boss.gameObject.transform.position, _boss.Target.transform.position) > 2)
+        if (Vector3.Distance(_boss5.gameObject.transform.position, _boss5.Target.transform.position) > 2)
         {
             Debug.Log("쫒아간다.");
-            _boss.State = BossState.Tracking;
+            _boss5.State = BossState.Tracking;
             return INode.ENodeState.Running;
 
         }
@@ -132,10 +132,10 @@ public class Boss5AI : BossAI
     private INode.ENodeState Waiting()
     {
         
-        if(_boss.State >= BossState.Skill1 && _boss.State <= BossState.Skill4)
+        if(_boss5.State >= BossState.Skill1 && _boss5.State <= BossState.CustomSkill)
         {
             Debug.Log("대기중 입니다.");
-            _boss.State = BossState.Idle;
+            _boss5.State = BossState.Idle;
             return INode.ENodeState.Running;
         }
         Debug.Log("공격중 입니다.");

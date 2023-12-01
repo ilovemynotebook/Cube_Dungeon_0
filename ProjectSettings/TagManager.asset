@@ -7,6 +7,8 @@ TagManager:
   - Enemy
   - PlayerHitBox
   - Ladder
+  - Portal
+  - Ground
   layers:
   - Default
   - TransparentFX

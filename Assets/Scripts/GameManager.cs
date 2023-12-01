@@ -10,7 +10,9 @@ public class GameManager : MonoBehaviour
 
     public EqupimentDataBase EDB;
 
+    public PlaneSceneManager _PlaneSceneManager;
 
+    public DataManager _DataManager;
 
 
 
@@ -29,6 +31,7 @@ public class GameManager : MonoBehaviour
         {
             Destroy(gameObject);
         }
+        _DataManager=FindObjectOfType<DataManager>();
     }
 
     void Update()

@@ -84,7 +84,7 @@ public class Boss1AI : BossAI
     private INode.ENodeState StartAttack()
     {
 
-        if (!(_boss.State >= BossState.Skill1 && _boss.State <= BossState.Skill4))
+        if (!(_boss.State >= BossState.Skill1 && _boss.State <= BossState.CustomSkill))
         {
             Debug.Log("공격");
             _boss.State = _currentSkillPattern.SkillState;
@@ -129,7 +129,7 @@ public class Boss1AI : BossAI
     private INode.ENodeState Waiting()
     {
         
-        if(_boss.State >= BossState.Skill1 && _boss.State <= BossState.Skill4)
+        if(_boss.State >= BossState.Skill1 && _boss.State <= BossState.CustomSkill)
         {
             Debug.Log("대기중 입니다.");
             _boss.State = BossState.Idle;

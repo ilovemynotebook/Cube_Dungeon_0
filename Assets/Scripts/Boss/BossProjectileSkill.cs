@@ -36,7 +36,7 @@ public class BossProjectileSkill: BossAttackBehaviour
 
     public override void SkillEnd()
     {
-        throw new System.NotImplementedException();
+
     }
 
 

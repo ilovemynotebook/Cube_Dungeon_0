@@ -1,0 +1,49 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 27992da63346cff499884a4035314c5c, type: 3}
+  m_Name: Stage2
+  m_EditorClassIdentifier: 
+  stages:
+    CubePlanes:
+    - planeType: 0
+      planeStyle: 0
+      prefab: {fileID: 4287543710475442010, guid: f36f0d095bc73764d80828f9b7c5ffca,
+        type: 3}
+      playerStartPoint: {x: 0, y: 8, z: 0}
+      enemyData:
+      - enemy: {fileID: 5187336440594830075, guid: f6b05a2c35c924648ae21503d5d56eb5,
+          type: 3}
+        spawnPos: {x: 0, y: 8, z: 0}
+      boxData:
+      - box: {fileID: 7323366475307602835, guid: 5de223a9dc784914583b1126805c5af7,
+          type: 3}
+        spawnPos: {x: -10, y: 8, z: 0}
+        isOpen: 0
+    - planeType: 0
+      planeStyle: 0
+      prefab: {fileID: 4287543710475442010, guid: f36f0d095bc73764d80828f9b7c5ffca,
+        type: 3}
+      playerStartPoint: {x: 0, y: 8, z: 0}
+      enemyData: []
+      boxData: []
+    - planeType: 0
+      planeStyle: 0
+      prefab: {fileID: 0}
+      playerStartPoint: {x: 0, y: 0, z: 0}
+      enemyData: []
+      boxData: []
+    - planeType: 0
+      planeStyle: 0
+      prefab: {fileID: 0}
+      playerStartPoint: {x: 0, y: 0, z: 0}
+      enemyData: []
+      boxData: []
