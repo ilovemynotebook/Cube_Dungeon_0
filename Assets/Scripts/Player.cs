@@ -11,6 +11,7 @@ public class Player : Character
     public bool canAttack = true;
     public bool canShield = true;
     public bool canJump = true;
+    public bool canRun = true;
     public bool isHoldingShield = false;
 
     public float sta;
@@ -194,7 +195,7 @@ public class Player : Character
         {
             Debug.Log(Input.GetAxisRaw("player run"));
             direction = Input.GetAxisRaw("Horizontal");
-            if (Input.GetAxisRaw("player run") > 0) {
+            if (Input.GetAxisRaw("player run") > 0 && canRun) {
                 
                 Run(direction); 
             }
@@ -237,9 +238,11 @@ public class Player : Character
     {
         if (!canAttack || attackCoroutine != null) return;
 
-        if (Input.GetKey(KeyCode.Mouse0) && isUpgraded_weapon)
+        if (Input.GetKey(KeyCode.Mouse0) && isUpgraded_weapon && sta >= attackStaminaMinimumNeed)
         {
             charging += Time.deltaTime;
+            anim.SetBool("isCharging", true);
+            canRun = false;
         }
         if (Input.GetKeyUp(KeyCode.Mouse0))
         {
@@ -248,14 +251,17 @@ public class Player : Character
                 attackCoroutine = StartCoroutine(Attack());
                 sta -= attackStaminaCost;
                 CanvasManager.Instance.staminaBar.UpdateValue(sta, msta);
+                anim.SetBool("isCharging", false);
             }
             else if(sta >= chargeAttackStaminaMinimumNeed)
             {
                 attackCoroutine = StartCoroutine(ChargeAttack());
                 sta -= chargeAttackStaminaCost;
                 CanvasManager.Instance.staminaBar.UpdateValue(sta, msta);
+                anim.SetBool("isCharging", false);
             }
             charging = 0;
+            canRun = true;
         }
     }
 
@@ -278,7 +284,7 @@ public class Player : Character
     IEnumerator ChargeAttack()
     {
         alreadyHit.Clear();
-        anim.Play("charge_Attack",1);
+        anim.Play("charge_Attack",0);
         do { yield return new WaitForEndOfFrame(); }
         while (anim.GetCurrentAnimatorStateInfo(0).normalizedTime < 1.0f);
         alreadyHit.Clear();
