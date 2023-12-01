@@ -138,11 +138,6 @@ public class BossController : MonoBehaviour
         Rigidbody = GetComponent<Rigidbody>();
         _ai = new Boss1AI(this);
 
-        if (Target == null)
-            Target = GameManager.Instance.Player;
-
-        _hp = _maxHp;
-
         foreach (BossStateMachineBehaviour bossStateMachine in _bossStateMachines)
         {
             bossStateMachine.Init(this);
@@ -156,7 +151,7 @@ public class BossController : MonoBehaviour
             _skillPatterns[i].SkillState = BossState.Skill1 + i;
         }
 
-
+        _hp = _maxHp;
     }
 
     public void GetHit(float dmg)
