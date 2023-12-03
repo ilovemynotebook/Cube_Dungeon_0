@@ -41,7 +41,7 @@ public class Enemy : Character
         
         if (hitInfo.collider != null)
         {
-            Walk(direction);
+            Walk(direction, speed);
         }
         else
         {

@@ -9,7 +9,7 @@ public class WaitProjectile : Projectile
     private float _waitTimer;
 
     private Vector3 _myPos;
-
+    private Vector3 _targetDir;
 
     protected override void Start()
     {
@@ -22,17 +22,21 @@ public class WaitProjectile : Projectile
     {
         _waitTimer += Time.deltaTime;
 
-        if(_waitTime <= _waitTimer)
+
+        if (_waitTime <= _waitTimer)
         {
             if(_myPos == null || _myPos == Vector3.zero)
             {
                 _myPos = transform.position;
+                _targetDir = (_boss.Target.transform.position - _myPos).normalized;
             }
+            else
+            {
+                transform.parent = null;
 
-            transform.parent = null;
-            Vector3 targetDir = (_boss.Target.transform.position - _myPos).normalized;
-            Vector3 movePos = targetDir * (_speed * Time.deltaTime);
-            _rigidBody.MovePosition(transform.position + movePos);
+                Vector3 movePos = _targetDir * (_speed * Time.deltaTime);
+                _rigidBody.MovePosition(transform.position + movePos);
+            }
         }
     }
 

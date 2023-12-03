@@ -6,11 +6,18 @@ using UnityEngine.UIElements;
 
 public class Player : Character
 {
+    [Header("can and is stuffs")]
     public bool canMove = true;
     public bool canAttack = true;
+    public bool canShield = true;
+    public bool canJump = true;
+    public bool canRun = true;
+    public bool isHoldingShield = false;
 
     public float sta;
     public float msta;
+
+    public float runSpeed;
 
     public WeaponData currentWeapon;
     public GameObject currentShield;
@@ -30,7 +37,7 @@ public class Player : Character
     public Buffs[] buffs;
 
     private float charging = 0;
-    public bool isHoldingShield = false;
+
     public Coroutine stunCoroutine;
 
 
@@ -60,10 +67,7 @@ public class Player : Character
     public float shieldProtect = 2; // shiledStaminaCost/shieldProtect = cost
 
     public static Player _player;
-    private void Awake()
-    {
-        GameManager.Instance.Player = this.gameObject;
-    }
+  
     override protected void Start()
     {
         if(_player == null)
@@ -77,8 +81,9 @@ public class Player : Character
         buffs = new Buffs[2];
         SkillInit();
         base.Start();
-
+        GameManager.Instance.Player = this.gameObject;
         DontDestroyOnLoad(this.gameObject);
+        anim = GetComponentInChildren<Animator>();
 
     }
 
@@ -106,7 +111,21 @@ public class Player : Character
         DoClimbing(Input.GetAxisRaw("Vertical"));
         ItemStats();
 
-        if (isClimbing) jumpCount = mJumpCount;
+        if (isClimbing)
+        {
+            canMove = false;
+            canAttack = false;
+            canShield = false;
+            jumpCount = mJumpCount;
+        }
+        else
+        {
+            canMove = true;
+            canAttack = true;
+            canShield = true;
+        }
+        anim.SetBool("IsGround",isGrounded);
+        
     }
 
     public void ItemStats()
@@ -174,22 +193,41 @@ public class Player : Character
     {
         if (canMove)
         {
+            Debug.Log(Input.GetAxisRaw("player run"));
             direction = Input.GetAxisRaw("Horizontal");
-            Walk(direction);
+            if (Input.GetAxisRaw("player run") > 0 && canRun) {
+                
+                Run(direction); 
+            }
+            else Walk(direction, speed);
         }
+    }
+
+    override public void Walk(float Direction, float speed)
+    {
+        base.Walk(Direction,speed);
+        anim.SetFloat("Walk",Mathf.Abs(Direction));
+        anim.SetFloat("Run", 0);
+    }
+
+    public void Run(float Direction)
+    {
+        base.Walk(Direction,runSpeed);
+        anim.SetFloat("Run", Mathf.Abs(Direction));
+        anim.SetFloat("Walk", 0);
     }
 
     void TryJump()
     {
-        if (Input.GetKeyDown(KeyCode.Space) && canMove)
+        if (Input.GetKeyDown(KeyCode.Space) && canJump)
         {
             if (isGrounded || jumpCount > 0)
             {
                 if (isGrounded) { jumpCount = mJumpCount; }
 
+                anim.Play("JumpStart",0);
                 Jump();
                 jumpCount--;
-
             }
         }
     }
@@ -200,9 +238,11 @@ public class Player : Character
     {
         if (!canAttack || attackCoroutine != null) return;
 
-        if (Input.GetKey(KeyCode.Mouse0) && isUpgraded_weapon)
+        if (Input.GetKey(KeyCode.Mouse0) && isUpgraded_weapon && sta >= attackStaminaMinimumNeed)
         {
             charging += Time.deltaTime;
+            anim.SetBool("isCharging", true);
+            canRun = false;
         }
         if (Input.GetKeyUp(KeyCode.Mouse0))
         {
@@ -211,23 +251,32 @@ public class Player : Character
                 attackCoroutine = StartCoroutine(Attack());
                 sta -= attackStaminaCost;
                 CanvasManager.Instance.staminaBar.UpdateValue(sta, msta);
+                anim.SetBool("isCharging", false);
             }
             else if(sta >= chargeAttackStaminaMinimumNeed)
             {
                 attackCoroutine = StartCoroutine(ChargeAttack());
                 sta -= chargeAttackStaminaCost;
                 CanvasManager.Instance.staminaBar.UpdateValue(sta, msta);
+                anim.SetBool("isCharging", false);
             }
             charging = 0;
+            canRun = true;
         }
     }
 
     IEnumerator Attack()
     {
         alreadyHit.Clear();
-        anim.Play("attack");
-        do { yield return new WaitForEndOfFrame(); }
-        while (anim.GetCurrentAnimatorStateInfo(0).normalizedTime < 1.0f);
+        anim.Play("attack",1);
+
+        do
+        {
+            yield return new WaitForEndOfFrame();
+
+        }
+        while (anim.GetCurrentAnimatorStateInfo(1).IsName("attack"));
+        //while (anim.GetCurrentAnimatorStateInfo(1).normalizedTime < 1.0f);
         alreadyHit.Clear();
         attackCoroutine = null;
     }
@@ -235,7 +284,7 @@ public class Player : Character
     IEnumerator ChargeAttack()
     {
         alreadyHit.Clear();
-        anim.Play("charge_Attack");
+        anim.Play("charge_Attack",0);
         do { yield return new WaitForEndOfFrame(); }
         while (anim.GetCurrentAnimatorStateInfo(0).normalizedTime < 1.0f);
         alreadyHit.Clear();
@@ -287,9 +336,9 @@ public class Player : Character
 
     private void TryShield()
     {
-        if(Input.GetKeyDown(KeyCode.E))
+        if(Input.GetKeyDown(KeyCode.E) && canShield)
         {
-            anim.Play("shield");
+            anim.Play("shield",1);
             anim.SetBool("holdingShield",true);
             isHoldingShield = true;
         }
@@ -320,7 +369,8 @@ public class Player : Character
         canMove = false;
         anim.Play("ShieldBroke",0,0);
         do { yield return new WaitForEndOfFrame(); }
-        while (anim.GetCurrentAnimatorStateInfo(0).normalizedTime < 1.0f);
+        while (anim.GetCurrentAnimatorStateInfo(0).IsName("ShieldBroke"));
+        //while (anim.GetCurrentAnimatorStateInfo(0).normalizedTime < 1.0f);
         canMove = true;
         canAttack = true;
     }
