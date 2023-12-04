@@ -24,7 +24,11 @@ public class ProjectileData
 
 public class BossProjectileSkill: BossAttackBehaviour 
 {
-    [SerializeField] private ProjectileData[] _projectileDatas; 
+    [SerializeField] private ProjectileData[] _projectileDatas;
+
+    [Tooltip("이 값이 참이면 dir값은 항상 1로 고정")]
+    [SerializeField] private bool _isDirFixationEnabled;
+
 
     public override void SkillStart()
     {
@@ -36,7 +40,6 @@ public class BossProjectileSkill: BossAttackBehaviour
 
     public override void SkillEnd()
     {
-
     }
 
 
@@ -58,6 +61,9 @@ public class BossProjectileSkill: BossAttackBehaviour
     {
         Vector3 dir = (_boss.Target.transform.position - _boss.gameObject.transform.position).normalized;
         int dirX = dir.x > 0 ? 1 : dir.x < 0 ? -1 : 0;
+
+        if (_isDirFixationEnabled)
+            dirX = 1;
 
         Vector3 dataSpawnPos = new Vector3(data.SpawnPos.x * dirX, data.SpawnPos.y, data.SpawnPos.z);
         Vector3 spawnPos = transform.position + dataSpawnPos;
