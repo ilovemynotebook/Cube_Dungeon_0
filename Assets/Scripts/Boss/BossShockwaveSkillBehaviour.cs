@@ -20,7 +20,7 @@ public class ShockwaveData
     public float SpawnTime => _spawnTime;
 }
 
-public class Boss1Skill2 : BossAttackBehaviour
+public class BossShockwaveSkillBehaviour : BossAttackBehaviour
 {
 
     [SerializeField] private ShockwaveData[] _shockwaveDatas;
