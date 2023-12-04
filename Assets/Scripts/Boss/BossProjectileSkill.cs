@@ -66,7 +66,7 @@ public class BossProjectileSkill: BossAttackBehaviour
             dirX = 1;
 
         Vector3 dataSpawnPos = new Vector3(data.SpawnPos.x * dirX, data.SpawnPos.y, data.SpawnPos.z);
-        Vector3 spawnPos = transform.position + dataSpawnPos;
+        Vector3 spawnPos = _boss.transform.position + dataSpawnPos;
 
         Projectile projectile = Instantiate(data.ProjectilePrefab, spawnPos, Quaternion.identity);
         projectile.SetPower(_boss, _boss.Power * _powerMul, dirX);

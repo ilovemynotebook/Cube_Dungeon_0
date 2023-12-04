@@ -8,6 +8,8 @@ public class BossWaitProjectileSkill : BossAttackBehaviour
 
     [SerializeField] private float _waitTime;
 
+    [SerializeField] private Vector3 _parentRotate;
+
     private GameObject _parent;
 
     private Coroutine SpawnWaitProjectileRoutine;
@@ -61,7 +63,7 @@ public class BossWaitProjectileSkill : BossAttackBehaviour
     {
         while (_parent != null)
         {
-            _parent.transform.Rotate(new Vector3(360, 0, 0) * (Time.deltaTime / _waitTime));
+            _parent.transform.Rotate(_parentRotate * (Time.deltaTime / _waitTime));
             yield return null;
         }
     }
