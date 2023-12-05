@@ -20,7 +20,6 @@ public class CinemachineCamera : SingletonHandler<CinemachineCamera>
 
     public override void Awake()
     {
-        base.Awake();
         if (_virtualCameraNoise == null)
             _virtualCameraNoise = _mainVitualCamera.GetCinemachineComponent<CinemachineBasicMultiChannelPerlin>();
     }

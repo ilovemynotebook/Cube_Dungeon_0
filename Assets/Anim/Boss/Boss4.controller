@@ -1,5 +1,17 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!114 &-7595450333588575235
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aff170699a0060041ad1cda41f9c15d7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1101 &-7477893954727532001
 AnimatorStateTransition:
   m_ObjectHideFlags: 1
@@ -30,7 +42,7 @@ AnimatorState:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: WalkFWD
-  m_Speed: 0.5
+  m_Speed: 1
   m_CycleOffset: 0
   m_Transitions:
   - {fileID: -19098160772548387}
@@ -39,7 +51,8 @@ AnimatorState:
   - {fileID: -109623067943932812}
   - {fileID: 984570581608835379}
   - {fileID: 2766862648058204219}
-  m_StateMachineBehaviours: []
+  m_StateMachineBehaviours:
+  - {fileID: 309946545135845563}
   m_Position: {x: 50, y: 50, z: 0}
   m_IKOnFeet: 0
   m_WriteDefaultValues: 1
@@ -48,12 +61,24 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: 7400000, guid: 583be27c36686204b8d2504c0bad3009, type: 3}
+  m_Motion: {fileID: 7400000, guid: 1353bbd485734ba39ce05b944ed74194, type: 3}
   m_Tag: 
   m_SpeedParameter: AnimeSpeed
   m_MirrorParameter: 
   m_CycleOffsetParameter: 
   m_TimeParameter: 
+--- !u!114 &-6836756256612320016
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aff170699a0060041ad1cda41f9c15d7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &-6784415402139358916
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -67,8 +92,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _bossSkillData:
-    _activateFrame: 10
-    _disabledFrame: 30
+    _activateFrame: 30
+    _disabledFrame: 50
     _skillPatternsIndex: 1
     _isActivated: 0
     _isDisabled: 0
@@ -153,7 +178,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: 7400000, guid: a0a3e5db1b194a2eba9676c86561a8b3, type: 3}
+  m_Motion: {fileID: 7400000, guid: 4dd1de71be8d405ab2bc3af03168a484, type: 3}
   m_Tag: 
   m_SpeedParameter: AnimeSpeed
   m_MirrorParameter: 
@@ -222,8 +247,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _bossSkillData:
-    _activateFrame: 3
-    _disabledFrame: 10
+    _activateFrame: 40
+    _disabledFrame: 60
     _skillPatternsIndex: 0
     _isActivated: 0
     _isDisabled: 0
@@ -234,8 +259,8 @@ AnimatorState:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Skill2_right
-  m_Speed: 0.25
+  m_Name: Skill3
+  m_Speed: 0.5
   m_CycleOffset: 0
   m_Transitions:
   - {fileID: 334545816430986392}
@@ -249,7 +274,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: 7400000, guid: 4e836f679dda78e4ea349c5f7821b275, type: 3}
+  m_Motion: {fileID: 7400000, guid: 5a572291884844608c62ea09bd28b785, type: 3}
   m_Tag: 
   m_SpeedParameter: AnimeSpeed
   m_MirrorParameter: 
@@ -285,7 +310,7 @@ AnimatorState:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: Idle
-  m_Speed: 0.2
+  m_Speed: 1
   m_CycleOffset: 0
   m_Transitions:
   - {fileID: 3990883739666984733}
@@ -303,7 +328,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: 7400000, guid: 583be27c36686204b8d2504c0bad3009, type: 3}
+  m_Motion: {fileID: 7400000, guid: 79c4b60d3593453fb82b76da13d3c957, type: 3}
   m_Tag: 
   m_SpeedParameter: AnimeSpeed
   m_MirrorParameter: 
@@ -339,7 +364,7 @@ AnimatorState:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: Skill5
-  m_Speed: 0.25
+  m_Speed: 0.5
   m_CycleOffset: 0
   m_Transitions:
   - {fileID: -7477893954727532001}
@@ -353,7 +378,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: 7400000, guid: 95884edc1eb9fea4d909b3e5022be306, type: 3}
+  m_Motion: {fileID: 7400000, guid: 5a572291884844608c62ea09bd28b785, type: 3}
   m_Tag: 
   m_SpeedParameter: AnimeSpeed
   m_MirrorParameter: 
@@ -367,11 +392,12 @@ AnimatorState:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: Skill1_Wait
-  m_Speed: 0.2
+  m_Speed: 1
   m_CycleOffset: 0
   m_Transitions:
   - {fileID: 3325395461903299257}
-  m_StateMachineBehaviours: []
+  m_StateMachineBehaviours:
+  - {fileID: -7595450333588575235}
   m_Position: {x: 50, y: 50, z: 0}
   m_IKOnFeet: 0
   m_WriteDefaultValues: 1
@@ -380,7 +406,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: 7400000, guid: 583be27c36686204b8d2504c0bad3009, type: 3}
+  m_Motion: {fileID: 7400000, guid: ff4bd1ab401d4276ad3fbb99b0b89517, type: 3}
   m_Tag: 
   m_SpeedParameter: AnimeSpeed
   m_MirrorParameter: 
@@ -394,11 +420,12 @@ AnimatorState:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: Skill_Wait
-  m_Speed: 0.25
+  m_Speed: 1
   m_CycleOffset: 0
   m_Transitions:
   - {fileID: 6480556806742304114}
-  m_StateMachineBehaviours: []
+  m_StateMachineBehaviours:
+  - {fileID: -6836756256612320016}
   m_Position: {x: 50, y: 50, z: 0}
   m_IKOnFeet: 0
   m_WriteDefaultValues: 1
@@ -407,7 +434,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: 7400000, guid: 583be27c36686204b8d2504c0bad3009, type: 3}
+  m_Motion: {fileID: 7400000, guid: ff4bd1ab401d4276ad3fbb99b0b89517, type: 3}
   m_Tag: 
   m_SpeedParameter: AnimeSpeed
   m_MirrorParameter: 
@@ -448,8 +475,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _bossSkillData:
-    _activateFrame: 10
-    _disabledFrame: 30
+    _activateFrame: 49
+    _disabledFrame: 80
     _skillPatternsIndex: 3
     _isActivated: 0
     _isDisabled: 0
@@ -534,7 +561,7 @@ AnimatorController:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Boss6
+  m_Name: Boss4
   serializedVersion: 5
   m_AnimatorParameters:
   - m_Name: State
@@ -637,6 +664,30 @@ AnimatorStateMachine:
   m_ExitPosition: {x: 800, y: 120, z: 0}
   m_ParentStateMachinePosition: {x: 800, y: 20, z: 0}
   m_DefaultState: {fileID: 4708034471024754297}
+--- !u!114 &233365434127418984
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aff170699a0060041ad1cda41f9c15d7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &309946545135845563
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0aae3a159c95e7d4aab26bef926ca17e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1101 &334545816430986392
 AnimatorStateTransition:
   m_ObjectHideFlags: 1
@@ -739,11 +790,12 @@ AnimatorState:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: AttackWait
-  m_Speed: 0.2
+  m_Speed: 1
   m_CycleOffset: 0
   m_Transitions:
   - {fileID: 6568641068038093944}
-  m_StateMachineBehaviours: []
+  m_StateMachineBehaviours:
+  - {fileID: 6113888079083130952}
   m_Position: {x: 50, y: 50, z: 0}
   m_IKOnFeet: 0
   m_WriteDefaultValues: 1
@@ -752,12 +804,24 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: 7400000, guid: 583be27c36686204b8d2504c0bad3009, type: 3}
+  m_Motion: {fileID: 7400000, guid: ff4bd1ab401d4276ad3fbb99b0b89517, type: 3}
   m_Tag: 
   m_SpeedParameter: AnimeSpeed
   m_MirrorParameter: 
   m_CycleOffsetParameter: 
   m_TimeParameter: 
+--- !u!114 &1193095647906219778
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aff170699a0060041ad1cda41f9c15d7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1101 &1249933900225673470
 AnimatorStateTransition:
   m_ObjectHideFlags: 1
@@ -860,7 +924,7 @@ AnimatorState:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: Skill4
-  m_Speed: 0.25
+  m_Speed: 0.5
   m_CycleOffset: 0
   m_Transitions:
   - {fileID: -4584077865173864429}
@@ -874,7 +938,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: 7400000, guid: 2c81f13fd189c6642907ea33cefda0a0, type: 3}
+  m_Motion: {fileID: 7400000, guid: 5a572291884844608c62ea09bd28b785, type: 3}
   m_Tag: 
   m_SpeedParameter: AnimeSpeed
   m_MirrorParameter: 
@@ -913,7 +977,7 @@ AnimatorState:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: Skill1
-  m_Speed: 0.2
+  m_Speed: 0.75
   m_CycleOffset: 0
   m_Transitions:
   - {fileID: -6656397891699128424}
@@ -927,7 +991,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: 7400000, guid: 9949cfe85d758844da2f9d94933ecb6d, type: 3}
+  m_Motion: {fileID: 7400000, guid: 645aedcb8eca4052843108aa83475beb, type: 3}
   m_Tag: 
   m_SpeedParameter: AnimeSpeed
   m_MirrorParameter: 
@@ -968,8 +1032,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _bossSkillData:
-    _activateFrame: 10
-    _disabledFrame: 30
+    _activateFrame: 49
+    _disabledFrame: 80
     _skillPatternsIndex: 2
     _isActivated: 0
     _isDisabled: 0
@@ -1056,11 +1120,12 @@ AnimatorState:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: Skill_Wait
-  m_Speed: 0.25
+  m_Speed: 1.5
   m_CycleOffset: 0
   m_Transitions:
   - {fileID: 955079375944835266}
-  m_StateMachineBehaviours: []
+  m_StateMachineBehaviours:
+  - {fileID: 233365434127418984}
   m_Position: {x: 50, y: 50, z: 0}
   m_IKOnFeet: 0
   m_WriteDefaultValues: 1
@@ -1069,7 +1134,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: 7400000, guid: 583be27c36686204b8d2504c0bad3009, type: 3}
+  m_Motion: {fileID: 7400000, guid: ff4bd1ab401d4276ad3fbb99b0b89517, type: 3}
   m_Tag: 
   m_SpeedParameter: AnimeSpeed
   m_MirrorParameter: 
@@ -1083,11 +1148,12 @@ AnimatorState:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: Skill_Wait
-  m_Speed: 0.25
+  m_Speed: 1
   m_CycleOffset: 0
   m_Transitions:
   - {fileID: 7795442327940989928}
-  m_StateMachineBehaviours: []
+  m_StateMachineBehaviours:
+  - {fileID: 1193095647906219778}
   m_Position: {x: 50, y: 50, z: 0}
   m_IKOnFeet: 0
   m_WriteDefaultValues: 1
@@ -1096,7 +1162,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: 7400000, guid: 583be27c36686204b8d2504c0bad3009, type: 3}
+  m_Motion: {fileID: 7400000, guid: ff4bd1ab401d4276ad3fbb99b0b89517, type: 3}
   m_Tag: 
   m_SpeedParameter: AnimeSpeed
   m_MirrorParameter: 
@@ -1135,7 +1201,7 @@ AnimatorStateMachine:
     m_Position: {x: 460, y: -50, z: 0}
   - serializedVersion: 1
     m_StateMachine: {fileID: -5103755080702325622}
-    m_Position: {x: 460, y: -150, z: 0}
+    m_Position: {x: 460, y: -130, z: 0}
   m_AnyStateTransitions:
   - {fileID: 5421302397041583421}
   m_EntryTransitions: []
@@ -1221,6 +1287,18 @@ AnimatorStateTransition:
   m_InterruptionSource: 0
   m_OrderedInterruption: 1
   m_CanTransitionToSelf: 1
+--- !u!114 &6113888079083130952
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aff170699a0060041ad1cda41f9c15d7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1101 &6480556806742304114
 AnimatorStateTransition:
   m_ObjectHideFlags: 1
@@ -1272,8 +1350,8 @@ AnimatorState:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Attack02_left
-  m_Speed: 0.2
+  m_Name: Skill2
+  m_Speed: 0.75
   m_CycleOffset: 0
   m_Transitions:
   - {fileID: -3762429871268598236}
@@ -1287,7 +1365,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: 7400000, guid: 1111d01b912c9134a943a1d48853974f, type: 3}
+  m_Motion: {fileID: 7400000, guid: 17555262663542aa948e7a1bf8aea4b7, type: 3}
   m_Tag: 
   m_SpeedParameter: AnimeSpeed
   m_MirrorParameter: 
@@ -1353,8 +1431,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _bossSkillData:
-    _activateFrame: 10
-    _disabledFrame: 30
+    _activateFrame: 49
+    _disabledFrame: 80
     _skillPatternsIndex: 4
     _isActivated: 0
     _isDisabled: 0
