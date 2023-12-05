@@ -127,6 +127,7 @@ public class BossController : MonoBehaviour
     {
         SetWaingTimer();
         InvokeRepeating("AIUpdate", _patternUpdateTime, _patternUpdateTime);
+        Target = Target == null ? FindObjectOfType<Player>().gameObject : Target;
     }
 
 
