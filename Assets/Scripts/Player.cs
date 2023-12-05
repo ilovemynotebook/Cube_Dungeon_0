@@ -163,6 +163,16 @@ public class Player : Character
         if (hp > mhp) hp = mhp;
     }
 
+    protected override IEnumerator Kill()
+    {
+        base.Kill();
+        yield return null;
+
+
+
+
+    }
+
 
     //about move control========================================================
     void TryMove()
@@ -313,7 +323,12 @@ public class Player : Character
         //legacy. no use
     }
 
-
+    public override void KnockBack(Vector3 Power)
+    {
+        base.KnockBack(Power);
+        CinemachineCamera.Instance.CameraShake(0.5f);
+        //CinemachineCamera.Instance.CameraShake(3f, 3f, 10.0f);
+    }
 
 
 
