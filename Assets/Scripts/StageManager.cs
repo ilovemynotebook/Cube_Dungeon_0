@@ -13,10 +13,10 @@ public class StageManager : MonoBehaviour
     [SerializeField] private Button GoTitleButton;
     [SerializeField] private Button GoRePlayButton;
 
-
+   
     private void Start()
     {
-        dataManager = GameManager.Instance._DataManager;
+        dataManager = DataManager.Instance;
         PlaneSceneManager.Instance.StageSet(dataManager.saveData.planes);
         PlaneSceneManager.Instance.CreateMap();
         GameoverPanel.gameObject.SetActive(false);
@@ -25,8 +25,9 @@ public class StageManager : MonoBehaviour
     }
     
 
-    void GameOver()
+    public void GameOver()
     {
+        GameManager.Instance.Player.SetActive(false);
         GameoverPanel.gameObject.SetActive(true);
         GoTitleButton.onClick.AddListener(GotoTitle);
         GoRePlayButton.onClick.AddListener(GotoReplay);
@@ -40,8 +41,12 @@ public class StageManager : MonoBehaviour
     void GotoReplay()
     {
         Player player= GameManager.Instance.Player.GetComponent<Player>();
+        player.hp = player.mhp;
+        CanvasManager.Instance.UpdateHud();
         dataManager.PlayerDataGet(player, dataManager.playerData);
-        SceneManager.LoadScene("LoadingScene");
+        dataManager.StageDataLoad(dataManager.saveData, PlaneSceneManager.Instance);
+        PlaneSceneManager.Instance.Clear();
+        SceneManager.LoadScene("RetryLoadingScene");
     }
 
 }

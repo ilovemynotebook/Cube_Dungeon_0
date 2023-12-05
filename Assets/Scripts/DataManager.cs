@@ -10,6 +10,7 @@ using System.Numerics;
 
 public class DataManager : MonoBehaviour
 {
+    public static DataManager Instance;
     public GameStageDB[] StageDB;
     string filePathStage;
     string filePathPlayer;
@@ -21,7 +22,15 @@ public class DataManager : MonoBehaviour
     
     private void Awake()
     {
-       
+        if (DataManager.Instance == null)
+        {
+            Instance = this;
+            DontDestroyOnLoad(gameObject);
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
     }
     // Start is called before the first frame update
     void Start()
@@ -45,8 +54,7 @@ public class DataManager : MonoBehaviour
             DataSave();
         }
 
-        if (GameManager.Instance)
-            GameManager.Instance._DataManager = this;
+
 
     }
 
