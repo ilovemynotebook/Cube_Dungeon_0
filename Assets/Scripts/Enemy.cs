@@ -29,6 +29,7 @@ public class Enemy : Character
     override protected void Start()
     {
         base.Start();
+        anim = transform.GetChild(0).GetComponent<Animator>();
     }
 
     // Update is called once per frame
@@ -44,7 +45,6 @@ public class Enemy : Character
 
     void Patrol()
     {
-        Debug.Log(1);
         floorCheck.x = direction;
         floorCheck.y = -1;
         floorCheck.z = 0;

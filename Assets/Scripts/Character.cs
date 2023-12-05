@@ -148,6 +148,7 @@ public class Character : MonoBehaviour
         isClimbing = false;
         hp -=dmg;
         //HitSound?.Play();
+        Debug.Log(anim);
         anim.Play("Hit",0,0f);
 
         if(hp <= 0)
