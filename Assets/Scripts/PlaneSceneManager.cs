@@ -82,7 +82,7 @@ public class PlaneSceneManager : MonoBehaviour
                 DataManager.Instance.saveData.thisStage=thisStage;
                 DataManager.Instance.StageDataChange(thisStage);
                 Player player = FindObjectOfType<Player>();
-                DataManager.Instance.PlayerDataGet(player, DataManager.Instance.playerData);
+                DataManager.Instance.PlayerDataGet(player, DataManager.Instance.playerData,CanvasManager.Instance);
                 SceneManager.LoadScene("Stage"+thisStage);
             }
             else

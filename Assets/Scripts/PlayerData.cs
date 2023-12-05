@@ -52,15 +52,13 @@ public class PlayerData
         this.key = false;
     }
 
-    public void SetPlayerData(float hp, float mhp, float sta, float msta, int hpPotion, int staPotion, int dmgPotion)
+    public void SetPlayerData(float hp, float mhp, float sta, float msta)
     {
         this.hp = hp;
         this.mhp = mhp;
         this.sta = sta;
         this.msta = msta;
-        this.hpPotion = hpPotion;
-        this.staPotion = staPotion;
-        this.dmgPotion = dmgPotion;
+
 
     }
 }

@@ -63,7 +63,7 @@ public class DataManager : MonoBehaviour
     {
         player = GameManager.Instance.Player.GetComponent<Player>();
         StageDataGet(saveData);
-        PlayerDataGet(player, playerData);
+        PlayerDataGet(player, playerData,CanvasManager.Instance);
         string Stagejsondata = JsonUtility.ToJson(saveData);
         string Playerjsondata = JsonUtility.ToJson(playerData);
         //string jsondataPlayer= JsonUtility.ToJson(savedata.playerData);
@@ -98,21 +98,22 @@ public class DataManager : MonoBehaviour
         File.WriteAllText(filePathStage, Stagejsondata);
         File.WriteAllText(filePathPlayer, Playerjsondata);
     }
-    public void PlayerDataGet(Player player, PlayerData playerData)
+    public void PlayerDataGet(Player player, PlayerData playerData,CanvasManager canvasManager)
     {
-        //현재 플레이어 데이터를 매니저에다가 담는다
-        playerData.SetPlayerData(player.hp, player.mhp, player.sta, player.msta, player.hpPotion, player.staPotion, player.dmgPotion);
-        playerData.isUpgraded_Item_0 = player.isUpgraded_Item_0;
-        playerData.isUpgraded_Item_1 = player.isUpgraded_Item_1;
-        playerData.isUpgraded_Item_2 = player.isUpgraded_Item_2;
-        playerData.isUpgraded_Item_3 = player.isUpgraded_Item_3;
-        playerData.isUpgraded_weapon=player.isUpgraded_weapon;
-        playerData.isUpgraded_shield=player.isUpgraded_shield;
-        playerData.key =player.key;
+        //현재 플레이어 데이터를 데이터매니저에 담는다.
+        playerData.SetPlayerData(player.hp, player.mhp, player.sta, player.msta);
+        playerData.isUpgraded_Item_0 = canvasManager.isUpgraded_Item_0;
+        playerData.isUpgraded_Item_1 = canvasManager.isUpgraded_Item_1;
+        playerData.isUpgraded_Item_2 = canvasManager.isUpgraded_Item_2;
+        playerData.isUpgraded_Item_3 = canvasManager.isUpgraded_Item_3;
+        playerData.isUpgraded_weapon=canvasManager.isUpgraded_weapon;
+        playerData.isUpgraded_shield=canvasManager.isUpgraded_shield;
+        playerData.key =canvasManager.key;
     }
 
     public void StageDataChange(int Stage)
     {
+        //스테이지 DB에있는 데이터를 DataManager에 복사한다.
         for (int i = 0; i < StageDB[Stage-1].stages.CubePlanes.Length; i++)
         {
             saveData.planes[i]= StageDB[Stage-1].stages.CubePlanes[i].Cloneing();
@@ -129,9 +130,18 @@ public class DataManager : MonoBehaviour
         saveData.thisPlane = planeSceneManager.thisPlane;
         saveData.planes = planeSceneManager.planes.ToArray();
     }
-    public void PlayerDataLoad(PlayerData playerData,Player player)
+    public void PlayerDataLoad(PlayerData playerData,Player player,CanvasManager canvasManager)
     {
         player.GetData(playerData);
+        canvasManager.isUpgraded_weapon=playerData.isUpgraded_weapon;
+        canvasManager.isUpgraded_shield=playerData.isUpgraded_shield;
+        canvasManager.isUpgraded_Item_0 = playerData.isUpgraded_Item_0;
+        canvasManager.isUpgraded_Item_1 = playerData.isUpgraded_Item_1;
+        canvasManager.isUpgraded_Item_2 = playerData.isUpgraded_Item_2;
+        canvasManager.isUpgraded_Item_3 = playerData.isUpgraded_Item_3;
+        canvasManager.dmgPotion = playerData.dmgPotion;
+        canvasManager.hpPotion = playerData.hpPotion;
+        canvasManager.staPotion = playerData.staPotion;
     }
     public void StageDataLoad(SaveData saveData,PlaneSceneManager planemanager)
     {

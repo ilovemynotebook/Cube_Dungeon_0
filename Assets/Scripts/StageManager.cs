@@ -43,7 +43,7 @@ public class StageManager : MonoBehaviour
         Player player= GameManager.Instance.Player.GetComponent<Player>();
         player.hp = player.mhp;
         CanvasManager.Instance.UpdateHud();
-        dataManager.PlayerDataGet(player, dataManager.playerData);
+        dataManager.PlayerDataGet(player, dataManager.playerData,CanvasManager.Instance);
         dataManager.StageDataLoad(dataManager.saveData, PlaneSceneManager.Instance);
         PlaneSceneManager.Instance.Clear();
         SceneManager.LoadScene("RetryLoadingScene");
