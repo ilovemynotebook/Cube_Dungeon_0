@@ -992,6 +992,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gameStageDB: {fileID: 11400000, guid: ad2907fed9a084e43b4281b85998c8bf, type: 2}
+  GameoverPanel: {fileID: 2099883562}
 --- !u!4 &1777263163
 Transform:
   m_ObjectHideFlags: 0
