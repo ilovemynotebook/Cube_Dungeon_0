@@ -14,7 +14,7 @@ public class PlaneSceneManager : MonoBehaviour
     public static PlaneSceneManager Instance;
     public UnityEngine.UI.Image panel;
     [SerializeField] List<Box> boxes = new List<Box>();
-    [SerializeField] List<Enemy> enemies = new List<Enemy>();
+    [SerializeField] List<GameObject> enemies = new List<GameObject>();
     [SerializeField] public Plane[] planes;
     [SerializeField] Stage stage;
     //public SceneData sceneData;
