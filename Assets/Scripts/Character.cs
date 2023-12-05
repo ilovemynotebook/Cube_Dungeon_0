@@ -157,13 +157,15 @@ public class Character : MonoBehaviour
         }
     }
 
-    public void KnockBack(Vector3 Power)
+
+
+    public virtual void KnockBack(Vector3 Power)
     {
         //Debug.Log(Power);
         rb.AddForce(Power, ForceMode.Impulse);
     }
 
-    protected IEnumerator Kill() 
+    protected virtual IEnumerator Kill() 
     {
         DropItem();
         anim.Play("Death");

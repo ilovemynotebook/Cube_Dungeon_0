@@ -92,6 +92,7 @@ public class DataManager : MonoBehaviour
     }
     public void PlayerDataGet(Player player, PlayerData playerData)
     {
+        //현재 플레이어 데이터를 매니저에다가 담는다
         playerData.SetPlayerData(player.hp, player.mhp, player.sta, player.msta, player.hpPotion, player.staPotion, player.dmgPotion);
         playerData.isUpgraded_Item_0 = player.isUpgraded_Item_0;
         playerData.isUpgraded_Item_1 = player.isUpgraded_Item_1;
