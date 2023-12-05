@@ -6,7 +6,7 @@ using UnityEngine;
 [Serializable]
 public class EnemyData
 {
-    public Enemy enemy;
+    public GameObject enemy;
     public Vector3 spawnPos;
 }
 
