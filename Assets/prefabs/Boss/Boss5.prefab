@@ -32,6 +32,58 @@ Transform:
   m_Father: {fileID: 8244269254871361786}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 31.743383, y: -8.459612, z: 77.760216}
+--- !u!1 &227297884143095951
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8395547693493901322}
+  - component: {fileID: 8224841503548571494}
+  m_Layer: 0
+  m_Name: Skill4
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8395547693493901322
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 227297884143095951}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 6069399643582721173}
+  m_RootOrder: -1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &8224841503548571494
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 227297884143095951}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a2b23129716a11543bf51901a2d39a87, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _boss: {fileID: 3404591163487662841}
+  _powerMul: 2
+  _projectileDatas:
+  - _projectilePrefab: {fileID: 4496176101546860032, guid: ee105333dba170a4b96af3419f01729b,
+      type: 3}
+    _spawnPos: {x: 5, y: 1.7, z: 0}
+    _spawnTime: 0
+  _isDirFixationEnabled: 0
 --- !u!1 &259057869853616990
 GameObject:
   m_ObjectHideFlags: 0
@@ -1072,9 +1124,10 @@ Transform:
   - {fileID: 8448467511861911396}
   - {fileID: 6886598944479955025}
   - {fileID: 8250337331621546033}
+  - {fileID: 8395547693493901322}
   - {fileID: 5136816044569853497}
   m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
 --- !u!95 &2370666546246688092
 Animator:
@@ -1165,36 +1218,45 @@ MonoBehaviour:
   _animeSpeed: 1
   _power: 20
   _skillPatterns:
-  - Name: "\uC5D0\uB108\uC9C0 \uD22C\uC0AC\uCCB4"
-    AttackDistance: 10
-    CoolTime: 20
+  - _name: "\uC77C\uBC18 \uD22C\uC0AC\uCCB4"
+    _distance: 20
+    _coolTime: 1
     AttackTrigger: {fileID: 981432845194632579}
     CurrentCoolTime: 0
     SkillState: 0
-  - Name: "\uD3ED\uD314 \uACF5\uACA9"
-    AttackDistance: 20
-    CoolTime: 1
+  - _name: "\uD3ED\uBC1C\uC131 \uD22C\uC0AC\uCCB4"
+    _distance: 20
+    _coolTime: 10
     AttackTrigger: {fileID: 2797035796792966019}
     CurrentCoolTime: 0
     SkillState: 0
-  - Name: "\uD22C\uC0AC\uCCB4 \uC5F0\uC18D \uACF5\uACA9"
-    AttackDistance: 30
-    CoolTime: 1
+  - _name: "\uD22C\uC0AC\uCCB4 \uC5F0\uC18D \uBC1C\uC0AC"
+    _distance: 30
+    _coolTime: 20
     AttackTrigger: {fileID: 2767063101530528927}
     CurrentCoolTime: 0
     SkillState: 0
-  - Name: "\uD154\uB808\uD3EC\uD2B8"
-    AttackDistance: 9999
-    CoolTime: 1
-    AttackTrigger: {fileID: 559893732630689931}
+  - _name: "\uC5F4\uCC28 \uC18C\uD658"
+    _distance: 9999
+    _coolTime: 1
+    AttackTrigger: {fileID: 8224841503548571494}
     CurrentCoolTime: 0
     SkillState: 0
   _patternUpdateTime: 0.3
   _waitTime: 3
+  _renderers: []
   Rigidbody: {fileID: 0}
   State: 0
   Target: {fileID: 0}
-  _teleportTime: 0
+  _teleportClass:
+    _name: "\uD154\uB808\uD3EC\uD2B8"
+    _distance: 0
+    _coolTime: 0
+    AttackTrigger: {fileID: 559893732630689931}
+    CurrentCoolTime: 0
+    SkillState: 0
+  _targetAccessTime: 5
+  _targetAccessDistance: 4
 --- !u!1 &5723648611917495005
 GameObject:
   m_ObjectHideFlags: 0
@@ -1376,6 +1438,7 @@ MonoBehaviour:
     _spawnPos: {x: 0, y: 0, z: 0}
     _spawnTime: 5
   _waitTime: 3
+  _parentRotate: {x: 360, y: 0, z: 0}
 --- !u!1 &6885778554425640862
 GameObject:
   m_ObjectHideFlags: 0
@@ -1427,6 +1490,7 @@ MonoBehaviour:
       type: 3}
     _spawnPos: {x: 1.5, y: 1, z: 0}
     _spawnTime: 0
+  _isDirFixationEnabled: 0
 --- !u!1 &7139171246567127801
 GameObject:
   m_ObjectHideFlags: 0
@@ -1787,3 +1851,4 @@ MonoBehaviour:
       type: 3}
     _spawnPos: {x: 5, y: 1.7, z: 0}
     _spawnTime: 0
+  _isDirFixationEnabled: 0

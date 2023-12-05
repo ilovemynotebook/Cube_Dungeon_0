@@ -1,5 +1,6 @@
 using System;
 using System.Collections;
+using System.Threading;
 using Unity.Burst.CompilerServices;
 using UnityEngine;
 
@@ -36,7 +37,7 @@ public class Character : MonoBehaviour
 
     protected Coroutine DeathCoroutine = null;
 
-    public bool isCharacterLookRight;
+    public bool isCharacterLookRight; // about shield
     public bool isClimbing;
 
     protected GameObject ladder;
@@ -73,7 +74,9 @@ public class Character : MonoBehaviour
 
         isWalking = true;
         WalkSpeedAdjust(Direction,moveSpeed);
+        RotationAdjust(Direction,moveSpeed);
 
+        /*
         characterRotation = Vector3.zero;
         characterRotation.y = 180 * (Direction - 1)/2;
         
@@ -82,6 +85,7 @@ public class Character : MonoBehaviour
 
         
         transform.rotation = Quaternion.Euler(characterRotation);
+        */
 
     }
 
@@ -97,6 +101,21 @@ public class Character : MonoBehaviour
         characterVelocity.x = currentWalkSpeed;
         characterVelocity.y = rb.velocity.y;
         rb.velocity = characterVelocity;
+    }
+
+    protected void RotationAdjust(float Direction, float _speed)
+    {
+        characterRotation = Vector3.zero;
+        characterRotation.y = 180 * (Direction - 1) / 2;
+
+        if (-90 < characterRotation.y) isCharacterLookRight = false;
+        else isCharacterLookRight = true;
+
+
+
+        //transform.rotation = Quaternion.Euler(characterRotation);
+
+        transform.rotation = Quaternion.Lerp(transform.rotation, Quaternion.Euler(characterRotation), Time.deltaTime * speed * 10);
     }
 
     protected void Stopper()
@@ -173,7 +192,7 @@ public class Character : MonoBehaviour
     }
 
 
-    protected void groundCheck()
+    protected virtual void groundCheck()
     {
         Physics.Raycast(transform.position, Vector3.down, out hitInfo, col.bounds.extents.y + 0.01f, layerMask);
         Debug.DrawRay(transform.position, Vector3.down * (col.bounds.extents.y + 0.01f), Color.green);
@@ -182,7 +201,7 @@ public class Character : MonoBehaviour
         {
             isGrounded = true;
             isClimbing = false;
-            anim.SetBool("isClimbing",false);
+            //anim.SetBool("isClimbing",false);
         }
         else isGrounded = false;
 
