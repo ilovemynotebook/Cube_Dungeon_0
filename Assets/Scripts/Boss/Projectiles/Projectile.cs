@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+
+
 [RequireComponent(typeof(Rigidbody), typeof(CapsuleCollider))]
 public class Projectile : MonoBehaviour
 {
@@ -17,6 +19,11 @@ public class Projectile : MonoBehaviour
     protected float _power;
 
     protected int _dir;
+
+
+
+
+
 
     public void SetPower(BossController boss, float power, int dir)
     {

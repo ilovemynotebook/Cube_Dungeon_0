@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 7432692126579994656}
   - component: {fileID: 6552773639792350650}
   m_Layer: 0
-  m_Name: Shockwave
+  m_Name: Boss4Shockwave
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -29,11 +29,11 @@ Transform:
   m_GameObject: {fileID: 5445229778601913302}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -1.1864862, y: 2.2231808, z: 10.105617}
-  m_LocalScale: {x: 1, y: 2, z: 1}
+  m_LocalScale: {x: 10, y: 2, z: 10}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &3457599613428930145
 MeshFilter:
@@ -118,3 +118,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eaefcb4e533458d43a0e3e3dcc5a10fa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _destroyTime: 0.5

@@ -4,16 +4,27 @@ using UnityEngine;
 
 public class ExplosionProjectile : Projectile
 {
-    private Vector3 _myPos;
+    [SerializeField] private float _randomRange;
+
+    private Vector3 _targetDir;
+
+    
+
     protected override void Start()
     {
         base.Start();
-        _myPos = transform.position;
+        Vector3 myPos = transform.position;
+
+        float targetPosX = _boss.Target.transform.position.x + Random.Range(-_randomRange, _randomRange);
+        float targetPosZ = _boss.Target.transform.position.z + Random.Range(-_randomRange, _randomRange);
+        Vector3 targetPos = new Vector3(targetPosX, _boss.Target.transform.position.y, targetPosZ);
+        _targetDir = (targetPos - myPos).normalized;
     }
+
     private void FixedUpdate()
     {
-        Vector3 targetDir = (_boss.Target.transform.position - _myPos).normalized;
-        Vector3 movePos = targetDir * (_speed * Time.deltaTime);
+
+        Vector3 movePos = _targetDir * (_speed * Time.deltaTime);
         _rigidBody.MovePosition(transform.position + movePos);
     }
 
