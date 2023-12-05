@@ -16,11 +16,11 @@ MonoBehaviour:
     CubePlanes:
     - planeType: 0
       planeStyle: 0
-      prefab: {fileID: 4287543710475442010, guid: f36f0d095bc73764d80828f9b7c5ffca,
+      prefab: {fileID: 9145890908147242706, guid: 846b4d4dbcacc5c489a6861846cb96e6,
         type: 3}
       playerStartPoint: {x: 0, y: 7, z: 0}
       enemyData:
-      - enemy: {fileID: 5509827697077141636, guid: f6b05a2c35c924648ae21503d5d56eb5,
+      - enemy: {fileID: 5204243215698961029, guid: bb3c7de085ba70b48b537879bc9d680e,
           type: 3}
         spawnPos: {x: 5, y: 8, z: 0}
       boxData:
