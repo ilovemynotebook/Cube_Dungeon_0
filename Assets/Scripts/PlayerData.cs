@@ -36,10 +36,10 @@ public class PlayerData
     //}
     public PlayerData()
     {
-        this.hp = 5;
-        this.mhp = 5;
-        this.sta = 0;
-        this.msta = 0;
+        this.hp = 100;
+        this.mhp = 100;
+        this.sta = 100;
+        this.msta = 100;
         this.hpPotion = 0;
         this.staPotion = 0;
         this.dmgPotion = 0;

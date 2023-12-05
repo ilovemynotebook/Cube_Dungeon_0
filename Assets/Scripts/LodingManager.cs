@@ -16,6 +16,8 @@ public class LodingManager : MonoBehaviour
     void Start()
     {
         dataManager = GameManager.Instance._DataManager;
+        Player player = FindObjectOfType<Player>();
+        dataManager.PlayerDataLoad(dataManager.playerData,player);
         LoadingScene("Stage" + dataManager.saveData.thisStage);
         StartCoroutine(LoadingRoutine());
     }
