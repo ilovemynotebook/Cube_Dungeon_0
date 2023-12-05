@@ -11,6 +11,8 @@ public abstract class BossAttackBehaviour : MonoBehaviour
     [Tooltip("공격력 배수")]
     [SerializeField] protected float _powerMul;
 
+
+
     public abstract void SkillStart();
 
     public abstract void SkillEnd();

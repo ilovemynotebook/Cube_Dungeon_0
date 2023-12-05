@@ -34,7 +34,7 @@ public class Boss5AI : BossAI
     {
         List<INode> nodes = new List<INode>
         {
-            AttackNode(),
+            WaitingCheckNode(AttackNode()),
             TrackingNode()
         };
 
@@ -60,7 +60,6 @@ public class Boss5AI : BossAI
         List<INode> nodes = new List<INode>()
         {
             //노드를 순서대로 입력한다.
-            WaitingCheckNode(),
             new ActionNode(CheckAttackDistance),
             new ActionNode(StartAttack)
         };
@@ -68,9 +67,9 @@ public class Boss5AI : BossAI
         return new SequenceNode(nodes);
     }
 
-    private INode WaitingCheckNode()
+    private INode WaitingCheckNode(INode node)
     {
-        ConditionNode conditionNode = new ConditionNode(_boss.WaitingTimeCheck);
+        ConditionNode conditionNode = new ConditionNode(_boss.WaitingTimeCheck, node);
         return conditionNode;
     }
 
@@ -107,8 +106,7 @@ public class Boss5AI : BossAI
         List<INode> nodes = new List<INode>()
         {
             //노드를 순서대로 입력한다.
-            WaitingCheckNode(),
-            new ActionNode(Tracking)
+            WaitingCheckNode(new ActionNode(Tracking)),
         };
 
         return new SequenceNode(nodes);
