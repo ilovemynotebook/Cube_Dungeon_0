@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEngine.Events;
 using UnityEngine;
 
 [RequireComponent(typeof(Collider))]
@@ -10,6 +11,12 @@ public class HittingBox : MonoBehaviour
 
     public bool isOnce = false;
     public GameObject Root;
+
+    public UnityEvent AfterHitEvents;
+
+    public float KnockBackForce;
+
+
 
     private void OnTriggerEnter(Collider collision)
     {
@@ -33,18 +40,19 @@ public class HittingBox : MonoBehaviour
                     if(Ene == null) Ene = transform.parent?.parent?.parent?.GetComponent<Character>();
 
                     direction.x = direction.x * -1;
-                    if (Ene != null) Ene.KnockBack(dmg * direction * 4);
+                    if (Ene != null) Ene.KnockBack(KnockBackForce * direction);
                 }
                 else //½¯µå ºÎ¼ÅÁü
                 {
                     player.ShieldBroke();
-                    player.KnockBack(dmg * direction * 4);
+                    player.KnockBack(KnockBackForce * direction );
                 }
             }
             else // ¸ÂÀ»¶§
             {
                 player.GetHit(dmg);
-                player.KnockBack(dmg * direction * 4);
+                player.KnockBack(KnockBackForce * direction);
+                AfterHitEvents.Invoke();
             }
 
             if (isOnce == true)

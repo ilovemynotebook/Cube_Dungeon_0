@@ -28,10 +28,9 @@ public class Player : Character
     public float needChargingWait = 2;
 
     private float direction = 0;
-    private List<GameObject> alreadyHit = new List<GameObject>();
 
-    [SerializeField]
-    private BoxCollider attackHitBox;
+
+
     private Coroutine attackCoroutine;
 
     public Buffs[] buffs;
@@ -150,32 +149,7 @@ public class Player : Character
         dmgPotion = CanvasManager.Instance.dmgPotion;
         key = CanvasManager.Instance.key;
     }
-    void CheckLadder()
-    {
-        Physics.Raycast(transform.position - transform.right * 1.2f, transform.right, out ladderRayHit, 2.4f, 1 << 10);
-        if (ladderRayHit.collider == null)
-        {
-            Physics.Raycast(transform.position + (1 * transform.right) * 1.2f, -1 * transform.right, out ladderRayHit, 2.4f, 1 << 10);
-            //Debug.Log(ladderRayHit.collider?.gameObject);
-        }
-        Debug.DrawRay(transform.position + (1 * transform.right) * 1.2f, -transform.right * 2.4f, Color.red);
 
-        if (ladderRayHit.collider?.tag == "Ladder")
-        {
-
-            if (Input.GetKey(KeyCode.W)) {
-                ladder = ladderRayHit.collider.gameObject;
-                Debug.Log(Mathf.Abs(transform.position.x - ladder.transform.position.x));
-                if (Mathf.Abs(transform.position.x - ladder.transform.position.x) < 1)
-                    isClimbing = true;
-            }
-        }
-        else
-        {
-            ladder = null;
-            isClimbing = false;
-        }
-    }
 
     void TimeHeal()
     {
@@ -189,11 +163,12 @@ public class Player : Character
         if (hp > mhp) hp = mhp;
     }
 
+
+    //about move control========================================================
     void TryMove()
     {
         if (canMove)
         {
-            Debug.Log(Input.GetAxisRaw("player run"));
             direction = Input.GetAxisRaw("Horizontal");
             if (Input.GetAxisRaw("player run") > 0 && canRun) {
                 
@@ -232,8 +207,53 @@ public class Player : Character
         }
     }
 
+    void CheckLadder()
+    {
+        Physics.Raycast(transform.position - transform.right * 1.2f, transform.right, out ladderRayHit, 2.4f, 1 << 10);
+        if (ladderRayHit.collider == null)
+        {
+            Physics.Raycast(transform.position + (1 * transform.right) * 1.2f, -1 * transform.right, out ladderRayHit, 2.4f, 1 << 10);
+            //Debug.Log(ladderRayHit.collider?.gameObject);
+        }
+        Debug.DrawRay(transform.position + (1 * transform.right) * 1.2f, -transform.right * 2.4f, Color.red);
 
-    /// about Weapon and Shields
+        if (ladderRayHit.collider?.tag == "Ladder")
+        {
+
+            if (Input.GetKey(KeyCode.W))
+            {
+                ladder = ladderRayHit.collider.gameObject;
+                Debug.Log(Mathf.Abs(transform.position.x - ladder.transform.position.x));
+                if (Mathf.Abs(transform.position.x - ladder.transform.position.x) < 1)
+                    isClimbing = true;
+            }
+        }
+        else
+        {
+            ladder = null;
+            isClimbing = false;
+        }
+    }
+
+    protected override void groundCheck()
+    {
+        Physics.Raycast(transform.position, Vector3.down, out hitInfo, col.bounds.extents.y + 0.01f, layerMask);
+        Debug.DrawRay(transform.position, Vector3.down * (col.bounds.extents.y + 0.01f), Color.green);
+
+        if (hitInfo.collider != null)
+        {
+            isGrounded = true;
+            isClimbing = false;
+            anim.SetBool("isClimbing", false);
+        }
+        else isGrounded = false;
+    }
+
+    //========================================
+
+
+
+    /// about attack===================================
     void TryAttack()
     {
         if (!canAttack || attackCoroutine != null) return;
@@ -267,7 +287,6 @@ public class Player : Character
 
     IEnumerator Attack()
     {
-        alreadyHit.Clear();
         anim.Play("attack",1);
 
         do
@@ -277,40 +296,30 @@ public class Player : Character
         }
         while (anim.GetCurrentAnimatorStateInfo(1).IsName("attack"));
         //while (anim.GetCurrentAnimatorStateInfo(1).normalizedTime < 1.0f);
-        alreadyHit.Clear();
         attackCoroutine = null;
     }
 
     IEnumerator ChargeAttack()
     {
-        alreadyHit.Clear();
         anim.Play("charge_Attack",0);
         do { yield return new WaitForEndOfFrame(); }
         while (anim.GetCurrentAnimatorStateInfo(0).normalizedTime < 1.0f);
-        alreadyHit.Clear();
         attackCoroutine = null;
     }
 
     public void manualAlreadyHitClear() // be used in animator
     {
-        alreadyHit.Clear();
+        //alreadyHit.Clear();
+        //legacy. no use
     }
 
-    private void OnTriggerEnter(Collider other)
-    {
-        
-        if(other.tag == "Enemy" && !alreadyHit.Contains(other.gameObject))
-        {
-            Enemy en = other.GetComponent<Enemy>(); 
-            en.GetHit(currentWeapon.Dmg + buffedDmg);
-            en.KnockBack((other.transform.position - transform.position).normalized * 15);
-
-            alreadyHit.Add(other.gameObject);
-            Debug.Log(other.name);
-        }
 
 
-    }
+
+
+    //==================================
+
+
 
 
     private void TrySkill()
@@ -334,6 +343,9 @@ public class Player : Character
         }
     }
 
+
+
+    /// abous shields===================
     private void TryShield()
     {
         if(Input.GetKeyDown(KeyCode.E) && canShield)
@@ -374,6 +386,8 @@ public class Player : Character
         canMove = true;
         canAttack = true;
     }
+
+    ///=================================================
 
     override public void GetHit(float dmg)
     {
