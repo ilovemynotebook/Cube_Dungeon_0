@@ -22,6 +22,7 @@ public class PlaneSceneManager : MonoBehaviour
     public GameObject PlayerPf;
     public GameObject Player;
     public int Monstercount;
+    int bosscount;
     public int thisStage; //현재 스테이지
     public int thisPlane; // 현재 면
     public CinemachineVirtualCamera VirtualCamera;
@@ -60,6 +61,7 @@ public class PlaneSceneManager : MonoBehaviour
     private void Update()
     {
         Monstercount = GameObject.FindGameObjectsWithTag("Enemy").Length;
+        bosscount=GameObject.FindGameObjectsWithTag("Boss").Length;
     }
 
     public void SpawnPlayer()

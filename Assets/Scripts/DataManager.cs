@@ -102,13 +102,8 @@ public class DataManager : MonoBehaviour
     {
         //현재 플레이어 데이터를 데이터매니저에 담는다.
         playerData.SetPlayerData(player.hp, player.mhp, player.sta, player.msta);
-        playerData.isUpgraded_Item_0 = canvasManager.isUpgraded_Item_0;
-        playerData.isUpgraded_Item_1 = canvasManager.isUpgraded_Item_1;
-        playerData.isUpgraded_Item_2 = canvasManager.isUpgraded_Item_2;
-        playerData.isUpgraded_Item_3 = canvasManager.isUpgraded_Item_3;
-        playerData.isUpgraded_weapon=canvasManager.isUpgraded_weapon;
-        playerData.isUpgraded_shield=canvasManager.isUpgraded_shield;
-        playerData.key =canvasManager.key;
+        playerData.SetCanvasData(canvasManager.hpPotion, canvasManager.staPotion, canvasManager.dmgPotion, canvasManager.isUpgraded_weapon, canvasManager.isUpgraded_shield, canvasManager.isUpgraded_Item_0, canvasManager.isUpgraded_Item_1, canvasManager.isUpgraded_Item_2, canvasManager.isUpgraded_Item_3);
+        
     }
 
     public void StageDataChange(int Stage)
