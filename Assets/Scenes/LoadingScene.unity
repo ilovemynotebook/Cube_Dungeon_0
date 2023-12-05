@@ -440,7 +440,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d85d678b5e8690d4c9c53f0a846885a0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Player: {fileID: 742842965}
+  Player: {fileID: 0}
   EDB: {fileID: 11400000, guid: 7c6c6728beff4914da7ba1ad16eec140, type: 2}
   _PlaneSceneManager: {fileID: 0}
   _DataManager: {fileID: 0}
@@ -835,12 +835,6 @@ PrefabInstance:
 --- !u!4 &742842964 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5200056195052299848, guid: b3c2c129940cb444aa492571575cb3d3,
-    type: 3}
-  m_PrefabInstance: {fileID: 742842963}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &742842965 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 8362290891598171813, guid: b3c2c129940cb444aa492571575cb3d3,
     type: 3}
   m_PrefabInstance: {fileID: 742842963}
   m_PrefabAsset: {fileID: 0}

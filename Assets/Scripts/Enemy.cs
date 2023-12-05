@@ -6,7 +6,7 @@ using UnityEngine;
 [Serializable]
 public class EnemyData
 {
-    public GameObject enemy;
+    public Enemy enemy;
     public Vector3 spawnPos;
 }
 
@@ -41,7 +41,7 @@ public class Enemy : Character
         
         if (hitInfo.collider != null)
         {
-            Walk(direction);
+            Walk(direction, speed);
         }
         else
         {

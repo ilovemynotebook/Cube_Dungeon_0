@@ -4,9 +4,12 @@ using UnityEngine;
 
 public class Shockwave : MonoBehaviour
 {
+    [SerializeField] private float _destroyTime;
+
     private float _power;
 
     private bool _isAttackClear;
+
     public void SetPower(float power)
     {
         _power = power;
@@ -14,7 +17,7 @@ public class Shockwave : MonoBehaviour
 
     private void Start()
     {
-        Destroy(gameObject, 0.5f);
+        Destroy(gameObject, _destroyTime);
     }
 
 

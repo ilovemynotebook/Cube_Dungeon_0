@@ -124,10 +124,10 @@ public class Buffs : MonoBehaviour
     IEnumerator buffCoroutine(float duration)
     {
         startEffects.Invoke();
-        if(Icon != null) Icon.SetActive(true);
+        if(Icon != null)Icon.SetActive(true);
         yield return new WaitForSeconds(duration);
         endEffects?.Invoke();
-        if (Icon != null) Icon.SetActive(false);
+        if (Icon != null)Icon.SetActive(false);
     }
 
 
