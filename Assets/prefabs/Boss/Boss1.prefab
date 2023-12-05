@@ -1039,7 +1039,7 @@ Transform:
   - {fileID: 1529647389178854099}
   - {fileID: 5914596974042262227}
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!95 &4796090445222547031
 Animator:
@@ -1130,20 +1130,21 @@ MonoBehaviour:
   _animeSpeed: 1
   _power: 10
   _skillPatterns:
-  - Name: "\uADFC\uC811\uACF5\uACA9"
-    AttackDistance: 3
-    CoolTime: 1
+  - _name: 
+    _distance: 0
+    _coolTime: 0
     AttackTrigger: {fileID: 4902050946204755409}
     CurrentCoolTime: 0
     SkillState: 0
-  - Name: "\uC9C0\uC9C4\uD30C"
-    AttackDistance: 7
-    CoolTime: 20
+  - _name: 
+    _distance: 0
+    _coolTime: 0
     AttackTrigger: {fileID: 249953275714580256}
     CurrentCoolTime: 0
     SkillState: 0
   _patternUpdateTime: 0.3
   _waitTime: 3
+  _renderers: []
   Rigidbody: {fileID: 0}
   State: 0
   Target: {fileID: 0}
@@ -1537,7 +1538,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _boss: {fileID: 2921395002275486865}
-  _powerMul: 0
+  _powerMul: 1
   _skillBox: {fileID: 2663150163858339947}
 --- !u!1 &6517223267704678072
 GameObject:
