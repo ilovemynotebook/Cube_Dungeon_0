@@ -28,11 +28,6 @@ public class CinemachineCamera : SingletonHandler<CinemachineCamera>
     private void Update()
     {
         UpdateCameraShake();
-
-        if (Input.GetKeyDown(KeyCode.A))
-        {
-            CameraShake(0.5f);
-        }
     }
 
 
