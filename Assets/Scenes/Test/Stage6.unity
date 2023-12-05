@@ -1195,6 +1195,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gameStageDB: {fileID: 11400000, guid: 76ef8d62f6ef7a74c957706391b378b4, type: 2}
   GameoverPanel: {fileID: 2099883562}
+  GoTitleButton: {fileID: 1174782181}
+  GoRePlayButton: {fileID: 1917487657}
 --- !u!4 &2085537707
 Transform:
   m_ObjectHideFlags: 0

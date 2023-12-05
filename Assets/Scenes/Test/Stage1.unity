@@ -531,7 +531,7 @@ GameObject:
   - component: {fileID: 1174782182}
   - component: {fileID: 1174782181}
   m_Layer: 5
-  m_Name: Button (Legacy)
+  m_Name: GoTitle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -993,6 +993,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gameStageDB: {fileID: 11400000, guid: ad2907fed9a084e43b4281b85998c8bf, type: 2}
   GameoverPanel: {fileID: 2099883562}
+  GoTitleButton: {fileID: 1174782181}
+  GoRePlayButton: {fileID: 1917487657}
 --- !u!4 &1777263163
 Transform:
   m_ObjectHideFlags: 0
@@ -1021,7 +1023,7 @@ GameObject:
   - component: {fileID: 1917487658}
   - component: {fileID: 1917487657}
   m_Layer: 5
-  m_Name: Button (Legacy) (1)
+  m_Name: GoReplay
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

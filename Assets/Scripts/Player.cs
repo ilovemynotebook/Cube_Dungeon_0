@@ -167,7 +167,8 @@ public class Player : Character
     {
         base.Kill();
         yield return null;
-
+        StageManager stageManager = FindObjectOfType<StageManager>();
+        
 
 
 

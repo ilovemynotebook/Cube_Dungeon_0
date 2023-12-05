@@ -10,6 +10,8 @@ public class StageManager : MonoBehaviour
     DataManager dataManager;
     public GameStageDB gameStageDB;
     [SerializeField] private Canvas GameoverPanel;
+    [SerializeField] private Button GoTitleButton;
+    [SerializeField] private Button GoRePlayButton;
 
 
     private void Start()
@@ -21,8 +23,25 @@ public class StageManager : MonoBehaviour
         //Player player = FindObjectOfType<Player>();
         //dataManager.PlayerDataLoad(dataManager.playerData,player);
     }
-    private void OnEnable()
+    
+
+    void GameOver()
     {
-        
+        GameoverPanel.gameObject.SetActive(true);
+        GoTitleButton.onClick.AddListener(GotoTitle);
+        GoRePlayButton.onClick.AddListener(GotoReplay);
     }
+
+    void GotoTitle()
+    {
+        SceneManager.LoadScene("MainScene");
+    }
+    
+    void GotoReplay()
+    {
+        Player player= GameManager.Instance.Player.GetComponent<Player>();
+        dataManager.PlayerDataGet(player, dataManager.playerData);
+        SceneManager.LoadScene("LoadingScene");
+    }
+
 }
