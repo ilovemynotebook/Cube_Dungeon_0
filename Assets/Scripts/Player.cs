@@ -173,6 +173,10 @@ public class Player : Character
 
     }
 
+    public override void DropItem()
+    {
+        
+    }
 
     //about move control========================================================
     void TryMove()

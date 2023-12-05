@@ -42,7 +42,7 @@ public class Character : MonoBehaviour
 
     protected GameObject ladder;
 
-
+    public GameObject boxPf;
     
     // Start is called before the first frame update
     virtual protected void Start()
@@ -178,9 +178,9 @@ public class Character : MonoBehaviour
         gameObject.SetActive(false);
     }
 
-    public void DropItem()
+    public virtual void DropItem()
     {
-
+        if (boxPf != null) Instantiate(boxPf,transform.position,transform.rotation);
     }
 
     public void Jump()
