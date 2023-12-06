@@ -28,7 +28,7 @@ public class Boss1AI : BossAI
     {
         List<INode> nodes = new List<INode>
         {
-            AttackNode(),
+            WaitingCheckNode(AttackNode()),
             TrackingNode()
         };
 
@@ -54,7 +54,7 @@ public class Boss1AI : BossAI
         List<INode> nodes = new List<INode>()
         {
             //노드를 순서대로 입력한다.
-            WaitingCheckNode(),
+            
             new ActionNode(CheckAttackDistance),
             new ActionNode(StartAttack)
         };
@@ -62,9 +62,9 @@ public class Boss1AI : BossAI
         return new SequenceNode(nodes);
     }
 
-    private INode WaitingCheckNode()
+    private INode WaitingCheckNode(INode node)
     {
-        ConditionNode conditionNode = new ConditionNode(_boss.WaitingTimeCheck);
+        ConditionNode conditionNode = new ConditionNode(_boss.WaitingTimeCheck, node);
         return conditionNode;
     }
 
@@ -84,7 +84,7 @@ public class Boss1AI : BossAI
     private INode.ENodeState StartAttack()
     {
 
-        if (!(_boss.State >= BossState.Skill1 && _boss.State <= BossState.Skill4))
+        if (!(_boss.State >= BossState.Skill1 && _boss.State <= BossState.CustomSkill))
         {
             Debug.Log("공격");
             _boss.State = _currentSkillPattern.SkillState;
@@ -101,8 +101,7 @@ public class Boss1AI : BossAI
         List<INode> nodes = new List<INode>()
         {
             //노드를 순서대로 입력한다.
-            WaitingCheckNode(),
-            new ActionNode(Tracking)
+            WaitingCheckNode(new ActionNode(Tracking)),
         };
 
         return new SequenceNode(nodes);
@@ -129,7 +128,7 @@ public class Boss1AI : BossAI
     private INode.ENodeState Waiting()
     {
         
-        if(_boss.State >= BossState.Skill1 && _boss.State <= BossState.Skill4)
+        if(_boss.State >= BossState.Skill1 && _boss.State <= BossState.CustomSkill)
         {
             Debug.Log("대기중 입니다.");
             _boss.State = BossState.Idle;

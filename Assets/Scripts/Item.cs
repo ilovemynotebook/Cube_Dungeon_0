@@ -58,13 +58,16 @@ public class Item : MonoBehaviour
 
 
     
-    public void setItem(int hpPCramp, int staPCramp, int dmgPCramp, bool weapon = false,
+    public void setItem(int hpP, int staP, int dmgP, bool weapon = false,
         bool shield = false, bool item0 = false, bool item1 = false,
         bool item2 = false, bool item3 = false)
     {
-        hpPotion = Random.Range(0, hpPCramp);
-        staPotion = Random.Range(0, staPCramp);
-        dmgPotion = Random.Range(0, dmgPCramp);
+        //hpPotion = Random.Range(0, hpP);
+        //staPotion = Random.Range(0, staP);
+        //dmgPotion = Random.Range(0, dmgP);
+        hpPotion = hpP;
+        staPotion = staP;
+        dmgPotion = dmgP;
         isUpgraded_weapon = weapon;
         isUpgraded_shield = shield;
         isUpgraded_Item_0 = item0;

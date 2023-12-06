@@ -1,6 +1,8 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
+using Unity.VisualScripting;
 using UnityEngine;
 
 using Random = UnityEngine.Random;
@@ -14,22 +16,26 @@ public enum BossState
     Skill3,
     Skill4,
     Skill5,
-    Die,
+    CustomSkill,
+    Die = 10,
 }
 
 [Serializable]
 public class SkillPattern
 {
-    [Tooltip("½ºÅ³ ÀÌ¸§")]
-    public string Name;
+    [Tooltip("ï¿½ï¿½Å³ ï¿½Ì¸ï¿½")]
+    [SerializeField] private string _name;
+    public string Name => _name;
 
-    [Tooltip("°ø°Ý »ç°Å¸®")]
-    public float AttackDistance;
+    [Tooltip("ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Å¸ï¿½")]
+    [SerializeField] private float _distance;
+    public float Distance => _distance;
 
-    [Tooltip("ÄðÅ¸ÀÓ")]
-    public float CoolTime;
+    [Tooltip("ï¿½ï¿½Å¸ï¿½ï¿½")]
+    [SerializeField] private float _coolTime;
+    public float CoolTime => _coolTime;
 
-    [Tooltip("ÇÇ°Ý ¹üÀ§ °ü¸® Å¬·¡½º")]
+    [Tooltip("ï¿½Ç°ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ Å¬ï¿½ï¿½ï¿½ï¿½")]
     public BossAttackBehaviour AttackTrigger;
 
     [HideInInspector] public float CurrentCoolTime;
@@ -42,25 +48,25 @@ public class SkillPattern
 public class BossController : MonoBehaviour
 {
     [Space(10)]
-    [Header("´É·ÂÄ¡")]
+    [Header("ï¿½É·ï¿½Ä¡")]
 
-    [Tooltip("ÀÌ¸§")]
-    [SerializeField] private string _name;
+    [Tooltip("ï¿½Ì¸ï¿½")]
+    [SerializeField] protected string _name;
     public string Name => _name;
 
-    [Tooltip("Ã¼·Â")]
-    [SerializeField] private int _maxHp;
+    [Tooltip("Ã¼ï¿½ï¿½")]
+    [SerializeField] protected int _maxHp;
 
-    [Tooltip("ÀÌµ¿ ¼Óµµ")]
-    [SerializeField] private float _speed;
+    [Tooltip("ï¿½Ìµï¿½ ï¿½Óµï¿½")]
+    [SerializeField] protected float _speed;
     public float Speed => _speed;
 
-    [Tooltip("¾Ö´Ï¸ÞÀÌ¼Ç ½ºÇÇµå")]
-    [SerializeField] private float _animeSpeed;
+    [Tooltip("ï¿½Ö´Ï¸ï¿½ï¿½Ì¼ï¿½ ï¿½ï¿½ï¿½Çµï¿½")]
+    [SerializeField] protected float _animeSpeed;
     public float AnimeSpeed => _animeSpeed;
 
-    [Tooltip("°ø°Ý·Â")]
-    [SerializeField] private float _power;
+    [Tooltip("ï¿½ï¿½ï¿½Ý·ï¿½")]
+    [SerializeField] protected float _power;
     public float Power => _power;
 
 //===============================================================================================
@@ -68,18 +74,16 @@ public class BossController : MonoBehaviour
     [Space(10)]
     [Header("AI")]
 
-    [Tooltip("°ø°Ý ÆÐÅÏ µ¥ÀÌÅÍ")]
-    [SerializeField] private SkillPattern[] _skillPatterns;
+    [Tooltip("ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½")]
+    [SerializeField] protected SkillPattern[] _skillPatterns;
     public SkillPattern[] SkillPatterns => _skillPatterns;
 
-    [Tooltip("AI ÆÐÅÏ °»½Å ½Ã°£")]
-    [SerializeField] private float _patternUpdateTime;
+    [Tooltip("AI ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Ã°ï¿½")]
+    [SerializeField] protected float _patternUpdateTime;
 
-    [Tooltip("°ø°Ý ÈÄ ´ë±â ½Ã°£")]
-    [SerializeField] private float _waitTime;
-    private float _waitTimer;
-
-
+    [Tooltip("ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ ï¿½Ã°ï¿½")]
+    [SerializeField] protected float _waitTime;
+    protected float _waitTimer;
 
     protected List<SkillPattern> _usableSkillList = new List<SkillPattern>();
 
@@ -88,6 +92,14 @@ public class BossController : MonoBehaviour
     protected BossStateMachineBehaviour[] _bossStateMachines;
 
     protected Animator _animator;
+
+    [SerializeField] protected List<Renderer> _renderers = new List<Renderer>();
+
+    protected Dictionary<Renderer, Material> _tempMaterialDic = new Dictionary<Renderer, Material>();
+
+    protected Material _hitMaterial;
+
+    protected Coroutine _hitEffectRoutine;
 
     protected float _hp;
 
@@ -134,6 +146,8 @@ public class BossController : MonoBehaviour
         Rigidbody = GetComponent<Rigidbody>();
         _ai = new Boss1AI(this);
 
+        _hp = _maxHp;
+
         foreach (BossStateMachineBehaviour bossStateMachine in _bossStateMachines)
         {
             bossStateMachine.Init(this);
@@ -147,20 +161,44 @@ public class BossController : MonoBehaviour
             _skillPatterns[i].SkillState = BossState.Skill1 + i;
         }
 
-        _hp = _maxHp;
+        if (transform.TryGetComponent(out Renderer myRenderer))
+        {
+            if (myRenderer.material != null)
+            {
+                _renderers.Add(myRenderer);
+            }
+        }
+
+        foreach (Transform tfChild in transform)
+        {
+            if(tfChild.TryGetComponent(out Renderer renderer))
+            {
+                if(renderer.material != null)
+                {
+                    _renderers.Add(renderer);
+                    _tempMaterialDic.Add(renderer, renderer.material);
+                }
+            }
+        }
+
+        _hitMaterial = (Material)Resources.Load("HitMaterial");
     }
+
 
     public void GetHit(float dmg)
     {
         _hp -= dmg;
         _hp = Mathf.Clamp(_hp, 0, _maxHp);
 
+        if (_hitEffectRoutine != null)
+            StopCoroutine(_hitEffectRoutine);
+        _hitEffectRoutine = StartCoroutine(StartHitEffect());
+
         if (_hp <= 0)
             OnGetHitHandler?.Invoke();
         else
             OnGetHitHandler?.Invoke();
 
-        //anim.Play("Hit", 0, 0f);
     }
 
 
@@ -170,7 +208,7 @@ public class BossController : MonoBehaviour
     }
 
 
-    /// <summary> ½ºÅ³ ÄðÅ¸ÀÓµéÀ» °ü¸®ÇÏ´Â ÇÔ¼ö </summary>
+    /// <summary> ï¿½ï¿½Å³ ï¿½ï¿½Å¸ï¿½Óµï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ï´ï¿½ ï¿½Ô¼ï¿½ </summary>
     private void SkillCoolTimeUpdate()
     {
         foreach(SkillPattern pattern in _skillPatterns)
@@ -181,8 +219,8 @@ public class BossController : MonoBehaviour
     }
 
 
-    /// <summary> ÇöÀç »ç¿ë °¡´ÉÇÑ ½ºÅ³À» ¹èÄ¡ÇÏ´Â ÇÔ¼ö </summary>
-    public SkillPattern GetUsableSkill()
+    /// <summary> ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Å³ï¿½ï¿½ ï¿½ï¿½Ä¡ï¿½Ï´ï¿½ ï¿½Ô¼ï¿½ </summary>
+    public virtual SkillPattern GetUsableSkill()
     {
         _usableSkillList.Clear();
 
@@ -190,14 +228,14 @@ public class BossController : MonoBehaviour
         {
             if (0 < pattern.CurrentCoolTime)
             {
-                Debug.Log("ÄðÅ¸ÀÓ ¾ÆÁ÷");
+                Debug.Log("ï¿½ï¿½Å¸ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½");
                 continue;
             }
                 
 
-            if (pattern.AttackDistance < TargetDistance)
+            if (pattern.Distance < TargetDistance)
             {
-                Debug.Log("°Å¸®°¡ ¸Ø");
+                Debug.Log("ï¿½Å¸ï¿½ï¿½ï¿½ ï¿½ï¿½");
                 continue;
             }
                 
@@ -235,5 +273,34 @@ public class BossController : MonoBehaviour
     public void AddWaingTimer(float value)
     {
         _waitTimer += value;
+    }
+
+
+    private IEnumerator StartHitEffect()
+    {
+        ChangeHitEffect();
+        yield return new WaitForSeconds(0.1f);
+        ChangeDefalutEffect();
+        yield return new WaitForSeconds(0.1f);
+        ChangeHitEffect();
+        yield return new WaitForSeconds(0.1f);
+        ChangeDefalutEffect();
+    }
+
+
+    private void ChangeHitEffect()
+    {
+        foreach(Renderer renderer in _renderers)
+        {
+            renderer.material = _hitMaterial;
+        }
+    }
+
+    private void ChangeDefalutEffect()
+    {
+        foreach(Renderer renderer in _tempMaterialDic.Keys)
+        {
+            renderer.material = _tempMaterialDic[renderer];
+        }
     }
 }
