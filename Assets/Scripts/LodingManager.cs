@@ -13,11 +13,21 @@ public class LodingManager : MonoBehaviour
     public PlaneSceneManager planeSceneManager;
 
     private AsyncOperation _op;
+
+    private void Awake()
+    {
+        if (!GameManager.Instance.Player.activeSelf)
+        {
+            GameManager.Instance.Player.SetActive(true);
+        }
+    }
     void Start()
     {
-        dataManager = GameManager.Instance._DataManager;
+        dataManager = DataManager.Instance;
+        planeSceneManager = GameManager.Instance._PlaneSceneManager;
         Player player = FindObjectOfType<Player>();
-        dataManager.PlayerDataLoad(dataManager.playerData,player);
+        dataManager.PlayerDataLoad(dataManager.playerData,player,CanvasManager.Instance);
+        CanvasManager.Instance.UpdateHud();
         LoadingScene("Stage" + dataManager.saveData.thisStage);
         StartCoroutine(LoadingRoutine());
     }

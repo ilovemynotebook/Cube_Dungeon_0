@@ -166,9 +166,9 @@ public class Player : Character
     protected override IEnumerator Kill()
     {
         base.Kill();
-        yield return null;
         StageManager stageManager = FindObjectOfType<StageManager>();
-        
+        stageManager.GameOver();
+        yield return null;
 
 
 

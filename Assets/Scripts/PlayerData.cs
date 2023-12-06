@@ -40,7 +40,7 @@ public class PlayerData
         this.mhp = 100;
         this.sta = 100;
         this.msta = 100;
-        this.hpPotion = 0;
+        this.hpPotion = 5;
         this.staPotion = 0;
         this.dmgPotion = 0;
         this.isUpgraded_Item_0 = false;
@@ -52,16 +52,26 @@ public class PlayerData
         this.key = false;
     }
 
-    public void SetPlayerData(float hp, float mhp, float sta, float msta, int hpPotion, int staPotion, int dmgPotion)
+    public void SetPlayerData(float hp, float mhp, float sta, float msta)
     {
         this.hp = hp;
         this.mhp = mhp;
         this.sta = sta;
         this.msta = msta;
-        this.hpPotion = hpPotion;
-        this.staPotion = staPotion;
-        this.dmgPotion = dmgPotion;
 
+
+    }
+    public void SetCanvasData(int hpPotion,int staPotion,int dmgPotion,bool isUpgraded_weapon,bool isUpgraded_shield,bool isUpgraded_Item0,bool isUpgraded_Item1,bool isUpgraded_Item2,bool isUpgraded_Item3)
+    {
+        this.hpPotion=hpPotion;
+        this.staPotion=staPotion;
+        this.dmgPotion=dmgPotion;
+        this.isUpgraded_weapon=isUpgraded_weapon;
+        this.isUpgraded_shield=isUpgraded_shield;
+        this.isUpgraded_Item_0 = isUpgraded_Item0;
+        this.isUpgraded_Item_1 = isUpgraded_Item1;
+        this.isUpgraded_Item_2 = isUpgraded_Item2;
+        this.isUpgraded_Item_3 = isUpgraded_Item3;
     }
 }
 
