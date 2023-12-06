@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 
 
-public class Boss3AI : BossAI
+public class Boss2AI : BossAI
 {
-    public Boss3AI(BossController boss) : base(boss)
+    public Boss2AI(BossController boss) : base(boss)
     {
     }
 
