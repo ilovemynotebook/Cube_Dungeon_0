@@ -168,12 +168,18 @@ public class Player : Character
 
     protected override IEnumerator Kill()
     {
-        base.Kill();
-        StageManager stageManager = FindObjectOfType<StageManager>();
-        stageManager.GameOver();
-        yield return null;
-
-
+        anim.Play("Death");
+        isWalking = false;
+        do
+        {
+            yield return new WaitForEndOfFrame();
+        } while (anim.GetCurrentAnimatorStateInfo(0).normalizedTime < 1.0f);
+        //Destroy(gameObject);
+        
+        DropItem();
+        //StageManager stageManager = FindObjectOfType<StageManager>();
+        //stageManager.GameOver();
+        gameObject.SetActive(false);
 
     }
 

@@ -103,7 +103,6 @@ public class Enemy : Character
 
         if (groundHit.collider != null && wallHit.collider == null)
         {
-            Debug.Log(232);
             Walk(direction, speed);
         }
         else
