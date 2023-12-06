@@ -75,7 +75,7 @@ public class PlaneSceneManager : MonoBehaviour
     }
     public void PlaneUp()
     {
-        if (Monstercount == 0) {
+        if (Monstercount == 0&&bosscount==0) {
             StageSave(thisPlane);
             if (planes.Length<= thisPlane)
             {   //Stage가 바뀔경우
@@ -99,7 +99,7 @@ public class PlaneSceneManager : MonoBehaviour
     public void PlaneDown()
     {
      
-        if(Monstercount==0)
+        if(Monstercount==0&&bosscount==0)
         {
             //이전 면 이동
             if ( thisPlane > 1)
