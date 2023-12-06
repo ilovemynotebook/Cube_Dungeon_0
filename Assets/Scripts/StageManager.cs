@@ -46,7 +46,8 @@ public class StageManager : MonoBehaviour
         dataManager.PlayerDataGet(player, dataManager.playerData,CanvasManager.Instance);
         dataManager.StageDataLoad(dataManager.saveData, PlaneSceneManager.Instance);
         PlaneSceneManager.Instance.Clear();
-        SceneManager.LoadScene("RetryLoadingScene");
+        Destroy(Playable.instance.gameObject);
+        SceneManager.LoadScene("LoadingScene");
     }
 
 }
