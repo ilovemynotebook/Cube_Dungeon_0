@@ -44,6 +44,12 @@ public class PlayerAttackHitBox : MonoBehaviour
             //Debug.Log(other.name);
         }
 
+        if(other.TryGetComponent(out BossController boss))
+        {
+            boss.GetHit(dmg);
+            if (isOneHit) alreadyHit.Add(other.gameObject);
+        }
+
 
     }
 
