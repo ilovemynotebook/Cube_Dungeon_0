@@ -27,7 +27,7 @@ public class StageManager : MonoBehaviour
 
     public void GameOver()
     {
-        GameManager.Instance.Player.SetActive(false);
+        //GameManager.Instance.Player.SetActive(false);
         GameoverPanel.gameObject.SetActive(true);
         GoTitleButton.onClick.AddListener(GotoTitle);
         GoRePlayButton.onClick.AddListener(GotoReplay);

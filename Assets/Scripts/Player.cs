@@ -177,8 +177,8 @@ public class Player : Character
         //Destroy(gameObject);
         
         DropItem();
-        //StageManager stageManager = FindObjectOfType<StageManager>();
-        //stageManager.GameOver();
+        StageManager stageManager = FindObjectOfType<StageManager>();
+        stageManager.GameOver();
         gameObject.SetActive(false);
 
     }
