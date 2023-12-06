@@ -2248,10 +2248,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _name: "\uBCF4\uC2A44"
-  _maxHp: 1000
+  _maxHp: 500
   _speed: 5
   _animeSpeed: 1
-  _power: 30
+  _power: 10
   _skillPatterns:
   - _name: "\uADFC\uC811\uACF5\uACA9"
     _distance: 4

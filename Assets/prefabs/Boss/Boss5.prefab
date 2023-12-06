@@ -79,11 +79,14 @@ MonoBehaviour:
   _boss: {fileID: 3404591163487662841}
   _powerMul: 2
   _projectileDatas:
-  - _projectilePrefab: {fileID: 4496176101546860032, guid: ee105333dba170a4b96af3419f01729b,
+  - _spawnPosType: 0
+    _projectilePrefab: {fileID: 4496176101546860032, guid: ee105333dba170a4b96af3419f01729b,
       type: 3}
     _spawnPos: {x: 5, y: 1.7, z: 0}
     _spawnTime: 0
   _isDirFixationEnabled: 0
+  _isRandomSpawn: 0
+  _randomSpawnRange: 0
 --- !u!1 &259057869853616990
 GameObject:
   m_ObjectHideFlags: 0
@@ -1158,7 +1161,7 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5639124139058038057}
   serializedVersion: 4
-  m_Mass: 1
+  m_Mass: 100
   m_Drag: 0
   m_AngularDrag: 0.05
   m_CenterOfMass: {x: 0, y: 0, z: 0}
@@ -1175,7 +1178,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 88
+  m_Constraints: 112
   m_CollisionDetection: 0
 --- !u!136 &1524379528025113216
 CapsuleCollider:
@@ -1213,7 +1216,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _name: "\uB9C8\uBC95\uC0AC"
-  _maxHp: 300
+  _maxHp: 400
   _speed: 5
   _animeSpeed: 1
   _power: 20
@@ -1417,23 +1420,28 @@ MonoBehaviour:
   _boss: {fileID: 3404591163487662841}
   _powerMul: 1
   _projectileDatas:
-  - _projectilePrefab: {fileID: 1744086401873125126, guid: 472228afcc308624b89ae1b87aa24a1f,
+  - _spawnPosType: 0
+    _projectilePrefab: {fileID: 1744086401873125126, guid: 472228afcc308624b89ae1b87aa24a1f,
       type: 3}
     _spawnPos: {x: 0, y: 0, z: 0}
     _spawnTime: 1
-  - _projectilePrefab: {fileID: 1744086401873125126, guid: 472228afcc308624b89ae1b87aa24a1f,
+  - _spawnPosType: 0
+    _projectilePrefab: {fileID: 1744086401873125126, guid: 472228afcc308624b89ae1b87aa24a1f,
       type: 3}
     _spawnPos: {x: 0, y: 0, z: 0}
     _spawnTime: 2
-  - _projectilePrefab: {fileID: 1744086401873125126, guid: 472228afcc308624b89ae1b87aa24a1f,
+  - _spawnPosType: 0
+    _projectilePrefab: {fileID: 1744086401873125126, guid: 472228afcc308624b89ae1b87aa24a1f,
       type: 3}
     _spawnPos: {x: 0, y: 0, z: 0}
     _spawnTime: 3
-  - _projectilePrefab: {fileID: 1744086401873125126, guid: 472228afcc308624b89ae1b87aa24a1f,
+  - _spawnPosType: 0
+    _projectilePrefab: {fileID: 1744086401873125126, guid: 472228afcc308624b89ae1b87aa24a1f,
       type: 3}
     _spawnPos: {x: 0, y: 0, z: 0}
     _spawnTime: 4
-  - _projectilePrefab: {fileID: 1744086401873125126, guid: 472228afcc308624b89ae1b87aa24a1f,
+  - _spawnPosType: 0
+    _projectilePrefab: {fileID: 1744086401873125126, guid: 472228afcc308624b89ae1b87aa24a1f,
       type: 3}
     _spawnPos: {x: 0, y: 0, z: 0}
     _spawnTime: 5
@@ -1486,11 +1494,14 @@ MonoBehaviour:
   _boss: {fileID: 3404591163487662841}
   _powerMul: 1
   _projectileDatas:
-  - _projectilePrefab: {fileID: 1493388723480305143, guid: b370f8c00883de34782eb6fedc050ece,
+  - _spawnPosType: 0
+    _projectilePrefab: {fileID: 1493388723480305143, guid: b370f8c00883de34782eb6fedc050ece,
       type: 3}
     _spawnPos: {x: 1.5, y: 1, z: 0}
     _spawnTime: 0
   _isDirFixationEnabled: 0
+  _isRandomSpawn: 0
+  _randomSpawnRange: 0
 --- !u!1 &7139171246567127801
 GameObject:
   m_ObjectHideFlags: 0
@@ -1847,8 +1858,11 @@ MonoBehaviour:
   _boss: {fileID: 3404591163487662841}
   _powerMul: 2
   _projectileDatas:
-  - _projectilePrefab: {fileID: -1405334022261893738, guid: 0031c5d2909d7584bbe5cd06f3eff41c,
+  - _spawnPosType: 0
+    _projectilePrefab: {fileID: -1405334022261893738, guid: 0031c5d2909d7584bbe5cd06f3eff41c,
       type: 3}
     _spawnPos: {x: 5, y: 1.7, z: 0}
     _spawnTime: 0
   _isDirFixationEnabled: 0
+  _isRandomSpawn: 0
+  _randomSpawnRange: 0

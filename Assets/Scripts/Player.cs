@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UIElements;
+using Cinemachine;
+
 
 public class Player : Character
 {
@@ -145,6 +147,7 @@ public class Player : Character
         isUpgraded_Item_1 = CanvasManager.Instance.isUpgraded_Item_1;
         isUpgraded_Item_2 = CanvasManager.Instance.isUpgraded_Item_2;
         isUpgraded_Item_3 = CanvasManager.Instance.isUpgraded_Item_3;
+        hpPotion = CanvasManager.Instance.hpPotion;
         staPotion = CanvasManager.Instance.staPotion;
         dmgPotion = CanvasManager.Instance.dmgPotion;
         key = CanvasManager.Instance.key;
@@ -165,13 +168,28 @@ public class Player : Character
 
     protected override IEnumerator Kill()
     {
-        base.Kill();
-        StageManager stageManager = FindObjectOfType<StageManager>();
-        stageManager.GameOver();
-        yield return null;
+        anim.Play("Death");
+        isWalking = false;
+        do
+        {
+            yield return new WaitForEndOfFrame();
+        } while (anim.GetCurrentAnimatorStateInfo(0).normalizedTime < 1.0f);
+        //Destroy(gameObject);
+        
+        DropItem();
+        //StageManager stageManager = FindObjectOfType<StageManager>();
+        //stageManager.GameOver();
+        gameObject.SetActive(false);
 
+    }
 
+    public override void DropItem()
+    {
+        var dropped = Instantiate(DropPrefab, transform.position, transform.rotation);
+        Item _item;
+        dropped.transform.GetChild(0).TryGetComponent<Item>(out _item);
 
+        _item.setItem(hpPotion, staPotion, dmgPotion);
     }
 
 

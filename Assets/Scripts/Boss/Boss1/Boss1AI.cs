@@ -113,7 +113,6 @@ public class Boss1AI : BossAI
     {
         Vector3 bossPos = Vector3.right * _boss.gameObject.transform.position.x;
         Vector3 targetPos = Vector3.right * _boss.Target.transform.position.x;
-        Debug.Log(Vector3.Distance(bossPos, targetPos));
         if (Vector3.Distance(bossPos, targetPos) > 3)
         {
             Debug.Log("¦i¾Æ°£´Ù.");

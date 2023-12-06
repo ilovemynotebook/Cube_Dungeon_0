@@ -1,9 +1,8 @@
 using System;
 using System.Collections;
-using System.Collections.Generic;
 using System.Diagnostics;
-using UnityEditor;
 using UnityEngine;
+using Debug = UnityEngine.Debug;
 
 using Random = UnityEngine.Random;
 
@@ -76,6 +75,7 @@ public class BossProjectileSkill: BossAttackBehaviour
 
     protected virtual void SpawnProjectile(ProjectileData data)
     {
+        Debug.Log(_boss);
         Vector3 dir = (_boss.Target.transform.position - _boss.gameObject.transform.position).normalized;
         int dirX = dir.x > 0 ? 1 : dir.x < 0 ? -1 : 0;
 
