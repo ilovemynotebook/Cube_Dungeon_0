@@ -140,7 +140,6 @@ public class Player : Character
     }
     public void itemsSetup()
     {
-
         isUpgraded_weapon = CanvasManager.Instance.isUpgraded_weapon;
         isUpgraded_shield = CanvasManager.Instance.isUpgraded_shield;
         isUpgraded_Item_0 = CanvasManager.Instance.isUpgraded_Item_0;
@@ -187,7 +186,11 @@ public class Player : Character
         hpPotion = 0;
         staPotion = 0;
         dmgPotion = 0;
-        itemsSetup();
+        CanvasManager.Instance.hpPotion = 0;
+        CanvasManager.Instance.staPotion = 0;
+        CanvasManager.Instance.dmgPotion = 0;
+        CanvasManager.Instance.UpdateHud();
+
 
         var dropped = Instantiate(DropPrefab, transform.position, transform.rotation);
         Item _item;
