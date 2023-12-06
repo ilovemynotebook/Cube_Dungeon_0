@@ -180,11 +180,15 @@ public class Player : Character
         StageManager stageManager = FindObjectOfType<StageManager>();
         stageManager.GameOver();
         gameObject.SetActive(false);
-
     }
 
     public override void DropItem()
     {
+        hpPotion = 0;
+        staPotion = 0;
+        dmgPotion = 0;
+        itemsSetup();
+
         var dropped = Instantiate(DropPrefab, transform.position, transform.rotation);
         Item _item;
         dropped.transform.GetChild(0).TryGetComponent<Item>(out _item);
@@ -360,7 +364,6 @@ public class Player : Character
     {
         if(Input.GetKeyDown(KeyCode.Alpha1))
         {
-            Debug.Log(buffs[0]);
             buffs[0].Activate();
         }
         if (Input.GetKeyDown(KeyCode.Alpha2))
