@@ -183,6 +183,12 @@ public class Player : Character
 
     public override void DropItem()
     {
+        var dropped = Instantiate(DropPrefab, transform.position, transform.rotation);
+        Item _item;
+        dropped.transform.GetChild(0).TryGetComponent<Item>(out _item);
+
+        _item.setItem(hpPotion, staPotion, dmgPotion);
+
         hpPotion = 0;
         staPotion = 0;
         dmgPotion = 0;
@@ -190,13 +196,6 @@ public class Player : Character
         CanvasManager.Instance.staPotion = 0;
         CanvasManager.Instance.dmgPotion = 0;
         CanvasManager.Instance.UpdateHud();
-
-
-        var dropped = Instantiate(DropPrefab, transform.position, transform.rotation);
-        Item _item;
-        dropped.transform.GetChild(0).TryGetComponent<Item>(out _item);
-
-        _item.setItem(hpPotion, staPotion, dmgPotion);
     }
 
 
