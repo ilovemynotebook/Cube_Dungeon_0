@@ -26,7 +26,8 @@ public class PlaneSceneManager : MonoBehaviour
     public int thisStage; //현재 스테이지
     public int thisPlane; // 현재 면
     public CinemachineVirtualCamera VirtualCamera;
-    
+    Box deadbox;
+
     //EStageType ThisStageType;
     //EStageStyle ThisStageStyle;
     //[SerializeField]Enemy[] SummonedEnemy;
@@ -137,6 +138,24 @@ public class PlaneSceneManager : MonoBehaviour
         {
             boxes.Add(Instantiate(Plane.boxData[i].box, Plane.boxData[i].spawnPos,Quaternion.identity));
             boxes[i].isOpen = Plane.boxData[i].isOpen;
+            boxes[i].hpPotion = Plane.boxData[i].hpPotion;
+            boxes[i].staPotion = Plane.boxData[i].staPotion;
+            boxes[i].dmgPotion = Plane.boxData[i].dmgPotion;
+            boxes[i].key = Plane.boxData[i].key;
+            boxes[i].isUpgraded_weapon= Plane.boxData[i].isUpgraded_weapon;
+            boxes[i].isUpgraded_shield = Plane.boxData[i].isUpgraded_shield;
+            boxes[i].isUpgraded_Item_0 = Plane.boxData[i].isUpgraded_Item_0;
+            boxes[i].isUpgraded_Item_1 = Plane.boxData[i].isUpgraded_Item_1;
+            boxes[i].isUpgraded_Item_2 = Plane.boxData[i].isUpgraded_Item_2;
+            boxes[i].isUpgraded_Item_3 = Plane.boxData[i].isUpgraded_Item_3;
+
+        }
+        DataManager dataManager = DataManager.Instance;
+        if (thisPlane == dataManager.DeadPlane&& dataManager.DeadPlane !=0)
+        {
+            dataManager.DeadPlane = 0;
+            deadbox = Instantiate(dataManager.deadBox.box, dataManager.deadBox.spawnPos, Quaternion.identity);
+            deadbox.setitem(dataManager.deadBox.hpPotion, dataManager.deadBox.staPotion, dataManager.deadBox.dmgPotion);
         }
     }
 
@@ -186,7 +205,6 @@ public class PlaneSceneManager : MonoBehaviour
         {
             Destroy(MapPrefab);
         }
-        
         if(boxes.Count> 0)
         {
             for (int i = 0; i < boxes.Count; i++)
@@ -204,6 +222,11 @@ public class PlaneSceneManager : MonoBehaviour
                 Destroy(enemies[j].gameObject);
             }
             enemies.Clear();
+        }
+        if (deadbox != null)
+        {
+            Destroy(deadbox.gameObject);
+            deadbox = null;
         }
     }
     public void Fade()

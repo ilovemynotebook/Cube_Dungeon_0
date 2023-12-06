@@ -183,6 +183,12 @@ public class Player : Character
 
     public override void DropItem()
     {
+        itemsSetup();
+        var dropped = Instantiate(DropPrefab, transform.position, transform.rotation);
+        Box _box;
+        dropped.transform.TryGetComponent(out _box);
+        _box.setitem(hpPotion, staPotion, dmgPotion);
+        DataManager.Instance.DeadPoint(transform.position,hpPotion,staPotion,dmgPotion,PlaneSceneManager.Instance.thisPlane);
         hpPotion = 0;
         staPotion = 0;
         dmgPotion = 0;
@@ -190,13 +196,7 @@ public class Player : Character
         CanvasManager.Instance.staPotion = 0;
         CanvasManager.Instance.dmgPotion = 0;
         CanvasManager.Instance.UpdateHud();
-
-
-        var dropped = Instantiate(DropPrefab, transform.position, transform.rotation);
-        Item _item;
-        dropped.transform.GetChild(0).TryGetComponent<Item>(out _item);
-
-        _item.setItem(hpPotion, staPotion, dmgPotion);
+        
     }
 
 

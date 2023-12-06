@@ -19,6 +19,8 @@ public class DataManager : MonoBehaviour
     public SaveData saveData;
     public PlayerData playerData;
     public bool FileNotExist;
+    public BoxData deadBox;
+    public int DeadPlane;
     
     private void Awake()
     {
@@ -143,6 +145,15 @@ public class DataManager : MonoBehaviour
     {
         saveData=new SaveData();
         playerData=new PlayerData();
+    }
+
+    public void DeadPoint(UnityEngine.Vector3 SpawnPoint,int hpPotion,int staPotion,int dmgPotion,int Plane)
+    {
+        DeadPlane = Plane;
+        deadBox.spawnPos=SpawnPoint;
+        deadBox.hpPotion = hpPotion;
+        deadBox.staPotion=staPotion;
+        deadBox.dmgPotion=dmgPotion;
     }
 
 }

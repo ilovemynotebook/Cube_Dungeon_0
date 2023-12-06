@@ -60,7 +60,7 @@ public class Item : MonoBehaviour
     
     public void setItem(int hpP, int staP, int dmgP, bool weapon = false,
         bool shield = false, bool item0 = false, bool item1 = false,
-        bool item2 = false, bool item3 = false)
+        bool item2 = false, bool item3 = false,bool roomkey=false)
     {
         //hpPotion = Random.Range(0, hpP);
         //staPotion = Random.Range(0, staP);
@@ -74,5 +74,6 @@ public class Item : MonoBehaviour
         isUpgraded_Item_1 = item1;
         isUpgraded_Item_2 = item2;
         isUpgraded_Item_3 = item3;
+        key = roomkey;
     }
 }
