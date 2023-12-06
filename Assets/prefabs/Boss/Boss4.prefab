@@ -1517,54 +1517,54 @@ MonoBehaviour:
   _boss: {fileID: 0}
   _powerMul: 1
   _projectileDatas:
-  - _spawnPosType: 1
+  - _spawnPosType: 0
     _projectilePrefab: {fileID: -1405334022261893738, guid: b703ef4a12201284583536f8adc4b340,
       type: 3}
-    _spawnPos: {x: 1, y: 10, z: 0}
+    _spawnPos: {x: -5, y: 15, z: 0}
     _spawnTime: 0
-  - _spawnPosType: 1
+  - _spawnPosType: 0
     _projectilePrefab: {fileID: -1405334022261893738, guid: b703ef4a12201284583536f8adc4b340,
       type: 3}
-    _spawnPos: {x: 1, y: 10, z: 0}
+    _spawnPos: {x: -5, y: 15, z: 0}
     _spawnTime: 0.3
-  - _spawnPosType: 1
+  - _spawnPosType: 0
     _projectilePrefab: {fileID: -1405334022261893738, guid: b703ef4a12201284583536f8adc4b340,
       type: 3}
-    _spawnPos: {x: 1, y: 10, z: 0}
+    _spawnPos: {x: -5, y: 15, z: 0}
     _spawnTime: 0.6
-  - _spawnPosType: 1
+  - _spawnPosType: 0
     _projectilePrefab: {fileID: -1405334022261893738, guid: b703ef4a12201284583536f8adc4b340,
       type: 3}
-    _spawnPos: {x: 1, y: 10, z: 0}
+    _spawnPos: {x: -5, y: 15, z: 0}
     _spawnTime: 0.9
-  - _spawnPosType: 1
+  - _spawnPosType: 0
     _projectilePrefab: {fileID: -1405334022261893738, guid: b703ef4a12201284583536f8adc4b340,
       type: 3}
-    _spawnPos: {x: 1, y: 10, z: 0}
+    _spawnPos: {x: -5, y: 15, z: 0}
     _spawnTime: 1.2
-  - _spawnPosType: 1
+  - _spawnPosType: 0
     _projectilePrefab: {fileID: -1405334022261893738, guid: b703ef4a12201284583536f8adc4b340,
       type: 3}
-    _spawnPos: {x: 1, y: 10, z: 0}
+    _spawnPos: {x: -5, y: 15, z: 0}
     _spawnTime: 1.5
-  - _spawnPosType: 1
+  - _spawnPosType: 0
     _projectilePrefab: {fileID: -1405334022261893738, guid: b703ef4a12201284583536f8adc4b340,
       type: 3}
-    _spawnPos: {x: 1, y: 10, z: 0}
+    _spawnPos: {x: -5, y: 15, z: 0}
     _spawnTime: 1.8
-  - _spawnPosType: 1
+  - _spawnPosType: 0
     _projectilePrefab: {fileID: -1405334022261893738, guid: b703ef4a12201284583536f8adc4b340,
       type: 3}
-    _spawnPos: {x: 1, y: 10, z: 0}
+    _spawnPos: {x: -5, y: 15, z: 0}
     _spawnTime: 2.1
-  - _spawnPosType: 1
+  - _spawnPosType: 0
     _projectilePrefab: {fileID: -1405334022261893738, guid: b703ef4a12201284583536f8adc4b340,
       type: 3}
-    _spawnPos: {x: 1, y: 10, z: 0}
+    _spawnPos: {x: -5, y: 15, z: 0}
     _spawnTime: 2.4
   _isDirFixationEnabled: 0
   _isRandomSpawn: 1
-  _randomSpawnRange: 10
+  _randomSpawnRange: 5
 --- !u!1 &4726228744185665203
 GameObject:
   m_ObjectHideFlags: 0
@@ -2162,7 +2162,7 @@ Transform:
   - {fileID: 2991096179531646653}
   - {fileID: 3929052964883365632}
   m_Father: {fileID: 0}
-  m_RootOrder: 12
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
 --- !u!95 &2912768891696753185
 Animator:
