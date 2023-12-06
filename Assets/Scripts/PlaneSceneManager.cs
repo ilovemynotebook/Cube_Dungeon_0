@@ -22,6 +22,7 @@ public class PlaneSceneManager : MonoBehaviour
     public GameObject PlayerPf;
     public GameObject Player;
     public int Monstercount;
+    int bosscount;
     public int thisStage; //현재 스테이지
     public int thisPlane; // 현재 면
     public CinemachineVirtualCamera VirtualCamera;
@@ -54,12 +55,13 @@ public class PlaneSceneManager : MonoBehaviour
     private void Start()
     {
         GameManager.Instance._PlaneSceneManager= this;
-        GameManager.Instance._DataManager.StageDataLoad(GameManager.Instance._DataManager.saveData, this);
+        DataManager.Instance.StageDataLoad(DataManager.Instance.saveData, this);
         Player = GameManager.Instance.Player;
     }
     private void Update()
     {
         Monstercount = GameObject.FindGameObjectsWithTag("Enemy").Length;
+        bosscount=GameObject.FindGameObjectsWithTag("Boss").Length;
     }
 
     public void SpawnPlayer()
@@ -79,10 +81,10 @@ public class PlaneSceneManager : MonoBehaviour
             {   //Stage가 바뀔경우
                 thisStage++;
                 thisPlane = 1;
-                GameManager.Instance._DataManager.saveData.thisStage=thisStage;
-                GameManager.Instance._DataManager.StageDataChange(thisStage);
+                DataManager.Instance.saveData.thisStage=thisStage;
+                DataManager.Instance.StageDataChange(thisStage);
                 Player player = FindObjectOfType<Player>();
-                GameManager.Instance._DataManager.PlayerDataGet(player, GameManager.Instance._DataManager.playerData);
+                DataManager.Instance.PlayerDataGet(player, DataManager.Instance.playerData,CanvasManager.Instance);
                 SceneManager.LoadScene("Stage"+thisStage);
             }
             else

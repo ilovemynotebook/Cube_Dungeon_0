@@ -37,7 +37,12 @@ public class TitleManager : MonoBehaviour
 
     private void Start()
     {
-        dataManager=FindObjectOfType<DataManager>();
+        if (Playable.instance)
+        {
+            Destroy(Playable.instance.gameObject);
+            
+        }
+        dataManager =FindObjectOfType<DataManager>();
         if (dataManager.FileNotExist == true) { LoadButton.interactable = false;  }
         Invoke("TitleFadeIn", 2);
     }

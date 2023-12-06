@@ -1018,7 +1018,7 @@ GameObject:
   - component: {fileID: 2921395002275486865}
   m_Layer: 0
   m_Name: Boss1
-  m_TagString: Untagged
+  m_TagString: Boss
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1039,7 +1039,7 @@ Transform:
   - {fileID: 1529647389178854099}
   - {fileID: 5914596974042262227}
   m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!95 &4796090445222547031
 Animator:
@@ -1130,15 +1130,15 @@ MonoBehaviour:
   _animeSpeed: 1
   _power: 10
   _skillPatterns:
-  - _name: 
-    _distance: 0
-    _coolTime: 0
+  - _name: "\uADFC\uC811\uACF5\uACA8"
+    _distance: 3
+    _coolTime: 1
     AttackTrigger: {fileID: 4902050946204755409}
     CurrentCoolTime: 0
     SkillState: 0
-  - _name: 
-    _distance: 0
-    _coolTime: 0
+  - _name: "\uCC0D\uAE30"
+    _distance: 7
+    _coolTime: 5
     AttackTrigger: {fileID: 249953275714580256}
     CurrentCoolTime: 0
     SkillState: 0
