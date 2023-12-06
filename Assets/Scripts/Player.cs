@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UIElements;
+using Cinemachine;
+
 
 public class Player : Character
 {
@@ -145,6 +147,7 @@ public class Player : Character
         isUpgraded_Item_1 = CanvasManager.Instance.isUpgraded_Item_1;
         isUpgraded_Item_2 = CanvasManager.Instance.isUpgraded_Item_2;
         isUpgraded_Item_3 = CanvasManager.Instance.isUpgraded_Item_3;
+        hpPotion = CanvasManager.Instance.hpPotion;
         staPotion = CanvasManager.Instance.staPotion;
         dmgPotion = CanvasManager.Instance.dmgPotion;
         key = CanvasManager.Instance.key;
@@ -172,6 +175,15 @@ public class Player : Character
 
 
 
+    }
+
+    public override void DropItem()
+    {
+        var dropped = Instantiate(DropPrefab, transform.position, transform.rotation);
+        Item _item;
+        dropped.transform.GetChild(0).TryGetComponent<Item>(out _item);
+
+        _item.setItem(hpPotion, staPotion, dmgPotion);
     }
 
 

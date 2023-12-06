@@ -27,7 +27,7 @@ public class PlayerAttackBoxCasterWithAnim : MonoBehaviour
 
 
         Debug.Log(dmg);
-        GameObject box = Instantiate(attackHitBox, transform.parent.transform.position, Quaternion.identity);
+        GameObject box = Instantiate(attackHitBox, transform.parent.transform.position, transform.parent.rotation);
         //box.GetComponentInChildren<PlayerAttackHitBox>().SetUp(player.currentWeapon.Dmg + player.buffedDmg, 0.3f, true, player.gameObject);
         box.GetComponentInChildren<PlayerAttackHitBox>().SetUp(dmg, 0.3f, true, player.gameObject);
     }
