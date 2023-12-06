@@ -2323,7 +2323,7 @@ Transform:
   - {fileID: 5060321833663425056}
   - {fileID: 4750402668114505074}
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
 --- !u!95 &6856866251148005194
 Animator:
@@ -2354,7 +2354,7 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4602316160372197751}
   serializedVersion: 4
-  m_Mass: 1
+  m_Mass: 100
   m_Drag: 0
   m_AngularDrag: 0.05
   m_CenterOfMass: {x: 0, y: 0, z: 0}
@@ -2389,7 +2389,7 @@ MonoBehaviour:
   _maxHp: 1000
   _speed: 0
   _animeSpeed: 1
-  _power: 20
+  _power: 30
   _skillPatterns:
   - _name: "\uD22C\uC0AC\uCCB4 \uACF5\uACA9"
     _distance: 9999

@@ -21,7 +21,8 @@ public abstract class BossAIss
 
     public void Update()
     {
-        StartBT();
+        if(_boss.State != BossState.Die)
+            StartBT();
     }
 
     private void StartBT()

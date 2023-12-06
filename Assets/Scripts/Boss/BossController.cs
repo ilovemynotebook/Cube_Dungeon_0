@@ -189,17 +189,23 @@ public class BossController : MonoBehaviour
 
     public void GetHit(float dmg)
     {
-        _hp -= dmg;
-        _hp = Mathf.Clamp(_hp, 0, _maxHp);
+        if (0 < _hp)
+        {
+            _hp -= dmg;
+            _hp = Mathf.Clamp(_hp, 0, _maxHp);
 
-        if (_hitEffectRoutine != null)
-            StopCoroutine(_hitEffectRoutine);
-        _hitEffectRoutine = StartCoroutine(StartHitEffect());
-
-        if (_hp <= 0)
+            if (_hitEffectRoutine != null)
+                StopCoroutine(_hitEffectRoutine);
+            _hitEffectRoutine = StartCoroutine(StartHitEffect());
             OnGetHitHandler?.Invoke();
+            Destroy(gameObject, 10);
+        }
+            
         else
-            OnGetHitHandler?.Invoke();
+        {
+            State = BossState.Die;
+            OnDeathEventHandler?.Invoke();
+        }
 
     }
 

@@ -1070,7 +1070,7 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4456228729890992133}
   serializedVersion: 4
-  m_Mass: 1
+  m_Mass: 100
   m_Drag: 0
   m_AngularDrag: 0.05
   m_CenterOfMass: {x: 0, y: 0, z: 0}
@@ -1125,10 +1125,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _name: Golem
-  _maxHp: 100
+  _maxHp: 10
   _speed: 3
   _animeSpeed: 1
-  _power: 10
+  _power: 5
   _skillPatterns:
   - _name: "\uADFC\uC811\uACF5\uACA8"
     _distance: 3
