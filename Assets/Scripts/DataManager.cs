@@ -49,12 +49,6 @@ public class DataManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.V))
-        {
-            DataSave();
-        }
-
-
 
     }
 
