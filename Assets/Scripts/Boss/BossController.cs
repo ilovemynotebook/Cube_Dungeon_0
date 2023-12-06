@@ -160,6 +160,7 @@ public class BossController : MonoBehaviour
                 break;
 
             _skillPatterns[i].SkillState = BossState.Skill1 + i;
+            _skillPatterns[i].AttackTrigger.Init(this);
         }
 
         if (transform.TryGetComponent(out Renderer myRenderer))
@@ -280,11 +281,19 @@ public class BossController : MonoBehaviour
     private IEnumerator StartHitEffect()
     {
         ChangeHitEffect();
-        yield return new WaitForSeconds(0.1f);
+        yield return new WaitForSeconds(0.05f);
         ChangeDefalutEffect();
-        yield return new WaitForSeconds(0.1f);
+        yield return new WaitForSeconds(0.05f);
         ChangeHitEffect();
-        yield return new WaitForSeconds(0.1f);
+        yield return new WaitForSeconds(0.05f);
+        ChangeDefalutEffect();
+        yield return new WaitForSeconds(0.05f);
+        ChangeHitEffect();
+        yield return new WaitForSeconds(0.05f);
+        ChangeDefalutEffect();
+        yield return new WaitForSeconds(0.05f);
+        ChangeHitEffect();
+        yield return new WaitForSeconds(0.05f);
         ChangeDefalutEffect();
     }
 
