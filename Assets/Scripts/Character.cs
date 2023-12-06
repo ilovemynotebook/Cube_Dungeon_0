@@ -25,6 +25,7 @@ public class Character : MonoBehaviour
     protected bool isWalking;
     protected Rigidbody rb;
     protected RaycastHit hitInfo;
+    protected RaycastHit wallHitInfo;
     protected int layerMask = 1 << 8;
     protected Vector3 characterVelocity;
     protected Vector3 characterRotation;
@@ -42,8 +43,27 @@ public class Character : MonoBehaviour
 
     protected GameObject ladder;
 
+<<<<<<< Updated upstream
     public GameObject boxPf;
     
+=======
+    public GameObject DropPrefab;
+
+    [Header("drop Things")]
+    public bool isUpgraded_weapon_drop = false;
+    public bool isUpgraded_shield_drop = false;
+    public bool isUpgraded_Item_0_drop = false;
+    public bool isUpgraded_Item_1_drop = false;
+    public bool isUpgraded_Item_2_drop = false;
+    public bool isUpgraded_Item_3_drop = false;
+    public int hpPotion_drop = 0;
+    public int staPotion_drop = 0;
+    public int dmgPotion_drop = 0;
+    public bool key_drop = false;
+
+
+
+>>>>>>> Stashed changes
     // Start is called before the first frame update
     virtual protected void Start()
     {
@@ -167,7 +187,6 @@ public class Character : MonoBehaviour
 
     protected virtual IEnumerator Kill() 
     {
-        DropItem();
         anim.Play("Death");
         isWalking = false;
         do
@@ -176,11 +195,23 @@ public class Character : MonoBehaviour
         } while (anim.GetCurrentAnimatorStateInfo(0).normalizedTime < 1.0f);
         //Destroy(gameObject);
         gameObject.SetActive(false);
+        DropItem();
     }
 
     public virtual void DropItem()
     {
+<<<<<<< Updated upstream
         if (boxPf != null) Instantiate(boxPf,transform.position,transform.rotation);
+=======
+        var dropped = Instantiate(DropPrefab, transform.position, transform.rotation);
+        Item _item;
+        dropped.transform.GetChild(0).TryGetComponent<Item>(out _item);
+
+        _item.setItem(hpPotion_drop, staPotion_drop, dmgPotion_drop, isUpgraded_weapon_drop, isUpgraded_shield_drop
+            , isUpgraded_Item_0_drop, isUpgraded_Item_1_drop, isUpgraded_Item_2_drop, isUpgraded_Item_3_drop);
+
+
+>>>>>>> Stashed changes
     }
 
     public void Jump()

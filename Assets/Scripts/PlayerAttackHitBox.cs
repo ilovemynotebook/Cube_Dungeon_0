@@ -30,13 +30,14 @@ public class PlayerAttackHitBox : MonoBehaviour
         DestroyTimer();
     }
 
-    private void OnTriggerEnter(Collider other)
+    private void OnTriggerStay(Collider other)
     {
 
         if (other.tag == "Enemy" && !alreadyHit.Contains(other.gameObject))
         {
             Enemy en = other.GetComponent<Enemy>();
             //en.GetHit(currentWeapon.Dmg + buffedDmg);
+            Debug.Log(en);
             en.GetHit(dmg);
             en.KnockBack((other.transform.position - caster.transform.position).normalized * 15);
 

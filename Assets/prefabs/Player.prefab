@@ -170,6 +170,18 @@ MonoBehaviour:
   buffedDmg: 0
   isCharacterLookRight: 0
   isClimbing: 0
+  DropPrefab: {fileID: 8812177241851696110, guid: 5d121a6335c1f134ebc3edbaf88f6dbf,
+    type: 3}
+  isUpgraded_weapon_drop: 0
+  isUpgraded_shield_drop: 0
+  isUpgraded_Item_0_drop: 0
+  isUpgraded_Item_1_drop: 0
+  isUpgraded_Item_2_drop: 0
+  isUpgraded_Item_3_drop: 0
+  hpPotion_drop: 0
+  staPotion_drop: 0
+  dmgPotion_drop: 0
+  key_drop: 0
   canMove: 1
   canAttack: 1
   canShield: 1
