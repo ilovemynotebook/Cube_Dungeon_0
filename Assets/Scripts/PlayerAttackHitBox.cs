@@ -30,19 +30,24 @@ public class PlayerAttackHitBox : MonoBehaviour
         DestroyTimer();
     }
 
-    private void OnTriggerStay(Collider other)
+    private void OnTriggerEnter(Collider other)
     {
 
         if (other.tag == "Enemy" && !alreadyHit.Contains(other.gameObject))
         {
             Enemy en = other.GetComponent<Enemy>();
             //en.GetHit(currentWeapon.Dmg + buffedDmg);
-            Debug.Log(en);
             en.GetHit(dmg);
             en.KnockBack((other.transform.position - caster.transform.position).normalized * 15);
 
             if(isOneHit) alreadyHit.Add(other.gameObject);
             //Debug.Log(other.name);
+        }
+
+        if(other.TryGetComponent(out BossController boss))
+        {
+            boss.GetHit(dmg);
+            if (isOneHit) alreadyHit.Add(other.gameObject);
         }
 
 
