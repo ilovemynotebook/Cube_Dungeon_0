@@ -43,10 +43,8 @@ public class Character : MonoBehaviour
 
     protected GameObject ladder;
 
-<<<<<<< Updated upstream
     public GameObject boxPf;
     
-=======
     public GameObject DropPrefab;
 
     [Header("drop Things")]
@@ -63,7 +61,6 @@ public class Character : MonoBehaviour
 
 
 
->>>>>>> Stashed changes
     // Start is called before the first frame update
     virtual protected void Start()
     {
@@ -200,9 +197,8 @@ public class Character : MonoBehaviour
 
     public virtual void DropItem()
     {
-<<<<<<< Updated upstream
         if (boxPf != null) Instantiate(boxPf,transform.position,transform.rotation);
-=======
+
         var dropped = Instantiate(DropPrefab, transform.position, transform.rotation);
         Item _item;
         dropped.transform.GetChild(0).TryGetComponent<Item>(out _item);
@@ -211,7 +207,6 @@ public class Character : MonoBehaviour
             , isUpgraded_Item_0_drop, isUpgraded_Item_1_drop, isUpgraded_Item_2_drop, isUpgraded_Item_3_drop);
 
 
->>>>>>> Stashed changes
     }
 
     public void Jump()

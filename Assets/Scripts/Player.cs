@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UIElements;
+using Cinemachine;
+
 
 public class Player : Character
 {
@@ -176,10 +178,6 @@ public class Player : Character
 
     public override void DropItem()
     {
-<<<<<<< Updated upstream
-        
-    }
-=======
         var dropped = Instantiate(DropPrefab, transform.position, transform.rotation);
         Item _item;
         dropped.transform.GetChild(0).TryGetComponent<Item>(out _item);
@@ -187,7 +185,6 @@ public class Player : Character
         _item.setItem(hpPotion, staPotion, dmgPotion);
     }
 
->>>>>>> Stashed changes
 
     //about move control========================================================
     void TryMove()
