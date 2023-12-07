@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
@@ -12,6 +13,8 @@ public class GameManager : MonoBehaviour
 
     public PlaneSceneManager _PlaneSceneManager;
 
+    public GameObject SettingPanel;
+    public GameObject TitleButton;
    // public DataManager _DataManager;
 
 
@@ -31,7 +34,8 @@ public class GameManager : MonoBehaviour
         {
             Destroy(gameObject);
         }
-        
+        SettingPanel.SetActive(false);
+        TitleButton.SetActive(false);
     }
 
     void Update()
@@ -44,4 +48,43 @@ public class GameManager : MonoBehaviour
         Player = transform.Find("Player").gameObject;
         Debug.Log(Player);
     }
+
+    public void OnSettingPanel(bool ison)
+    {
+        SettingPanel.SetActive(ison);
+    }
+    public void OnTitleButton(bool ison)
+    {
+        TitleButton.SetActive(ison);
+    }
+
+    public void Pause(bool Gamepause)
+    {
+        if (Gamepause)
+        {
+            Time.timeScale = 0f;
+        }
+        else if (!Gamepause)
+        {
+            Time.timeScale = 1f;
+        }
+    }
+    public void OnclickSettingButton()
+    {
+       Pause(true);
+       OnSettingPanel(true);
+       OnTitleButton(true);
+    }
+    public void GotoTitle()
+    {
+        DataManager.Instance.DeadPlane = 0;
+        SceneManager.LoadScene("MainScene");
+    }
+    public void CloseButton()
+    {
+        Pause(false);
+        OnSettingPanel(false);
+        OnTitleButton(false);
+    }
+
 }
