@@ -19,6 +19,8 @@ public class DataManager : MonoBehaviour
     public SaveData saveData;
     public PlayerData playerData;
     public bool FileNotExist;
+    public BoxData deadBox;
+    public int DeadPlane;
     
     private void Awake()
     {
@@ -55,6 +57,7 @@ public class DataManager : MonoBehaviour
 
     public void DataSave()
     {
+        //데이터 로컬저장
         player = GameManager.Instance.Player.GetComponent<Player>();
         StageDataGet(saveData);
         PlayerDataGet(player, playerData,CanvasManager.Instance);
@@ -73,6 +76,7 @@ public class DataManager : MonoBehaviour
    
     public void DataLoad()
     {
+        //데이터 로컬불러오기
         if (!File.Exists(filePathStage)&&!File.Exists(filePathStage)) { FileNotExist = true; return; }
         //string code = File.ReadAllText(FilePath);
         //byte[] bytes = Convert.FromBase64String(code);
@@ -87,6 +91,7 @@ public class DataManager : MonoBehaviour
 
    public void DataCreate()
     {
+
         string Stagejsondata = JsonUtility.ToJson(saveData);
         string Playerjsondata = JsonUtility.ToJson(playerData);
         File.WriteAllText(filePathStage, Stagejsondata);
@@ -143,6 +148,15 @@ public class DataManager : MonoBehaviour
     {
         saveData=new SaveData();
         playerData=new PlayerData();
+    }
+
+    public void DeadPoint(UnityEngine.Vector3 SpawnPoint,int hpPotion,int staPotion,int dmgPotion,int Plane)
+    {
+        DeadPlane = Plane;
+        deadBox.spawnPos=SpawnPoint;
+        deadBox.hpPotion = hpPotion;
+        deadBox.staPotion=staPotion;
+        deadBox.dmgPotion=dmgPotion;
     }
 
 }

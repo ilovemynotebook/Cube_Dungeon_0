@@ -106,10 +106,11 @@ public class Buffs : MonoBehaviour
 
     public void Activate()
     {
-        if (isCostNeeded && possessionCount< 1)
+        if (isCostNeeded && possessionCount < 1)
         {
             return;
         }
+        else if (!isUsable || !isUnlocked) return;
         else if (coroutine == null && waitSec <= 0)
         {
             possessionCount--;
