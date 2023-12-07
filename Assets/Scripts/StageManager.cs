@@ -35,6 +35,7 @@ public class StageManager : MonoBehaviour
 
     void GotoTitle()
     {
+        DataManager.Instance.DeadPlane = 0;
         SceneManager.LoadScene("MainScene");
     }
     
