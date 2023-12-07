@@ -6,6 +6,7 @@ using UnityEngine;
 [Serializable]
 public class BossSkillData
 {
+
     [Tooltip("공격 활성화 프레임")]
     [SerializeField] private int _activateFrame;
     public int ActivateFrame => _activateFrame;
@@ -24,13 +25,13 @@ public class BossSkillData
 
 public class BossSkillStateMachine : BossStateMachineBehaviour
 {
+
+    [Header("공격 관련 변수")]
+    [SerializeField] private BossSkillData _bossSkillData;
+
     private int _currentFrame;
 
     private AnimationClip _clip;
-
-    [SerializeField] private BossSkillData _bossSkillData;
-
-
     public override void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
         base.OnStateEnter(animator, stateInfo, layerIndex);
