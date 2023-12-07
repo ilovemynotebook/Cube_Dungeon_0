@@ -11,6 +11,8 @@ public class EnemyData
     public Vector3 spawnPos;
 }
 
+
+
 public class Enemy : Character
 {
     //평범한 패트롤 에너미.
@@ -36,11 +38,13 @@ public class Enemy : Character
     public bool canShoot = true;
 
     Coroutine workCoroutine = null;
+    public EnemySounds sounds;
 
 
     // Start is called before the first frame update
     override protected void Start()
     {
+        sounds = transform.Find("Audios").GetComponent<EnemySounds>();
         base.Start();
         anim = transform.GetChild(0).GetComponent<Animator>();
     }
@@ -75,6 +79,7 @@ public class Enemy : Character
             bul.GetComponent<BulletFlying>().speed = 5;
 
             anim.Play("Attack");
+            sounds.Attack_AS.Play();
 
             canShoot = false;
             yield return new WaitForSeconds(2);
@@ -119,6 +124,7 @@ public class Enemy : Character
         _stopped.x = 0;
         rb.velocity = _stopped;
         anim.Play("Attack");
+        sounds.Attack_AS.Play();
 
         workCoroutine = StartCoroutine(StopForSecCoroutine(sec));
     }
@@ -133,7 +139,21 @@ public class Enemy : Character
         speed = _speed;
         workCoroutine = null;
     }
- 
+
+    override public void GetHit(float dmg)
+    {
+        base.GetHit(dmg);
+        sounds.GetHit_AS.Play();
+    }
+
+    protected virtual IEnumerator Kill()
+    {
+        base.Kill();
+        sounds.Death_AS.Play();
+        yield return null;
+    }
+
+
 
     /*private void OnCollisionEnter(Collision other)
     {

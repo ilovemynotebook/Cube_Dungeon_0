@@ -4,7 +4,7 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UIElements;
 using Cinemachine;
-
+using DG.Tweening;
 
 public class Player : Character
 {
@@ -38,6 +38,7 @@ public class Player : Character
     public Buffs[] buffs;
 
     private float charging = 0;
+    private bool isChargingSoundPlayed = false;
 
     public Coroutine stunCoroutine;
 
@@ -68,24 +69,36 @@ public class Player : Character
     public float shieldProtect = 2; // shiledStaminaCost/shieldProtect = cost
 
     public static Player _player;
+    public CharacterSound sounds;
+
+    [Header("VFX")]
+    public ParticleSystem AttackVFX;
+    public ParticleSystem ChargeAttackVFX;
   
     override protected void Start()
     {
+        if(sounds == null) sounds = transform.Find("Audios").GetComponent<CharacterSound>();
+
         if(_player == null)
         {
             _player = this;
+            DontDestroyOnLoad(this.gameObject);
         }
         else
         {
             Destroy(_player);
         }
+
         buffs = new Buffs[2];
         SkillInit();
         base.Start();
         GameManager.Instance.Player = this.gameObject;
-        DontDestroyOnLoad(this.gameObject);
-        anim = GetComponentInChildren<Animator>();
+        
 
+
+
+        anim = GetComponentInChildren<Animator>();
+        
     }
 
     private void OnEnable()
@@ -168,6 +181,8 @@ public class Player : Character
     protected override IEnumerator Kill()
     {
         anim.Play("Death");
+        sounds.Death_AS.Play();
+
         isWalking = false;
         do
         {
@@ -236,6 +251,7 @@ public class Player : Character
                 if (isGrounded) { jumpCount = mJumpCount; }
 
                 anim.Play("JumpStart",0);
+                sounds.Jump_AS.Play();
                 Jump();
                 jumpCount--;
             }
@@ -298,12 +314,20 @@ public class Player : Character
             charging += Time.deltaTime;
             anim.SetBool("isCharging", true);
             canRun = false;
+
+            if (charging >= needChargingWait && !isChargingSoundPlayed)
+            {
+                isChargingSoundPlayed = true;
+                sounds.Charging_AS.Play();
+            }
         }
         if (Input.GetKeyUp(KeyCode.Mouse0))
         {
             if (charging < needChargingWait && sta >= attackStaminaMinimumNeed)
             {
                 attackCoroutine = StartCoroutine(Attack());
+                sounds.Attack_AS.Play();
+
                 sta -= attackStaminaCost;
                 CanvasManager.Instance.staminaBar.UpdateValue(sta, msta);
                 anim.SetBool("isCharging", false);
@@ -311,10 +335,13 @@ public class Player : Character
             else if(sta >= chargeAttackStaminaMinimumNeed)
             {
                 attackCoroutine = StartCoroutine(ChargeAttack());
+                sounds.ChargingAttack_AS.Play();
+
                 sta -= chargeAttackStaminaCost;
                 CanvasManager.Instance.staminaBar.UpdateValue(sta, msta);
                 anim.SetBool("isCharging", false);
             }
+            isChargingSoundPlayed = false;
             charging = 0;
             canRun = true;
         }
@@ -337,6 +364,7 @@ public class Player : Character
     IEnumerator ChargeAttack()
     {
         anim.Play("charge_Attack",0);
+
         do { yield return new WaitForEndOfFrame(); }
         while (anim.GetCurrentAnimatorStateInfo(0).normalizedTime < 1.0f);
         attackCoroutine = null;
@@ -432,6 +460,8 @@ public class Player : Character
     {
         base.GetHit(dmg);
         CanvasManager.Instance.hpBar.UpdateValue(hp, mhp);
+
+        sounds.GetHit_AS.Play();
     }
     public void GetData(PlayerData playerData)
     {
@@ -450,4 +480,9 @@ public class Player : Character
         dmgPotion = playerData.dmgPotion;
         key = playerData.key;
     }
+
+
+
+    //====sounds
+
 }

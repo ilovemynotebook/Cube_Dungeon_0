@@ -26,9 +26,24 @@ public class PlayerAttackBoxCasterWithAnim : MonoBehaviour
         // + 만약 -1을 입력하면 캐릭터의 두배 데미지. 차징 공격 의미
 
 
-        Debug.Log(dmg);
+        //Debug.Log(dmg);
         GameObject box = Instantiate(attackHitBox, transform.parent.transform.position, transform.parent.rotation);
         //box.GetComponentInChildren<PlayerAttackHitBox>().SetUp(player.currentWeapon.Dmg + player.buffedDmg, 0.3f, true, player.gameObject);
         box.GetComponentInChildren<PlayerAttackHitBox>().SetUp(dmg, 0.3f, true, player.gameObject);
+        
+        player.AttackVFX.Play();
+    }
+
+    public void ChargeAttackHitBoxCast(float dmg)
+    {
+        if (dmg == 0) dmg = player.currentWeapon.Dmg + player.buffedDmg;
+
+        if (dmg == -1) dmg = (player.currentWeapon.Dmg + player.buffedDmg) * 2;
+
+
+        GameObject box = Instantiate(attackHitBox, transform.parent.transform.position, transform.parent.rotation);
+        box.GetComponentInChildren<PlayerAttackHitBox>().SetUp(dmg, 0.3f, true, player.gameObject);
+
+        player.ChargeAttackVFX.Play();
     }
 }
