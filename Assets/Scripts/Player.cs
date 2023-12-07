@@ -259,7 +259,7 @@ public class Player : Character
             if (Input.GetKey(KeyCode.W))
             {
                 ladder = ladderRayHit.collider.gameObject;
-                Debug.Log(Mathf.Abs(transform.position.x - ladder.transform.position.x));
+                //Debug.Log(Mathf.Abs(transform.position.x - ladder.transform.position.x));
                 if (Mathf.Abs(transform.position.x - ladder.transform.position.x) < 1)
                     isClimbing = true;
             }
