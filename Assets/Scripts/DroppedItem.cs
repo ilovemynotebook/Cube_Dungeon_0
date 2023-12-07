@@ -4,7 +4,7 @@ public class DroppedItem : MonoBehaviour
 {
     public bool isButtonNeeded = false;
     Player player;
-
+  
     public enum WhatItem
     {
         item0,

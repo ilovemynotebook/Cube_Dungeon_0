@@ -12,11 +12,13 @@ using UnityEngine.UIElements;
 public class PlaneSceneManager : MonoBehaviour
 {
     public static PlaneSceneManager Instance;
-    public UnityEngine.UI.Image panel;
+
     [SerializeField] List<Box> boxes = new List<Box>();
     [SerializeField] List<GameObject> enemies = new List<GameObject>();
     [SerializeField] public Plane[] planes;
     [SerializeField] Stage stage;
+    public UnityEngine.UI.Image panel;
+    public DroppedItem[] dropitems;
     //public SceneData sceneData;
     public GameObject MapPrefab;
     public GameObject PlayerPf;
@@ -228,6 +230,18 @@ public class PlaneSceneManager : MonoBehaviour
             Destroy(deadbox.gameObject);
             deadbox = null;
         }
+        if (dropitems != null)
+        {
+            dropitems = FindObjectsOfType<DroppedItem>();
+            for(int k = 0; k < dropitems.Length; k++)
+            {
+                Destroy(dropitems[k].gameObject);
+            }
+            dropitems = null;
+
+
+        }
+        
     }
     public void Fade()
     {
