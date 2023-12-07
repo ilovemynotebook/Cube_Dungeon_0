@@ -27,7 +27,7 @@ public class StageManager : MonoBehaviour
 
     public void GameOver()
     {
-        GameManager.Instance.Player.SetActive(false);
+        //GameManager.Instance.Player.SetActive(false);
         GameoverPanel.gameObject.SetActive(true);
         GoTitleButton.onClick.AddListener(GotoTitle);
         GoRePlayButton.onClick.AddListener(GotoReplay);
@@ -35,6 +35,7 @@ public class StageManager : MonoBehaviour
 
     void GotoTitle()
     {
+        DataManager.Instance.DeadPlane = 0;
         SceneManager.LoadScene("MainScene");
     }
     
@@ -46,7 +47,8 @@ public class StageManager : MonoBehaviour
         dataManager.PlayerDataGet(player, dataManager.playerData,CanvasManager.Instance);
         dataManager.StageDataLoad(dataManager.saveData, PlaneSceneManager.Instance);
         PlaneSceneManager.Instance.Clear();
-        SceneManager.LoadScene("RetryLoadingScene");
+        Destroy(Playable.instance.gameObject);
+        SceneManager.LoadScene("LoadingScene");
     }
 
 }

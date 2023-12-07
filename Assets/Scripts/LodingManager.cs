@@ -16,10 +16,7 @@ public class LodingManager : MonoBehaviour
 
     private void Awake()
     {
-        if (!GameManager.Instance.Player.activeSelf)
-        {
-            GameManager.Instance.Player.SetActive(true);
-        }
+       
     }
     void Start()
     {

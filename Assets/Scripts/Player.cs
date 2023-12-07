@@ -140,7 +140,6 @@ public class Player : Character
     }
     public void itemsSetup()
     {
-
         isUpgraded_weapon = CanvasManager.Instance.isUpgraded_weapon;
         isUpgraded_shield = CanvasManager.Instance.isUpgraded_shield;
         isUpgraded_Item_0 = CanvasManager.Instance.isUpgraded_Item_0;
@@ -168,22 +167,36 @@ public class Player : Character
 
     protected override IEnumerator Kill()
     {
-        base.Kill();
+        anim.Play("Death");
+        isWalking = false;
+        do
+        {
+            yield return new WaitForEndOfFrame();
+        } while (anim.GetCurrentAnimatorStateInfo(0).normalizedTime < 1.0f);
+        //Destroy(gameObject);
+        
+        DropItem();
         StageManager stageManager = FindObjectOfType<StageManager>();
         stageManager.GameOver();
-        yield return null;
-
-
-
+        gameObject.SetActive(false);
     }
 
     public override void DropItem()
     {
+        itemsSetup();
         var dropped = Instantiate(DropPrefab, transform.position, transform.rotation);
-        Item _item;
-        dropped.transform.GetChild(0).TryGetComponent<Item>(out _item);
-
-        _item.setItem(hpPotion, staPotion, dmgPotion);
+        Box _box;
+        dropped.transform.TryGetComponent(out _box);
+        _box.setitem(hpPotion, staPotion, dmgPotion);
+        DataManager.Instance.DeadPoint(transform.position,hpPotion,staPotion,dmgPotion,PlaneSceneManager.Instance.thisPlane);
+        hpPotion = 0;
+        staPotion = 0;
+        dmgPotion = 0;
+        CanvasManager.Instance.hpPotion = 0;
+        CanvasManager.Instance.staPotion = 0;
+        CanvasManager.Instance.dmgPotion = 0;
+        CanvasManager.Instance.UpdateHud();
+        
     }
 
 
@@ -246,7 +259,7 @@ public class Player : Character
             if (Input.GetKey(KeyCode.W))
             {
                 ladder = ladderRayHit.collider.gameObject;
-                Debug.Log(Mathf.Abs(transform.position.x - ladder.transform.position.x));
+                //Debug.Log(Mathf.Abs(transform.position.x - ladder.transform.position.x));
                 if (Mathf.Abs(transform.position.x - ladder.transform.position.x) < 1)
                     isClimbing = true;
             }
@@ -354,7 +367,6 @@ public class Player : Character
     {
         if(Input.GetKeyDown(KeyCode.Alpha1))
         {
-            Debug.Log(buffs[0]);
             buffs[0].Activate();
         }
         if (Input.GetKeyDown(KeyCode.Alpha2))

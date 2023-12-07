@@ -131,8 +131,11 @@ public class Character : MonoBehaviour
 
 
         //transform.rotation = Quaternion.Euler(characterRotation);
-
+        //if (MathF.Abs(transform.rotation.y - characterRotation.y) < 1)
+        //    transform.rotation = Quaternion.Euler(characterRotation);
         transform.rotation = Quaternion.Lerp(transform.rotation, Quaternion.Euler(characterRotation), Time.deltaTime * speed * 10);
+
+        
     }
 
     protected void Stopper()
@@ -165,7 +168,7 @@ public class Character : MonoBehaviour
         isClimbing = false;
         hp -=dmg;
         //HitSound?.Play();
-        Debug.Log(anim);
+        //Debug.Log(anim);
         anim.Play("Hit",0,0f);
 
         if(hp <= 0)

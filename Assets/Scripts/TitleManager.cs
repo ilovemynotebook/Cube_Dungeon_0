@@ -2,6 +2,7 @@ using DG.Tweening;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using Cinemachine;
 
 public class TitleManager : MonoBehaviour
 {
@@ -16,6 +17,11 @@ public class TitleManager : MonoBehaviour
     public Button LoadButton;
     public float TitleFadeTime;
     public bool TitleFadeIsIn;
+    public CinemachineVirtualCamera VirtualCamera;
+    float cameraPoint;
+    float cameraStartPoint;
+    public float cameraSpeed;
+    public bool cameraStart;
     [SerializeField]DataManager dataManager;
     void Awake()
     {
@@ -24,6 +30,8 @@ public class TitleManager : MonoBehaviour
     }
     private void OnEnable()
     {
+        
+        if (dataManager.FileNotExist == true) { LoadButton.interactable = false; }
         SettingButton.onClick.AddListener(() => OnButtonGameObject(true, SettingScreen));
         StartButton.onClick.AddListener(() => OnButtonStartGame());
         LoadButton.onClick.AddListener(() => OnButtonLoadGame());
@@ -37,13 +45,18 @@ public class TitleManager : MonoBehaviour
 
     private void Start()
     {
+        dataManager = DataManager.Instance;
+        cameraPoint = 6;
+        cameraStartPoint = 10;
+        cameraStart = false;
+        VirtualCamera.m_Lens.FieldOfView = cameraStartPoint;
         if (Playable.instance)
         {
             Destroy(Playable.instance.gameObject);
             
         }
-        dataManager =FindObjectOfType<DataManager>();
-        if (dataManager.FileNotExist == true) { LoadButton.interactable = false;  }
+       
+        
         Invoke("TitleFadeIn", 2);
     }
     private void Update()
@@ -53,10 +66,23 @@ public class TitleManager : MonoBehaviour
         {
             TitleFadeOut();
         }
+        if (cameraStartPoint>cameraPoint&&cameraStart)
+        {
+            ZoomCamera();
+        }
+        if (dataManager.FileNotExist)
+        {
+            LoadButton.interactable = false;
+        }
+        else
+        {
+            LoadButton.interactable = true;
+        }
     }
 
     void TitleFadeIn()
     {
+        //타이틀 페이드인
         TitleFadeIsIn = true;
         TitleScreen.gameObject.SetActive(true);
         FadeInOut(TitleScreen, TitleFadeIsIn, TitleFadeTime);
@@ -64,6 +90,7 @@ public class TitleManager : MonoBehaviour
     }
     void TitleFadeOut()
     {
+        //타이틀 페이드아웃
         TitleFadeIsIn = false;
         TitleScreenButton.onClick.RemoveListener(TitleFadeOut);
         FadeInOut(TitleScreen, false, TitleFadeTime);
@@ -72,7 +99,8 @@ public class TitleManager : MonoBehaviour
     }
     void ButtonsFadeIn()
     {
-        CubeZoom(true,100f,1.5f);
+        //버튼이 사라진후
+        cameraStart = true;//카메라줌 시작
         FadeInOut(Buttons,true,TitleFadeTime);
     }
     
@@ -113,15 +141,30 @@ public class TitleManager : MonoBehaviour
 
     void OnButtonStartGame()
     {
+        //새 게임 시작
         dataManager.NewCloneData();
         dataManager.StageDataChange(dataManager.saveData.thisStage);
         SceneManager.LoadScene("LoadingScene");
     }
     void OnButtonLoadGame()
     {
+        //저장된 게임 시작
+        if (dataManager.FileNotExist)
+        {
+            LoadButton.interactable = false;
+            return;
+        }
+            
+        
         dataManager.NewCloneData();
         dataManager.DataLoad();
         SceneManager.LoadScene("LoadingScene");
+    }
+    void ZoomCamera()
+    {
+        //카메라를 startpoint를 시간당 caemraspeed로 줄임
+        cameraStartPoint -= Time.deltaTime*cameraSpeed;
+        VirtualCamera.m_Lens.FieldOfView = cameraStartPoint;
     }
 
 }

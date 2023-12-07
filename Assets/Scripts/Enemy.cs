@@ -53,7 +53,6 @@ public class Enemy : Character
         {
             EnemyActions.Invoke();
         }
-        //Patrol();
     }
 
     public void GunReady()
@@ -103,7 +102,6 @@ public class Enemy : Character
 
         if (groundHit.collider != null && wallHit.collider == null)
         {
-            Debug.Log(232);
             Walk(direction, speed);
         }
         else
@@ -127,9 +125,12 @@ public class Enemy : Character
 
     public IEnumerator StopForSecCoroutine(float sec)
     {
-        canWork = false;
+        float _speed = speed;
+        canShoot = false;
+        speed = 0;
         yield return new WaitForSeconds(sec);
-        canWork = true;
+        canShoot = true;
+        speed = _speed;
         workCoroutine = null;
     }
  
