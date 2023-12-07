@@ -40,7 +40,7 @@ MonoBehaviour:
         key: 1
     - planeType: 0
       planeStyle: 0
-      prefab: {fileID: 9145890908147242706, guid: 846b4d4dbcacc5c489a6861846cb96e6,
+      prefab: {fileID: 4287543710475442010, guid: f36f0d095bc73764d80828f9b7c5ffca,
         type: 3}
       playerStartPoint: {x: 0, y: 7, z: 0}
       enemyData: []
@@ -54,11 +54,11 @@ MonoBehaviour:
       boxData: []
     - planeType: 0
       planeStyle: 0
-      prefab: {fileID: 9145890908147242706, guid: 846b4d4dbcacc5c489a6861846cb96e6,
+      prefab: {fileID: 4287543710475442010, guid: 04a22129678348d4db2f66fe9b04687f,
         type: 3}
       playerStartPoint: {x: -5, y: 8, z: 0}
       enemyData:
-      - enemy: {fileID: 4456228729890992133, guid: e56b37539f268284ba58f7ec56438662,
+      - enemy: {fileID: 4602316160372197751, guid: dbc78a0b5c9b3804fa8fde8aeaf16227,
           type: 3}
         spawnPos: {x: 10, y: 10, z: 0}
       boxData: []
