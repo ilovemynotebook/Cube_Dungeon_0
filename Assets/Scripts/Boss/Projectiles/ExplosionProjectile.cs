@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class ExplosionProjectile : Projectile
 {
+    [SerializeField] private BossParticle _explosionPaticlePrefab;
+
     [SerializeField] private float _randomRange;
 
     private Vector3 _targetDir;
@@ -33,14 +35,22 @@ public class ExplosionProjectile : Projectile
     {
         if (other.TryGetComponent(out Character character))
         {
-            Explosion(character);
+            character.GetHit(_power);
+            Explosion();
+        }
+
+        if(other.tag == "Ground")
+        {
+            Destroy(gameObject);
+            Explosion();
         }
     }
 
 
-    private void Explosion(Character character)
+    private void Explosion()
     {
-        character.GetHit(_power);
+        Instantiate(_explosionPaticlePrefab, transform.position, Quaternion.identity);
+        _explosionPaticlePrefab.Init(_boss, _power);
         Destroy(gameObject);
     }
 }
