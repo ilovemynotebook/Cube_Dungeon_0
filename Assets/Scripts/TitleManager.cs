@@ -32,13 +32,13 @@ public class TitleManager : MonoBehaviour
     {
         
         if (dataManager.FileNotExist == true) { LoadButton.interactable = false; }
-        SettingButton.onClick.AddListener(() => OnButtonGameObject(true, SettingScreen));
+        SettingButton.onClick.AddListener(OnclickSettingButton);
         StartButton.onClick.AddListener(() => OnButtonStartGame());
         LoadButton.onClick.AddListener(() => OnButtonLoadGame());
     }
     private void OnDisable()
     {
-        SettingButton.onClick.RemoveListener(()=>OnButtonGameObject(false, SettingScreen));
+        SettingButton.onClick.RemoveListener(OnclickSettingButton);
         StartButton.onClick.RemoveListener(()=>OnButtonStartGame());
         LoadButton.onClick.RemoveListener(() => OnButtonLoadGame());
     }
@@ -165,6 +165,10 @@ public class TitleManager : MonoBehaviour
         //카메라를 startpoint를 시간당 caemraspeed로 줄임
         cameraStartPoint -= Time.deltaTime*cameraSpeed;
         VirtualCamera.m_Lens.FieldOfView = cameraStartPoint;
+    }
+    void OnclickSettingButton()
+    {
+        GameManager.Instance.OnSettingPanel(true);
     }
 
 }
