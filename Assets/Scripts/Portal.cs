@@ -6,6 +6,7 @@ public class Portal : MonoBehaviour
 {
     //public StageManager SceneManager;
     public bool isup;
+    public bool NeedKey;
     private void OnEnable()
     {
         //SceneManager=FindAnyObjectByType<StageManager>();
@@ -17,18 +18,38 @@ public class Portal : MonoBehaviour
     }
     private void OnTriggerStay(Collider other)
     {
-        if (other.gameObject.CompareTag("Player")&&Input.GetKeyDown(KeyCode.E))
+        if (NeedKey)
         {
-            if (isup)
+            if (CanvasManager.Instance.key && Input.GetKeyDown(KeyCode.E))
             {
-                PlaneSceneManager.Instance.PlaneUp();
+                Debug.Log("키를 사용하셨습니다.");
+                NeedKey = false;
+                CanvasManager.Instance.key = false;
             }
-            else
+            else if (CanvasManager.Instance.key == false&&Input.GetKeyDown(KeyCode.E))
             {
+                Debug.Log("키를 가지고있지 않습니다.");
+            }
+                
 
-                PlaneSceneManager.Instance.PlaneDown();
-            }
-           
         }
+        else
+        {
+            if (other.gameObject.CompareTag("Player") && Input.GetKeyDown(KeyCode.E))
+            {
+                if (isup)
+                {
+                    PlaneSceneManager.Instance.PlaneUp();
+                }
+                else
+                {
+
+                    PlaneSceneManager.Instance.PlaneDown();
+                }
+
+            }
+        }
+            
+     
     }
 }
