@@ -387,13 +387,13 @@ public class Player : Character
     /// abous shields===================
     private void TryShield()
     {
-        if(Input.GetKeyDown(KeyCode.E) && canShield)
+        if(Input.GetKeyDown(KeyCode.Mouse1) && canShield)
         {
             anim.Play("shield",1);
             anim.SetBool("holdingShield",true);
             isHoldingShield = true;
         }
-        else if (Input.GetKeyUp(KeyCode.E))
+        else if (Input.GetKeyUp(KeyCode.Mouse1))
         {
             anim.SetBool("holdingShield", false);
             isHoldingShield = false;
