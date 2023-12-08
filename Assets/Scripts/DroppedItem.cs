@@ -4,7 +4,8 @@ public class DroppedItem : MonoBehaviour
 {
     public bool isButtonNeeded = false;
     Player player;
-  
+
+
     public enum WhatItem
     {
         item0,
@@ -79,6 +80,7 @@ public class DroppedItem : MonoBehaviour
                 break;
         }
 
+        player.sounds.GetItem_AS.Play();
         player.itemsSetup();
         player.ItemStats();
         CanvasManager.Instance.UpdateHud();
