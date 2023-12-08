@@ -44243,7 +44243,7 @@ Transform:
   m_Children:
   - {fileID: 2232897975983204708}
   m_Father: {fileID: 0}
-  m_RootOrder: 16
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!65 &6125357814858726264
 BoxCollider:
@@ -44278,6 +44278,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3ce0e32a1d19c62458767ad704a43aa1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _shakeDuration: 2
+  _shakeAmplitude: 1.5
+  _shakeFrequency: 1.5
   _disabledTime: 3
   _collider: {fileID: 6125357814858726264}
 --- !u!1 &7547419088292490448

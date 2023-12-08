@@ -5174,6 +5174,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eaefcb4e533458d43a0e3e3dcc5a10fa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _shakeDuration: 1
+  _shakeAmplitude: 1
+  _shakeFrequency: 1
   _destroyTime: 2
 --- !u!1 &7218654802502516474
 GameObject:
