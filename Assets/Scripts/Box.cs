@@ -76,7 +76,7 @@ public class Box : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            if (Input.GetKeyDown(KeyCode.E)&&isOpen==false)
+            if (Input.GetKey(KeyCode.E)&&isOpen==false)
             {
                 isOpen = true;
                 PlaneSceneManager.Instance.StageSave(PlaneSceneManager.Instance.thisPlane);

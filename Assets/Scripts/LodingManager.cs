@@ -10,8 +10,8 @@ public class LodingManager : MonoBehaviour
     [SerializeField] private Slider _loadingBar;
     public float MaxLoadingSpeed;
     DataManager dataManager;
+    public GameObject camera;
     public PlaneSceneManager planeSceneManager;
-
     private AsyncOperation _op;
 
     private void Awake()
@@ -80,6 +80,8 @@ public class LodingManager : MonoBehaviour
     public void CompleteLoading()
     {
         _op.allowSceneActivation = true;
+        camera.SetActive(true);
+        CanvasManager.Instance.gameObject.GetComponent<Canvas>().enabled= true;
     }
 
 }

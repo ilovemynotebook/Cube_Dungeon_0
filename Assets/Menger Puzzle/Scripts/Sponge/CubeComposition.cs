@@ -7,7 +7,7 @@ public class CubeComposition : MonoBehaviour
 {
     //[SerializeField] private Text scoreTxt;
     //[SerializeField] private GameObject successTxt;
-    [SerializeField] private Button hashBtn;
+    //[SerializeField] private Button hashBtn;
 
     public static bool hashing;
 
@@ -19,10 +19,10 @@ public class CubeComposition : MonoBehaviour
     private void Awake ()
     {
         
-        Debug.Log(hashing);
-        hashBtn.gameObject.SetActive(true);
+       // Debug.Log(hashing);
+        //hashBtn.gameObject.SetActive(true);
         WallRotation.OnWallRotated += WallRotation_OnWallRotated;
-        hashBtn.onClick.AddListener(MixCube);
+        //hashBtn.onClick.AddListener(MixCube);
         surfaces = GameObject.FindGameObjectsWithTag("Surface");
     }
 
@@ -35,7 +35,7 @@ public class CubeComposition : MonoBehaviour
     public void MixCube()      // mixing cube
     {
         hashing = true;
-        hashBtn.gameObject.SetActive(!hashing);
+        //hashBtn.gameObject.SetActive(!hashing);
         
 
         //if (successTxt.activeSelf)

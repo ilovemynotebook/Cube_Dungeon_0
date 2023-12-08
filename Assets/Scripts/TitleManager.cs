@@ -10,6 +10,7 @@ public class TitleManager : MonoBehaviour
     public GameObject Cube;
     public GameObject SettingScreen;
     public CanvasGroup TitleScreen;
+    [SerializeField] CanvasGroup ButtonScreen;
     public CanvasGroup Buttons;
     public Button TitleScreenButton;
     public Button SettingButton;
@@ -99,7 +100,6 @@ public class TitleManager : MonoBehaviour
     }
     void ButtonsFadeIn()
     {
-        //버튼이 사라진후
         cameraStart = true;//카메라줌 시작
         FadeInOut(Buttons,true,TitleFadeTime);
     }
