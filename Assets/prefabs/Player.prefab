@@ -1510,7 +1510,7 @@ Transform:
   - {fileID: 1295583926040048175}
   - {fileID: 2516281936721610996}
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &8931133031503236784
 MeshFilter:
@@ -1592,8 +1592,8 @@ MonoBehaviour:
   GetHitVFX: {fileID: 8387965510838337028}
   isCharacterLookRight: 0
   isClimbing: 0
-  boxPf: {fileID: 0}
-  DropPrefab: {fileID: 8812177241851696110, guid: 5d121a6335c1f134ebc3edbaf88f6dbf,
+  boxPf: {fileID: 1938346418689429551, guid: 5de223a9dc784914583b1126805c5af7, type: 3}
+  DropPrefab: {fileID: 1938346418689429551, guid: 5de223a9dc784914583b1126805c5af7,
     type: 3}
   isUpgraded_weapon_drop: 0
   isUpgraded_shield_drop: 0

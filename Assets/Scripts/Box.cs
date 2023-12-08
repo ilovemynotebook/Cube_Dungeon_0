@@ -53,7 +53,7 @@ public class Box : MonoBehaviour
     public bool isUpgraded_Item_1;
     public bool isUpgraded_Item_2;
     public bool isUpgraded_Item_3;
-    public int hpPotion ;
+    public int hpPotion;
     public int staPotion;
     public int dmgPotion;
     public bool key;
