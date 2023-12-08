@@ -1484,7 +1484,7 @@ GameObject:
   - component: {fileID: 5509903508927143628}
   - component: {fileID: 1831719919137781191}
   - component: {fileID: 3178512966009261006}
-  m_Layer: 9
+  m_Layer: 13
   m_Name: Player
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -1510,7 +1510,7 @@ Transform:
   - {fileID: 1295583926040048175}
   - {fileID: 2516281936721610996}
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &8931133031503236784
 MeshFilter:
