@@ -6,6 +6,8 @@ public class WaitProjectile : Projectile
 {
     [SerializeField] private float _waitTime;
 
+    [SerializeField] private GameObject _shootParticle;
+
     private float _waitTimer;
 
     private Vector3 _myPos;
@@ -14,7 +16,8 @@ public class WaitProjectile : Projectile
     protected override void Start()
     {
         base.Start();
-
+        if (_shootParticle != null)
+            _shootParticle.SetActive(false);
     }
 
 
@@ -36,6 +39,9 @@ public class WaitProjectile : Projectile
 
                 Vector3 movePos = _targetDir * (_speed * Time.deltaTime);
                 _rigidBody.MovePosition(transform.position + movePos);
+
+                if(_shootParticle != null)
+                    _shootParticle.SetActive(true);
             }
         }
     }
