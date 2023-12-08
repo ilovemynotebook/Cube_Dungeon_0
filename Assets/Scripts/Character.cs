@@ -34,6 +34,7 @@ public class Character : MonoBehaviour
     protected bool isGrounded;
     protected CapsuleCollider col;
     protected float currentWalkSpeed;
+    public ParticleSystem GetHitVFX;
     
 
     protected Coroutine DeathCoroutine = null;
@@ -170,6 +171,8 @@ public class Character : MonoBehaviour
         //HitSound?.Play();
         //Debug.Log(anim);
         anim.Play("Hit",0,0f);
+
+        if(GetHitVFX != null) GetHitVFX.Play();
 
         if(hp <= 0)
         {
