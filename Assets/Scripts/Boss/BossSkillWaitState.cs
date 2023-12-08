@@ -8,7 +8,7 @@ public class BossSkillWaitState : BossStateMachineBehaviour
     {
         base.OnStateEnter(animator, stateInfo, layerIndex);
         float animeLength = stateInfo.length;
-        _boss.AddWaingTimer(animeLength);
+        _boss.AddWaitTimer(animeLength);
 
         Vector3 dir = (_boss.Target.transform.position - _boss.gameObject.transform.position).normalized;
         float dirX = dir.x > 0 ? 1 : dir.x < 0 ? -1 : 0;

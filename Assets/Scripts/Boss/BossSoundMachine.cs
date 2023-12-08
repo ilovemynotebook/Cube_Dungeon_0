@@ -4,8 +4,11 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [Serializable]
-public class BossSkillData
+public class SoundData
 {
+    [Tooltip("리소스 폴더에서 불러올 오디오")]
+    [SerializeField] private string _audioName;
+    public string AudioName => _audioName;
 
     [Tooltip("공격 활성화 프레임")]
     [SerializeField] private int _activateFrame;
@@ -15,29 +18,28 @@ public class BossSkillData
     [SerializeField] private int _disabledFrame;
     public int DisabledFrame => _disabledFrame;
 
-    [Tooltip("보스 스크립트에 존재하는 스킬 패턴 인덱스를 가져오는 함수")]
-    [SerializeField] private int _skillPatternsIndex;
-    public int SkillPatternsIndex => _skillPatternsIndex;
 
     [HideInInspector] public bool _isActivated;
     [HideInInspector] public bool _isDisabled;
 }
 
-public class BossSkillStateMachine : BossStateMachineBehaviour
+public class BossSoundMachine : BossStateMachineBehaviour
 {
-
-    [Header("공격 관련 변수")]
-    [SerializeField] private BossSkillData _bossSkillData;
+    [SerializeField] private SoundData _soundData;
 
     private int _currentFrame;
 
     private AnimationClip _clip;
+    private AudioClip _audioClip;
+
     public override void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
         base.OnStateEnter(animator, stateInfo, layerIndex);
         float animeLength = stateInfo.length;
         _boss.AddWaitTimer(animeLength);
+
         _clip = animator.GetCurrentAnimatorClipInfo(layerIndex)[0].clip;
+        _audioClip = (AudioClip)Resources.Load("Audios/" + _soundData.AudioName);
     }
 
 
@@ -45,17 +47,17 @@ public class BossSkillStateMachine : BossStateMachineBehaviour
     {
         _currentFrame = (int)(stateInfo.normalizedTime * (_clip.length * _clip.frameRate));
 
-        if (_currentFrame == _bossSkillData.ActivateFrame && !_bossSkillData._isActivated)
+        if (_currentFrame == _soundData.ActivateFrame && !_soundData._isActivated)
         {
-            _bossSkillData._isActivated = true;
-            _boss.SkillPatterns[_bossSkillData.SkillPatternsIndex].AttackTrigger.SkillStart();
-            Debug.Log("시작");
+
+            _boss.AudioSource.PlayOneShot(_audioClip);
+            _soundData._isActivated = true;
         }
 
-        else if (_currentFrame == _bossSkillData.DisabledFrame && !_bossSkillData._isDisabled)
+        else if (_currentFrame == _soundData.DisabledFrame && !_soundData._isDisabled)
         {
-            _bossSkillData._isDisabled = true;
-            _boss.SkillPatterns[_bossSkillData.SkillPatternsIndex].AttackTrigger.SkillEnd();
+            _boss.AudioSource.Stop();
+            _soundData._isDisabled = true;
         }
     }
 
@@ -63,7 +65,7 @@ public class BossSkillStateMachine : BossStateMachineBehaviour
     public override void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
         base.OnStateExit(animator, stateInfo, layerIndex);
-        _bossSkillData._isDisabled = false;
-        _bossSkillData._isActivated = false;
+        _soundData._isDisabled = false;
+        _soundData._isActivated = false;
     }
 }

@@ -4,39 +4,48 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [Serializable]
-public class BossSkillData
+public class CameraShakeData
 {
+    [Header("카메라 흔들림 지속 시간")]
+    [SerializeField] private float _shakeDuration = 0.5f;
+    public float ShakeDuration => _shakeDuration;
 
-    [Tooltip("공격 활성화 프레임")]
+    [Header("카메라 흔들림 진폭")]
+    [SerializeField] private float _shakeAmplitude = 1f;
+    public float ShakeAmplitude => _shakeAmplitude;
+
+    [Header("카메라 흔들림 빈도")]
+    [SerializeField] private float _shakeFrequency = 0.5f;
+    public float ShakeFrequency => _shakeFrequency;
+
+
+    [Tooltip("활성화 프레임")]
     [SerializeField] private int _activateFrame;
     public int ActivateFrame => _activateFrame;
 
-    [Tooltip("공격 비 활성화 프레임")]
+    [Tooltip("비 활성화 프레임")]
     [SerializeField] private int _disabledFrame;
     public int DisabledFrame => _disabledFrame;
 
-    [Tooltip("보스 스크립트에 존재하는 스킬 패턴 인덱스를 가져오는 함수")]
-    [SerializeField] private int _skillPatternsIndex;
-    public int SkillPatternsIndex => _skillPatternsIndex;
 
     [HideInInspector] public bool _isActivated;
     [HideInInspector] public bool _isDisabled;
 }
 
-public class BossSkillStateMachine : BossStateMachineBehaviour
+public class BossCameraShakeMachine : BossStateMachineBehaviour
 {
-
-    [Header("공격 관련 변수")]
-    [SerializeField] private BossSkillData _bossSkillData;
+    [SerializeField] private CameraShakeData _shakeData;
 
     private int _currentFrame;
 
     private AnimationClip _clip;
+
     public override void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
         base.OnStateEnter(animator, stateInfo, layerIndex);
         float animeLength = stateInfo.length;
         _boss.AddWaitTimer(animeLength);
+
         _clip = animator.GetCurrentAnimatorClipInfo(layerIndex)[0].clip;
     }
 
@@ -45,17 +54,15 @@ public class BossSkillStateMachine : BossStateMachineBehaviour
     {
         _currentFrame = (int)(stateInfo.normalizedTime * (_clip.length * _clip.frameRate));
 
-        if (_currentFrame == _bossSkillData.ActivateFrame && !_bossSkillData._isActivated)
+        if (_currentFrame == _shakeData.ActivateFrame && !_shakeData._isActivated)
         {
-            _bossSkillData._isActivated = true;
-            _boss.SkillPatterns[_bossSkillData.SkillPatternsIndex].AttackTrigger.SkillStart();
-            Debug.Log("시작");
+            CinemachineCamera.Instance.CameraShake(_shakeData.ShakeDuration, _shakeData.ShakeAmplitude, _shakeData.ShakeFrequency);
+            _shakeData._isActivated = true;
         }
 
-        else if (_currentFrame == _bossSkillData.DisabledFrame && !_bossSkillData._isDisabled)
+        else if (_currentFrame == _shakeData.DisabledFrame && !_shakeData._isDisabled)
         {
-            _bossSkillData._isDisabled = true;
-            _boss.SkillPatterns[_bossSkillData.SkillPatternsIndex].AttackTrigger.SkillEnd();
+            _shakeData._isDisabled = true;
         }
     }
 
@@ -63,7 +70,7 @@ public class BossSkillStateMachine : BossStateMachineBehaviour
     public override void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
         base.OnStateExit(animator, stateInfo, layerIndex);
-        _bossSkillData._isDisabled = false;
-        _bossSkillData._isActivated = false;
+        _shakeData._isDisabled = false;
+        _shakeData._isActivated = false;
     }
 }

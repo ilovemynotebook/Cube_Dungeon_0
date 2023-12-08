@@ -4,6 +4,17 @@ using UnityEngine;
 
 public class Shockwave : MonoBehaviour
 {
+    [Header("Ä«¸Þ¶ó Èçµé¸² ÁøÆø")]
+    [SerializeField] private float _shakeDuration = 0.5f;
+
+    [Header("Ä«¸Þ¶ó Èçµé¸² ÁøÆø")]
+    [SerializeField] private float _shakeAmplitude = 1f;
+
+    [Header("Ä«¸Þ¶ó Èçµé¸² ºóµµ")]
+    [SerializeField] private float _shakeFrequency = 0.5f;
+
+    [Space(10)]
+
     [SerializeField] private float _destroyTime;
 
     private float _power;
@@ -17,6 +28,7 @@ public class Shockwave : MonoBehaviour
 
     private void Start()
     {
+        CinemachineCamera.Instance.CameraShake(_shakeDuration, _shakeAmplitude, _shakeFrequency);
         Destroy(gameObject, _destroyTime);
     }
 

@@ -23,7 +23,7 @@ public class Boss5TeleportStateMachine : BossStateMachineBehaviour
         base.OnStateEnter(animator, stateInfo, layerIndex);
         animator.TryGetComponent(out _boss5);
         float animeLength = stateInfo.length;
-        _boss.AddWaingTimer(animeLength);
+        _boss.AddWaitTimer(animeLength);
         _clip = animator.GetCurrentAnimatorClipInfo(layerIndex)[0].clip;
     }
 

@@ -19,7 +19,7 @@ public class BossEffectBehaviour : BossStateMachineBehaviour
     {
         base.OnStateEnter(animator, stateInfo, layerIndex);
         float animeLength = stateInfo.length;
-        _boss.AddWaingTimer(animeLength);
+        _boss.AddWaitTimer(animeLength);
         _clip = animator.GetCurrentAnimatorClipInfo(layerIndex)[0].clip;
     }
 

@@ -23,19 +23,19 @@ public enum BossState
 [Serializable]
 public class SkillPattern
 {
-    [Tooltip("��ų �̸�")]
+    [Tooltip("스킬 이름")]
     [SerializeField] private string _name;
     public string Name => _name;
 
-    [Tooltip("���� ��Ÿ�")]
+    [Tooltip("최대 거리")]
     [SerializeField] private float _distance;
     public float Distance => _distance;
 
-    [Tooltip("��Ÿ��")]
+    [Tooltip("쿨타임")]
     [SerializeField] private float _coolTime;
     public float CoolTime => _coolTime;
 
-    [Tooltip("�ǰ� ���� ���� Ŭ����")]
+    [Tooltip("설정한 스킬 클래스를 넣는 곳")]
     public BossAttackBehaviour AttackTrigger;
 
     [HideInInspector] public float CurrentCoolTime;
@@ -47,25 +47,31 @@ public class SkillPattern
 [RequireComponent(typeof(Rigidbody), typeof(Animator))]
 public class BossController : MonoBehaviour
 {
-    [Space(10)]
-    [Header("�ɷ�ġ")]
+    [Header("컴포넌트")]
+    protected AudioSource _audioSource;
+    public AudioSource AudioSource => _audioSource;
 
-    [Tooltip("�̸�")]
+
+    [Space(10)]
+
+    [Header("능력이")]
+
+    [Tooltip("이름")]
     [SerializeField] protected string _name;
     public string Name => _name;
 
-    [Tooltip("ü��")]
+    [Tooltip("최대 체력")]
     [SerializeField] protected int _maxHp;
 
-    [Tooltip("�̵� �ӵ�")]
+    [Tooltip("이동 속도")]
     [SerializeField] protected float _speed;
     public float Speed => _speed;
 
-    [Tooltip("�ִϸ��̼� ���ǵ�")]
+    [Tooltip("애니메이션 전체 스피드 배율")]
     [SerializeField] protected float _animeSpeed;
     public float AnimeSpeed => _animeSpeed;
 
-    [Tooltip("���ݷ�")]
+    [Tooltip("공격력")]
     [SerializeField] protected float _power;
     public float Power => _power;
 
@@ -74,14 +80,14 @@ public class BossController : MonoBehaviour
     [Space(10)]
     [Header("AI")]
 
-    [Tooltip("���� ���� ������")]
+    [Tooltip("스킬 데이터들")]
     [SerializeField] protected SkillPattern[] _skillPatterns;
     public SkillPattern[] SkillPatterns => _skillPatterns;
 
-    [Tooltip("AI ���� ���� �ð�")]
+    [Tooltip("AI 패턴 갱신 시간")]
     [SerializeField] protected float _patternUpdateTime;
 
-    [Tooltip("���� �� ��� �ð�")]
+    [Tooltip("공격후 대기시간")]
     [SerializeField] protected float _waitTime;
     protected float _waitTimer;
 
@@ -93,7 +99,7 @@ public class BossController : MonoBehaviour
 
     protected Animator _animator;
 
-    [SerializeField] protected List<Renderer> _renderers = new List<Renderer>();
+    protected List<Renderer> _renderers = new List<Renderer>();
 
     protected Dictionary<Renderer, Material> _tempMaterialDic = new Dictionary<Renderer, Material>();
 
@@ -278,7 +284,7 @@ public class BossController : MonoBehaviour
         _waitTimer = _waitTime;
     }
 
-    public void AddWaingTimer(float value)
+    public void AddWaitTimer(float value)
     {
         _waitTimer += value;
     }
@@ -286,18 +292,6 @@ public class BossController : MonoBehaviour
 
     private IEnumerator StartHitEffect()
     {
-        ChangeHitEffect();
-        yield return new WaitForSeconds(0.05f);
-        ChangeDefalutEffect();
-        yield return new WaitForSeconds(0.05f);
-        ChangeHitEffect();
-        yield return new WaitForSeconds(0.05f);
-        ChangeDefalutEffect();
-        yield return new WaitForSeconds(0.05f);
-        ChangeHitEffect();
-        yield return new WaitForSeconds(0.05f);
-        ChangeDefalutEffect();
-        yield return new WaitForSeconds(0.05f);
         ChangeHitEffect();
         yield return new WaitForSeconds(0.05f);
         ChangeDefalutEffect();
