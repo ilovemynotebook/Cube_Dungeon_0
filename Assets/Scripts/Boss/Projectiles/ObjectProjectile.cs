@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class ObjectProjectile : Projectile
 {
+    [SerializeField] private BossParticle _particle;
+
     private int dirX;
 
     protected override void Start()
@@ -34,7 +36,9 @@ public class ObjectProjectile : Projectile
 
         else if(other.tag == "Ground")
         {
+            Instantiate(_particle, transform.position + transform.up * 10, Quaternion.identity).Init(_boss, _power * 0.5f);
             Destroy(gameObject);
+
         }
 
     }

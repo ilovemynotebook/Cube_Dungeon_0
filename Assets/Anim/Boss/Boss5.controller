@@ -48,7 +48,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _bossSkillData:
-    _activateFrame: 7
+    _activateFrame: 6
     _disabledFrame: 20
     _skillPatternsIndex: 1
     _isActivated: 0
@@ -208,7 +208,7 @@ AnimatorState:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Skill4
+  m_Name: Skill3
   m_Speed: 0.5
   m_CycleOffset: 0
   m_Transitions:
@@ -224,8 +224,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: 1827226128182048838, guid: 4e350d14ea6440298f9fb650bfa23414,
-    type: 3}
+  m_Motion: {fileID: 7400000, guid: 5573336bd0792e0448e03ae7136bff04, type: 2}
   m_Tag: 
   m_SpeedParameter: AnimeSpeed
   m_MirrorParameter: 
@@ -396,7 +395,7 @@ AnimatorState:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: Skill1_Wait
-  m_Speed: 0.5
+  m_Speed: 0.3
   m_CycleOffset: 0
   m_Transitions:
   - {fileID: 3325395461903299257}
@@ -411,8 +410,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: 1827226128182048838, guid: cb45f694060d4cbaa017c0c1af3f1e59,
-    type: 3}
+  m_Motion: {fileID: 7400000, guid: 79309b8d963014d4f95b7b9db5435f25, type: 2}
   m_Tag: 
   m_SpeedParameter: AnimeSpeed
   m_MirrorParameter: 
@@ -503,7 +501,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _bossSkillData:
-    _activateFrame: 3
+    _activateFrame: 5
     _disabledFrame: 10
     _skillPatternsIndex: 3
     _isActivated: 0
@@ -1089,7 +1087,7 @@ AnimatorState:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: Skill4
-  m_Speed: 0.5
+  m_Speed: 0.4
   m_CycleOffset: 0
   m_Transitions:
   - {fileID: -4584077865173864429}
@@ -1104,8 +1102,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: 1827226128182048838, guid: 886e04e0971549f2879647fa49bc7a0f,
-    type: 3}
+  m_Motion: {fileID: 7400000, guid: f5a521058b551a74ca29fd6e86604205, type: 2}
   m_Tag: 
   m_SpeedParameter: AnimeSpeed
   m_MirrorParameter: 
@@ -1159,8 +1156,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: 1827226128182048838, guid: 3a0d229ad0fc4478a7da7d43d95a7091,
-    type: 3}
+  m_Motion: {fileID: 7400000, guid: d8a3b814b4487ca4ea72c30f106b0a30, type: 2}
   m_Tag: 
   m_SpeedParameter: AnimeSpeed
   m_MirrorParameter: 
@@ -1325,7 +1321,7 @@ AnimatorState:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Skill1_Wait
+  m_Name: Skill4_Wait
   m_Speed: 0.5
   m_CycleOffset: 0
   m_Transitions:
@@ -1341,8 +1337,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: 1827226128182048838, guid: cb45f694060d4cbaa017c0c1af3f1e59,
-    type: 3}
+  m_Motion: {fileID: 7400000, guid: bb80aa34ec1dd7942bd3df5bf5eaf676, type: 2}
   m_Tag: 
   m_SpeedParameter: AnimeSpeed
   m_MirrorParameter: 
@@ -1371,8 +1366,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: 1827226128182048838, guid: 4e350d14ea6440298f9fb650bfa23414,
-    type: 3}
+  m_Motion: {fileID: 7400000, guid: 1be258c657bc6b247b328b9204b53fc5, type: 2}
   m_Tag: 
   m_SpeedParameter: AnimeSpeed
   m_MirrorParameter: 
