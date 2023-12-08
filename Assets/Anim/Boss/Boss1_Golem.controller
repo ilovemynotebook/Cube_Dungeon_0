@@ -136,7 +136,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _bossSkillData:
-    _activateFrame: 12
+    _activateFrame: 10
     _disabledFrame: 16
     _skillPatternsIndex: 0
     _isActivated: 0
@@ -314,7 +314,7 @@ AnimatorStateTransition:
   m_TransitionDuration: 0.33975506
   m_TransitionOffset: 0
   m_ExitTime: 0
-  m_HasExitTime: 1
+  m_HasExitTime: 0
   m_HasFixedDuration: 1
   m_InterruptionSource: 0
   m_OrderedInterruption: 1
@@ -847,7 +847,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: 7400000, guid: e8945b6feaf8433d86df634556682a62, type: 3}
+  m_Motion: {fileID: 7400000, guid: ad1a78ed34c1b6241a7f29fba26221e4, type: 2}
   m_Tag: 
   m_SpeedParameter: AnimeSpeed
   m_MirrorParameter: 
