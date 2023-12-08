@@ -7,10 +7,8 @@ using Cinemachine;
 public class TitleManager : MonoBehaviour
 {
     public Camera MainCamera;
-    public GameObject Cube;
     public GameObject SettingScreen;
     public CanvasGroup TitleScreen;
-    [SerializeField] CanvasGroup ButtonScreen;
     public CanvasGroup Buttons;
     public Button TitleScreenButton;
     public Button SettingButton;
@@ -122,17 +120,7 @@ public class TitleManager : MonoBehaviour
         }
     }
 
-    void CubeZoom(bool IsInout,float Scale,float Time)
-    {
-        if (IsInout)
-        {
-            Cube.transform.DOScale(Scale, Time);
-        }
-        else
-        {
-            Cube.transform.DOScale(-Scale, Time);
-        }
-    }
+  
     
     void OnButtonGameObject(bool ison,GameObject gameObject)
     {
