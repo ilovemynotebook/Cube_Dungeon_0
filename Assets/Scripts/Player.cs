@@ -163,6 +163,7 @@ public class Player : Character
         staPotion = CanvasManager.Instance.staPotion;
         dmgPotion = CanvasManager.Instance.dmgPotion;
         key = CanvasManager.Instance.key;
+        GetComponent<PlayerClothes>().itemApply();
     }
 
 

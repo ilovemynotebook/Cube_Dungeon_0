@@ -26,7 +26,7 @@ public class CanvasManager : MonoBehaviour
     public int dmgPotion = 0;
     public bool key = false;
 
-    
+    public int whatHat = 0;
 
 
     void Start()
