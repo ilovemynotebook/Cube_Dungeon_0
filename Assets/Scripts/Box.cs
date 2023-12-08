@@ -53,7 +53,7 @@ public class Box : MonoBehaviour
     public bool isUpgraded_Item_1;
     public bool isUpgraded_Item_2;
     public bool isUpgraded_Item_3;
-    public int hpPotion ;
+    public int hpPotion;
     public int staPotion;
     public int dmgPotion;
     public bool key;
@@ -76,7 +76,7 @@ public class Box : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            if (Input.GetKeyDown(KeyCode.E)&&isOpen==false)
+            if (Input.GetKey(KeyCode.E)&&isOpen==false)
             {
                 isOpen = true;
                 PlaneSceneManager.Instance.StageSave(PlaneSceneManager.Instance.thisPlane);

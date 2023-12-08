@@ -138,6 +138,7 @@ public class Buffs : MonoBehaviour
     public void HPHeal()
     {
         player.hp += EffectValue;
+        GameManager.Instance.Player.GetComponent<Player>().sounds.Active_AS.Play();
 
         CanvasManager.Instance.hpBar.UpdateValue(player.hp, player.mhp);
     }
@@ -145,12 +146,15 @@ public class Buffs : MonoBehaviour
     public void STHeal()
     {
         player.sta += EffectValue;
+        GameManager.Instance.Player.GetComponent<Player>().sounds.Active_AS.Play();
+
         CanvasManager.Instance.staminaBar.UpdateValue(player.sta, player.msta);
     }
 
     public void dmgBuffStart()
     {
         player.buffedDmg += EffectValue;
+        GameManager.Instance.Player.GetComponent<Player>().sounds.Active_AS.Play();
     }
     public void dmgBuffEnd()
     {
@@ -160,6 +164,7 @@ public class Buffs : MonoBehaviour
     public void speedBuffStart()
     {
         player.buffedSpeed += EffectValue;
+        GameManager.Instance.Player.GetComponent<Player>().sounds.Active_AS.Play();
     }
     public void speedBuffEnd()
     {

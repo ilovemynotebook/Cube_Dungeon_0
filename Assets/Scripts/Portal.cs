@@ -20,13 +20,13 @@ public class Portal : MonoBehaviour
     {
         if (NeedKey)
         {
-            if (CanvasManager.Instance.key && Input.GetKeyDown(KeyCode.E))
+            if (CanvasManager.Instance.key && Input.GetKey(KeyCode.E))
             {
                 Debug.Log("키를 사용하셨습니다.");
                 NeedKey = false;
                 CanvasManager.Instance.key = false;
             }
-            else if (CanvasManager.Instance.key == false&&Input.GetKeyDown(KeyCode.E))
+            else if (CanvasManager.Instance.key == false&&Input.GetKey(KeyCode.E))
             {
                 Debug.Log("키를 가지고있지 않습니다.");
             }
@@ -35,7 +35,7 @@ public class Portal : MonoBehaviour
         }
         else
         {
-            if (other.gameObject.CompareTag("Player") && Input.GetKeyDown(KeyCode.E))
+            if (other.gameObject.CompareTag("Player") && Input.GetKey(KeyCode.E))
             {
                 if (isup)
                 {

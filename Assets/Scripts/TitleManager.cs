@@ -7,7 +7,6 @@ using Cinemachine;
 public class TitleManager : MonoBehaviour
 {
     public Camera MainCamera;
-    public GameObject Cube;
     public GameObject SettingScreen;
     public CanvasGroup TitleScreen;
     public CanvasGroup Buttons;
@@ -99,7 +98,6 @@ public class TitleManager : MonoBehaviour
     }
     void ButtonsFadeIn()
     {
-        //버튼이 사라진후
         cameraStart = true;//카메라줌 시작
         FadeInOut(Buttons,true,TitleFadeTime);
     }
@@ -122,17 +120,7 @@ public class TitleManager : MonoBehaviour
         }
     }
 
-    void CubeZoom(bool IsInout,float Scale,float Time)
-    {
-        if (IsInout)
-        {
-            Cube.transform.DOScale(Scale, Time);
-        }
-        else
-        {
-            Cube.transform.DOScale(-Scale, Time);
-        }
-    }
+  
     
     void OnButtonGameObject(bool ison,GameObject gameObject)
     {
