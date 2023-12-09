@@ -16,6 +16,8 @@ public class Player : Character
     public bool canRun = true;
     public bool isHoldingShield = false;
 
+    
+
     public float sta;
     public float msta;
 
@@ -74,7 +76,10 @@ public class Player : Character
     [Header("VFX")]
     public ParticleSystem AttackVFX;
     public ParticleSystem ChargeAttackVFX;
-  
+    private void Awake()
+    {
+        GameManager.Instance.Player = this.gameObject;
+    }
     override protected void Start()
     {
         if(sounds == null) sounds = transform.Find("Audios").GetComponent<CharacterSound>();
@@ -92,7 +97,7 @@ public class Player : Character
         buffs = new Buffs[2];
         SkillInit();
         base.Start();
-        GameManager.Instance.Player = this.gameObject;
+        
         
 
 
@@ -114,12 +119,12 @@ public class Player : Character
     override protected void Update()
     {
         base.Update();
-
+        
         TryMove();
         TryAttack();
         TryJump();
         TrySkill();
-        TryShield();
+        TryShield();   
         TimeHeal();
         CheckLadder();
         DoClimbing(Input.GetAxisRaw("Vertical"));
