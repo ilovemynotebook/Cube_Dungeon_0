@@ -204,12 +204,12 @@ public class BossController : MonoBehaviour
                 StopCoroutine(_hitEffectRoutine);
             _hitEffectRoutine = StartCoroutine(StartHitEffect());
             OnGetHitHandler?.Invoke();
-            Destroy(gameObject, 10);
         }
             
         else
         {
             State = BossState.Die;
+            Destroy(gameObject, 10);
             OnDeathEventHandler?.Invoke();
         }
 

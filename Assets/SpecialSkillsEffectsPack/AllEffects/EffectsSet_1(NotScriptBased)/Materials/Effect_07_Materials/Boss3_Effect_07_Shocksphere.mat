@@ -7,7 +7,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Boss1_Effect_07_Shocksphere
+  m_Name: Boss3_Effect_07_Shocksphere
   m_Shader: {fileID: 4800000, guid: 1d58a8e283100ea4f8435e923e54553e, type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
@@ -184,6 +184,6 @@ Material:
     - _NoiseValue: {r: 0, g: 0, b: 0, a: 0}
     - _RimColor: {r: 0.9716981, g: 0, b: 0.009329386, a: 1}
     - _SoftParticleFadeParams: {r: 0, g: 0, b: 0, a: 0}
-    - _TintColor: {r: 15.306538, g: 15.048168, b: 12.803581, a: 1}
+    - _TintColor: {r: 2.6636512, g: 6.14949, b: 13.66196, a: 1}
     - _TintColor2: {r: 1, g: 1, b: 1, a: 1}
   m_BuildTextureStacks: []

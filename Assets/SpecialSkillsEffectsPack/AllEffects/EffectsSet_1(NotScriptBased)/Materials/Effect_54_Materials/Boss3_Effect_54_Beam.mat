@@ -7,13 +7,13 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Boss1_Effect_07_Shocksphere
+  m_Name: Boss3_Effect_54_Beam
   m_Shader: {fileID: 4800000, guid: 1d58a8e283100ea4f8435e923e54553e, type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
   m_ValidKeywords:
-  - IS_MASK_FADE
   - IS_NORMAL_ANIMATE
+  - IS_NORMAL_DISTORTION
   - IS_SOFT_PARTICLES
   - IS_TEXCOORD_MOVE
   - IS_TEXTURE_ANIMATE
@@ -51,7 +51,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _FixedMaskTex:
-        m_Texture: {fileID: 2800000, guid: 67e0d98570f0e144e96fec27ccbaffc4, type: 3}
+        m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _LinePassTex:
@@ -59,17 +59,17 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MainTex:
-        m_Texture: {fileID: 2800000, guid: 3cb02bf457cde1b48af42b67ee413532, type: 3}
-        m_Scale: {x: 5, y: 5}
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 2, y: 2}
         m_Offset: {x: 0, y: 0}
     - _MaskDistortion:
-        m_Texture: {fileID: 2800000, guid: 4ae76b5c814071640a85ca797f484323, type: 3}
-        m_Scale: {x: 1, y: 1}
+        m_Texture: {fileID: 2800000, guid: 9a9498ac1b0e2484dbe7cdeee7973e50, type: 3}
+        m_Scale: {x: 2, y: 2}
         m_Offset: {x: 0, y: 0}
     - _MaskTex:
-        m_Texture: {fileID: 2800000, guid: a1e4bc17d92703c46b85af820c49f976, type: 3}
+        m_Texture: {fileID: 2800000, guid: 1dd87d263698bdd489172bf9aa265da1, type: 3}
         m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
+        m_Offset: {x: 1, y: 1}
     - _MetallicGlossMap:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
@@ -79,7 +79,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _NoiseTex:
-        m_Texture: {fileID: 0}
+        m_Texture: {fileID: 2800000, guid: 708d24fa8e8cc804aba4ce74d4e6a1b1, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _NormalTex:
@@ -103,10 +103,10 @@ Material:
     - _CameraFadingEnabled: 0
     - _CameraFarFadeDistance: 2
     - _CameraNearFadeDistance: 1
-    - _ColorFactor: 3
+    - _ColorFactor: 0.5
     - _ColorMode: 0
     - _Cull: 2
-    - _Culling: 0
+    - _Culling: 2
     - _Cutoff: 0.5
     - _DetailNormalMapScale: 1
     - _DistortionBlend: 0.5
@@ -129,18 +129,18 @@ Material:
     - _LinePass: 0
     - _MaskAnimatedSpeed: 5
     - _MaskCutOut: 1
-    - _MaskFade: 1
-    - _MaskOffsetFactor: 2
+    - _MaskFade: 0
+    - _MaskOffsetFactor: 1
     - _MaxIndex: 2
     - _Metallic: 0
     - _MixedMove: 0
     - _Mode: 3
     - _NoiseNormalFactor: 1
-    - _NoiseScale: 0
+    - _NoiseScale: 0.01
     - _NormalAnimate: 1
     - _NormalAnimateSpeed: 0.15
-    - _NormalDistortion: 0
-    - _NormalDistortionFactor: 1
+    - _NormalDistortion: 1
+    - _NormalDistortionFactor: 2
     - _OcclusionStrength: 1
     - _Parallax: 0.02
     - _ParticleInstancing: 1
@@ -158,14 +158,14 @@ Material:
     - _SrcBlend: 1
     - _TexLength: 1
     - _TexPath: 1
-    - _TexPosMove: 0.39
+    - _TexPosMove: 1
     - _TexcoordMove: 1
-    - _TexcoordMoveStrength: 7.5
+    - _TexcoordMoveStrength: 1
     - _TexcoordMoveUsingCustom: 0
     - _TextureAnimate: 1
     - _TextureAnimateAdvanced: 0
-    - _TextureAnimateSpeed: 1
-    - _TextureAnimateStyle: 0
+    - _TextureAnimateSpeed: 0.15
+    - _TextureAnimateStyle: 2
     - _TextureBlend: 0
     - _TextureNoise: 0
     - _UVSec: 0
@@ -174,16 +174,16 @@ Material:
     - _ZTest1: 5
     - _ZTest2: 2
     - _ZWrite: 0
-    - _xTexcoordMove: 1
-    - _yTexcoordMove: 0
+    - _xTexcoordMove: 0
+    - _yTexcoordMove: 1
     m_Colors:
     - _CameraFadeParams: {r: 0, g: Infinity, b: 0, a: 0}
     - _Color: {r: 3.9999995, g: 3.9999995, b: 3.9999995, a: 1}
     - _ColorAddSubDiff: {r: 0, g: 0, b: 0, a: 0}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
-    - _NoiseValue: {r: 0, g: 0, b: 0, a: 0}
+    - _NoiseValue: {r: 0.1, g: 1, b: 2, a: 1}
     - _RimColor: {r: 0.9716981, g: 0, b: 0.009329386, a: 1}
     - _SoftParticleFadeParams: {r: 0, g: 0, b: 0, a: 0}
-    - _TintColor: {r: 15.306538, g: 15.048168, b: 12.803581, a: 1}
-    - _TintColor2: {r: 1, g: 1, b: 1, a: 1}
+    - _TintColor: {r: 0.43123287, g: 0.75400496, b: 0.8679245, a: 1}
+    - _TintColor2: {r: 0, g: 0.41786715, b: 0.5803922, a: 1}
   m_BuildTextureStacks: []
