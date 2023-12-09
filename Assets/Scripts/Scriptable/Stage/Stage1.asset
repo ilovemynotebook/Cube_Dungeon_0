@@ -60,5 +60,5 @@ MonoBehaviour:
       enemyData:
       - enemy: {fileID: 7096311560026687638, guid: 8e3eded2e24e82b4997fe52a740dbf87,
           type: 3}
-        spawnPos: {x: 10, y: 10, z: 0}
+        spawnPos: {x: 10, y: 15, z: 0}
       boxData: []

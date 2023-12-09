@@ -61,7 +61,7 @@ public class PlayerData
 
 
     }
-    public void SetCanvasData(int hpPotion,int staPotion,int dmgPotion,bool isUpgraded_weapon,bool isUpgraded_shield,bool isUpgraded_Item0,bool isUpgraded_Item1,bool isUpgraded_Item2,bool isUpgraded_Item3)
+    public void SetCanvasData(int hpPotion,int staPotion,int dmgPotion,bool isUpgraded_weapon,bool isUpgraded_shield,bool isUpgraded_Item0,bool isUpgraded_Item1,bool isUpgraded_Item2,bool isUpgraded_Item3,bool roomkey)
     {
         this.hpPotion=hpPotion;
         this.staPotion=staPotion;
@@ -72,6 +72,7 @@ public class PlayerData
         this.isUpgraded_Item_1 = isUpgraded_Item1;
         this.isUpgraded_Item_2 = isUpgraded_Item2;
         this.isUpgraded_Item_3 = isUpgraded_Item3;
+        this.key = roomkey;
     }
 }
 
