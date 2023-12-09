@@ -57,6 +57,7 @@ public class StoryDialogManager : MonoBehaviour
         dialogQueue.Clear();
         isDialogActive = true;
         dialogBoxPrefab.SetActive(true);
+        GameManager.Instance.inDialog = true;
         Time.timeScale = 0f;
         //// 일시 정지할 다른 오브젝트들의 Time.timeScale 값을 저장하고, 일시 정지
         //for (int i = 0; i < objectsToPause.Count; i++)
@@ -108,6 +109,7 @@ public class StoryDialogManager : MonoBehaviour
         isDialogActive = false;
         dialogBoxPrefab.SetActive(false);
         gameObject.SetActive(false);
+        GameManager.Instance.inDialog = false;
 
     }
 }
