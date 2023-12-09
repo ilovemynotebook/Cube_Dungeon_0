@@ -69931,8 +69931,8 @@ MonoBehaviour:
   Target: {fileID: 0}
   _teleportClass:
     _name: "\uD154\uB808\uD3EC\uD2B8"
-    _distance: 0
-    _coolTime: 0
+    _distance: 5
+    _coolTime: 3
     AttackTrigger: {fileID: 559893732630689931}
     CurrentCoolTime: 0
     SkillState: 0
@@ -79933,7 +79933,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6650974140663030801}
   m_LocalRotation: {x: -0, y: -0.7071068, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: 0.33999997, y: 0, z: 0.3985246}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0.15, y: 0.15, z: 0.15}
   m_ConstrainProportionsScale: 0
   m_Children:

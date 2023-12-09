@@ -44277,7 +44277,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3ce0e32a1d19c62458767ad704a43aa1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _shakeDuration: 2
+  _shakeDuration: 2.5
   _shakeAmplitude: 1.5
   _shakeFrequency: 1.5
   _disabledTime: 3

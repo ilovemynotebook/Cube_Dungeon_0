@@ -25,7 +25,7 @@ public class Projectile : MonoBehaviour
 
 
 
-    public void SetPower(BossController boss, float power, int dir)
+    public virtual void SetPower(BossController boss, float power, int dir)
     {
         _boss = boss;
         _power = power;

@@ -349,7 +349,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _bossSkillData:
     _activateFrame: 13
-    _disabledFrame: 24
+    _disabledFrame: 23
     _skillPatternsIndex: 0
     _isActivated: 0
     _isDisabled: 0
@@ -368,6 +368,7 @@ AnimatorState:
   - {fileID: 4619425572749102702}
   m_StateMachineBehaviours:
   - {fileID: 3752119648032780734}
+  - {fileID: 7881253897119811474}
   m_Position: {x: 50, y: 50, z: 0}
   m_IKOnFeet: 0
   m_WriteDefaultValues: 1
@@ -376,7 +377,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: 7400000, guid: 5a572291884844608c62ea09bd28b785, type: 3}
+  m_Motion: {fileID: 7400000, guid: 171ff87b912106d4e805189e3a89559e, type: 2}
   m_Tag: 
   m_SpeedParameter: AnimeSpeed
   m_MirrorParameter: 
@@ -1332,8 +1333,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _bossSkillData:
-    _activateFrame: 49
-    _disabledFrame: 80
+    _activateFrame: 8
+    _disabledFrame: 21
     _skillPatternsIndex: 2
     _isActivated: 0
     _isDisabled: 0
@@ -1677,7 +1678,7 @@ AnimatorState:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: Skill2
-  m_Speed: 0.5
+  m_Speed: 0.4
   m_CycleOffset: 0
   m_Transitions:
   - {fileID: -3762429871268598236}
@@ -1746,6 +1747,26 @@ AnimatorStateTransition:
   m_InterruptionSource: 0
   m_OrderedInterruption: 1
   m_CanTransitionToSelf: 1
+--- !u!114 &7881253897119811474
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eea24c29119a8e846acf944b135511b6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _shakeData:
+    _shakeDuration: 1.7
+    _shakeAmplitude: 1
+    _shakeFrequency: 1
+    _activateFrame: 8
+    _disabledFrame: 21
+    _isActivated: 0
+    _isDisabled: 0
 --- !u!114 &8811199703084961664
 MonoBehaviour:
   m_ObjectHideFlags: 1
