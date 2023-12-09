@@ -56,7 +56,7 @@ MonoBehaviour:
       planeStyle: 0
       prefab: {fileID: 4287543710475442010, guid: 04a22129678348d4db2f66fe9b04687f,
         type: 3}
-      playerStartPoint: {x: -5, y: 8, z: 0}
+      playerStartPoint: {x: -6, y: 8, z: 0}
       enemyData:
       - enemy: {fileID: 7096311560026687638, guid: 8e3eded2e24e82b4997fe52a740dbf87,
           type: 3}
