@@ -302,6 +302,7 @@ public class Player : Character
         if (hitInfo.collider != null)
         {
             isGrounded = true;
+            if(Input.GetKey(KeyCode.S)) 
             isClimbing = false;
             anim.SetBool("isClimbing", false);
         }

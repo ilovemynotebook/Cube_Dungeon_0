@@ -235,7 +235,8 @@ public class Character : MonoBehaviour
         if (hitInfo.collider != null)
         {
             isGrounded = true;
-            isClimbing = false;
+            if (Input.GetKey(KeyCode.S))
+                isClimbing = false;
             //anim.SetBool("isClimbing",false);
         }
         else isGrounded = false;
