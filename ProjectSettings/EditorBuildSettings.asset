@@ -9,6 +9,30 @@ EditorBuildSettings:
     path: Assets/Scenes/SampleScene.unity
     guid: 99c9720ab356a0642a771bea13969a05
   - enabled: 1
+    path: Assets/Scenes/Boss/BossBranchMainScene.unity
+    guid: f5d3cb6e250751542b522f72437ce123
+  - enabled: 1
+    path: Assets/Scenes/Boss/Boss_LoadingScene.unity
+    guid: e20bb9c5ab3fd0c4c99e20aecac208fc
+  - enabled: 1
+    path: Assets/Scenes/Boss/Boss1.unity
+    guid: 4959b09d9a9e16b47aa65b8c4d3d7426
+  - enabled: 1
+    path: Assets/Scenes/Boss/Boss2.unity
+    guid: 43db6648e3a06074f8633c0c570e03a2
+  - enabled: 1
+    path: Assets/Scenes/Boss/Boss3.unity
+    guid: ac16b3d25a6119c458c7ad1d81e9ad23
+  - enabled: 1
+    path: Assets/Scenes/Boss/Boss4.unity
+    guid: a905977d37766684081199681000fff8
+  - enabled: 1
+    path: Assets/Scenes/Boss/Boss5.unity
+    guid: 86e433832917fb44f9197ebff51ecf0c
+  - enabled: 1
+    path: Assets/Scenes/Boss/Boss6.unity
+    guid: 200b9b9547ae2904b9ce76a4d83e0580
+  - enabled: 1
     path: Assets/Scenes/LoadingScene.unity
     guid: 12741f81ed91f7b469d68a9e7748d84c
   - enabled: 1
