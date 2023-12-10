@@ -25,11 +25,21 @@ MonoBehaviour:
           type: 3}
         spawnPos: {x: -10, y: 8, z: 0}
         isOpen: 0
+        isUpgraded_weapon: 0
+        isUpgraded_shield: 0
+        isUpgraded_Item_0: 0
+        isUpgraded_Item_1: 0
+        isUpgraded_Item_2: 0
+        isUpgraded_Item_3: 0
+        hpPotion: 0
+        staPotion: 0
+        dmgPotion: 0
+        key: 0
     - planeType: 0
       planeStyle: 0
-      prefab: {fileID: 4287543710475442010, guid: f36f0d095bc73764d80828f9b7c5ffca,
+      prefab: {fileID: 4893444814556675889, guid: beded533295ff6f4ea37bf7f51d71581,
         type: 3}
-      playerStartPoint: {x: 0, y: 8, z: 0}
+      playerStartPoint: {x: -2.8, y: 3, z: 1}
       enemyData: []
       boxData: []
     - planeType: 0

@@ -74,7 +74,11 @@ public class Player : Character
     [Header("VFX")]
     public ParticleSystem AttackVFX;
     public ParticleSystem ChargeAttackVFX;
-  
+
+    void Awake()
+    {
+        GameManager.Instance.Player = this.gameObject;
+    }
     override protected void Start()
     {
         if(sounds == null) sounds = transform.Find("Audios").GetComponent<CharacterSound>();
@@ -92,7 +96,7 @@ public class Player : Character
         buffs = new Buffs[2];
         SkillInit();
         base.Start();
-        GameManager.Instance.Player = this.gameObject;
+
         
 
 
