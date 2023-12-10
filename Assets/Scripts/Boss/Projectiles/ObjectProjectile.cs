@@ -18,12 +18,12 @@ public class ObjectProjectile : Projectile
         transform.position += new Vector3(10 * dirX, 20, 0);
 
         transform.LookAt(_boss.Target.transform);
-        transform.Rotate(new Vector3(90 * dirX, 0, 0));
+        transform.Rotate(new Vector3(90, 0, 0));
     }
 
     private void FixedUpdate()
     {
-        Vector3 movePos = dirX * transform.up * Time.deltaTime * _speed;
+        Vector3 movePos = transform.up * Time.deltaTime * _speed;
         _rigidBody.MovePosition(transform.position + movePos);
     }
 

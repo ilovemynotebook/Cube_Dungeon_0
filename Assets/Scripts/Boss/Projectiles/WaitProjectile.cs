@@ -32,6 +32,7 @@ public class WaitProjectile : Projectile
             {
                 _myPos = transform.position;
                 _targetDir = (_boss.Target.transform.position - _myPos).normalized;
+                transform.LookAt(_boss.Target.transform);
             }
             else
             {
