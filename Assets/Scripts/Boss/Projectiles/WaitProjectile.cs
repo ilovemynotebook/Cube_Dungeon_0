@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Runtime.CompilerServices;
 using UnityEngine;
 
 public class WaitProjectile : Projectile
@@ -9,6 +10,8 @@ public class WaitProjectile : Projectile
     [SerializeField] private GameObject _shootParticle;
 
     [SerializeField] private GameObject _explosionParticlePrefab;
+
+    [SerializeField] private AudioClip _clip;
 
     private float _waitTimer;
 
@@ -35,6 +38,10 @@ public class WaitProjectile : Projectile
                 _myPos = transform.position;
                 _targetDir = (_boss.Target.transform.position - _myPos).normalized;
                 transform.LookAt(_boss.Target.transform);
+
+                if (_clip != null)
+                    _boss.AudioSource.PlayOneShot(_clip);
+
             }
             else
             {
@@ -51,17 +58,20 @@ public class WaitProjectile : Projectile
 
     private void OnTriggerStay(Collider other)
     {
+        if (_myPos == null || _myPos == Vector3.zero)
+            return;
+
         if (other.TryGetComponent(out Character character))
         {
             character.GetHit(_power);
 
-            if(_explosionParticlePrefab != null)
+            if (_explosionParticlePrefab != null)
                 Instantiate(_explosionParticlePrefab, transform.position, Quaternion.identity);
 
             Destroy(gameObject);
         }
 
-        if(other.tag == "Ground")
+        if (other.tag == "Ground")
         {
             if (_explosionParticlePrefab != null)
                 Instantiate(_explosionParticlePrefab, transform.position, Quaternion.identity);

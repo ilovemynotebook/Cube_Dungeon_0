@@ -154,6 +154,9 @@ MonoBehaviour:
   _disabledTime: 20
   _particle: {fileID: 3335455560936843101, guid: 2418fa3431659314e925d2aac0dab813,
     type: 3}
+  _clip: {fileID: 8300000, guid: f8e446270e6350f4b9d9ecf41453ffeb, type: 3}
+  _volume: 1
+  _pitch: 1.45
 --- !u!1 &6360013562325197611
 GameObject:
   m_ObjectHideFlags: 0

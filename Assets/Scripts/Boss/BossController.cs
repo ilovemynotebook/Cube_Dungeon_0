@@ -48,7 +48,7 @@ public class SkillPattern
 public class BossController : MonoBehaviour
 {
     [Header("컴포넌트")]
-    protected AudioSource _audioSource;
+    [SerializeField] protected AudioSource _audioSource;
     public AudioSource AudioSource => _audioSource;
 
 

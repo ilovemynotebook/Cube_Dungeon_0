@@ -10,11 +10,11 @@ public class SoundData
     [SerializeField] private string _audioName;
     public string AudioName => _audioName;
 
-    [Tooltip("공격 활성화 프레임")]
+    [Tooltip("활성화 프레임")]
     [SerializeField] private int _activateFrame;
     public int ActivateFrame => _activateFrame;
 
-    [Tooltip("공격 비 활성화 프레임")]
+    [Tooltip("비 활성화 프레임")]
     [SerializeField] private int _disabledFrame;
     public int DisabledFrame => _disabledFrame;
 
@@ -26,6 +26,14 @@ public class SoundData
 public class BossSoundMachine : BossStateMachineBehaviour
 {
     [SerializeField] private SoundData _soundData;
+
+    
+    [SerializeField] [Range(0,1)] private float _volume = 1;
+
+    [SerializeField][Range(0, 2)] private float _pitch = 1;
+
+
+    [SerializeField] private bool _isExitSoundStopped;
 
     private int _currentFrame;
 
@@ -40,12 +48,15 @@ public class BossSoundMachine : BossStateMachineBehaviour
 
         _clip = animator.GetCurrentAnimatorClipInfo(layerIndex)[0].clip;
         _audioClip = (AudioClip)Resources.Load("Audios/" + _soundData.AudioName);
+
+        _boss.AudioSource.volume = _volume;
+        _boss.AudioSource.pitch = _pitch;
     }
 
 
     public override void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        _currentFrame = (int)(stateInfo.normalizedTime * (_clip.length * _clip.frameRate));
+        _currentFrame = (int)((stateInfo.normalizedTime % 1) * (_clip.length * _clip.frameRate));
 
         if (_currentFrame == _soundData.ActivateFrame && !_soundData._isActivated)
         {
@@ -65,7 +76,11 @@ public class BossSoundMachine : BossStateMachineBehaviour
     public override void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
         base.OnStateExit(animator, stateInfo, layerIndex);
+        
         _soundData._isDisabled = false;
         _soundData._isActivated = false;
+
+        if(_isExitSoundStopped)
+            _boss.AudioSource.Stop();
     }
 }

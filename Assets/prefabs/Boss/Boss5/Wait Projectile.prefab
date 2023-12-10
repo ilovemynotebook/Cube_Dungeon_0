@@ -19833,6 +19833,8 @@ MonoBehaviour:
   _disabledTime: 10
   _waitTime: 6
   _shootParticle: {fileID: 9134915752553826529}
+  _explosionParticlePrefab: {fileID: 0}
+  _clip: {fileID: 8300000, guid: 359b761877af3584289eaf4892bca825, type: 3}
 --- !u!1 &6123331036907572441
 GameObject:
   m_ObjectHideFlags: 0

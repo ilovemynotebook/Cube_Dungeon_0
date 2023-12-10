@@ -6,6 +6,12 @@ public class ObjectProjectile : Projectile
 {
     [SerializeField] private BossParticle _particle;
 
+    [SerializeField] private AudioClip _clip;
+
+    [SerializeField][Range(0, 1)] private float _volume = 1;
+
+    [SerializeField] [Range(0,2)] private float _pitch = 1;
+
     private int dirX;
 
     protected override void Start()
@@ -19,6 +25,10 @@ public class ObjectProjectile : Projectile
 
         transform.LookAt(_boss.Target.transform);
         transform.Rotate(new Vector3(90, 0, 0));
+
+        _boss.AudioSource.PlayOneShot(_clip);
+        _boss.AudioSource.volume = _volume;
+        _boss.AudioSource.pitch = _pitch;
     }
 
     private void FixedUpdate()
@@ -38,7 +48,6 @@ public class ObjectProjectile : Projectile
         {
             Instantiate(_particle, transform.position + transform.up * 10, Quaternion.identity).Init(_boss, _power * 0.5f);
             Destroy(gameObject);
-
         }
 
     }

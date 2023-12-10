@@ -252,6 +252,27 @@ AnimatorStateTransition:
   m_InterruptionSource: 0
   m_OrderedInterruption: 1
   m_CanTransitionToSelf: 1
+--- !u!114 &-4407900851490581215
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1d71cf9fa1adb984bb6ffb50d2b7b843, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _soundData:
+    _audioName: Magician/Magician_Throw_03
+    _activateFrame: 0
+    _disabledFrame: 999
+    _isActivated: 0
+    _isDisabled: 0
+  _volume: 1
+  _pitch: 1.4
+  _isExitSoundStopped: 0
 --- !u!1102 &-4248105980036568375
 AnimatorState:
   serializedVersion: 6
@@ -387,6 +408,27 @@ AnimatorStateTransition:
   m_InterruptionSource: 0
   m_OrderedInterruption: 1
   m_CanTransitionToSelf: 1
+--- !u!114 &-1971472308407283256
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1d71cf9fa1adb984bb6ffb50d2b7b843, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _soundData:
+    _audioName: Magician/Magician_Spell
+    _activateFrame: 0
+    _disabledFrame: 231
+    _isActivated: 0
+    _isDisabled: 0
+  _volume: 1
+  _pitch: 1.5
+  _isExitSoundStopped: 0
 --- !u!1102 &-1880002894054850189
 AnimatorState:
   serializedVersion: 6
@@ -402,6 +444,7 @@ AnimatorState:
   - {fileID: 348811508452993457}
   m_StateMachineBehaviours:
   - {fileID: 1420044619573363554}
+  - {fileID: -1971472308407283256}
   m_Position: {x: 50, y: 50, z: 0}
   m_IKOnFeet: 0
   m_WriteDefaultValues: 1
@@ -859,6 +902,27 @@ AnimatorStateTransition:
   m_InterruptionSource: 0
   m_OrderedInterruption: 1
   m_CanTransitionToSelf: 1
+--- !u!114 &1046134362393012352
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1d71cf9fa1adb984bb6ffb50d2b7b843, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _soundData:
+    _audioName: Magician/Magician_Throw_01
+    _activateFrame: 6
+    _disabledFrame: 999
+    _isActivated: 0
+    _isDisabled: 0
+  _volume: 1
+  _pitch: 0.5
+  _isExitSoundStopped: 0
 --- !u!1102 &1177511619523415664
 AnimatorState:
   serializedVersion: 6
@@ -948,6 +1012,27 @@ AnimatorStateTransition:
   m_InterruptionSource: 0
   m_OrderedInterruption: 1
   m_CanTransitionToSelf: 1
+--- !u!114 &1824755693489753454
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1d71cf9fa1adb984bb6ffb50d2b7b843, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _soundData:
+    _audioName: Magician/Magician_Throw_04
+    _activateFrame: 3
+    _disabledFrame: 690
+    _isActivated: 0
+    _isDisabled: 0
+  _volume: 1
+  _pitch: 1.5
+  _isExitSoundStopped: 0
 --- !u!1101 &1840141167098459073
 AnimatorStateTransition:
   m_ObjectHideFlags: 1
@@ -1133,6 +1218,27 @@ AnimatorStateTransition:
   m_InterruptionSource: 0
   m_OrderedInterruption: 1
   m_CanTransitionToSelf: 1
+--- !u!114 &2973302068712650396
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1d71cf9fa1adb984bb6ffb50d2b7b843, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _soundData:
+    _audioName: Magician/Magician_Throw_Heavy
+    _activateFrame: 3
+    _disabledFrame: 999
+    _isActivated: 0
+    _isDisabled: 0
+  _volume: 1
+  _pitch: 1
+  _isExitSoundStopped: 0
 --- !u!1102 &3256651282573290873
 AnimatorState:
   serializedVersion: 6
@@ -1148,6 +1254,7 @@ AnimatorState:
   - {fileID: 5035356516411026811}
   m_StateMachineBehaviours:
   - {fileID: -5013013517420902990}
+  - {fileID: 1824755693489753454}
   m_Position: {x: 50, y: 50, z: 0}
   m_IKOnFeet: 0
   m_WriteDefaultValues: 1
@@ -1329,6 +1436,7 @@ AnimatorState:
   - {fileID: 152721789378771716}
   m_StateMachineBehaviours:
   - {fileID: 4935610198370600450}
+  - {fileID: -4407900851490581215}
   m_Position: {x: 50, y: 50, z: 0}
   m_IKOnFeet: 0
   m_WriteDefaultValues: 1
@@ -1399,6 +1507,7 @@ AnimatorState:
   - {fileID: 2762879457264693327}
   m_StateMachineBehaviours:
   - {fileID: 5228492274535206171}
+  - {fileID: 1046134362393012352}
   m_Position: {x: 50, y: 50, z: 0}
   m_IKOnFeet: 0
   m_WriteDefaultValues: 1
@@ -1628,6 +1737,7 @@ AnimatorState:
   - {fileID: 7900676245375780644}
   m_StateMachineBehaviours:
   - {fileID: -6784415402139358916}
+  - {fileID: 2973302068712650396}
   m_Position: {x: 50, y: 50, z: 0}
   m_IKOnFeet: 0
   m_WriteDefaultValues: 1
