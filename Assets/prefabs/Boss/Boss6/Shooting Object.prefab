@@ -35,7 +35,7 @@ Transform:
   m_Children:
   - {fileID: 8359739033564247782}
   m_Father: {fileID: 0}
-  m_RootOrder: 16
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &6324704486600090064
 MeshFilter:
@@ -4995,7 +4995,7 @@ ParticleSystemRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 570146282c360954183c0c533d325592, type: 2}
+  - {fileID: 2100000, guid: 3a5bfef1bb36f4c44888a9f5b33785c9, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -9901,7 +9901,7 @@ ParticleSystemRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 9de21e4701eab1342bbad4e53d42c425, type: 2}
+  - {fileID: 2100000, guid: 02d09c6de43e40f40ab9f8666c5afe50, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -14811,7 +14811,7 @@ ParticleSystemRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 08250a0f1e49d29438450c5bbce752b2, type: 2}
+  - {fileID: 2100000, guid: 50afe125fee566b4892b334e0f567ec9, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
