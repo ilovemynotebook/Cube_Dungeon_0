@@ -27,8 +27,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1986224725549314641}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -7.64, y: 0, z: 0}
-  m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
+  m_LocalPosition: {x: -4.51, y: 0, z: 0}
+  m_LocalScale: {x: 0.3, y: 0.3, z: 0.3}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 6443819135082039054}
@@ -14847,8 +14847,8 @@ CapsuleCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 1.4
-  m_Height: 1
+  m_Radius: 0.8
+  m_Height: 0.61
   m_Direction: 1
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &1744086401873125126
@@ -14869,3 +14869,4 @@ MonoBehaviour:
   _shootParticle: {fileID: 0}
   _explosionParticlePrefab: {fileID: 7520235411607373565, guid: ee5307045d68f104690dce7e4cddbab0,
     type: 3}
+  _clip: {fileID: 0}

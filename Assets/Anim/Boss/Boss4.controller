@@ -117,7 +117,7 @@ AnimatorState:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: WalkFWD
-  m_Speed: 1
+  m_Speed: 0.5
   m_CycleOffset: 0
   m_Transitions:
   - {fileID: -19098160772548387}
@@ -129,6 +129,7 @@ AnimatorState:
   - {fileID: 142987946257608781}
   m_StateMachineBehaviours:
   - {fileID: 309946545135845563}
+  - {fileID: -5076936221819168254}
   m_Position: {x: 50, y: 50, z: 0}
   m_IKOnFeet: 0
   m_WriteDefaultValues: 1
@@ -355,6 +356,27 @@ AnimatorStateMachine:
   m_ExitPosition: {x: 800, y: 120, z: 0}
   m_ParentStateMachinePosition: {x: 800, y: 20, z: 0}
   m_DefaultState: {fileID: -960809451244630779}
+--- !u!114 &-5076936221819168254
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1d71cf9fa1adb984bb6ffb50d2b7b843, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _soundData:
+    _audioName: Golem/Golem_Walk
+    _activateFrame: 0
+    _disabledFrame: 99999
+    _isActivated: 0
+    _isDisabled: 0
+  _volume: 1
+  _pitch: 1.75
+  _isExitSoundStopped: 1
 --- !u!114 &-5013013517420902990
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -388,6 +410,7 @@ AnimatorState:
   - {fileID: 4619425572749102702}
   m_StateMachineBehaviours:
   - {fileID: 3752119648032780734}
+  - {fileID: -253953632285885796}
   m_Position: {x: 50, y: 50, z: 0}
   m_IKOnFeet: 0
   m_WriteDefaultValues: 1
@@ -495,6 +518,7 @@ AnimatorState:
   m_StateMachineBehaviours:
   - {fileID: 8811199703084961664}
   - {fileID: -5482520558387610431}
+  - {fileID: 2987657354332832884}
   m_Position: {x: 50, y: 50, z: 0}
   m_IKOnFeet: 0
   m_WriteDefaultValues: 1
@@ -509,6 +533,27 @@ AnimatorState:
   m_MirrorParameter: 
   m_CycleOffsetParameter: 
   m_TimeParameter: 
+--- !u!114 &-2992394708626192445
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1d71cf9fa1adb984bb6ffb50d2b7b843, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _soundData:
+    _audioName: Golem/Golem_Smash 1
+    _activateFrame: 12
+    _disabledFrame: 99999
+    _isActivated: 0
+    _isDisabled: 0
+  _volume: 1
+  _pitch: 2
+  _isExitSoundStopped: 0
 --- !u!114 &-2662392853297892747
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -652,6 +697,27 @@ MonoBehaviour:
     _skillPatternsIndex: 3
     _isActivated: 0
     _isDisabled: 0
+--- !u!114 &-253953632285885796
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1d71cf9fa1adb984bb6ffb50d2b7b843, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _soundData:
+    _audioName: Nomal/Explosion
+    _activateFrame: 13
+    _disabledFrame: 3000
+    _isActivated: 0
+    _isDisabled: 0
+  _volume: 1
+  _pitch: 1.2
+  _isExitSoundStopped: 1
 --- !u!1101 &-109623067943932812
 AnimatorStateTransition:
   m_ObjectHideFlags: 1
@@ -1243,6 +1309,27 @@ AnimatorStateTransition:
   m_InterruptionSource: 0
   m_OrderedInterruption: 1
   m_CanTransitionToSelf: 1
+--- !u!114 &2987657354332832884
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1d71cf9fa1adb984bb6ffb50d2b7b843, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _soundData:
+    _audioName: Golem/Golem_Smash
+    _activateFrame: 12
+    _disabledFrame: 999999
+    _isActivated: 0
+    _isDisabled: 0
+  _volume: 1
+  _pitch: 1.5
+  _isExitSoundStopped: 0
 --- !u!1101 &3236469227286237431
 AnimatorStateTransition:
   m_ObjectHideFlags: 1
@@ -1283,6 +1370,7 @@ AnimatorState:
   - {fileID: 2908839766896937952}
   m_StateMachineBehaviours:
   - {fileID: -5013013517420902990}
+  - {fileID: -2992394708626192445}
   m_Position: {x: 50, y: 50, z: 0}
   m_IKOnFeet: 0
   m_WriteDefaultValues: 1
@@ -1495,6 +1583,27 @@ AnimatorState:
   m_MirrorParameter: 
   m_CycleOffsetParameter: 
   m_TimeParameter: 
+--- !u!114 &5021465288541275292
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1d71cf9fa1adb984bb6ffb50d2b7b843, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _soundData:
+    _audioName: Nomal/Explosion
+    _activateFrame: 6
+    _disabledFrame: 9999
+    _isActivated: 0
+    _isDisabled: 0
+  _volume: 1
+  _pitch: 1.5
+  _isExitSoundStopped: 0
 --- !u!1107 &5032942168825523329
 AnimatorStateMachine:
   serializedVersion: 6
@@ -1685,6 +1794,7 @@ AnimatorState:
   m_StateMachineBehaviours:
   - {fileID: -6784415402139358916}
   - {fileID: -2662392853297892747}
+  - {fileID: 5021465288541275292}
   m_Position: {x: 50, y: 50, z: 0}
   m_IKOnFeet: 0
   m_WriteDefaultValues: 1

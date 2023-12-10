@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+[RequireComponent(typeof(AudioSource))]
 public class Shockwave : MonoBehaviour
 {
     [Header("Ä«¸Þ¶ó Èçµé¸² ÁøÆø")]
@@ -15,7 +16,13 @@ public class Shockwave : MonoBehaviour
 
     [Space(10)]
 
+    [SerializeField] private AudioClip _clip;
+
+    [Space(10)]
+
     [SerializeField] private float _destroyTime;
+
+    private AudioSource _source;
 
     private float _power;
 
@@ -29,6 +36,12 @@ public class Shockwave : MonoBehaviour
     private void Start()
     {
         CinemachineCamera.Instance.CameraShake(_shakeDuration, _shakeAmplitude, _shakeFrequency);
+
+        _source = GetComponent<AudioSource>();
+
+        if(_clip != null)
+            _source.PlayOneShot(_clip);
+
         Destroy(gameObject, _destroyTime);
     }
 

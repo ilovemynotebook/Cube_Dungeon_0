@@ -242,14 +242,12 @@ public class BossController : MonoBehaviour
         {
             if (0 < pattern.CurrentCoolTime)
             {
-                Debug.Log("��Ÿ�� ����");
                 continue;
             }
                 
 
             if (pattern.Distance < TargetDistance)
             {
-                Debug.Log("�Ÿ��� ��");
                 continue;
             }
                 

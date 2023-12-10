@@ -288,6 +288,27 @@ AnimatorState:
   m_MirrorParameter: 
   m_CycleOffsetParameter: 
   m_TimeParameter: 
+--- !u!114 &-4718745555456705595
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1d71cf9fa1adb984bb6ffb50d2b7b843, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _soundData:
+    _audioName: Sephent/Roar
+    _activateFrame: 6
+    _disabledFrame: 999999
+    _isActivated: 0
+    _isDisabled: 0
+  _volume: 1
+  _pitch: 1
+  _isExitSoundStopped: 0
 --- !u!1101 &-4584077865173864429
 AnimatorStateTransition:
   m_ObjectHideFlags: 1
@@ -460,6 +481,7 @@ AnimatorState:
   m_StateMachineBehaviours:
   - {fileID: 1420044619573363554}
   - {fileID: -5582555034221026071}
+  - {fileID: -4718745555456705595}
   m_Position: {x: 50, y: 50, z: 0}
   m_IKOnFeet: 0
   m_WriteDefaultValues: 1
@@ -933,6 +955,7 @@ AnimatorState:
   m_StateMachineBehaviours:
   - {fileID: 3736238829689081651}
   - {fileID: -7075603838441968423}
+  - {fileID: 7859341039339381396}
   m_Position: {x: 50, y: 50, z: 0}
   m_IKOnFeet: 0
   m_WriteDefaultValues: 1
@@ -1050,6 +1073,27 @@ AnimatorStateTransition:
   m_InterruptionSource: 0
   m_OrderedInterruption: 1
   m_CanTransitionToSelf: 1
+--- !u!114 &2043814900293547165
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1d71cf9fa1adb984bb6ffb50d2b7b843, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _soundData:
+    _audioName: Sephent/Roar
+    _activateFrame: 6
+    _disabledFrame: 99999
+    _isActivated: 0
+    _isDisabled: 0
+  _volume: 1
+  _pitch: 1
+  _isExitSoundStopped: 0
 --- !u!1101 &2190489029846415186
 AnimatorStateTransition:
   m_ObjectHideFlags: 1
@@ -1448,6 +1492,7 @@ AnimatorState:
   m_StateMachineBehaviours:
   - {fileID: 5228492274535206171}
   - {fileID: -5031979268520509096}
+  - {fileID: 2043814900293547165}
   m_Position: {x: 50, y: 50, z: 0}
   m_IKOnFeet: 0
   m_WriteDefaultValues: 1
@@ -1737,6 +1782,27 @@ AnimatorStateTransition:
   m_InterruptionSource: 0
   m_OrderedInterruption: 1
   m_CanTransitionToSelf: 1
+--- !u!114 &7859341039339381396
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1d71cf9fa1adb984bb6ffb50d2b7b843, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _soundData:
+    _audioName: Sephent/Roar
+    _activateFrame: 6
+    _disabledFrame: 999999
+    _isActivated: 0
+    _isDisabled: 0
+  _volume: 1
+  _pitch: 1
+  _isExitSoundStopped: 0
 --- !u!1101 &7900676245375780644
 AnimatorStateTransition:
   m_ObjectHideFlags: 1

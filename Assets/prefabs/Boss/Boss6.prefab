@@ -89,8 +89,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 171713996773660435}
   m_LocalRotation: {x: -0.54032147, y: 0.53567165, z: -0.4563721, w: 0.46133846}
-  m_LocalPosition: {x: 0.032, y: -0.128, z: -0.081}
-  m_LocalScale: {x: 5, y: 5, z: 5}
+  m_LocalPosition: {x: 0.0102, y: -0.1893, z: 0.0409}
+  m_LocalScale: {x: 3, y: 3, z: 3}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 2872300435831860256}
@@ -4969,7 +4969,7 @@ ParticleSystemRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: fda168d9589a9dd4d813c965ef1cb596, type: 2}
+  - {fileID: 2100000, guid: cadc6e788e7821e42b2534c84947ec54, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -10201,7 +10201,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 864956521040678187}
   m_LocalRotation: {x: 0.016062614, y: 0.7069242, z: -0.7069244, w: 0.016062636}
-  m_LocalPosition: {x: 0.733, y: -0.094, z: -0.006}
+  m_LocalPosition: {x: 0.976, y: -0.136, z: -0.006}
   m_LocalScale: {x: 1, y: 0.5, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -15031,7 +15031,7 @@ ParticleSystemRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 0b4ad82d47261f549803cccda442bcf1, type: 2}
+  - {fileID: 2100000, guid: 04a74ca5e1d70444d944f0d51e3a3779, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -15229,7 +15229,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 976475656992377770}
   m_LocalRotation: {x: -0.4498096, y: -0.018333523, z: 0.10520159, w: 0.88671744}
-  m_LocalPosition: {x: 0, y: 0.03, z: 0.054}
+  m_LocalPosition: {x: -0.021, y: 0.076, z: -0.057}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -20834,7 +20834,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 05f81a54ee27c4444a6bd62f51d90e02, type: 2}
+  - {fileID: 2100000, guid: 41cf032d88e66ef418c9726cbc08b5a4, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -20935,7 +20935,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2240328629498080685}
   m_LocalRotation: {x: 0.7071067, y: 0.00000013411042, z: -0.000000044703473, w: 0.7071069}
-  m_LocalPosition: {x: 0.087, y: 0.0244, z: 0.033}
+  m_LocalPosition: {x: 0.1097, y: 0.0335, z: 0.0347}
   m_LocalScale: {x: 1, y: 0.5, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -25765,7 +25765,7 @@ ParticleSystemRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 0b4ad82d47261f549803cccda442bcf1, type: 2}
+  - {fileID: 2100000, guid: 04a74ca5e1d70444d944f0d51e3a3779, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -36208,7 +36208,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &630319934028668616
 Transform:
   m_ObjectHideFlags: 0
@@ -36795,7 +36795,7 @@ ParticleSystem:
         m_RotationOrder: 4
     randomizeRotationDirection: 0
     gravitySource: 0
-    maxNumParticles: 10000
+    maxNumParticles: 100
     customEmitterVelocity: {x: 0, y: 0, z: 0}
     size3D: 0
     rotation3D: 0
@@ -41653,7 +41653,7 @@ Transform:
   m_GameObject: {fileID: 4289620948965310409}
   m_LocalRotation: {x: 0.000000029802315, y: 0.000000018626448, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 3, y: 3, z: 3}
+  m_LocalScale: {x: 3.33, y: 2, z: 2}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 6591021222701307499}
@@ -46504,7 +46504,7 @@ ParticleSystemRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: cf20bd353e0d87e40bb301ce7a7dbf55, type: 2}
+  - {fileID: 2100000, guid: c21e673f56b82e045993dcb384a8de64, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -46787,6 +46787,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f1fee0b48eb88ae4ea01122fb3e4e3d5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _audioSource: {fileID: 0}
   _name: 
   _maxHp: 500
   _speed: 0
