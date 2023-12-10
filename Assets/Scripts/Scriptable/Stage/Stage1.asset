@@ -30,16 +30,16 @@ MonoBehaviour:
       boxData: []
     - planeType: 0
       planeStyle: 0
-      prefab: {fileID: 4287543710475442010, guid: 378639d9a04f66e44b10f13859601950,
+      prefab: {fileID: 3840512457479374731, guid: e8c1c79400e950842a31d970da544ed3,
         type: 3}
-      playerStartPoint: {x: 0, y: 8, z: 0}
+      playerStartPoint: {x: -5, y: 5, z: -15}
       enemyData: []
       boxData: []
     - planeType: 0
       planeStyle: 0
-      prefab: {fileID: 4287543710475442010, guid: 04a22129678348d4db2f66fe9b04687f,
+      prefab: {fileID: 2493310111677304332, guid: fcd8869cb1e2b684c97b06593baabd05,
         type: 3}
-      playerStartPoint: {x: -5, y: 8, z: 0}
+      playerStartPoint: {x: -30, y: 15, z: -9}
       enemyData:
       - enemy: {fileID: 7096311560026687638, guid: 8e3eded2e24e82b4997fe52a740dbf87,
           type: 3}
