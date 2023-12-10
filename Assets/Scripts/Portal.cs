@@ -25,6 +25,7 @@ public class Portal : MonoBehaviour
                 Debug.Log("키를 사용하셨습니다.");
                 NeedKey = false;
                 CanvasManager.Instance.key = false;
+                CanvasManager.Instance.UpdateHud();
             }
             else if (CanvasManager.Instance.key == false&&Input.GetKey(KeyCode.E))
             {
