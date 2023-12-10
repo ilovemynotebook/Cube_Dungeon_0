@@ -9,11 +9,13 @@ public class MovingPlatform : MonoBehaviour
     public bool moveOnXAxis = true;
     public bool moveOnYAxis = true;
 
+    private Transform platformTransform;
     private Vector3 initialPosition;
 
     private void Start()
     {
-        initialPosition = transform.position;
+        platformTransform = transform;
+        initialPosition = platformTransform.position;
     }
 
     private void Update()
@@ -28,5 +30,24 @@ public class MovingPlatform : MonoBehaviour
         );
 
         transform.position = newPositionVector;
+    }
+    private void OnCollisionEnter(Collision collision)
+    {
+        // 충돌한 오브젝트가 플레이어인 경우
+        if (collision.gameObject.CompareTag("Player"))
+        {
+            // 발판의 자식으로 플레이어를 만듭니다.
+            collision.transform.parent = platformTransform;
+        }
+    }
+
+    private void OnCollisionExit(Collision collision)
+    {
+        // 충돌이 끝난 경우
+        if (collision.gameObject.CompareTag("Player"))
+        {
+            // 플레이어를 발판의 자식에서 해제합니다.
+            collision.transform.parent = null;
+        }
     }
 }

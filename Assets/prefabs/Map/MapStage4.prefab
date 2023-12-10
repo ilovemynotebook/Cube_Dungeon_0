@@ -27100,6 +27100,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Cube_Grass
       objectReference: {fileID: 0}
+    - target: {fileID: 1147267972109256, guid: 2b4d538ca7f1f82429989b3678ee0062, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 4676387217194220, guid: 2b4d538ca7f1f82429989b3678ee0062, type: 3}
       propertyPath: m_RootOrder
       value: -1

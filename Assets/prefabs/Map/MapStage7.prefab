@@ -1221,7 +1221,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4871869069711002313}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -1239,7 +1239,7 @@ Transform:
   - {fileID: 1715237267556611135}
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
 --- !u!1 &4907966190112206957
 GameObject:
   m_ObjectHideFlags: 0
@@ -4249,7 +4249,7 @@ PrefabInstance:
     - target: {fileID: 8128825353885022564, guid: fbcc00ff4c0f0ef4ca2e2641ddf23efc,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -4.497
+      value: 0.53
       objectReference: {fileID: 0}
     - target: {fileID: 8128825353885022564, guid: fbcc00ff4c0f0ef4ca2e2641ddf23efc,
         type: 3}
@@ -7170,6 +7170,10 @@ PrefabInstance:
     - target: {fileID: 1379645051613606, guid: 788a2af7d06564d45b5f50ffcbfb35d9, type: 3}
       propertyPath: m_Name
       value: Cube_Water
+      objectReference: {fileID: 0}
+    - target: {fileID: 1379645051613606, guid: 788a2af7d06564d45b5f50ffcbfb35d9, type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 4967946560886230, guid: 788a2af7d06564d45b5f50ffcbfb35d9, type: 3}
       propertyPath: m_RootOrder
@@ -17623,7 +17627,7 @@ PrefabInstance:
     - target: {fileID: 2335531972456735440, guid: 6689d53fe362f3d4183284154ed64ec2,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: 0.652
       objectReference: {fileID: 0}
     - target: {fileID: 2335531972456735440, guid: 6689d53fe362f3d4183284154ed64ec2,
         type: 3}
