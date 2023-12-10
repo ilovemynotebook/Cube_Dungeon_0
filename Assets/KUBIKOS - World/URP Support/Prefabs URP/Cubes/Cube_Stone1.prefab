@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 4705959915547224}
   - component: {fileID: 33267272214300116}
   - component: {fileID: 23169731376768486}
-  - component: {fileID: -6741160406299253490}
+  - component: {fileID: 3545464532562240944}
   m_Layer: 0
   m_Name: Cube_Stone1
   m_TagString: Untagged
@@ -32,7 +32,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &33267272214300116
 MeshFilter:
@@ -84,7 +84,7 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &-6741160406299253490
+--- !u!65 &3545464532562240944
 BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
