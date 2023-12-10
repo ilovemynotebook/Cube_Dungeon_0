@@ -16270,6 +16270,66 @@ MonoBehaviour:
       type: 3}
     _spawnPos: {x: -5, y: 15, z: 0}
     _spawnTime: 2.4
+  - _spawnPosType: 0
+    _projectilePrefab: {fileID: -1405334022261893738, guid: b703ef4a12201284583536f8adc4b340,
+      type: 3}
+    _spawnPos: {x: -5, y: 15, z: 0}
+    _spawnTime: 2.7
+  - _spawnPosType: 0
+    _projectilePrefab: {fileID: -1405334022261893738, guid: b703ef4a12201284583536f8adc4b340,
+      type: 3}
+    _spawnPos: {x: -5, y: 15, z: 0}
+    _spawnTime: 3
+  - _spawnPosType: 0
+    _projectilePrefab: {fileID: -1405334022261893738, guid: b703ef4a12201284583536f8adc4b340,
+      type: 3}
+    _spawnPos: {x: -5, y: 15, z: 0}
+    _spawnTime: 3
+  - _spawnPosType: 0
+    _projectilePrefab: {fileID: -1405334022261893738, guid: b703ef4a12201284583536f8adc4b340,
+      type: 3}
+    _spawnPos: {x: -5, y: 15, z: 0}
+    _spawnTime: 3
+  - _spawnPosType: 0
+    _projectilePrefab: {fileID: -1405334022261893738, guid: b703ef4a12201284583536f8adc4b340,
+      type: 3}
+    _spawnPos: {x: -5, y: 15, z: 0}
+    _spawnTime: 3
+  - _spawnPosType: 0
+    _projectilePrefab: {fileID: -1405334022261893738, guid: b703ef4a12201284583536f8adc4b340,
+      type: 3}
+    _spawnPos: {x: -5, y: 15, z: 0}
+    _spawnTime: 3
+  - _spawnPosType: 0
+    _projectilePrefab: {fileID: -1405334022261893738, guid: b703ef4a12201284583536f8adc4b340,
+      type: 3}
+    _spawnPos: {x: -5, y: 15, z: 0}
+    _spawnTime: 3
+  - _spawnPosType: 0
+    _projectilePrefab: {fileID: -1405334022261893738, guid: b703ef4a12201284583536f8adc4b340,
+      type: 3}
+    _spawnPos: {x: -5, y: 15, z: 0}
+    _spawnTime: 3
+  - _spawnPosType: 0
+    _projectilePrefab: {fileID: -1405334022261893738, guid: b703ef4a12201284583536f8adc4b340,
+      type: 3}
+    _spawnPos: {x: -5, y: 15, z: 0}
+    _spawnTime: 3
+  - _spawnPosType: 0
+    _projectilePrefab: {fileID: -1405334022261893738, guid: b703ef4a12201284583536f8adc4b340,
+      type: 3}
+    _spawnPos: {x: -5, y: 15, z: 0}
+    _spawnTime: 3
+  - _spawnPosType: 0
+    _projectilePrefab: {fileID: -1405334022261893738, guid: b703ef4a12201284583536f8adc4b340,
+      type: 3}
+    _spawnPos: {x: -5, y: 15, z: 0}
+    _spawnTime: 3
+  - _spawnPosType: 0
+    _projectilePrefab: {fileID: -1405334022261893738, guid: b703ef4a12201284583536f8adc4b340,
+      type: 3}
+    _spawnPos: {x: -5, y: 15, z: 0}
+    _spawnTime: 3
   _isDirFixationEnabled: 0
   _isRandomSpawn: 1
   _randomSpawnRange: 5
@@ -41464,7 +41524,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _name: "\uBCF4\uC2A44"
-  _maxHp: 10
+  _maxHp: 400
   _speed: 5
   _animeSpeed: 1
   _power: 10
@@ -41500,7 +41560,7 @@ MonoBehaviour:
     CurrentCoolTime: 0
     SkillState: 0
   _patternUpdateTime: 0.1
-  _waitTime: 1
+  _waitTime: 0
   Rigidbody: {fileID: 0}
   State: 0
   Target: {fileID: 0}

@@ -26,7 +26,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3710237436708544122}
   m_LocalRotation: {x: -0.7071068, y: 0, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 12.1, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 7.5}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -41,7 +41,7 @@ ParticleSystem:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3710237436708544122}
   serializedVersion: 8
-  lengthInSec: 1
+  lengthInSec: 0.7
   simulationSpeed: 1
   stopAction: 0
   cullingMode: 0
@@ -116,7 +116,7 @@ ParticleSystem:
     startLifetime:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 1
+      scalar: 0.7
       minScalar: 5
       maxCurve:
         serializedVersion: 2
@@ -1659,7 +1659,7 @@ ParticleSystem:
     z:
       serializedVersion: 2
       minMaxState: 3
-      scalar: 5
+      scalar: 10
       minScalar: 0
       maxCurve:
         serializedVersion: 2
@@ -4868,7 +4868,7 @@ ParticleSystemRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_RenderMode: 4
+  m_RenderMode: 0
   m_MeshDistribution: 0
   m_SortMode: 1
   m_MinParticleSize: 0
@@ -4932,7 +4932,7 @@ Transform:
   m_Children:
   - {fileID: 3523435662318347986}
   m_Father: {fileID: 0}
-  m_RootOrder: 15
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &3457599613428930145
 MeshFilter:
@@ -5017,6 +5017,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eaefcb4e533458d43a0e3e3dcc5a10fa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _shakeDuration: 0.5
+  _shakeAmplitude: 1
+  _shakeFrequency: 0.5
   _destroyTime: 1
 --- !u!1 &8559230793290576796
 GameObject:
@@ -5044,7 +5047,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8559230793290576796}
   m_LocalRotation: {x: -0.7071068, y: 0, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 12.1, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 7.5}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -5059,7 +5062,7 @@ ParticleSystem:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8559230793290576796}
   serializedVersion: 8
-  lengthInSec: 1
+  lengthInSec: 0.7
   simulationSpeed: 1
   stopAction: 0
   cullingMode: 0
@@ -5134,7 +5137,7 @@ ParticleSystem:
     startLifetime:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 1
+      scalar: 0.7
       minScalar: 5
       maxCurve:
         serializedVersion: 2
@@ -6677,7 +6680,7 @@ ParticleSystem:
     z:
       serializedVersion: 2
       minMaxState: 3
-      scalar: 5
+      scalar: 10
       minScalar: 0
       maxCurve:
         serializedVersion: 2
@@ -9886,7 +9889,7 @@ ParticleSystemRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_RenderMode: 4
+  m_RenderMode: 0
   m_MeshDistribution: 0
   m_SortMode: 1
   m_MinParticleSize: 0
@@ -9936,6 +9939,16 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 126931540777222994, guid: 099eb0bceb74fb4428621a4259fa03c2,
         type: 3}
+      propertyPath: lengthInSec
+      value: 0.7
+      objectReference: {fileID: 0}
+    - target: {fileID: 126931540777222994, guid: 099eb0bceb74fb4428621a4259fa03c2,
+        type: 3}
+      propertyPath: VelocityModule.z.scalar
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 126931540777222994, guid: 099eb0bceb74fb4428621a4259fa03c2,
+        type: 3}
       propertyPath: InitialModule.startSize.scalar
       value: 7
       objectReference: {fileID: 0}
@@ -9944,10 +9957,30 @@ PrefabInstance:
       propertyPath: InitialModule.startSize.minScalar
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 126931540777222994, guid: 099eb0bceb74fb4428621a4259fa03c2,
+        type: 3}
+      propertyPath: InitialModule.startLifetime.scalar
+      value: 0.7
+      objectReference: {fileID: 0}
+    - target: {fileID: 126931540777222996, guid: 099eb0bceb74fb4428621a4259fa03c2,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 12.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 126931540777222997, guid: 099eb0bceb74fb4428621a4259fa03c2,
+        type: 3}
+      propertyPath: m_RenderMode
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 126931540777222997, guid: 099eb0bceb74fb4428621a4259fa03c2,
         type: 3}
       propertyPath: m_Materials.Array.size
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2172662834975972320, guid: 099eb0bceb74fb4428621a4259fa03c2,
+        type: 3}
+      propertyPath: m_RenderMode
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2172662834975972320, guid: 099eb0bceb74fb4428621a4259fa03c2,
         type: 3}
@@ -10024,6 +10057,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4004524968087978283, guid: 099eb0bceb74fb4428621a4259fa03c2,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 12.1
+      objectReference: {fileID: 0}
     - target: {fileID: 6099037329824132673, guid: 099eb0bceb74fb4428621a4259fa03c2,
         type: 3}
       propertyPath: m_Materials.Array.size
@@ -10039,10 +10077,25 @@ PrefabInstance:
       propertyPath: m_Name
       value: Effect_45_BlastFlame(Base)
       objectReference: {fileID: 0}
+    - target: {fileID: 8398201861461398018, guid: 099eb0bceb74fb4428621a4259fa03c2,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8879454333413174177, guid: 099eb0bceb74fb4428621a4259fa03c2,
         type: 3}
       propertyPath: looping
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8879454333413174177, guid: 099eb0bceb74fb4428621a4259fa03c2,
+        type: 3}
+      propertyPath: lengthInSec
+      value: 0.7
+      objectReference: {fileID: 0}
+    - target: {fileID: 8879454333413174177, guid: 099eb0bceb74fb4428621a4259fa03c2,
+        type: 3}
+      propertyPath: VelocityModule.z.scalar
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 8879454333413174177, guid: 099eb0bceb74fb4428621a4259fa03c2,
         type: 3}
@@ -10053,6 +10106,11 @@ PrefabInstance:
         type: 3}
       propertyPath: InitialModule.startSize.minScalar
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8879454333413174177, guid: 099eb0bceb74fb4428621a4259fa03c2,
+        type: 3}
+      propertyPath: InitialModule.startLifetime.scalar
+      value: 0.7
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

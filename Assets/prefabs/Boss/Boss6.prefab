@@ -10192,7 +10192,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &657144251686974898
 Transform:
   m_ObjectHideFlags: 0
@@ -12872,7 +12872,7 @@ ParticleSystem:
     inWorldSpace: 0
     multiplyDragByParticleSize: 1
     multiplyDragByParticleVelocity: 1
-    dampen: 0.9
+    dampen: 0.65
     drag:
       serializedVersion: 2
       minMaxState: 0
@@ -15172,7 +15172,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 972855198508224322}
   m_LocalRotation: {x: -0, y: -0.7071068, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: 0.23000012, y: -0.0020000876, z: 2.2040002}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0.2, y: 0.2, z: 0.2}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -15196,11 +15196,11 @@ MonoBehaviour:
   _shockwaveDatas:
   - _shockwavePrefab: {fileID: 6552773639792350650, guid: 371dbc4376441384192fa859da3141e4,
       type: 3}
-    _spawnPos: {x: -10, y: 15, z: -5}
+    _spawnPos: {x: -10, y: 25, z: -20}
     _spawnTime: 0
   - _shockwavePrefab: {fileID: 6552773639792350650, guid: 371dbc4376441384192fa859da3141e4,
       type: 3}
-    _spawnPos: {x: 10, y: 15, z: -5}
+    _spawnPos: {x: 10, y: 25, z: -20}
     _spawnTime: 0
 --- !u!1 &976475656992377770
 GameObject:
@@ -15229,7 +15229,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 976475656992377770}
   m_LocalRotation: {x: -0.4498096, y: -0.018333523, z: 0.10520159, w: 0.88671744}
-  m_LocalPosition: {x: 0, y: 0.09900007, z: 0.17000012}
+  m_LocalPosition: {x: 0, y: 0.03, z: 0.054}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -20926,7 +20926,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &2872300435831860256
 Transform:
   m_ObjectHideFlags: 0
@@ -23606,7 +23606,7 @@ ParticleSystem:
     inWorldSpace: 0
     multiplyDragByParticleSize: 1
     multiplyDragByParticleVelocity: 1
-    dampen: 0.9
+    dampen: 0.6
     drag:
       serializedVersion: 2
       minMaxState: 0
@@ -36208,7 +36208,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &630319934028668616
 Transform:
   m_ObjectHideFlags: 0
@@ -46788,10 +46788,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _name: 
-  _maxHp: 1000
+  _maxHp: 500
   _speed: 0
   _animeSpeed: 1
-  _power: 30
+  _power: 10
   _skillPatterns:
   - _name: "\uD22C\uC0AC\uCCB4 \uACF5\uACA9"
     _distance: 9999
@@ -46801,13 +46801,13 @@ MonoBehaviour:
     SkillState: 0
   - _name: "\uC88C\uCE21 \uD654\uC5FC \uACF5\uACA9"
     _distance: 9999
-    _coolTime: 30
+    _coolTime: 1
     AttackTrigger: {fileID: 3492767711724056431}
     CurrentCoolTime: 0
     SkillState: 0
   - _name: "\uC6B0\uCE21 \uD654\uC5FC \uACF5\uACA9"
     _distance: 9999
-    _coolTime: 30
+    _coolTime: 1
     AttackTrigger: {fileID: 3492767711724056431}
     CurrentCoolTime: 0
     SkillState: 0
@@ -46823,10 +46823,10 @@ MonoBehaviour:
     AttackTrigger: {fileID: 2507947121433777018}
     CurrentCoolTime: 0
     SkillState: 0
-  _patternUpdateTime: 0.3
+  _patternUpdateTime: 0.1
   _waitTime: 1
   Rigidbody: {fileID: 0}
-  State: 3
+  State: 0
   Target: {fileID: 0}
 --- !u!136 &5645000625051120371
 CapsuleCollider:
@@ -52429,14 +52429,14 @@ MonoBehaviour:
   - _spawnPosType: 0
     _projectilePrefab: {fileID: 8773911184267703861, guid: cd9573a83793865409cf8b69cd024b9e,
       type: 3}
-    _spawnPos: {x: -5, y: 10, z: -5}
+    _spawnPos: {x: -5, y: 15, z: -20}
     _spawnTime: 0
   - _spawnPosType: 0
     _projectilePrefab: {fileID: 8773911184267703861, guid: cd9573a83793865409cf8b69cd024b9e,
       type: 3}
-    _spawnPos: {x: 5, y: 10, z: -5}
+    _spawnPos: {x: 5, y: 15, z: -20}
     _spawnTime: 0
-  _isDirFixationEnabled: 0
+  _isDirFixationEnabled: 1
   _isRandomSpawn: 0
   _randomSpawnRange: 0
 --- !u!1 &5900856004781311032
@@ -63506,7 +63506,7 @@ Transform:
   m_GameObject: {fileID: 8114809381018602595}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -0.459, y: -0.217, z: 0.034}
-  m_LocalScale: {x: 2.5, y: 2.5, z: 2.5}
+  m_LocalScale: {x: 1.5, y: 1.5, z: 1.5}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 2289699141924266356}
@@ -74268,8 +74268,58 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3674759132730555963, guid: 6b3ccf8f1a7ffcc4ca62609099b6cb65,
         type: 3}
+      propertyPath: _projectileDatas.Array.data[0]._spawnPos.z
+      value: -15
+      objectReference: {fileID: 0}
+    - target: {fileID: 3674759132730555963, guid: 6b3ccf8f1a7ffcc4ca62609099b6cb65,
+        type: 3}
       propertyPath: _projectileDatas.Array.data[10]._spawnTime
       value: 2.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 3674759132730555963, guid: 6b3ccf8f1a7ffcc4ca62609099b6cb65,
+        type: 3}
+      propertyPath: _projectileDatas.Array.data[1]._spawnPos.z
+      value: -15
+      objectReference: {fileID: 0}
+    - target: {fileID: 3674759132730555963, guid: 6b3ccf8f1a7ffcc4ca62609099b6cb65,
+        type: 3}
+      propertyPath: _projectileDatas.Array.data[2]._spawnPos.z
+      value: -15
+      objectReference: {fileID: 0}
+    - target: {fileID: 3674759132730555963, guid: 6b3ccf8f1a7ffcc4ca62609099b6cb65,
+        type: 3}
+      propertyPath: _projectileDatas.Array.data[3]._spawnPos.z
+      value: -15
+      objectReference: {fileID: 0}
+    - target: {fileID: 3674759132730555963, guid: 6b3ccf8f1a7ffcc4ca62609099b6cb65,
+        type: 3}
+      propertyPath: _projectileDatas.Array.data[4]._spawnPos.z
+      value: -15
+      objectReference: {fileID: 0}
+    - target: {fileID: 3674759132730555963, guid: 6b3ccf8f1a7ffcc4ca62609099b6cb65,
+        type: 3}
+      propertyPath: _projectileDatas.Array.data[5]._spawnPos.z
+      value: -15
+      objectReference: {fileID: 0}
+    - target: {fileID: 3674759132730555963, guid: 6b3ccf8f1a7ffcc4ca62609099b6cb65,
+        type: 3}
+      propertyPath: _projectileDatas.Array.data[6]._spawnPos.z
+      value: -15
+      objectReference: {fileID: 0}
+    - target: {fileID: 3674759132730555963, guid: 6b3ccf8f1a7ffcc4ca62609099b6cb65,
+        type: 3}
+      propertyPath: _projectileDatas.Array.data[7]._spawnPos.z
+      value: -15
+      objectReference: {fileID: 0}
+    - target: {fileID: 3674759132730555963, guid: 6b3ccf8f1a7ffcc4ca62609099b6cb65,
+        type: 3}
+      propertyPath: _projectileDatas.Array.data[8]._spawnPos.z
+      value: -15
+      objectReference: {fileID: 0}
+    - target: {fileID: 3674759132730555963, guid: 6b3ccf8f1a7ffcc4ca62609099b6cb65,
+        type: 3}
+      propertyPath: _projectileDatas.Array.data[9]._spawnPos.z
+      value: -15
       objectReference: {fileID: 0}
     - target: {fileID: 3674759132730555963, guid: 6b3ccf8f1a7ffcc4ca62609099b6cb65,
         type: 3}
@@ -74284,7 +74334,7 @@ PrefabInstance:
     - target: {fileID: 3674759132730555963, guid: 6b3ccf8f1a7ffcc4ca62609099b6cb65,
         type: 3}
       propertyPath: _projectileDatas.Array.data[10]._spawnPos.z
-      value: -5
+      value: -15
       objectReference: {fileID: 0}
     - target: {fileID: 3674759132730555963, guid: 6b3ccf8f1a7ffcc4ca62609099b6cb65,
         type: 3}

@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Boss6_AttackWail : BossSkillStateMachine
+public class Boss6_AttackWail : BossStateMachineBehaviour
 {
     [SerializeField] private Vector3 _bossRot;
 

@@ -29,7 +29,7 @@ Transform:
   m_GameObject: {fileID: 5445229778601913302}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -1.1864862, y: 2.2231808, z: 10.105617}
-  m_LocalScale: {x: 5, y: 30, z: 5}
+  m_LocalScale: {x: 5, y: 50, z: 5}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 322188074647301875}
@@ -119,10 +119,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eaefcb4e533458d43a0e3e3dcc5a10fa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _shakeDuration: 0.5
-  _shakeAmplitude: 1
-  _shakeFrequency: 0.5
-  _destroyTime: 2.5
+  _shakeDuration: 2.5
+  _shakeAmplitude: 2
+  _shakeFrequency: 2
+  _destroyTime: 2.2
 --- !u!1001 &976014095273109209
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -131,6 +131,63 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 6173485219624860147}
     m_Modifications:
+    - target: {fileID: 46364664, guid: b744a3721083c254eb7cef9b9f835947, type: 3}
+      propertyPath: m_Materials.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 46364665, guid: b744a3721083c254eb7cef9b9f835947, type: 3}
+      propertyPath: InitialModule.startLifetime.scalar
+      value: 2.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 380920338, guid: b744a3721083c254eb7cef9b9f835947, type: 3}
+      propertyPath: m_Materials.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 380920339, guid: b744a3721083c254eb7cef9b9f835947, type: 3}
+      propertyPath: lengthInSec
+      value: 2.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 1261023201, guid: b744a3721083c254eb7cef9b9f835947, type: 3}
+      propertyPath: m_Materials.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1261023202, guid: b744a3721083c254eb7cef9b9f835947, type: 3}
+      propertyPath: InitialModule.startLifetime.scalar
+      value: 2.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 1738670267, guid: b744a3721083c254eb7cef9b9f835947, type: 3}
+      propertyPath: m_Materials.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1738670268, guid: b744a3721083c254eb7cef9b9f835947, type: 3}
+      propertyPath: InitialModule.startLifetime.scalar
+      value: 2.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 112505201729592273, guid: b744a3721083c254eb7cef9b9f835947,
+        type: 3}
+      propertyPath: lengthInSec
+      value: 2.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 267637292658951374, guid: b744a3721083c254eb7cef9b9f835947,
+        type: 3}
+      propertyPath: m_Materials.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 423065097477958635, guid: b744a3721083c254eb7cef9b9f835947,
+        type: 3}
+      propertyPath: m_Materials.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 677958450237146556, guid: b744a3721083c254eb7cef9b9f835947,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 677958450237146556, guid: b744a3721083c254eb7cef9b9f835947,
+        type: 3}
+      propertyPath: m_timeToReduce
+      value: 2.3
+      objectReference: {fileID: 0}
     - target: {fileID: 717158653018179626, guid: b744a3721083c254eb7cef9b9f835947,
         type: 3}
       propertyPath: m_RootOrder
@@ -206,10 +263,35 @@ PrefabInstance:
       propertyPath: m_Materials.Array.size
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 2639818773988863115, guid: b744a3721083c254eb7cef9b9f835947,
+        type: 3}
+      propertyPath: lengthInSec
+      value: 2.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 2682952509565759217, guid: b744a3721083c254eb7cef9b9f835947,
+        type: 3}
+      propertyPath: m_Materials.Array.size
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2807970254698945356, guid: b744a3721083c254eb7cef9b9f835947,
         type: 3}
       propertyPath: m_Materials.Array.size
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5379492240298628317, guid: b744a3721083c254eb7cef9b9f835947,
+        type: 3}
+      propertyPath: lengthInSec
+      value: 2.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6728157352650544891, guid: b744a3721083c254eb7cef9b9f835947,
+        type: 3}
+      propertyPath: lengthInSec
+      value: 2.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 7511222836150015471, guid: b744a3721083c254eb7cef9b9f835947,
+        type: 3}
+      propertyPath: InitialModule.startLifetime.scalar
+      value: 2.3
       objectReference: {fileID: 0}
     - target: {fileID: 8098658187726565525, guid: b744a3721083c254eb7cef9b9f835947,
         type: 3}
@@ -220,6 +302,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_IsTrigger
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8311628070364788317, guid: b744a3721083c254eb7cef9b9f835947,
+        type: 3}
+      propertyPath: m_Materials.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8694709026867385601, guid: b744a3721083c254eb7cef9b9f835947,
+        type: 3}
+      propertyPath: InitialModule.startLifetime.scalar
+      value: 2.4
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

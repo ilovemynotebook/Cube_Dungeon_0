@@ -8,6 +8,8 @@ public class WaitProjectile : Projectile
 
     [SerializeField] private GameObject _shootParticle;
 
+    [SerializeField] private GameObject _explosionParticlePrefab;
+
     private float _waitTimer;
 
     private Vector3 _myPos;
@@ -52,6 +54,18 @@ public class WaitProjectile : Projectile
         if (other.TryGetComponent(out Character character))
         {
             character.GetHit(_power);
+
+            if(_explosionParticlePrefab != null)
+                Instantiate(_explosionParticlePrefab, transform.position, Quaternion.identity);
+
+            Destroy(gameObject);
+        }
+
+        if(other.tag == "Ground")
+        {
+            if (_explosionParticlePrefab != null)
+                Instantiate(_explosionParticlePrefab, transform.position, Quaternion.identity);
+
             Destroy(gameObject);
         }
     }

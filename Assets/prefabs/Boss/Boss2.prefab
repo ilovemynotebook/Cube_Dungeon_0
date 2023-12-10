@@ -10762,10 +10762,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _name: "\uBC8C\uB808"
-  _maxHp: 400
+  _maxHp: 50
   _speed: 0
   _animeSpeed: 1
-  _power: 15
+  _power: 10
   _skillPatterns:
   - _name: "\uADFC\uC811 \uAE68\uBB3C\uAE30"
     _distance: 7
@@ -10786,7 +10786,7 @@ MonoBehaviour:
     CurrentCoolTime: 0
     SkillState: 0
   _patternUpdateTime: 0.1
-  _waitTime: 2
+  _waitTime: 1.5
   Rigidbody: {fileID: 0}
   State: 0
   Target: {fileID: 0}
