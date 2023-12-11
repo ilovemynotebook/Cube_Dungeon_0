@@ -78,6 +78,7 @@ public class Player : Character
     public ParticleSystem ChargeAttackVFX;
     private void Awake()
     {
+        if(GameManager.Instance != null)
         GameManager.Instance.Player = this.gameObject;
     }
     override protected void Start()

@@ -43,9 +43,9 @@ public class GameManager : MonoBehaviour
         
     }
 
-    void FindPlayer()
+    public void FindPlayer()
     {
-        Player = transform.Find("Player").gameObject;
+        Player = GameObject.Find("Player").gameObject;
         Debug.Log(Player);
     }
 
