@@ -39,6 +39,8 @@ public class Enemy : Character
 
     Coroutine workCoroutine = null;
     public EnemySounds sounds;
+    CapsuleCollider capsuleCollider;
+    Vector3 footPoint;
 
 
     // Start is called before the first frame update
@@ -47,6 +49,7 @@ public class Enemy : Character
         sounds = transform.Find("Audios").GetComponent<EnemySounds>();
         base.Start();
         anim = transform.GetChild(0).GetComponent<Animator>();
+        capsuleCollider = GetComponent<CapsuleCollider>();
     }
 
     // Update is called once per frame
@@ -100,8 +103,11 @@ public class Enemy : Character
         wallCheck.x = direction ;
         wallCheck.y = 0;
         wallCheck.z = 0;
+        footPoint.x = transform.position.x;
+        footPoint.y = transform.position.y - capsuleCollider.height * 0.5f + 0.05f;
+        footPoint.z = transform.position.z;
         isFrontHaveGround = Physics.Raycast(transform.position, floorCheck.normalized, out groundHit, 2, layerMask);
-        isFrontHaveWall = Physics.Raycast(transform.position, wallCheck.normalized, out wallHit, 1, 1 << 8 | 1 << 11);
+        isFrontHaveWall = Physics.Raycast(footPoint, wallCheck.normalized, out wallHit, 1, 1 << 8 | 1 << 11);
 
         Debug.DrawRay(transform.position, floorCheck.normalized * 2, Color.green);
 
