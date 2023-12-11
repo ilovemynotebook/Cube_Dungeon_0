@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 902009105973077819}
   m_Layer: 0
   m_Name: Temple_Stone3_3
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -32,13 +32,13 @@ Transform:
   - {fileID: 957453949582256326}
   - {fileID: 7402966919109706970}
   - {fileID: 611036491358509990}
-  - {fileID: 7933639726082004692}
+  - {fileID: 7932754042064204197}
   - {fileID: 7380125695228243215}
   - {fileID: 2279445872352531370}
   - {fileID: 5839795045948837439}
   - {fileID: 4329813368437963319}
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &609649501844929744
 PrefabInstance:
@@ -637,7 +637,7 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e7ef188ad31b0b84b9ac012d8de31f42, type: 3}
---- !u!4 &7933639726082004692 stripped
+--- !u!4 &7932754042064204197 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4290906384263030, guid: e7ef188ad31b0b84b9ac012d8de31f42,
     type: 3}
