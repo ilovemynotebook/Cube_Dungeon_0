@@ -86,6 +86,7 @@ public class Buffs : MonoBehaviour
     {
         if (player == null)
         {
+            GameManager.Instance.FindPlayer();
             player = GameManager.Instance.Player?.GetComponent<Player>();
         }
     }
