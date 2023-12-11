@@ -38,7 +38,7 @@ public class PlayerAttackBoxCasterWithAnim : MonoBehaviour
     {
         if (dmg == 0) dmg = player.currentWeapon.Dmg + player.buffedDmg;
 
-        if (dmg == -1) dmg = (player.currentWeapon.Dmg + player.buffedDmg) * 2;
+        if (dmg == -1) dmg = (player.currentWeapon.Dmg + player.buffedDmg) * 3;
 
 
         GameObject box = Instantiate(attackHitBox, transform.parent.transform.position, transform.parent.rotation);
