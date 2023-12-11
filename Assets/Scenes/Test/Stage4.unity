@@ -822,7 +822,7 @@ MonoBehaviour:
   gameStageDB: {fileID: 11400000, guid: 0530b5e3afc2eae4ebefd16f6b2d3cf0, type: 2}
   audioclip: {fileID: 8300000, guid: 23bb4a19b1658774b8ed43b8c07fe97b, type: 3}
   audiotype: 0
-  volume: 1
+  volume: 0.5
   pitch: 1
   GameoverPanel: {fileID: 2099883562}
   GoTitleButton: {fileID: 1174782181}

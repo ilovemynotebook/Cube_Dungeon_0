@@ -3,6 +3,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 using Cinemachine;
+using UnityEngine.Rendering;
 
 public class TitleManager : MonoBehaviour
 {
@@ -22,6 +23,11 @@ public class TitleManager : MonoBehaviour
     public float cameraSpeed;
     public bool cameraStart;
     [SerializeField]DataManager dataManager;
+
+    public AudioClip audioclip;
+    public AudioType audiotype;
+    public float volume = 1.0f;
+    public float pitch = 1.0f;
     void Awake()
     {
         TitleScreen.gameObject.SetActive(false);
@@ -52,10 +58,10 @@ public class TitleManager : MonoBehaviour
         if (Playable.instance)
         {
             Destroy(Playable.instance.gameObject);
-            
         }
-       
-        
+
+        CubeSoundManager.Instance.PlayAudio(audioclip, audiotype, volume = 1, pitch = 1);
+
         Invoke("TitleFadeIn", 2);
     }
     private void Update()
