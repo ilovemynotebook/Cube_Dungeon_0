@@ -10700,7 +10700,7 @@ Transform:
   - {fileID: 4304527261539275409}
   - {fileID: 9025535187993879632}
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
 --- !u!95 &4196058924844729045
 Animator:
@@ -10763,8 +10763,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _audioSource: {fileID: 3496178972836102373}
-  _name: "\uBC8C\uB808"
-  _maxHp: 50
+  _uiBoss: {fileID: 8674380409538872136, guid: db55277984cf37c48b8d92df10a3f0d3, type: 3}
+  _name: desert Worm
+  _maxHp: 110
   _speed: 0
   _animeSpeed: 1
   _power: 10
@@ -10777,18 +10778,18 @@ MonoBehaviour:
     SkillState: 0
   - _name: "\uADFC\uC811 \uAE68\uBB3C\uAE30"
     _distance: 13
-    _coolTime: 1
+    _coolTime: 5
     AttackTrigger: {fileID: 9177027422508095593}
     CurrentCoolTime: 0
     SkillState: 0
   - _name: "\uAF2C\uB9AC \uCE58\uAE30"
-    _distance: 12
-    _coolTime: 1
+    _distance: 15
+    _coolTime: 15
     AttackTrigger: {fileID: 7806733854357160221}
     CurrentCoolTime: 0
     SkillState: 0
   _patternUpdateTime: 0.1
-  _waitTime: 1.5
+  _waitTime: 0.1
   Rigidbody: {fileID: 0}
   State: 0
   Target: {fileID: 0}
@@ -10871,7 +10872,7 @@ AudioSource:
     m_Curve:
     - serializedVersion: 3
       time: 0
-      value: 0.537
+      value: 0.5
       inSlope: 0
       outSlope: 0
       tangentMode: 0

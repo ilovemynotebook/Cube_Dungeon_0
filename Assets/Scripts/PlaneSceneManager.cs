@@ -79,7 +79,7 @@ public class PlaneSceneManager : MonoBehaviour
     }
     public void PlaneUp()
     {
-        if (Monstercount == 0&&bosscount==0) {
+        if (bosscount==0) {
             StageSave(thisPlane);
             if (planes.Length<= thisPlane)
             {   //Stage°¡ ¹Ù²ð°æ¿ì

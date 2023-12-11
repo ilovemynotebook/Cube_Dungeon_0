@@ -107,6 +107,27 @@ AnimatorTransition:
   m_Mute: 0
   m_IsExit: 0
   serializedVersion: 1
+--- !u!114 &-6476157183700044780
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1d71cf9fa1adb984bb6ffb50d2b7b843, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _soundData:
+    _audioName: Sephent/Serphent_Roar
+    _activateFrame: 3
+    _disabledFrame: 99999
+    _isActivated: 0
+    _isDisabled: 0
+  _volume: 1
+  _pitch: 1.7
+  _isExitSoundStopped: 0
 --- !u!114 &-6222703487432429790
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -440,6 +461,27 @@ AnimatorStateTransition:
   m_InterruptionSource: 0
   m_OrderedInterruption: 1
   m_CanTransitionToSelf: 1
+--- !u!114 &-2413026110303799595
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1d71cf9fa1adb984bb6ffb50d2b7b843, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _soundData:
+    _audioName: SandWorm/SandWorm_TrapTAIL
+    _activateFrame: 8
+    _disabledFrame: 9999
+    _isActivated: 0
+    _isDisabled: 0
+  _volume: 1
+  _pitch: 0.6
+  _isExitSoundStopped: 0
 --- !u!1101 &-2109513752151163983
 AnimatorStateTransition:
   m_ObjectHideFlags: 1
@@ -1239,6 +1281,7 @@ AnimatorState:
   - {fileID: 5035356516411026811}
   m_StateMachineBehaviours:
   - {fileID: -5013013517420902990}
+  - {fileID: -2413026110303799595}
   m_Position: {x: 50, y: 50, z: 0}
   m_IKOnFeet: 0
   m_WriteDefaultValues: 1
@@ -1721,6 +1764,7 @@ AnimatorState:
   - {fileID: 7900676245375780644}
   m_StateMachineBehaviours:
   - {fileID: -6784415402139358916}
+  - {fileID: -6476157183700044780}
   m_Position: {x: 50, y: 50, z: 0}
   m_IKOnFeet: 0
   m_WriteDefaultValues: 1

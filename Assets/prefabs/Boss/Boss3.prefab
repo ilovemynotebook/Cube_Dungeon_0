@@ -91243,7 +91243,7 @@ Transform:
   - {fileID: 5838686257638530298}
   - {fileID: 712060397022121141}
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
 --- !u!95 &5715829613517101637
 Animator:
@@ -91306,8 +91306,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _audioSource: {fileID: 8644785339131826222}
-  _name: "\uC544\uC774\uC2A4 \uB4DC\uB798\uACE4"
-  _maxHp: 100
+  _uiBoss: {fileID: 8674380409538872136, guid: db55277984cf37c48b8d92df10a3f0d3, type: 3}
+  _name: ice Dragon
+  _maxHp: 150
   _speed: 4
   _animeSpeed: 1
   _power: 10
@@ -91320,7 +91321,7 @@ MonoBehaviour:
     SkillState: 0
   - _name: "\uB808\uC774\uC800 \uACF5\uACA9"
     _distance: 30
-    _coolTime: 30
+    _coolTime: 15
     AttackTrigger: {fileID: 7448342372904338098}
     CurrentCoolTime: 0
     SkillState: 0
@@ -91331,7 +91332,7 @@ MonoBehaviour:
     CurrentCoolTime: 0
     SkillState: 0
   _patternUpdateTime: 0.1
-  _waitTime: 1
+  _waitTime: 0.1
   Rigidbody: {fileID: 0}
   State: 0
   Target: {fileID: 0}

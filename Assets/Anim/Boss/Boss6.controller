@@ -22,6 +22,27 @@ AnimatorStateTransition:
   m_InterruptionSource: 0
   m_OrderedInterruption: 1
   m_CanTransitionToSelf: 1
+--- !u!114 &-8446776442448529954
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1d71cf9fa1adb984bb6ffb50d2b7b843, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _soundData:
+    _audioName: Sephent/Serphent_Breath
+    _activateFrame: 10
+    _disabledFrame: 99999
+    _isActivated: 0
+    _isDisabled: 0
+  _volume: 1
+  _pitch: 1
+  _isExitSoundStopped: 0
 --- !u!1101 &-8243871701194346726
 AnimatorStateTransition:
   m_ObjectHideFlags: 1
@@ -47,6 +68,27 @@ AnimatorStateTransition:
   m_InterruptionSource: 0
   m_OrderedInterruption: 1
   m_CanTransitionToSelf: 1
+--- !u!114 &-8075994893311264530
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1d71cf9fa1adb984bb6ffb50d2b7b843, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _soundData:
+    _audioName: Sephent/Sephent_Up
+    _activateFrame: 6
+    _disabledFrame: 9999999
+    _isActivated: 0
+    _isDisabled: 0
+  _volume: 1
+  _pitch: 1.27
+  _isExitSoundStopped: 0
 --- !u!1101 &-7753134086446001107
 AnimatorStateTransition:
   m_ObjectHideFlags: 1
@@ -245,6 +287,27 @@ AnimatorStateTransition:
   m_InterruptionSource: 0
   m_OrderedInterruption: 1
   m_CanTransitionToSelf: 1
+--- !u!114 &-6530919141225667943
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1d71cf9fa1adb984bb6ffb50d2b7b843, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _soundData:
+    _audioName: Sephent/Sephent_Up
+    _activateFrame: 6
+    _disabledFrame: 999999
+    _isActivated: 0
+    _isDisabled: 0
+  _volume: 1
+  _pitch: 1.27
+  _isExitSoundStopped: 0
 --- !u!1101 &-6394624988754226099
 AnimatorStateTransition:
   m_ObjectHideFlags: 1
@@ -316,9 +379,10 @@ AnimatorState:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: Die
-  m_Speed: 0.25
+  m_Speed: 0.3
   m_CycleOffset: 0
-  m_Transitions: []
+  m_Transitions:
+  - {fileID: 766873263523951493}
   m_StateMachineBehaviours: []
   m_Position: {x: 50, y: 50, z: 0}
   m_IKOnFeet: 0
@@ -328,7 +392,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: 7400000, guid: e30146bb890ddf64c8267f38e2c02975, type: 3}
+  m_Motion: {fileID: 7400000, guid: 95884edc1eb9fea4d909b3e5022be306, type: 3}
   m_Tag: 
   m_SpeedParameter: AnimeSpeed
   m_MirrorParameter: 
@@ -379,6 +443,7 @@ AnimatorState:
   - {fileID: -152917370781547480}
   m_StateMachineBehaviours:
   - {fileID: 4363591970850458317}
+  - {fileID: -8075994893311264530}
   m_Position: {x: 50, y: 50, z: 0}
   m_IKOnFeet: 0
   m_WriteDefaultValues: 1
@@ -474,6 +539,7 @@ AnimatorState:
   m_StateMachineBehaviours:
   - {fileID: 3752119648032780734}
   - {fileID: -6868539680047293466}
+  - {fileID: -1355851975048124844}
   m_Position: {x: 50, y: 50, z: 0}
   m_IKOnFeet: 0
   m_WriteDefaultValues: 1
@@ -503,6 +569,7 @@ AnimatorState:
   - {fileID: -6553632479154605158}
   m_StateMachineBehaviours:
   - {fileID: -2136973703743606007}
+  - {fileID: -259192962619017736}
   m_Position: {x: 50, y: 50, z: 0}
   m_IKOnFeet: 0
   m_WriteDefaultValues: 1
@@ -639,6 +706,27 @@ AnimatorState:
   m_MirrorParameter: 
   m_CycleOffsetParameter: 
   m_TimeParameter: 
+--- !u!114 &-3272144908560020612
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1d71cf9fa1adb984bb6ffb50d2b7b843, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _soundData:
+    _audioName: Sephent/Serphent_Spell
+    _activateFrame: 1
+    _disabledFrame: 999999
+    _isActivated: 0
+    _isDisabled: 0
+  _volume: 1
+  _pitch: 1.3
+  _isExitSoundStopped: 0
 --- !u!1102 &-3176549134040340541
 AnimatorState:
   serializedVersion: 6
@@ -654,6 +742,7 @@ AnimatorState:
   - {fileID: 3891627435196058635}
   m_StateMachineBehaviours:
   - {fileID: 8811199703084961664}
+  - {fileID: 76548024257855355}
   m_Position: {x: 50, y: 50, z: 0}
   m_IKOnFeet: 0
   m_WriteDefaultValues: 1
@@ -806,6 +895,7 @@ AnimatorState:
   - {fileID: 5529657996845437959}
   m_StateMachineBehaviours:
   - {fileID: 4648990834674943130}
+  - {fileID: 8028351901451478320}
   m_Position: {x: 50, y: 50, z: 0}
   m_IKOnFeet: 0
   m_WriteDefaultValues: 1
@@ -858,6 +948,27 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _bossRot: {x: 0, y: 140, z: 0}
+--- !u!114 &-1355851975048124844
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1d71cf9fa1adb984bb6ffb50d2b7b843, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _soundData:
+    _audioName: Sephent/Serphent_Breath
+    _activateFrame: 10
+    _disabledFrame: 9999
+    _isActivated: 0
+    _isDisabled: 0
+  _volume: 1
+  _pitch: 1
+  _isExitSoundStopped: 0
 --- !u!1102 &-960809451244630779
 AnimatorState:
   serializedVersion: 6
@@ -926,6 +1037,54 @@ MonoBehaviour:
     _skillPatternsIndex: 3
     _isActivated: 0
     _isDisabled: 0
+--- !u!114 &-259192962619017736
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1d71cf9fa1adb984bb6ffb50d2b7b843, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _soundData:
+    _audioName: Sephent/Sephent_Falling_02
+    _activateFrame: 2
+    _disabledFrame: 9999999
+    _isActivated: 0
+    _isDisabled: 0
+  _volume: 1
+  _pitch: 1.25
+  _isExitSoundStopped: 0
+--- !u!1102 &-228421694455346306
+AnimatorState:
+  serializedVersion: 6
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Die 0
+  m_Speed: 0.2
+  m_CycleOffset: 0
+  m_Transitions: []
+  m_StateMachineBehaviours:
+  - {fileID: 5101176161553929934}
+  m_Position: {x: 50, y: 50, z: 0}
+  m_IKOnFeet: 0
+  m_WriteDefaultValues: 1
+  m_Mirror: 0
+  m_SpeedParameterActive: 0
+  m_MirrorParameterActive: 0
+  m_CycleOffsetParameterActive: 0
+  m_TimeParameterActive: 0
+  m_Motion: {fileID: 7400000, guid: e30146bb890ddf64c8267f38e2c02975, type: 3}
+  m_Tag: 
+  m_SpeedParameter: 
+  m_MirrorParameter: 
+  m_CycleOffsetParameter: 
+  m_TimeParameter: 
 --- !u!1101 &-152917370781547480
 AnimatorStateTransition:
   m_ObjectHideFlags: 1
@@ -1082,6 +1241,27 @@ AnimatorStateTransition:
   m_InterruptionSource: 0
   m_OrderedInterruption: 1
   m_CanTransitionToSelf: 1
+--- !u!114 &76548024257855355
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1d71cf9fa1adb984bb6ffb50d2b7b843, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _soundData:
+    _audioName: Sephent/Serphent_Spell
+    _activateFrame: 1
+    _disabledFrame: 99999
+    _isActivated: 0
+    _isDisabled: 0
+  _volume: 1
+  _pitch: 1.5
+  _isExitSoundStopped: 0
 --- !u!1107 &187818690074975389
 AnimatorStateMachine:
   serializedVersion: 6
@@ -1159,6 +1339,28 @@ AnimatorStateTransition:
   m_TransitionOffset: 0
   m_ExitTime: 0.000000004043557
   m_HasExitTime: 0
+  m_HasFixedDuration: 1
+  m_InterruptionSource: 0
+  m_OrderedInterruption: 1
+  m_CanTransitionToSelf: 1
+--- !u!1101 &766873263523951493
+AnimatorStateTransition:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: 
+  m_Conditions: []
+  m_DstStateMachine: {fileID: 0}
+  m_DstState: {fileID: -228421694455346306}
+  m_Solo: 0
+  m_Mute: 0
+  m_IsExit: 0
+  serializedVersion: 3
+  m_TransitionDuration: 1.3686378
+  m_TransitionOffset: 0
+  m_ExitTime: 0.7614624
+  m_HasExitTime: 1
   m_HasFixedDuration: 1
   m_InterruptionSource: 0
   m_OrderedInterruption: 1
@@ -1373,6 +1575,7 @@ AnimatorState:
   - {fileID: -7753134086446001107}
   m_StateMachineBehaviours:
   - {fileID: 9217952345966085881}
+  - {fileID: -6530919141225667943}
   m_Position: {x: 50, y: 50, z: 0}
   m_IKOnFeet: 0
   m_WriteDefaultValues: 1
@@ -1550,6 +1753,7 @@ AnimatorState:
   - {fileID: -6394624988754226099}
   m_StateMachineBehaviours:
   - {fileID: -5013013517420902990}
+  - {fileID: -3272144908560020612}
   m_Position: {x: 50, y: 50, z: 0}
   m_IKOnFeet: 0
   m_WriteDefaultValues: 1
@@ -1837,6 +2041,9 @@ AnimatorStateMachine:
   - serializedVersion: 1
     m_State: {fileID: -5859263728754650681}
     m_Position: {x: 240, y: -130, z: 0}
+  - serializedVersion: 1
+    m_State: {fileID: -228421694455346306}
+    m_Position: {x: 240, y: -200, z: 0}
   m_ChildStateMachines:
   - serializedVersion: 1
     m_StateMachine: {fileID: 187818690074975389}
@@ -1862,6 +2069,26 @@ AnimatorStateMachine:
   m_ExitPosition: {x: 1000, y: 110, z: 0}
   m_ParentStateMachinePosition: {x: 800, y: 20, z: 0}
   m_DefaultState: {fileID: -4248105980036568375}
+--- !u!114 &5101176161553929934
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eea24c29119a8e846acf944b135511b6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _shakeData:
+    _shakeDuration: 2.5
+    _shakeAmplitude: 3
+    _shakeFrequency: 1.5
+    _activateFrame: 11
+    _disabledFrame: 300
+    _isActivated: 0
+    _isDisabled: 0
 --- !u!1101 &5529657996845437959
 AnimatorStateTransition:
   m_ObjectHideFlags: 1
@@ -2022,6 +2249,7 @@ AnimatorState:
   m_StateMachineBehaviours:
   - {fileID: -6784415402139358916}
   - {fileID: -4401139909526757307}
+  - {fileID: -8446776442448529954}
   m_Position: {x: 50, y: 50, z: 0}
   m_IKOnFeet: 0
   m_WriteDefaultValues: 1
@@ -2108,6 +2336,27 @@ AnimatorStateTransition:
   m_InterruptionSource: 0
   m_OrderedInterruption: 1
   m_CanTransitionToSelf: 1
+--- !u!114 &8028351901451478320
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1d71cf9fa1adb984bb6ffb50d2b7b843, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _soundData:
+    _audioName: Sephent/Sephent_Falling_02
+    _activateFrame: 1
+    _disabledFrame: 999999
+    _isActivated: 0
+    _isDisabled: 0
+  _volume: 1
+  _pitch: 1.25
+  _isExitSoundStopped: 0
 --- !u!1101 &8258022350701135490
 AnimatorStateTransition:
   m_ObjectHideFlags: 1

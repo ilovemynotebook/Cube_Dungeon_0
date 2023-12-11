@@ -218,6 +218,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gameStageDB: {fileID: 11400000, guid: 2fcb14c6f7bf5e34985dc924a49fe9bb, type: 2}
+  audioclip: {fileID: 8300000, guid: be1b93184e127a34fa714f6c6b5c4776, type: 3}
+  audiotype: 0
+  volume: 0.3
+  pitch: 1
   GameoverPanel: {fileID: 2099883562}
   GoTitleButton: {fileID: 1174782181}
   GoRePlayButton: {fileID: 1917487657}

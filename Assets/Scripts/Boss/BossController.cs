@@ -51,6 +51,9 @@ public class BossController : MonoBehaviour
     [SerializeField] protected AudioSource _audioSource;
     public AudioSource AudioSource => _audioSource;
 
+    [SerializeField] protected UIBoss _uiBoss;
+    protected UIBoss _createUiBoss;
+
 
     [Space(10)]
 
@@ -115,7 +118,7 @@ public class BossController : MonoBehaviour
 
     public GameObject Target;
 
-    public event Action OnGetHitHandler;
+    public event Action<float, float> OnGetHitHandler;
     public event Action OnDeathEventHandler;
 
 
@@ -134,6 +137,15 @@ public class BossController : MonoBehaviour
         SetWaingTimer();
         InvokeRepeating("AIUpdate", _patternUpdateTime, _patternUpdateTime);
         Target = Target == null ? FindObjectOfType<Player>().gameObject : Target;
+
+        _createUiBoss = Instantiate(_uiBoss);
+        _createUiBoss.Init(this, _name);
+
+    }
+
+    protected virtual void OnDisable()
+    {
+        Destroy(_createUiBoss.gameObject);
     }
 
 
@@ -143,6 +155,7 @@ public class BossController : MonoBehaviour
         _animator.SetFloat("AnimeSpeed", AnimeSpeed);
         SkillCoolTimeUpdate();
         UpdateWaitTimer();
+
     }
 
 
@@ -203,7 +216,6 @@ public class BossController : MonoBehaviour
             if (_hitEffectRoutine != null)
                 StopCoroutine(_hitEffectRoutine);
             _hitEffectRoutine = StartCoroutine(StartHitEffect());
-            OnGetHitHandler?.Invoke();
         }
             
         else
@@ -212,6 +224,7 @@ public class BossController : MonoBehaviour
             Destroy(gameObject, 10);
             OnDeathEventHandler?.Invoke();
         }
+        OnGetHitHandler?.Invoke(_maxHp, _hp);
 
     }
 
