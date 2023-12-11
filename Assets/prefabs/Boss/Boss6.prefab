@@ -46726,7 +46726,7 @@ Transform:
   - {fileID: 5060321833663425056}
   - {fileID: 4750402668114505074}
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
 --- !u!95 &6856866251148005194
 Animator:
@@ -46791,7 +46791,7 @@ MonoBehaviour:
   _audioSource: {fileID: 3381958026810729400}
   _uiBoss: {fileID: 8674380409538872136, guid: db55277984cf37c48b8d92df10a3f0d3, type: 3}
   _name: Red Dragon
-  _maxHp: 330
+  _maxHp: 10
   _speed: 0
   _animeSpeed: 1
   _power: 10
@@ -46826,7 +46826,7 @@ MonoBehaviour:
     AttackTrigger: {fileID: 2507947121433777018}
     CurrentCoolTime: 0
     SkillState: 0
-  _patternUpdateTime: 0.1
+  _patternUpdateTime: 0.5
   _waitTime: 0.1
   Rigidbody: {fileID: 0}
   State: 5
