@@ -65,10 +65,10 @@ public class Enemy : Character
     public void GunReady()
     {
         if (!canShoot) return;
-        Physics.Raycast(transform.position, transform.right, out gunSightHit, 10, 1 << 9);
+        Physics.Raycast(transform.position, transform.right, out gunSightHit, 10, 1 << 13);
 
         Debug.DrawRay(transform.position, transform.right * 10, Color.green);
-        if (gunSightHit.collider!=null && gunSightHit.collider.CompareTag("Player") == true)
+        if (gunSightHit.collider!=null && gunSightHit.collider.CompareTag("Player") == true && _GunshotCoroutine == null)
         {
             _GunshotCoroutine = StartCoroutine(GunShotCoroutine());
         }
@@ -76,19 +76,17 @@ public class Enemy : Character
 
     public IEnumerator GunShotCoroutine()
     {
-        if (_GunshotCoroutine == null)
-        {
-            var bul = Instantiate(bullet, transform.position, transform.rotation);
-            bul.GetComponent<BulletFlying>().speed = 5;
+        Debug.Log(1);
+        var bul = Instantiate(bullet, transform.position, transform.rotation);
+        bul.GetComponent<BulletFlying>().speed = 5;
 
-            anim.Play("Attack");
-            sounds.Attack_AS.Play();
+        anim.Play("Attack");
+        sounds.Attack_AS.Play();
 
-            canShoot = false;
-            yield return new WaitForSeconds(2);
-            canShoot = true;
-            _GunshotCoroutine = null;
-        }
+        canShoot = false;
+        yield return new WaitForSeconds(2);
+        canShoot = true;
+        _GunshotCoroutine = null;
     }
 
     public void Patrol()

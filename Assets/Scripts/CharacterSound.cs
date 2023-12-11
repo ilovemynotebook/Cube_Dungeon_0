@@ -14,8 +14,8 @@ public class CharacterSound : MonoBehaviour
     public AudioSource GetHit_AS;
     public AudioSource Death_AS;
     public AudioSource Win_AS;
-    public AudioSource UsingActive_AS;
-    public AudioSource GetItem;
+    public AudioSource TryShield_AS;
+    public AudioSource ShieldSucceed_AS;
     public AudioSource Run_AS;
 
     public AudioSource Active_AS;

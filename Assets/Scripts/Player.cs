@@ -440,6 +440,7 @@ public class Player : Character
         else if (Input.GetKeyUp(KeyCode.Mouse1))
         {
             anim.SetBool("holdingShield", false);
+            sounds.TryShield_AS.Play();
             isHoldingShield = false;
         }
     }
@@ -447,7 +448,8 @@ public class Player : Character
     public void ShieldSucceed(float cost)
     {
         anim.Play("ShieldSucceed",1,0f);
-        
+        sounds.ShieldSucceed_AS.Play();
+
         sta -= cost;
         CanvasManager.Instance.staminaBar.UpdateValue(sta, msta);
 
