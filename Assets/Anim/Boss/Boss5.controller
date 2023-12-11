@@ -135,7 +135,7 @@ AnimatorStateTransition:
 --- !u!1102 &-5859263728754650681
 AnimatorState:
   serializedVersion: 6
-  m_ObjectHideFlags: 1
+  m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
@@ -152,7 +152,8 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: 7400000, guid: a0a3e5db1b194a2eba9676c86561a8b3, type: 3}
+  m_Motion: {fileID: 1827226128182048838, guid: 7fcc1b9462c246fd99952a9904d8651f,
+    type: 3}
   m_Tag: 
   m_SpeedParameter: AnimeSpeed
   m_MirrorParameter: 

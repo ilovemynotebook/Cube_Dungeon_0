@@ -158,6 +158,11 @@ public class BossController : MonoBehaviour
         SkillCoolTimeUpdate();
         UpdateWaitTimer();
 
+        if (Input.GetKeyDown(KeyCode.H))
+        {
+            GetHit(10000);
+        }
+
     }
 
 
@@ -221,7 +226,7 @@ public class BossController : MonoBehaviour
             _hitEffectRoutine = StartCoroutine(StartHitEffect());
         }
             
-        else
+        if(_hp <= 0)
         {
             State = BossState.Die;
             Destroy(gameObject, 10);
