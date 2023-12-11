@@ -10777,18 +10777,18 @@ MonoBehaviour:
     SkillState: 0
   - _name: "\uADFC\uC811 \uAE68\uBB3C\uAE30"
     _distance: 13
-    _coolTime: 1
+    _coolTime: 5
     AttackTrigger: {fileID: 9177027422508095593}
     CurrentCoolTime: 0
     SkillState: 0
   - _name: "\uAF2C\uB9AC \uCE58\uAE30"
-    _distance: 12
-    _coolTime: 1
+    _distance: 15
+    _coolTime: 15
     AttackTrigger: {fileID: 7806733854357160221}
     CurrentCoolTime: 0
     SkillState: 0
   _patternUpdateTime: 0.1
-  _waitTime: 1.5
+  _waitTime: 1
   Rigidbody: {fileID: 0}
   State: 0
   Target: {fileID: 0}

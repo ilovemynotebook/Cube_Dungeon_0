@@ -623,7 +623,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1418966891}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 11.49, y: 0.54, z: -0.82}
+  m_LocalPosition: {x: 3.35, y: 0.54, z: -0.82}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -906,17 +906,17 @@ PrefabInstance:
     - target: {fileID: 5152646344785645833, guid: 165f0a317a7d6cd4e980cb9bee78b23f,
         type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0.000000007450581
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 5152646344785645833, guid: 165f0a317a7d6cd4e980cb9bee78b23f,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0.000000001755313
+      value: 0.000000007346676
       objectReference: {fileID: 0}
     - target: {fileID: 5152646344785645833, guid: 165f0a317a7d6cd4e980cb9bee78b23f,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: 3.5106268e-10
+      value: -0.0000000014693353
       objectReference: {fileID: 0}
     - target: {fileID: 7313183951908191372, guid: 165f0a317a7d6cd4e980cb9bee78b23f,
         type: 3}
@@ -931,7 +931,7 @@ PrefabInstance:
     - target: {fileID: 8651382696673479409, guid: 165f0a317a7d6cd4e980cb9bee78b23f,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 11.49
+      value: 3.35
       objectReference: {fileID: 0}
     - target: {fileID: 8651382696673479409, guid: 165f0a317a7d6cd4e980cb9bee78b23f,
         type: 3}
@@ -951,17 +951,17 @@ PrefabInstance:
     - target: {fileID: 8651382696673479409, guid: 165f0a317a7d6cd4e980cb9bee78b23f,
         type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0.098537624
+      value: 0.09853762
       objectReference: {fileID: 0}
     - target: {fileID: 8651382696673479409, guid: 165f0a317a7d6cd4e980cb9bee78b23f,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0.0000000055092233
+      value: 0.0000000037278634
       objectReference: {fileID: 0}
     - target: {fileID: 8651382696673479409, guid: 165f0a317a7d6cd4e980cb9bee78b23f,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: 5.4552063e-10
+      value: -3.6913123e-10
       objectReference: {fileID: 0}
     - target: {fileID: 8651382696673479409, guid: 165f0a317a7d6cd4e980cb9bee78b23f,
         type: 3}
@@ -1030,7 +1030,7 @@ PrefabInstance:
     - target: {fileID: 348901926954303918, guid: 3c5c84b169a62dd44adc86ef82214b56,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 6.41
+      value: -2.91
       objectReference: {fileID: 0}
     - target: {fileID: 348901926954303918, guid: 3c5c84b169a62dd44adc86ef82214b56,
         type: 3}
@@ -1085,13 +1085,38 @@ PrefabInstance:
     - target: {fileID: 5835310794162074801, guid: 3c5c84b169a62dd44adc86ef82214b56,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7806733854357160221, guid: 3c5c84b169a62dd44adc86ef82214b56,
         type: 3}
       propertyPath: _boss
       value: 
       objectReference: {fileID: 1182161468}
+    - target: {fileID: 8928698789898689141, guid: 3c5c84b169a62dd44adc86ef82214b56,
+        type: 3}
+      propertyPath: _waitTime
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8928698789898689141, guid: 3c5c84b169a62dd44adc86ef82214b56,
+        type: 3}
+      propertyPath: _skillPatterns.Array.data[0]._distance
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 8928698789898689141, guid: 3c5c84b169a62dd44adc86ef82214b56,
+        type: 3}
+      propertyPath: _skillPatterns.Array.data[1]._coolTime
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8928698789898689141, guid: 3c5c84b169a62dd44adc86ef82214b56,
+        type: 3}
+      propertyPath: _skillPatterns.Array.data[2]._coolTime
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 8928698789898689141, guid: 3c5c84b169a62dd44adc86ef82214b56,
+        type: 3}
+      propertyPath: _skillPatterns.Array.data[2]._distance
+      value: 15
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1246,7 +1271,7 @@ PrefabInstance:
     - target: {fileID: 4602316160372197751, guid: dbc78a0b5c9b3804fa8fde8aeaf16227,
         type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
