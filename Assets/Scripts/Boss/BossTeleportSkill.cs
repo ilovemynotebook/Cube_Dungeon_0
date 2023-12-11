@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class BossTeleportSkill : BossAttackBehaviour
 {
-    [SerializeField] private Transform[] _teleportPos;
+    [SerializeField] private Vector3[] _teleportPos;
 
 
     public override void SkillStart()
@@ -14,7 +14,7 @@ public class BossTeleportSkill : BossAttackBehaviour
         do
         {
             int randInt = Random.Range(0, _teleportPos.Length);
-            telPos = _teleportPos[randInt].position;
+            telPos = _teleportPos[randInt];
 
         } while (Vector3.Distance(bossPos, telPos) < 2);
         _boss.transform.position = telPos;
