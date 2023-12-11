@@ -562,6 +562,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: SkeletonPADefault
       objectReference: {fileID: 0}
+    - target: {fileID: 6285209290506305774, guid: a604ffbac01747d6b33aff45d9e3dd8a,
+        type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: 6687c2690d7f7754590e7a628804f725, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects:
