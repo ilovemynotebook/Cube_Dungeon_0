@@ -5558,6 +5558,10 @@ MonoBehaviour:
   cameraSpeed: 5
   cameraStart: 0
   dataManager: {fileID: 1529998381}
+  audioclip: {fileID: 8300000, guid: e2aefabd425d66b48893f8ccb386d796, type: 3}
+  audiotype: 0
+  volume: 1
+  pitch: 1
 --- !u!1 &859579161
 GameObject:
   m_ObjectHideFlags: 0
