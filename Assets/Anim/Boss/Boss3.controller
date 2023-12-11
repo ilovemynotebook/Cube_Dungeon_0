@@ -252,6 +252,48 @@ AnimatorTransition:
   m_Mute: 0
   m_IsExit: 0
   serializedVersion: 1
+--- !u!114 &-6366212920258191248
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1d71cf9fa1adb984bb6ffb50d2b7b843, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _soundData:
+    _audioName: IceDragon/IceDragon_WingFlap
+    _activateFrame: 0
+    _disabledFrame: 10000
+    _isActivated: 0
+    _isDisabled: 0
+  _volume: 1
+  _pitch: 0.85
+  _isExitSoundStopped: 0
+--- !u!114 &-6263368054544249161
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1d71cf9fa1adb984bb6ffb50d2b7b843, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _soundData:
+    _audioName: IceDragon/IceDragon_WingFlap
+    _activateFrame: 0
+    _disabledFrame: 10000
+    _isActivated: 0
+    _isDisabled: 0
+  _volume: 1
+  _pitch: 0.85
+  _isExitSoundStopped: 0
 --- !u!1101 &-6047980754371515165
 AnimatorStateTransition:
   m_ObjectHideFlags: 1
@@ -288,7 +330,8 @@ AnimatorState:
   m_Speed: 0.5
   m_CycleOffset: 0
   m_Transitions: []
-  m_StateMachineBehaviours: []
+  m_StateMachineBehaviours:
+  - {fileID: 6481117262251716842}
   m_Position: {x: 50, y: 50, z: 0}
   m_IKOnFeet: 0
   m_WriteDefaultValues: 1
@@ -297,12 +340,33 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: 7400000, guid: 4dd1de71be8d405ab2bc3af03168a484, type: 3}
+  m_Motion: {fileID: 7400000, guid: f371edd2b53c4fcd9b451a0073ad20ab, type: 3}
   m_Tag: 
   m_SpeedParameter: AnimeSpeed
   m_MirrorParameter: 
   m_CycleOffsetParameter: 
   m_TimeParameter: 
+--- !u!114 &-5828998895229266537
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1d71cf9fa1adb984bb6ffb50d2b7b843, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _soundData:
+    _audioName: IceDragon/IceDragon_WingFlap
+    _activateFrame: 0
+    _disabledFrame: 1000
+    _isActivated: 0
+    _isDisabled: 0
+  _volume: 1
+  _pitch: 0.85
+  _isExitSoundStopped: 0
 --- !u!1101 &-5335982616755218196
 AnimatorStateTransition:
   m_ObjectHideFlags: 1
@@ -568,6 +632,7 @@ AnimatorState:
   - {fileID: -681834259968007066}
   m_StateMachineBehaviours:
   - {fileID: -7595450333588575235}
+  - {fileID: -5828998895229266537}
   m_Position: {x: 50, y: 50, z: 0}
   m_IKOnFeet: 0
   m_WriteDefaultValues: 1
@@ -1063,6 +1128,7 @@ AnimatorState:
   - {fileID: -7480208093481872235}
   m_StateMachineBehaviours:
   - {fileID: 6113888079083130952}
+  - {fileID: -6366212920258191248}
   m_Position: {x: 50, y: 50, z: 0}
   m_IKOnFeet: 0
   m_WriteDefaultValues: 1
@@ -1569,6 +1635,7 @@ AnimatorState:
   - {fileID: -5335982616755218196}
   m_StateMachineBehaviours:
   - {fileID: 1193095647906219778}
+  - {fileID: -6263368054544249161}
   m_Position: {x: 50, y: 50, z: 0}
   m_IKOnFeet: 0
   m_WriteDefaultValues: 1
@@ -1735,6 +1802,27 @@ AnimatorStateTransition:
   m_InterruptionSource: 0
   m_OrderedInterruption: 1
   m_CanTransitionToSelf: 1
+--- !u!114 &6481117262251716842
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1d71cf9fa1adb984bb6ffb50d2b7b843, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _soundData:
+    _audioName: SandWorm/SandWorm_Roar_01
+    _activateFrame: 0
+    _disabledFrame: 9999
+    _isActivated: 0
+    _isDisabled: 0
+  _volume: 1
+  _pitch: 0.7
+  _isExitSoundStopped: 0
 --- !u!1101 &6568641068038093944
 AnimatorStateTransition:
   m_ObjectHideFlags: 1
