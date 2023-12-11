@@ -277,9 +277,16 @@ public class Player : Character
 
         if (ladderRayHit.collider?.tag == "Ladder")
         {
-
-            if (Input.GetKey(KeyCode.W))
+            if(Input.GetKeyUp(KeyCode.W))
             {
+                ladder = ladderRayHit.collider.gameObject;
+
+                if (Mathf.Abs(transform.position.x - ladder.transform.position.x) < 1)
+                    isClimbing = true;
+            }
+            else if (Input.GetKey(KeyCode.W))
+            {
+                if (isClimbing == false) return;
                 ladder = ladderRayHit.collider.gameObject;
                 //Debug.Log(Mathf.Abs(transform.position.x - ladder.transform.position.x));
                 if (Mathf.Abs(transform.position.x - ladder.transform.position.x) < 1)
@@ -301,6 +308,7 @@ public class Player : Character
         if (hitInfo.collider != null)
         {
             isGrounded = true;
+            if(Input.GetKey(KeyCode.S)) 
             isClimbing = false;
             anim.SetBool("isClimbing", false);
         }
