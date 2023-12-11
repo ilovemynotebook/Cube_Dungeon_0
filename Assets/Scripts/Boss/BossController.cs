@@ -155,6 +155,7 @@ public class BossController : MonoBehaviour
         _animator.SetFloat("AnimeSpeed", AnimeSpeed);
         SkillCoolTimeUpdate();
         UpdateWaitTimer();
+
     }
 
 

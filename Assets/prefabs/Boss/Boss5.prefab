@@ -75025,9 +75025,9 @@ MonoBehaviour:
   _boss: {fileID: 3404591163487662841}
   _powerMul: 0
   _teleportPos:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  - {x: 9.4, y: -0.66, z: 18}
+  - {x: 40.2, y: -0.66, z: 18}
+  - {x: 72, y: -0.66, z: 18}
 --- !u!1 &6021404381285216569
 GameObject:
   m_ObjectHideFlags: 0
