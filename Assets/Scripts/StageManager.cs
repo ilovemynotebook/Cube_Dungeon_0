@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Rendering;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
@@ -9,6 +10,10 @@ public class StageManager : MonoBehaviour
 {
     DataManager dataManager;
     public GameStageDB gameStageDB;
+    public AudioClip audioclip;
+    public AudioType audiotype;
+    public float volume = 1.0f;
+    public float pitch = 1.0f;
     [SerializeField] private Canvas GameoverPanel;
     [SerializeField] private Button GoTitleButton;
     [SerializeField] private Button GoRePlayButton;
@@ -20,6 +25,7 @@ public class StageManager : MonoBehaviour
         PlaneSceneManager.Instance.StageSet(dataManager.saveData.planes);
         PlaneSceneManager.Instance.CreateMap();
         GameoverPanel.gameObject.SetActive(false);
+        CubeSoundManager.Instance.PlayAudio(audioclip, audiotype, volume = 1, pitch = 1);
         //Player player = FindObjectOfType<Player>();
         //dataManager.PlayerDataLoad(dataManager.playerData,player);
     }
