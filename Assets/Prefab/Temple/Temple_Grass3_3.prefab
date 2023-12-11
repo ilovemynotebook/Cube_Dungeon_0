@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 2282072830231762136}
   m_Layer: 0
   m_Name: Temple_Grass3_3
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -38,7 +38,7 @@ Transform:
   - {fileID: 8935308783534069141}
   - {fileID: 8325073999841489328}
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1009764294174341
 PrefabInstance:
