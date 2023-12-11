@@ -34,6 +34,10 @@ public class CubeSoundManager : SingletonHandler<CubeSoundManager>
             _audioSources[i] = source.GetComponent<AudioSource>();
         }
 
+        _audioSources[(int)AudioType.Effect].loop = false;
+        _audioSources[(int)AudioType.Effect].playOnAwake = false;
+
+
     }
 
 

@@ -12,10 +12,10 @@ public class GameManager : MonoBehaviour
     public EqupimentDataBase EDB;
 
     public PlaneSceneManager _PlaneSceneManager;
-
+    public bool inDialog;
     public GameObject SettingPanel;
     public GameObject TitleButton;
-   // public DataManager _DataManager;
+    // public DataManager _DataManager;
 
 
 
@@ -25,7 +25,7 @@ public class GameManager : MonoBehaviour
     void Awake()
     {
 
-        if(GameManager.Instance == null)
+        if (GameManager.Instance == null)
         {
             GameManager.Instance = this;
             DontDestroyOnLoad(gameObject);
@@ -40,7 +40,7 @@ public class GameManager : MonoBehaviour
 
     void Update()
     {
-        
+
     }
 
     void FindPlayer()
@@ -60,20 +60,24 @@ public class GameManager : MonoBehaviour
 
     public void Pause(bool Gamepause)
     {
-        if (Gamepause)
+        if (Gamepause && Time.timeScale != 0f)
         {
             Time.timeScale = 0f;
         }
-        else if (!Gamepause)
+        else if (!Gamepause && Time.timeScale != 1f)
         {
             Time.timeScale = 1f;
         }
     }
     public void OnclickSettingButton()
     {
-       Pause(true);
-       OnSettingPanel(true);
-       OnTitleButton(true);
+        if (!inDialog)
+        {
+            Pause(true);
+            OnSettingPanel(true);
+            OnTitleButton(true);
+        }
+
     }
     public void GotoTitle()
     {
