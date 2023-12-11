@@ -46726,7 +46726,7 @@ Transform:
   - {fileID: 5060321833663425056}
   - {fileID: 4750402668114505074}
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
 --- !u!95 &6856866251148005194
 Animator:
@@ -46789,15 +46789,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _audioSource: {fileID: 3381958026810729400}
-  _name: 
-  _maxHp: 500
+  _uiBoss: {fileID: 8674380409538872136, guid: db55277984cf37c48b8d92df10a3f0d3, type: 3}
+  _name: Red Dragon
+  _maxHp: 330
   _speed: 0
   _animeSpeed: 1
   _power: 10
   _skillPatterns:
   - _name: "\uD22C\uC0AC\uCCB4 \uACF5\uACA9"
     _distance: 9999
-    _coolTime: 30
+    _coolTime: 10
     AttackTrigger: {fileID: 7727160233273821241}
     CurrentCoolTime: 0
     SkillState: 0
@@ -46815,18 +46816,18 @@ MonoBehaviour:
     SkillState: 0
   - _name: "\uC591\uCABD \uC5D0\uB108\uC9C0 \uAE30\uB465"
     _distance: 9999
-    _coolTime: 30
+    _coolTime: 10
     AttackTrigger: {fileID: 8871722163522695378}
     CurrentCoolTime: 0
     SkillState: 0
   - _name: 1234
     _distance: 9999
-    _coolTime: 30
+    _coolTime: 10
     AttackTrigger: {fileID: 2507947121433777018}
     CurrentCoolTime: 0
     SkillState: 0
   _patternUpdateTime: 0.1
-  _waitTime: 0
+  _waitTime: 0.1
   Rigidbody: {fileID: 0}
   State: 5
   Target: {fileID: 0}

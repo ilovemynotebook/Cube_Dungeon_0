@@ -69810,7 +69810,7 @@ Transform:
   - {fileID: 260108348869741986}
   - {fileID: 7706257004215093152}
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
 --- !u!95 &2370666546246688092
 Animator:
@@ -69896,8 +69896,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _audioSource: {fileID: 7887143707256933233}
-  _name: "\uB9C8\uBC95\uC0AC"
-  _maxHp: 350
+  _uiBoss: {fileID: 8674380409538872136, guid: db55277984cf37c48b8d92df10a3f0d3, type: 3}
+  _name: Wizard
+  _maxHp: 200
   _speed: 0
   _animeSpeed: 1
   _power: 10
@@ -69910,19 +69911,19 @@ MonoBehaviour:
     SkillState: 0
   - _name: "\uD3ED\uBC1C\uC131 \uD22C\uC0AC\uCCB4"
     _distance: 20
-    _coolTime: 10
+    _coolTime: 5
     AttackTrigger: {fileID: 2797035796792966019}
     CurrentCoolTime: 0
     SkillState: 0
   - _name: "\uD22C\uC0AC\uCCB4 \uC5F0\uC18D \uBC1C\uC0AC"
     _distance: 30
-    _coolTime: 20
+    _coolTime: 8
     AttackTrigger: {fileID: 2767063101530528927}
     CurrentCoolTime: 0
     SkillState: 0
   - _name: "\uC5F4\uCC28 \uC18C\uD658"
     _distance: 9999
-    _coolTime: 1
+    _coolTime: 15
     AttackTrigger: {fileID: 8224841503548571494}
     CurrentCoolTime: 0
     SkillState: 0

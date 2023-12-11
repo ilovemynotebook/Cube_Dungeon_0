@@ -50162,7 +50162,7 @@ Transform:
   - {fileID: 5914596974042262227}
   - {fileID: 8072245746423855724}
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!95 &4796090445222547031
 Animator:
@@ -50344,11 +50344,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _audioSource: {fileID: 8119379187308325718}
+  _uiBoss: {fileID: 8674380409538872136, guid: db55277984cf37c48b8d92df10a3f0d3, type: 3}
   _name: Golem
-  _maxHp: 50
+  _maxHp: 110
   _speed: 2
   _animeSpeed: 1
-  _power: 10
+  _power: 5
   _skillPatterns:
   - _name: "\uADFC\uC811\uACF5\uACA8"
     _distance: 5
@@ -50358,12 +50359,12 @@ MonoBehaviour:
     SkillState: 0
   - _name: "\uCC0D\uAE30"
     _distance: 10
-    _coolTime: 15
+    _coolTime: 4
     AttackTrigger: {fileID: 249953275714580256}
     CurrentCoolTime: 0
     SkillState: 0
   _patternUpdateTime: 0.1
-  _waitTime: 1
+  _waitTime: 0.1
   Rigidbody: {fileID: 0}
   State: 0
   Target: {fileID: 0}
