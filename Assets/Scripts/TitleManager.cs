@@ -60,7 +60,7 @@ public class TitleManager : MonoBehaviour
             Destroy(Playable.instance.gameObject);
         }
 
-        CubeSoundManager.Instance.PlayAudio(audioclip, audiotype, volume = 1, pitch = 1);
+        CubeSoundManager.Instance.PlayAudio(audioclip, audiotype, volume, pitch);
 
         Invoke("TitleFadeIn", 2);
     }
