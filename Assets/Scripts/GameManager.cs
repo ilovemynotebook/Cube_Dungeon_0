@@ -15,7 +15,7 @@ public class GameManager : MonoBehaviour
     public bool inDialog;
     public GameObject SettingPanel;
     public GameObject TitleButton;
-   // public DataManager _DataManager;
+    // public DataManager _DataManager;
 
 
 
@@ -25,7 +25,7 @@ public class GameManager : MonoBehaviour
     void Awake()
     {
 
-        if(GameManager.Instance == null)
+        if (GameManager.Instance == null)
         {
             GameManager.Instance = this;
             DontDestroyOnLoad(gameObject);
@@ -40,7 +40,7 @@ public class GameManager : MonoBehaviour
 
     void Update()
     {
-        
+
     }
 
     public void FindPlayer()
@@ -60,11 +60,11 @@ public class GameManager : MonoBehaviour
 
     public void Pause(bool Gamepause)
     {
-        if (Gamepause&&Time.timeScale!=0f)
+        if (Gamepause && Time.timeScale != 0f)
         {
             Time.timeScale = 0f;
         }
-        else if (!Gamepause&&Time.timeScale!=1f)
+        else if (!Gamepause && Time.timeScale != 1f)
         {
             Time.timeScale = 1f;
         }
@@ -77,7 +77,7 @@ public class GameManager : MonoBehaviour
             OnSettingPanel(true);
             OnTitleButton(true);
         }
-   
+
     }
     public void GotoTitle()
     {

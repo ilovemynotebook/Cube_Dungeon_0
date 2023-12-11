@@ -97,12 +97,12 @@ public class DataManager : MonoBehaviour
         File.WriteAllText(filePathStage, Stagejsondata);
         File.WriteAllText(filePathPlayer, Playerjsondata);
     }
-    public void PlayerDataGet(Player player, PlayerData playerData,CanvasManager canvasManager)
+    public void PlayerDataGet(Player player, PlayerData playerData, CanvasManager canvasManager)
     {
         //현재 플레이어 데이터를 데이터매니저에 담는다.
         playerData.SetPlayerData(player.hp, player.mhp, player.sta, player.msta);
-        playerData.SetCanvasData(canvasManager.hpPotion, canvasManager.staPotion, canvasManager.dmgPotion, canvasManager.isUpgraded_weapon, canvasManager.isUpgraded_shield, canvasManager.isUpgraded_Item_0, canvasManager.isUpgraded_Item_1, canvasManager.isUpgraded_Item_2, canvasManager.isUpgraded_Item_3,canvasManager.key);
-        
+        playerData.SetCanvasData(canvasManager.hpPotion, canvasManager.staPotion, canvasManager.dmgPotion, canvasManager.isUpgraded_weapon, canvasManager.isUpgraded_shield, canvasManager.isUpgraded_Item_0, canvasManager.isUpgraded_Item_1, canvasManager.isUpgraded_Item_2, canvasManager.isUpgraded_Item_3, canvasManager.key);
+
     }
 
     public void StageDataChange(int Stage)
@@ -136,7 +136,6 @@ public class DataManager : MonoBehaviour
         canvasManager.dmgPotion = playerData.dmgPotion;
         canvasManager.hpPotion = playerData.hpPotion;
         canvasManager.staPotion = playerData.staPotion;
-        canvasManager.key=playerData.key;
     }
     public void StageDataLoad(SaveData saveData,PlaneSceneManager planemanager)
     {

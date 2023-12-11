@@ -28,6 +28,7 @@ public class PlaneSceneManager : MonoBehaviour
     public int thisStage; //현재 스테이지
     public int thisPlane; // 현재 면
     public CinemachineVirtualCamera VirtualCamera;
+    public Vector3 PlayerPoint;
     Box deadbox;
 
     //EStageType ThisStageType;
@@ -174,7 +175,7 @@ public class PlaneSceneManager : MonoBehaviour
         //}
         MonsterSpawn(planes[thisPlane - 1]);
         BoxSpawn(planes[thisPlane - 1]);
-        Player.transform.position = planes[thisPlane - 1].playerStartPoint;
+        Player.transform.position = PlayerPoint;
 
     }
     public void StageSet(Plane[] plane)
