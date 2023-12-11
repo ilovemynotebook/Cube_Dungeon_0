@@ -48,6 +48,7 @@ public class CubeSoundManager : MonoBehaviour
 
         _audioSources[(int)AudioType.Background].loop = true;
         _audioSources[(int)AudioType.Background].playOnAwake = true;
+        _audioSources[(int)AudioType.Background].volume = 0.1f;
     }
 
 
@@ -55,7 +56,6 @@ public class CubeSoundManager : MonoBehaviour
     {
         int typeTotInt = (int)type;
 
-        _audioSources[typeTotInt].volume = volume;
         _audioSources[typeTotInt].pitch = pitch;
 
         _audioSources[typeTotInt].clip = clip;
