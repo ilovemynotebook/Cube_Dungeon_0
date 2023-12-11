@@ -170,9 +170,12 @@ public class Character : MonoBehaviour
         hp -=dmg;
         //HitSound?.Play();
         //Debug.Log(anim);
+        if (GetHitVFX != null) GetHitVFX.Play();
         anim.Play("Hit",0,0f);
 
-        if(GetHitVFX != null) GetHitVFX.Play();
+
+
+        
 
         if(hp <= 0)
         {
