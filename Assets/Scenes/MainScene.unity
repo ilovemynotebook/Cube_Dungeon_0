@@ -4197,7 +4197,7 @@ Camera:
     height: 1
   near clip plane: 0.3
   far clip plane: 1000
-  field of view: 5.985362
+  field of view: 10
   orthographic: 0
   orthographic size: 5
   m_Depth: -1
@@ -4910,7 +4910,6 @@ GameObject:
   m_Component:
   - component: {fileID: 720317711}
   - component: {fileID: 720317714}
-  - component: {fileID: 720317715}
   - component: {fileID: 720317713}
   m_Layer: 0
   m_Name: Sponge
@@ -4980,19 +4979,6 @@ MonoBehaviour:
   front: {fileID: 1483978303}
   centerFB: {fileID: 337703917}
   back: {fileID: 141677727}
---- !u!114 &720317715
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 720317710}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: defb6862bfaed1744a77af6b3ba1391d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  hashBtn: {fileID: 0}
 --- !u!1 &734263049
 GameObject:
   m_ObjectHideFlags: 0
@@ -8434,7 +8420,7 @@ MonoBehaviour:
   m_LookAt: {fileID: 374438035}
   m_Follow: {fileID: 0}
   m_Lens:
-    FieldOfView: 5.985362
+    FieldOfView: 10
     OrthographicSize: 5
     NearClipPlane: 0.3
     FarClipPlane: 1000

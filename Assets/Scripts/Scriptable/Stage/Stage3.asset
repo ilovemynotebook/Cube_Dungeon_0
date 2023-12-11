@@ -16,25 +16,29 @@ MonoBehaviour:
     CubePlanes:
     - planeType: 0
       planeStyle: 0
-      prefab: {fileID: 0}
-      playerStartPoint: {x: 0, y: 0, z: 0}
+      prefab: {fileID: 737276965163589955, guid: db0aeef458cfd5a41a99bd3cbabc5e8d,
+        type: 3}
+      playerStartPoint: {x: -3, y: 0, z: -5}
       enemyData: []
       boxData: []
     - planeType: 0
       planeStyle: 0
-      prefab: {fileID: 0}
-      playerStartPoint: {x: 0, y: 0, z: 0}
+      prefab: {fileID: 1487358069008714127, guid: ec850553696b2024ba235a9fe630762a,
+        type: 3}
+      playerStartPoint: {x: -16, y: 8, z: 4}
       enemyData: []
       boxData: []
     - planeType: 0
       planeStyle: 0
-      prefab: {fileID: 0}
-      playerStartPoint: {x: 0, y: 0, z: 0}
+      prefab: {fileID: 2548468578260992794, guid: 9f561bc04d027e3449bb11bbce2b8b6e,
+        type: 3}
+      playerStartPoint: {x: 8, y: 2, z: 2}
       enemyData: []
       boxData: []
     - planeType: 0
       planeStyle: 0
-      prefab: {fileID: 0}
-      playerStartPoint: {x: 0, y: 0, z: 0}
+      prefab: {fileID: 1677976009499283250, guid: d7af66d3433762f45bcfeccd55892984,
+        type: 3}
+      playerStartPoint: {x: -25, y: -8, z: 15}
       enemyData: []
       boxData: []
