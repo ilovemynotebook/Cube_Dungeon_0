@@ -12,23 +12,31 @@ public enum AudioType
 }
 
 
-public class CubeSoundManager : SingletonHandler<CubeSoundManager>
+public class CubeSoundManager : MonoBehaviour
 {
+    public static CubeSoundManager Instance;
+
     private AudioSource[] _audioSources;
 
 
-    public override void Awake()
+    public void Awake()
     {
 
-        base.Awake();
 
-        if (Instance != null)
-            Destroy(this);
+        if (CubeSoundManager.Instance == null)
+        {
+            CubeSoundManager.Instance = this;
+            DontDestroyOnLoad(gameObject);
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
+
 
         _audioSources = new AudioSource[(int)AudioType.Length];
 
-
-        for(int i = 0, count = (int)AudioType.Length; i < count; i++)
+        for (int i = 0, count = (int)AudioType.Length; i < count; i++)
         {
             GameObject source = new GameObject(Enum.GetName(typeof(AudioType), i));
             source.transform.parent = transform;
