@@ -54,8 +54,10 @@ public class BossController : MonoBehaviour
     [SerializeField] protected UIBoss _uiBoss;
     protected UIBoss _createUiBoss;
 
+    protected CapsuleCollider _collider;
 
-    [Space(10)]
+
+[Space(10)]
 
     [Header("능력이")]
 
@@ -164,6 +166,7 @@ public class BossController : MonoBehaviour
         _animator = GetComponent<Animator>();
         _bossStateMachines = _animator.GetBehaviours<BossStateMachineBehaviour>();
         Rigidbody = GetComponent<Rigidbody>();
+        _collider = GetComponent<CapsuleCollider>();
         _ai = new Boss1AI(this);
 
         _hp = _maxHp;
@@ -222,6 +225,8 @@ public class BossController : MonoBehaviour
         {
             State = BossState.Die;
             Destroy(gameObject, 10);
+            Rigidbody.useGravity = false;
+            _collider.enabled = false;
             OnDeathEventHandler?.Invoke();
         }
         OnGetHitHandler?.Invoke(_maxHp, _hp);
