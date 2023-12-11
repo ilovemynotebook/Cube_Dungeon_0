@@ -4916,6 +4916,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: CharacterUI (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 585836357062728702, guid: e5e50205a1f78a4498230700610e014f,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4046961644354115369, guid: e5e50205a1f78a4498230700610e014f,
         type: 3}
       propertyPath: m_AnchorMax.x
@@ -4945,6 +4950,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8102210867442715300, guid: e5e50205a1f78a4498230700610e014f,
+        type: 3}
+      propertyPath: m_Value
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -10219,7 +10229,7 @@ PrefabInstance:
     - target: {fileID: 4399066861471246767, guid: b6237c17ac0d9154d88895bd494482b5,
         type: 3}
       propertyPath: m_Enabled
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4577771104221508315, guid: b6237c17ac0d9154d88895bd494482b5,
         type: 3}
